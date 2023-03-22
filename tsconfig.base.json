@@ -1,0 +1,24 @@
+{
+  "exclude": [
+    "node_modules",
+    "lib",
+    "esm",
+    "cjs",
+    "config/storybook/main.js"
+    // "config/storybook/manager.js",
+    // "config/storybook/theme.js"
+  ],
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmitOnError": true,
+    "allowJs": true,
+    "baseUrl": "."
+  }
+}
