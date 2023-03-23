@@ -84,14 +84,21 @@ const getFontStyles = (theme: TmTheme) => ({
 });
 
 const getFontFamily = (family: TmFontFamily) => {
-  if (family !== "Pretendard")
+  if (family !== "Pretendard") {
     return {
-      fontFamily: `${family}, var(${
-        family === "Noto Serif KR"
-          ? "--font-noto-serif"
-          : family === "PT Serif" && "--font-pt-serif"
-      }`,
+      font: {
+        fontFamily: `${family}, var(${
+          family === "Noto Serif KR"
+            ? "--font-noto-serif"
+            : family === "PT Serif" && "--font-pt-serif"
+        }`,
+      },
     };
+  } else {
+    return {
+      font: {},
+    };
+  }
 };
 
 export default createStyles(
@@ -121,7 +128,7 @@ export default createStyles(
 
       root: {
         ...getFontStyles(theme)[level],
-        ...getFontFamily(family),
+        ...getFontFamily(family)["font"],
         color: disabled
           ? theme.colors.primary4
           : color

@@ -116,4 +116,4 @@ export const Typography: TypographyComponent & { displayName?: string } =
     }
   );
 
-Typography.displayName = "@travelmakers-design-v2/core/Typography";
+Typography.displayName = "Typography";
