@@ -13,22 +13,24 @@ import React from "react";
 import { Typography } from "../Typography";
 
 export default {
-  title: "@travelmakers-design/core/General/Typography",
+  title: "@travelmakers-design-v2/core/General/Typography",
   component: Typography,
   argTypes: {
     level: {
-      defaultValue: "h1",
+      defaultValue: "body1",
       description: "Typography 컴포넌트의 크기를 정합니다.",
       options: [
-        "b3",
-        "b2",
-        "b1",
-        "h6",
-        "h5",
-        "h4",
-        "h3",
-        "h2",
-        "h1",
+        "display1",
+        "display2",
+        "display3",
+        "display4",
+        "display5",
+        "display6",
+        "subhead1",
+        "subhead2",
+        "body1",
+        "body2",
+        "body3",
         "caption",
       ],
       table: {
@@ -104,15 +106,17 @@ export default {
       defaultValue: "",
       description: "mobile일 경우의 Typography 컴포넌트의 크기를 지정합니다.",
       options: [
-        "b3",
-        "b2",
-        "b1",
-        "h6",
-        "h5",
-        "h4",
-        "h3",
-        "h2",
-        "h1",
+        "display1",
+        "display2",
+        "display3",
+        "display4",
+        "display5",
+        "display6",
+        "subhead1",
+        "subhead2",
+        "body1",
+        "body2",
+        "body3",
         "caption",
       ],
       table: {
@@ -126,15 +130,17 @@ export default {
       defaultValue: "",
       description: "tablet일 경우의 Typography 컴포넌트의 크기를 지정합니다.",
       options: [
-        "b3",
-        "b2",
-        "b1",
-        "h6",
-        "h5",
-        "h4",
-        "h3",
-        "h2",
-        "h1",
+        "display1",
+        "display2",
+        "display3",
+        "display4",
+        "display5",
+        "display6",
+        "subhead1",
+        "subhead2",
+        "body1",
+        "body2",
+        "body3",
         "caption",
       ],
       table: {
@@ -163,37 +169,43 @@ export default {
 
 export const Default = (props) => {
   return (
-    <>
-      <Typography {...props} level={"h1"}>
-        h1. Travelmakers Design
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <Typography {...props} level={"display1"}>
+        display1. Travelmakers Design
       </Typography>
-      <Typography {...props} level={"h2"}>
-        h2. Travelmakers Design
+      <Typography {...props} level={"display2"}>
+        display2. Travelmakers Design
       </Typography>
-      <Typography {...props} level={"h3"}>
-        h3. Travelmakers Design
+      <Typography {...props} level={"display3"}>
+        display3. Travelmakers Design
       </Typography>
-      <Typography {...props} level={"h4"}>
-        h4. Travelmakers Design
+      <Typography {...props} level={"display4"}>
+        display4. Travelmakers Design
       </Typography>
-      <Typography {...props} level={"h5"}>
-        h5. Travelmakers Design
+      <Typography {...props} level={"display5"}>
+        display5. Travelmakers Design
       </Typography>
-      <Typography {...props} level={"h6"}>
-        h6. Travelmakers Design
+      <Typography {...props} level={"display6"}>
+        display6. Travelmakers Design
       </Typography>
-      <Typography {...props} level={"b1"}>
-        b1. Travelmakers Design
+      <Typography {...props} level={"subhead1"}>
+        subhead1. Travelmakers Design
       </Typography>
-      <Typography {...props} level={"b2"}>
-        b2. Travelmakers Design
+      <Typography {...props} level={"subhead2"}>
+        subhead2. Travelmakers Design
       </Typography>
-      <Typography {...props} level={"b3"}>
-        b3. Travelmakers Design
+      <Typography {...props} level={"body1"}>
+        body1. Travelmakers Design
+      </Typography>
+      <Typography {...props} level={"body2"}>
+        body2. Travelmakers Design
+      </Typography>
+      <Typography {...props} level={"body3"}>
+        body3. Travelmakers Design
       </Typography>
       <Typography {...props} level={"caption"}>
         caption. Travelmakers Design
       </Typography>
-    </>
+    </div>
   );
 };

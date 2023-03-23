@@ -1,18 +1,18 @@
 import {
-  Co,
+  Tm,
   PolymorphicComponentProps,
   PolymorphicRef,
   TmComponentProps,
   TmTheme,
   useCss,
   useTmTheme,
-} from "@travelmakers-design/styles";
+} from "@travelmakers-design-v2/styles";
 import React, { forwardRef } from "react";
 
-type ViewCo = Co | Co[];
+type ViewTm = Tm | Tm[];
 
-interface _ViewProps extends Omit<TmComponentProps, "co" | "overrideStyles"> {
-  co?: ViewCo;
+interface _ViewProps extends Omit<TmComponentProps, "tm" | "overrideStyles"> {
+  tm?: ViewTm;
 }
 
 export type ViewProps<C extends React.ElementType> = PolymorphicComponentProps<
@@ -24,20 +24,20 @@ type ViewComponent = <C extends React.ElementType = "div">(
   props: ViewProps<C>
 ) => React.ReactElement;
 
-function extractCo(co: Co, theme: TmTheme) {
-  return typeof co === "function" ? co(theme) : co;
+function extractTm(tm: Tm, theme: TmTheme) {
+  return typeof tm === "function" ? tm(theme) : tm;
 }
 
-function useBoxCo(co: ViewCo, className: string) {
+function useBoxTm(tm: ViewTm, className: string) {
   const { css, cx } = useCss();
   const theme = useTmTheme();
-  if (Array.isArray(co)) {
+  if (Array.isArray(tm)) {
     return cx(
       className,
-      co.map((partial) => css(extractCo(partial, theme)))
+      tm.map((partial) => css(extractTm(partial, theme)))
     );
   }
-  return cx(className, css(extractCo(co, theme)));
+  return cx(className, css(extractTm(tm, theme)));
 }
 
 export const View: ViewComponent & { displayName?: string } = forwardRef(
@@ -45,16 +45,11 @@ export const View: ViewComponent & { displayName?: string } = forwardRef(
     { component, className, style, co, ...props }: any,
     ref: PolymorphicRef<C>
   ) => {
-    // const { mergedStyles, rest } = useExtractedMargins({ others, style });
-
-    // TODO: margin, shadow, padding, position, display, backgroundColor, width, height, border
-    // https://react-spectrum.adobe.com/react-spectrum/View.html
-
     const Element = component || "div";
     return (
       <Element
         ref={ref}
-        className={useBoxCo(co, className)}
+        className={useBoxTm(co, className)}
         style={style}
         {...props}
       />
@@ -62,4 +57,4 @@ export const View: ViewComponent & { displayName?: string } = forwardRef(
   }
 );
 
-View.displayName = "@travelmakers-design/core/View";
+View.displayName = "@travelmakers-design-v2/core/View";

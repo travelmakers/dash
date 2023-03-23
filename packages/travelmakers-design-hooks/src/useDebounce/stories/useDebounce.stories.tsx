@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDebounce } from "../useDebounce";
 
 export default {
-  title: "@travelmakers-design/hooks/useDebounce",
+  title: "@travelmakers-design-v2/hooks/useDebounce",
 };
 
 export const Default = () => {

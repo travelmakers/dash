@@ -1,6 +1,6 @@
 {
-  "name": "@travelmakers-design/core",
-  "version": "0.0.62",
+  "name": "@travelmakers-design-v2/core",
+  "version": "0.0.1",
   "main": "cjs/packages/travelmakers-design-core/src/index.js",
   "module": "esm/packages/travelmakers-design-core/src/index.js",
   "types": "lib/index.d.ts",
@@ -14,17 +14,16 @@
     "build": "esno ../../scripts/build travelmakers-design-core"
   },
   "repository": {
-    "url": "https://github.com/travelmakers/travelmakers-design.git",
+    "url": "https://github.com/travelmakers/travelmakers-design-v2.git",
     "type": "git",
     "directory": "packages/travelmakers-design-core"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "react-native": ">0.69.0"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "dependencies": {
-    "@travelmakers-design/styles": "^0.0.7",
-    "@travelmakers-design/utils": "^0.0.33"
+    "@travelmakers-design-v2/styles": "^0.0.1",
+    "@travelmakers-design-v2/utils": "^0.0.1"
   }
 }

@@ -2,15 +2,11 @@ import {
   TmColor,
   TmFontFamily,
   TmFontSize,
-  TmPalette,
-  TmSize,
   TmTheme,
   createStyles,
-  defaultFontStyles,
-} from "@travelmakers-design/styles";
+} from "@travelmakers-design-v2/styles";
 
 import { TypographyTextAlign } from "./Typography";
-import { addAlpha } from "../../utils";
 
 interface TypographyStylesProps {
   family: TmFontFamily;
@@ -22,88 +18,81 @@ interface TypographyStylesProps {
   strong?: boolean;
   italic?: boolean;
   underline?: boolean;
-  color?: TmPalette | TmColor | string;
+  color?: TmColor | string;
 }
 
-const sizes = {
-  h1: {
-    // height: TM_HEIGHTS.small,
-  },
-
-  small: {
-    // height: TM_HEIGHTS.small,
-  },
-
-  medium: {
-    // height: TM_HEIGHTS.medium,
-  },
-
-  large: {
-    // height: TM_HEIGHTS.large,
-  },
-};
-
 const getFontStyles = (theme: TmTheme) => ({
+  display1: {
+    lineHeight: `${theme.lineHeights.display1}px`,
+    fontSize: theme.fontSizes.display1,
+  },
+
+  display2: {
+    lineHeight: `${theme.lineHeights.display2}px`,
+    fontSize: theme.fontSizes.display2,
+  },
+
+  display3: {
+    lineHeight: `${theme.lineHeights.display3}px`,
+    fontSize: theme.fontSizes.display3,
+  },
+
+  display4: {
+    lineHeight: `${theme.lineHeights.display4}px`,
+    fontSize: theme.fontSizes.display4,
+  },
+
+  display5: {
+    lineHeight: `${theme.lineHeights.display5}px`,
+    fontSize: theme.fontSizes.display5,
+  },
+
+  display6: {
+    lineHeight: `${theme.lineHeights.display6}px`,
+    fontSize: theme.fontSizes.display6,
+  },
+
+  subhead1: {
+    lineHeight: `${theme.lineHeights.subhead1}px`,
+    fontSize: theme.fontSizes.subhead1,
+  },
+
+  subhead2: {
+    lineHeight: `${theme.lineHeights.subhead2}px`,
+    fontSize: theme.fontSizes.subhead2,
+  },
+
+  body1: {
+    lineHeight: `${theme.lineHeights.body1}px`,
+    fontSize: theme.fontSizes.body1,
+  },
+
+  body2: {
+    lineHeight: `${theme.lineHeights.body2}px`,
+    fontSize: theme.fontSizes.body2,
+  },
+
+  body3: {
+    lineHeight: `${theme.lineHeights.body3}px`,
+    fontSize: theme.fontSizes.body3,
+  },
+
   caption: {
     lineHeight: `${theme.lineHeights.caption}px`,
     fontSize: theme.fontSizes.caption,
   },
-
-  b3: {
-    lineHeight: `${theme.lineHeights.b3}px`,
-    fontSize: theme.fontSizes.b3,
-  },
-
-  b2: {
-    lineHeight: `${theme.lineHeights.b2}px`,
-    fontSize: theme.fontSizes.b2,
-  },
-
-  b1: {
-    lineHeight: `${theme.lineHeights.b1}px`,
-    fontSize: theme.fontSizes.b1,
-  },
-
-  h6: {
-    lineHeight: `${theme.lineHeights.h6}px`,
-    fontSize: theme.fontSizes.h6,
-  },
-
-  h5: {
-    lineHeight: `${theme.lineHeights.h5}px`,
-    fontSize: theme.fontSizes.h5,
-  },
-
-  h4: {
-    lineHeight: `${theme.lineHeights.h4}px`,
-    fontSize: theme.fontSizes.h4,
-  },
-
-  h3: {
-    lineHeight: `${theme.lineHeights.h3}px`,
-    fontSize: theme.fontSizes.h3,
-  },
-
-  h2: {
-    lineHeight: `${theme.lineHeights.h2}px`,
-    fontSize: theme.fontSizes.h2,
-  },
-
-  h1: {
-    lineHeight: `${theme.lineHeights.h1}px`,
-    fontSize: theme.fontSizes.h1,
-  },
 });
 
-export const heights = Object.keys(sizes).reduce((acc, size) => {
-  acc[size] = sizes[size].height;
-  return acc;
-}, {} as Record<TmSize, number>);
-
-const getWidthStyles = (fullWidth?: boolean) => ({
-  display: "block",
-  width: "100%",
-});
+const getFontFamily = (family: TmFontFamily) => {
+  if (family !== "Pretendard")
+    return {
+      fontFamily: `${family}, var(${
+        family === "Noto Serif KR"
+          ? "--font-noto-serif"
+          : family === "PT Serif" && "--font-pt-serif"
+      }`,
+    };
+};
 
 export default createStyles(
   (
@@ -122,34 +111,7 @@ export default createStyles(
     }: TypographyStylesProps,
     getRef
   ) => {
-    const loading = getRef("loading");
-    const inner = getRef("inner");
-    const spinner = getRef("spinner");
-
     return {
-      loading: {
-        ref: loading,
-        pointerEvents: "none",
-
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: -1,
-          left: -1,
-          right: -1,
-          bottom: -1,
-          cursor: "not-allowed",
-        },
-
-        [`.${inner}`]: {
-          opacity: 0,
-        },
-
-        [`.${spinner}`]: {
-          display: "flex",
-        },
-      },
-
       solid: {
         fontWeight: strong ? (family === "Noto Serif KR" ? 600 : 700) : 400,
         fontStyle: italic ? "italic" : "normal",
@@ -158,22 +120,14 @@ export default createStyles(
       },
 
       root: {
-        ...sizes[level],
-        ...getWidthStyles(),
         ...getFontStyles(theme)[level],
-        fontFamily: `${family}`,
+        ...getFontFamily(family),
         color: disabled
-          ? theme.colors.gray5
+          ? theme.colors.primary4
           : color
           ? color
           : theme.colors.black,
-        position: "relative",
-        WebkitTapHighlightColor: "transparent",
-        appearance: "none",
         textAlign: `${textAlign}`,
-        WebkitAppearance: "none",
-        outline: "none",
-        border: "none",
 
         [`${theme.media.mobile}`]: {
           ...getFontStyles(theme)[mobile],
@@ -182,16 +136,6 @@ export default createStyles(
         [`${theme.media.tablet}`]: {
           ...getFontStyles(theme)[tablet],
         },
-      },
-
-      inner: {
-        ref: inner,
-        height: "100%",
-        overflow: "visible",
-      },
-
-      label: {
-        height: "100%",
       },
     };
   }

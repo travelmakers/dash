@@ -1,4 +1,4 @@
-import { ColorSchemeProvider, TmProvider } from "@travelmakers-design/core";
+import { ColorSchemeProvider, TmProvider } from "@travelmakers-design-v2/core";
 
 import React from "react";
 import { themes } from "@storybook/theming";

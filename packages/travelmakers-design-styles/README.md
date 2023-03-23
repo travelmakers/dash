@@ -1,16 +1,16 @@
-# @travelmakers-design/styles
+# @travelmakers-design-v2/styles
 
 ## Installation
 ```bash
 # With npm
-npm install @travelmakers-design/styles
+npm install @travelmakers-design-v2/styles
 
 # With yarn
-yarn add @travelmakers-design/styles
+yarn add @travelmakers-design-v2/styles
 ```
 
 ## License
-@travelmakers-design/styles is made available under the MIT License.
+@travelmakers-design-v2/styles is made available under the MIT License.
 
 ## ✨ Contributors
 

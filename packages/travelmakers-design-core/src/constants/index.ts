@@ -1,4 +1,4 @@
-import { TmSize } from "@travelmakers-design/styles";
+import { TmSize } from "@travelmakers-design-v2/styles";
 
 export const TM_HEIGHTS: Record<TmSize, number> = {
   xsmall: 24,

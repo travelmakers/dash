@@ -2,7 +2,7 @@ import React from "react";
 import { useTimeoutFn } from "../useTimeoutFn";
 
 export default {
-  title: "@travelmakers-design/hooks/useTimeoutFn",
+  title: "@travelmakers-design-v2/hooks/useTimeoutFn",
 };
 
 export const Default = () => {

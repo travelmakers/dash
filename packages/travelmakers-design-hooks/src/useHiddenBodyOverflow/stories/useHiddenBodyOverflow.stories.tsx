@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useHiddenBodyOverflow from "../useHiddenBodyOverflow";
 
 export default {
-  title: "@travelmakers-design/hooks/useHiddenBodyOverflow",
+  title: "@travelmakers-design-v2/hooks/useHiddenBodyOverflow",
 };
 
 export const Default = () => {

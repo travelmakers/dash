@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 import type { TmTheme, TmThemeOverride } from "./types";
 
 import type { CSSObject } from "../tss";
-import { DEFAULT_THEME } from "./defaultTheme";
+import { DEFAULT_THEME, DARK_THEME } from "./defaultTheme";
 import type { Options as EmotionCacheOptions } from "@emotion/cache";
 import { Global } from "../tss/Global";
 import { NormalizeCSS } from "./NormalizeCSS";
@@ -67,7 +67,7 @@ const GlobalStyles = () => {
               ? theme.colors.white
               : theme.colors.black,
           lineHeight: theme.lineHeight,
-          fontSizes: theme.fontSizes.b3,
+          fontSizes: theme.fontSizes.body3,
         } as any,
       })}
     />
@@ -85,7 +85,10 @@ export const TmProvider = ({
   return (
     <TmThemeContext.Provider
       value={{
-        theme: mergeTheme(DEFAULT_THEME, theme),
+        theme: mergeTheme(
+          theme.colorScheme === "dark" ? DARK_THEME : DEFAULT_THEME,
+          theme
+        ),
         styles,
         emotionOptions,
       }}
@@ -97,4 +100,4 @@ export const TmProvider = ({
   );
 };
 
-TmProvider.displayName = "@travelmakers-design/styles/TmProvider";
+TmProvider.displayName = "@travelmakers-design-v2/styles/TmProvider";

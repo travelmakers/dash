@@ -1,20 +1,16 @@
 import {
   CoBreakpoints,
-  CoOpacity,
   CoRadius,
   CoShadows,
   CoSpacing,
-  CoZIndex,
   TmColor,
   TmFontSizes,
   TmMedia,
-  TmPalette,
 } from "../tokens";
-import { TmSize, deviceSizes } from "./TmSize";
+import { TmSize } from "./TmSize";
 
 import type { CSSProperties } from "react";
 import type { DeepPartial } from "./DeepPartial";
-import type { Tuple } from "./Tuple";
 
 export interface HeadingStyle {
   fontSize: CSSProperties["fontSize"];
@@ -39,31 +35,28 @@ export interface TmTheme {
   fontFamily: CSSProperties["fontFamily"];
   lineHeight: CSSProperties["lineHeight"];
   fontFamilyMonospace: CSSProperties["fontFamily"];
-  primaryColor: string;
 
   colors: Record<TmColor, string>;
-  palettes: Record<TmPalette, Tuple<string, 3>>;
   fontSizes: Record<TmFontSizes, number>;
   lineHeights: Record<TmFontSizes, number>;
   radius: Record<CoRadius, number | string>;
   spacing: Record<CoSpacing, number>;
   breakpoints: Record<CoBreakpoints, number>;
   shadows: Record<CoShadows, string>;
-  opacity: Record<CoOpacity, number>;
-  zIndex: Record<CoZIndex, number>;
   media: TmMedia;
 
   headings: {
-    h1: HeadingStyle;
-    h2: HeadingStyle;
-    h3: HeadingStyle;
-    h4: HeadingStyle;
-    h5: HeadingStyle;
-    h6: HeadingStyle;
+    display1: HeadingStyle;
+    display2: HeadingStyle;
+    display3: HeadingStyle;
+    display4: HeadingStyle;
+    display5: HeadingStyle;
+    display6: HeadingStyle;
+    subhead1: HeadingStyle;
+    subhead2: HeadingStyle;
   };
 
   fn: TmThemeFunctions;
-  extra: Record<string, any>;
 }
 
 export type TmThemeBase = Omit<TmTheme, "fn">;

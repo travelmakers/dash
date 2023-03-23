@@ -1,14 +1,18 @@
 import { TmSize } from "../types/TmSize";
 
-export type CoShadows = TmSize | "none";
+export type CoShadows =
+  | "elevation1"
+  | "elevation2"
+  | "elevation3"
+  | "elevation4"
+  | "elevation5"
+  | "none";
 
 export const DEFAULT_SHADOWS: Record<CoShadows, string> = {
   none: "none",
-  xsmall: "0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1)",
-  small:
-    "0 1px 3px rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0px 10px 15px -5px, rgba(0, 0, 0, 0.04) 0px 7px 7px -5px",
-  medium:
-    "0 1px 3px rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px",
-  large:
-    "0 1px 3px rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 0px 28px 23px -7px, rgba(0, 0, 0, 0.04) 0px 12px 12px -7px",
+  elevation1: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+  elevation2: "0px 4px 12px rgba(0, 0, 0, 0.15)",
+  elevation3: "0px 4px 16px rgba(0, 0, 0, 0.2)",
+  elevation4: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+  elevation5: "0px 4px 24px rgba(0, 0, 0, 0.2)",
 };

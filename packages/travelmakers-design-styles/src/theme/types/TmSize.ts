@@ -1,13 +1,15 @@
 export type TmFontSize =
-  | "b3"
-  | "b2"
-  | "b1"
-  | "h6"
-  | "h5"
-  | "h4"
-  | "h3"
-  | "h2"
-  | "h1"
+  | "display1"
+  | "display2"
+  | "display3"
+  | "display4"
+  | "display5"
+  | "display6"
+  | "subhead1"
+  | "subhead2"
+  | "body1"
+  | "body2"
+  | "body3"
   | "caption";
 
 export type TmSize = "xsmall" | "small" | "medium" | "large";

@@ -1,21 +1,17 @@
-import type { Co, TmTheme } from "../theme";
+import type { Tm, TmTheme } from "../theme";
 import { useTmTheme, useTmThemeStyles } from "../theme/TmProvider";
 
 import type { CSSObject } from "./types";
 import { fromEntries } from "./utils/fromEntries";
 import { mergeClassNames } from "./utils/mergeClassNames";
 import { useCss } from "./useCss";
-import { StyleProp, ViewStyle } from "react-native";
 
 export interface UseStylesOptions<Key extends string> {
-  co?: Co;
+  tm?: Tm;
   overrideStyles?:
     | Partial<Record<Key, CSSObject>>
     | ((theme: TmTheme) => Partial<Record<Key, CSSObject>>);
   name: string;
-}
-export interface CssObjectReactNative {
-  [index: string]: StyleProp<ViewStyle>;
 }
 
 export function createStyles<Key extends string = string, Params = void>(
@@ -56,7 +52,7 @@ export function createStyles<Key extends string = string, Params = void>(
         ? themeStyles(theme)
         : themeStyles || {};
     const _co =
-      typeof options?.co === "function" ? options.co(theme) : options?.co;
+      typeof options?.tm === "function" ? options.tm(theme) : options?.tm;
 
     const classes = fromEntries(
       Object.keys(cssObject).map((key) => {
@@ -72,7 +68,6 @@ export function createStyles<Key extends string = string, Params = void>(
 
     return {
       classes: mergeClassNames(cx, classes, options?.name),
-      classesRn: cssObject as unknown as CssObjectReactNative,
       cx,
       theme,
     };

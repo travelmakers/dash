@@ -47,4 +47,4 @@ export const ColorSchemeProvider = ({
 };
 
 ColorSchemeProvider.displayName =
-  "@travelmakers-design/styles/ColorSchemeProvider";
+  "@travelmakers-design-v2/styles/ColorSchemeProvider";

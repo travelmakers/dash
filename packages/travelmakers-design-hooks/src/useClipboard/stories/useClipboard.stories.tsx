@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useClipboard } from "../useClipboard";
 
 export default {
-  title: "@travelmakers-design/hooks/useClipboard",
+  title: "@travelmakers-design-v2/hooks/useClipboard",
 };
 
 export const Default = () => {

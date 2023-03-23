@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">Travelmakers Design(개발중...)</h1>
+<h1 align="center">Travelmakers Design Version 2(개발중...)</h1>
 
 <div align="center">
 
@@ -14,8 +14,8 @@
   <a href="https://livinginhotel.com">
     <img src="https://badgen.net/badge/icon/Made%20by%20travelmakers?icon=https://hotel-01.s3.ap-northeast-2.amazonaws.com/resource/logos/Symbol_Green.svg&label&color=5B69C3&labelColor=414C9A" />
   </a>
-  <a href='https://www.npmjs.com/package/@travelmakers-design/core'>
-    <img src='https://img.shields.io/npm/v/@travelmakers-design/core.svg' alt='Latest npm version'>
+  <a href='https://www.npmjs.com/package/@travelmakers-design-v2/core'>
+    <img src='https://img.shields.io/npm/v/@travelmakers-design-v2/core.svg' alt='Latest npm version'>
   </a>
   <a href="https://github.com/travelmakers/bloom/blob/master/.github/CONTRIBUTING.md">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome" />
@@ -26,11 +26,11 @@
 ## 📦 Install
 
 ```bash
-npm install @travelmakers/travelmakers-design
+npm install @travelmakers/travelmakers-design-v2
 ```
 
 ```bash
-yarn add @travelmakers/travelmakers-design
+yarn add @travelmakers/travelmakers-design-v2
 ```
 
 <!-- 구분!!! -->
@@ -39,11 +39,10 @@ yarn add @travelmakers/travelmakers-design
 
 | Package name                                      | Description                                 |
 | ------------------------------------------------- | ------------------------------------------- |
-| [`@travelmakers-design/core`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-core)    | react에서 사용할 core |
-| [`@travelmakers-design/react-native-core`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-react-native-core)    | react-native에서 사용할 core |
-| [`@travelmakers-design/hooks`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-hooks)    |  |
-| [`@travelmakers-design/utils`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-utils)    |  |
-| [`@travelmakers-design/styles`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-styles)    |  |
+| [`@travelmakers-design-v2/core`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-core)    | react에서 사용할 core |
+| [`@travelmakers-design-v2/hooks`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-hooks)    |  |
+| [`@travelmakers-design-v2/utils`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-utils)    |  |
+| [`@travelmakers-design-v2/styles`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-styles)    |  |
 
 ## :page_facing_up: License
 

@@ -2,7 +2,7 @@ import type { CSSObject } from "../../tss";
 import type { CSSProperties } from "react";
 import type { TmTheme } from "./TmTheme";
 
-export type Co = CSSObject | ((theme: TmTheme) => CSSObject);
+export type Tm = CSSObject | ((theme: TmTheme) => CSSObject);
 
 export type OverrideStyles<T extends string = never> =
   | Partial<Record<T, CSSObject>>
@@ -11,6 +11,6 @@ export type OverrideStyles<T extends string = never> =
 export interface TmComponentProps<T extends string = never> {
   className?: string;
   style?: CSSProperties;
-  co?: Co;
+  tm?: Tm;
   overrideStyles?: OverrideStyles<T>;
 }

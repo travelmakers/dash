@@ -65,7 +65,6 @@ export default async function createPackageConfig(
       ...Object.keys({
         ...packageJson.peerDependencies,
       }),
-      "react-native",
     ];
   } else {
     externals = [

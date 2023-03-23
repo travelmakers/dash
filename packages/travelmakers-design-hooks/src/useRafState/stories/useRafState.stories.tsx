@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useRafState } from "../useRafState";
 
 export default {
-  title: "@travelmakers-design/hooks/useRafState",
+  title: "@travelmakers-design-v2/hooks/useRafState",
 };
 
 export const Default = () => {

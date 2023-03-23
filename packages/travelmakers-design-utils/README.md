@@ -1,16 +1,16 @@
-# @travelmakers-design/utils
+# @travelmakers-design-v2/utils
 
 ## Installation
 ```bash
 # With npm
-npm install @travelmakers-design/utils
+npm install @travelmakers-design-v2/utils
 
 # With yarn
-yarn add @travelmakers-design/utils
+yarn add @travelmakers-design-v2/utils
 ```
 
 ## License
-@travelmakers-design/utils is made available under the MIT License.
+@travelmakers-design-v2/utils is made available under the MIT License.
 
 ## ✨ Contributors
 

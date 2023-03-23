@@ -3,7 +3,7 @@ import React from "react";
 import { getTimeLineFunc } from "../getTimeLineFunc";
 
 export default {
-  title: "@travelmakers-design/utils/getTimeLineFunc",
+  title: "@travelmakers-design-v2/utils/getTimeLineFunc",
   argTypes: {
     state: {
       defaultValue: "default",

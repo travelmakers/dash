@@ -6,9 +6,8 @@ import {
   TmComponentProps,
   TmFontFamily,
   TmFontSize,
-  TmPalette,
   useTmTheme,
-} from "@travelmakers-design/styles";
+} from "@travelmakers-design-v2/styles";
 import React, { forwardRef } from "react";
 
 import { View } from "../View";
@@ -44,7 +43,7 @@ export interface SharedTypographyProps
   underline?: boolean;
 
   /** Text가 컴포넌트의 색상을 정합니다. */
-  color?: TmPalette | TmColor | string;
+  color?: TmColor | string;
 
   /** mobile일 경우의 Typography 컴포넌트의 크기를 지정합니다. */
   mobileLevel?: TmFontSize;
@@ -67,8 +66,8 @@ export const Typography: TypographyComponent & { displayName?: string } =
         id,
         children,
         component,
-        family = "Noto Serif KR",
-        level = "h1",
+        family = "Pretendard",
+        level = "body1",
         mobileLevel,
         tabletLevel,
         textAlign = "left",
@@ -98,28 +97,23 @@ export const Typography: TypographyComponent & { displayName?: string } =
           mobile: mobileLevel,
           tablet: tabletLevel,
         },
-        { overrideStyles, name: "span" }
+        { overrideStyles, name: "typography" }
       );
 
       return (
-        <View<any>
+        <View<React.ElementType>
           component={component || "span"}
           ref={ref}
-          type={"span"}
           disabled={disabled}
-          className={cx(classes.root, classes["solid"], className)}
+          className={cx(classes.root, classes.solid, className)}
           co={co}
           onTouchStart={() => {}}
           {...props}
         >
-          <div className={classes.inner}>
-            <span id={id} className={classes.label}>
-              {children}
-            </span>
-          </div>
+          {children}
         </View>
       );
     }
   );
 
-Typography.displayName = "@travelmakers-design/core/Typography";
+Typography.displayName = "@travelmakers-design-v2/core/Typography";

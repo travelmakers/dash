@@ -1,7 +1,15 @@
-import moment from "moment-timezone";
+import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 function pad(n) {
   return n < 10 ? "0" + n : n;
+}
+
+export function getDayjs() {
+  return dayjs;
 }
 
 /**
@@ -19,12 +27,12 @@ export function getKorDate(date?: string) {
 
 export function getKorMoment(date?: string) {
   if (!date) {
-    const curr = moment().tz("Asia/Seoul");
+    const curr = dayjs().tz("Asia/Seoul");
     return curr;
   }
-  const kr_curr = moment(`${date}+0900`).tz("Asia/Seoul");
+  const kr_curr = dayjs(`${date}+0900`).tz("Asia/Seoul");
   if (!kr_curr.isValid()) {
-    const curr = moment(`${date}`).tz("Asia/Seoul");
+    const curr = dayjs(`${date}`).tz("Asia/Seoul");
     return curr;
   }
   return kr_curr;
@@ -59,9 +67,9 @@ export function getFullDate(date?: string, separators?: string) {
     separator +
     d.date() +
     " " +
-    d.hours() +
+    d.hour() +
     ":" +
-    pad(d.minutes())
+    pad(d.minute())
   );
 }
 
@@ -75,7 +83,7 @@ export function getDateTime(date?: string, separators?: string) {
   const d = getKorMoment(date);
   const separator = separators ?? ":";
 
-  return pad(d.hours()) + separator + pad(d.minutes());
+  return pad(d.hour()) + separator + pad(d.minute());
 }
 
 /**

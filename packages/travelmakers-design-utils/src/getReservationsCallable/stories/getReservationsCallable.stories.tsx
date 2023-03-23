@@ -2,7 +2,7 @@ import React from "react";
 import { getReservationsCallable } from "../getReservationsCallable";
 
 export default {
-  title: "@travelmakers-design/utils/getReservationsCallable",
+  title: "@travelmakers-design-v2/utils/getReservationsCallable",
   argTypes: {
     state: {},
   },

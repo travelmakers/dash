@@ -1,6 +1,6 @@
 {
-  "name": "@travelmakers-design/styles",
-  "version": "0.0.7",
+  "name": "@travelmakers-design-v2/styles",
+  "version": "0.0.1",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "lib/index.d.ts",
@@ -11,7 +11,7 @@
     "access": "public"
   },
   "repository": {
-    "url": "https://github.com/travelmakers/travelmakers-design.git",
+    "url": "https://github.com/travelmakers/travelmakers-design-v2.git",
     "type": "git",
     "directory": "packages/travelmakers-design-styles"
   },
@@ -19,9 +19,8 @@
     "build": "esno ../../scripts/build travelmakers-design-styles"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "react-native": ">0.69.0"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "dependencies": {
     "@emotion/cache": "^11.6.0",
