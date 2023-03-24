@@ -88,10 +88,8 @@ const getFontFamily = (family: TmFontFamily) => {
     return {
       font: {
         fontFamily: `${family}, var(${
-          family === "Noto Serif KR"
-            ? "--font-noto-serif"
-            : family === "PT Serif" && "--font-pt-serif"
-        }`,
+          family === "Noto Serif KR" && "--font-noto-serif"
+        })`,
       },
     };
   } else {

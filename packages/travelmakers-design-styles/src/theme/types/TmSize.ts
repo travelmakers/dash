@@ -14,7 +14,7 @@ export type TmFontSize =
 
 export type TmSize = "xsmall" | "small" | "medium" | "large";
 
-export type TmFontFamily = "Noto Serif KR" | "Pretendard" | "PT Serif";
+export type TmFontFamily = "Noto Serif KR" | "Pretendard";
 
 export const deviceSizes = {
   mobileS: 320,

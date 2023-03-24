@@ -43,7 +43,7 @@ export default {
     family: {
       defaultValue: "Pretendard",
       description: "Typography 컴포넌트의 font-family를 정합니다.",
-      options: ["Noto Serif KR", "Pretendard", "PT Serif"],
+      options: ["Noto Serif KR", "Pretendard"],
       table: {
         type: {
           summary: "string",
