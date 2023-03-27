@@ -1,8 +1,7 @@
-import { CSSObject, Global as EmotionGlobal, css } from "@emotion/react";
+import { css, CSSObject, Global as EmotionGlobal } from "@emotion/react";
 
-import React from "react";
-import type { TmTheme } from "../theme/types";
 import { useTmTheme } from "../theme/TmProvider";
+import type { TmTheme } from "../theme/types";
 
 interface GlobalStylesProps {
   styles(theme: TmTheme): CSSObject;

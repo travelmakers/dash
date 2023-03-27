@@ -1,7 +1,7 @@
 import {
-  Tm,
   PolymorphicComponentProps,
   PolymorphicRef,
+  Tm,
   TmComponentProps,
   TmTheme,
   useCss,
