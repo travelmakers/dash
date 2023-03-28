@@ -16,19 +16,19 @@ export type CoSpacing =
   | "spacing120"
   | "spacing130";
 
-export const DEFAULT_SPACING: Record<CoSpacing, number> = {
-  spacing5: 4,
-  spacing10: 8,
-  spacing20: 12,
-  spacing30: 16,
-  spacing40: 20,
-  spacing50: 24,
-  spacing60: 28,
-  spacing70: 32,
-  spacing80: 36,
-  spacing90: 40,
-  spacing100: 48,
-  spacing110: 52,
-  spacing120: 56,
-  spacing130: 60,
+export const DEFAULT_SPACING: Record<CoSpacing, string> = {
+  spacing5: "4px",
+  spacing10: "8px",
+  spacing20: "12px",
+  spacing30: "16px",
+  spacing40: "20px",
+  spacing50: "24px",
+  spacing60: "28px",
+  spacing70: "32px",
+  spacing80: "36px",
+  spacing90: "40px",
+  spacing100: "48px",
+  spacing110: "52px",
+  spacing120: "56px",
+  spacing130: "60px",
 };

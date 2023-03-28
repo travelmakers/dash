@@ -41,7 +41,7 @@ export interface TmTheme {
   fontSizes: Record<TmFontSizes, string>;
   lineHeights: Record<TmFontSizes, string>;
   radius: Record<CoRadius, number | string>;
-  spacing: Record<CoSpacing, number>;
+  spacing: Record<CoSpacing, string>;
   breakpoints: Record<CoBreakpoints, number>;
   shadows: Record<CoShadows, string>;
   media: TmMedia;
