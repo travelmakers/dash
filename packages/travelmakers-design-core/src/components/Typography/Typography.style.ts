@@ -1,9 +1,9 @@
 import {
+  createStyles,
   TmColor,
   TmFontFamily,
   TmFontSize,
   TmTheme,
-  createStyles,
 } from "@travelmakers-design-v2/styles";
 
 import { TypographyTextAlign } from "./Typography";
