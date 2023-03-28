@@ -1,8 +1,6 @@
 import { createStyles, TmTheme } from "@travelmakers-design-v2/styles";
 import { AccordionType } from "./Accordion";
 
-const ACCORDION_MARGIN_HORIZONTAL = "16px";
-
 const ACCORDION_HEIGHT: { [key in AccordionType]: string } = {
   small: "40px",
   medium: "56px",
@@ -75,7 +73,7 @@ export default createStyles(
       },
       divider: {
         height: "1px",
-        margin: `0 ${ACCORDION_MARGIN_HORIZONTAL}`,
+        margin: `0 ${theme.spacing.spacing30}`,
         backgroundColor: theme.colors.outline,
       },
       content: {
