@@ -64,4 +64,4 @@ export const Accordion: AccordionComponent & {
 );
 
 Accordion.Item = AccordionItem;
-Accordion.displayName = "@travelmakers-design-v2/core/Accordion";
+Accordion.displayName = "Accordion";

@@ -1,15 +1,14 @@
 import {
   ArgsTable,
   Description,
-  PRIMARY_STORY,
   Primary,
+  PRIMARY_STORY,
   Stories,
   Subtitle,
   Title,
 } from "@storybook/addon-docs";
 
 import { Meta } from "@storybook/react";
-import React from "react";
 import { Typography } from "../Typography";
 
 export default {

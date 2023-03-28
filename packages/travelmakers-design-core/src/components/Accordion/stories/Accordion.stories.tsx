@@ -1,9 +1,32 @@
+import { Meta } from "@storybook/react";
 import { Accordion } from "../Accordion";
 
 export default {
   title: "@travelmakers-design-v2/core/General/Accordion",
   component: Accordion,
-};
+  argTypes: {
+    type: {
+      control: { type: "radio", options: ["small", "medium"] },
+      description: "Accordion의 사이즈를 정합니다.",
+      defaultValue: "small",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+    },
+    gap: {
+      description: "Accordion들의 간격을 조절합니다.",
+      type: "number",
+      defaultValue: 4,
+      table: {
+        type: {
+          summary: "number",
+        },
+      },
+    },
+  },
+} as Meta;
 
 const accordionData = [
   {
@@ -20,10 +43,10 @@ const accordionData = [
   },
 ];
 
-export const Default = () => {
+export const Small = (props) => {
   return (
     <div style={{ backgroundColor: "#EDEDED", padding: "30px 0" }}>
-      <Accordion>
+      <Accordion {...props}>
         {accordionData.map((data) => (
           <Accordion.Item
             idx={data.id}
@@ -36,10 +59,10 @@ export const Default = () => {
   );
 };
 
-export const Medium = () => {
+export const Medium = (props) => {
   return (
     <div style={{ backgroundColor: "#EDEDED", padding: "30px 0" }}>
-      <Accordion type={"medium"}>
+      <Accordion type={"medium"} {...props}>
         {accordionData.map((data) => (
           <Accordion.Item
             idx={data.id}

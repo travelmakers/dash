@@ -46,4 +46,4 @@ export const AccordionItem = ({
   );
 };
 
-AccordionItem.displayName = "@travelmakers-design-v2/core/AccordionItem";
+AccordionItem.displayName = "AccordionItem";
