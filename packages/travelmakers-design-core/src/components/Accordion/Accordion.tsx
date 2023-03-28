@@ -28,11 +28,11 @@ export interface SharedAccordionProps
 export type AccordionProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedAccordionProps>;
 
-type AccoridionComponent = <C extends React.ElementType = "dl">(
+type AccordionComponent = <C extends React.ElementType = "dl">(
   props: AccordionProps<C>
 ) => React.ReactElement;
 
-export const Accordion: AccoridionComponent & {
+export const Accordion: AccordionComponent & {
   displayName?: string;
   Item?: typeof AccordionItem;
 } = forwardRef(
