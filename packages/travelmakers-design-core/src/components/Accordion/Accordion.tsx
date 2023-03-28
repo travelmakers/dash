@@ -17,16 +17,16 @@ export const AccordionContext = createContext<{
 }>({ type: "small", gap: 4 });
 AccordionContext.displayName = "AccordionContext";
 
-export type AccoriondStylesNames = ClassNames<typeof useStyles>;
+export type AccordionStylesNames = ClassNames<typeof useStyles>;
 
-export interface SharedTypographyProps
-  extends TmComponentProps<AccoriondStylesNames> {
+export interface SharedAccordionProps
+  extends TmComponentProps<AccordionStylesNames> {
   gap?: number;
   type?: AccordionType;
 }
 
 export type AccordionProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedTypographyProps>;
+  PolymorphicComponentProps<C, SharedAccordionProps>;
 
 type AccoridionComponent = <C extends React.ElementType = "dl">(
   props: AccordionProps<C>
