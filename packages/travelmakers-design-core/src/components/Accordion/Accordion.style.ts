@@ -3,30 +3,30 @@ import { AccordionType } from "./Accordion";
 
 const ACCORDION_MARGIN_HORIZONTAL = "16px";
 
-type TypeData = { [key in AccordionType]: string };
-
-const ACCORDION_PADDING: TypeData = {
-  small: "8px 16px",
-  medium: "16px",
-};
-
-const ACCORDION_HEIGHT: TypeData = {
+const ACCORDION_HEIGHT: { [key in AccordionType]: string } = {
   small: "40px",
   medium: "56px",
+};
+
+const getSpacing = (theme: TmTheme, type: AccordionType) => {
+  switch (type) {
+    case "small":
+      return {
+        padding: `${theme.spacing.spacing10} ${theme.spacing.spacing30}`,
+      };
+    case "medium":
+      return { padding: `${theme.spacing.spacing30}` };
+    default:
+      return;
+  }
 };
 
 const getFontStyles = (theme: TmTheme, type: AccordionType) => {
   switch (type) {
     case "small":
-      return {
-        fontSize: theme.fontSizes.subhead2,
-        fontWeight: theme.lineHeights.subhead2,
-      };
+      return theme.typography.subhead2;
     case "medium":
-      return {
-        fontSize: theme.fontSizes.subhead1,
-        fontWeight: theme.lineHeights.subhead1,
-      };
+      return theme.typography.subhead1;
     default:
       return;
   }
@@ -49,7 +49,7 @@ export default createStyles(
         maxHeight: `${isCollapse ? ACCORDION_HEIGHT[type] : "auto"}`,
         marginBottom: `${gap}px`,
         color: `${theme.colors.primary1}`,
-        borderRadius: "8px",
+        borderRadius: theme.radius.radius20,
         backgroundColor: "#fff",
         overflow: "hidden",
 
@@ -62,7 +62,7 @@ export default createStyles(
         alignItems: "center",
         justifyContent: "space-between",
         height: ACCORDION_HEIGHT[type],
-        padding: ACCORDION_PADDING[type],
+        ...getSpacing(theme, type),
         ...getFontStyles(theme, type),
         fontWeight: 700,
         cursor: "pointer",
@@ -80,7 +80,7 @@ export default createStyles(
       },
       content: {
         margin: 0,
-        padding: ACCORDION_PADDING[type],
+        ...getSpacing(theme, type),
         ...getFontStyles(theme, "small"),
       },
     };
