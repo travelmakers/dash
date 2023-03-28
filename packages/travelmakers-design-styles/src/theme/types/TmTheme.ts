@@ -11,6 +11,7 @@ import { TmSize } from "./TmSize";
 
 import type { CSSProperties } from "react";
 import type { DeepPartial } from "./DeepPartial";
+import { CoTypography } from "../tokens/typography";
 
 export interface HeadingStyle {
   fontSize: CSSProperties["fontSize"];
@@ -37,24 +38,15 @@ export interface TmTheme {
   fontFamilyMonospace: CSSProperties["fontFamily"];
 
   colors: Record<TmColor, string>;
-  fontSizes: Record<TmFontSizes, number>;
-  lineHeights: Record<TmFontSizes, number>;
+  fontSizes: Record<TmFontSizes, string>;
+  lineHeights: Record<TmFontSizes, string>;
   radius: Record<CoRadius, number | string>;
   spacing: Record<CoSpacing, number>;
   breakpoints: Record<CoBreakpoints, number>;
   shadows: Record<CoShadows, string>;
   media: TmMedia;
 
-  headings: {
-    display1: HeadingStyle;
-    display2: HeadingStyle;
-    display3: HeadingStyle;
-    display4: HeadingStyle;
-    display5: HeadingStyle;
-    display6: HeadingStyle;
-    subhead1: HeadingStyle;
-    subhead2: HeadingStyle;
-  };
+  typography: CoTypography;
 
   fn: TmThemeFunctions;
 }

@@ -21,68 +21,6 @@ interface TypographyStylesProps {
   color?: TmColor | string;
 }
 
-const getFontStyles = (theme: TmTheme) => ({
-  display1: {
-    lineHeight: `${theme.lineHeights.display1}px`,
-    fontSize: theme.fontSizes.display1,
-  },
-
-  display2: {
-    lineHeight: `${theme.lineHeights.display2}px`,
-    fontSize: theme.fontSizes.display2,
-  },
-
-  display3: {
-    lineHeight: `${theme.lineHeights.display3}px`,
-    fontSize: theme.fontSizes.display3,
-  },
-
-  display4: {
-    lineHeight: `${theme.lineHeights.display4}px`,
-    fontSize: theme.fontSizes.display4,
-  },
-
-  display5: {
-    lineHeight: `${theme.lineHeights.display5}px`,
-    fontSize: theme.fontSizes.display5,
-  },
-
-  display6: {
-    lineHeight: `${theme.lineHeights.display6}px`,
-    fontSize: theme.fontSizes.display6,
-  },
-
-  subhead1: {
-    lineHeight: `${theme.lineHeights.subhead1}px`,
-    fontSize: theme.fontSizes.subhead1,
-  },
-
-  subhead2: {
-    lineHeight: `${theme.lineHeights.subhead2}px`,
-    fontSize: theme.fontSizes.subhead2,
-  },
-
-  body1: {
-    lineHeight: `${theme.lineHeights.body1}px`,
-    fontSize: theme.fontSizes.body1,
-  },
-
-  body2: {
-    lineHeight: `${theme.lineHeights.body2}px`,
-    fontSize: theme.fontSizes.body2,
-  },
-
-  body3: {
-    lineHeight: `${theme.lineHeights.body3}px`,
-    fontSize: theme.fontSizes.body3,
-  },
-
-  caption: {
-    lineHeight: `${theme.lineHeights.caption}px`,
-    fontSize: theme.fontSizes.caption,
-  },
-});
-
 const getFontFamily = (family: TmFontFamily) => {
   if (family !== "Pretendard") {
     return {
@@ -125,8 +63,8 @@ export default createStyles(
       },
 
       root: {
-        ...getFontStyles(theme)[level],
         ...getFontFamily(family)["font"],
+        ...theme.typography[level],
         color: disabled
           ? theme.colors.primary4
           : color
@@ -135,11 +73,11 @@ export default createStyles(
         textAlign: `${textAlign}`,
 
         [`${theme.media.mobile}`]: {
-          ...getFontStyles(theme)[mobile],
+          ...theme.typography[mobile],
         },
 
         [`${theme.media.tablet}`]: {
-          ...getFontStyles(theme)[tablet],
+          ...theme.typography[tablet],
         },
       },
     };

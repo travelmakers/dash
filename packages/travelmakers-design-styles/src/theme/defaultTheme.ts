@@ -12,7 +12,7 @@ import {
 import { TmTheme, TmThemeBase } from "./types";
 
 import { attachFunctions } from "./functions/attachFunctions";
-import { DEFAULT_HEADINGS } from "./tokens/headings";
+import { DEFAULT_TYPOGRAPHY } from "./tokens/typography";
 
 export const TM_COLORS = Object.keys(DEFAULT_COLORS);
 export const TM_SIZES = ["xsmall", "small", "medium", "large"] as const;
@@ -56,7 +56,7 @@ export const _DEFAULT_THEME: TmThemeBase = {
 
   radius: DEFAULT_RADIUS,
 
-  headings: DEFAULT_HEADINGS,
+  typography: DEFAULT_TYPOGRAPHY,
 
   spacing: DEFAULT_SPACING,
 
