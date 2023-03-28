@@ -24,6 +24,7 @@
     "@emotion/server": "^11.4.0",
     "@emotion/utils": "^1.0.0",
     "dayjs": "^1.11.7",
+    "next": "^13.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
