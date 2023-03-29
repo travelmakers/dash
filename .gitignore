@@ -48,7 +48,6 @@ storybook-static/
 
 # editor
 .idea/
-.vscode/
 .nova/
 
 # node

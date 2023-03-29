@@ -1,0 +1,20 @@
+{
+  "Travelmakers Design System Style": {
+    "prefix": "tdss",
+    "body": [
+      "import { createStyles } from \"@travelmakers-design-v2/styles\";",
+      "",
+      "export default createStyles((theme, {}) => {",
+      "\treturn {",
+      "\t\t/*",
+      "\t\t * ex)",
+      "\t\t *\t\troot : {",
+      "\t\t *\t\t\tdisplay: \"flex\";",
+      "\t\t *\t\t}",
+      "\t\t **/",
+      "\t};",
+      "});"
+    ],
+    "description": "Travelmakers Design System Style 🧑‍🎨"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "Travelmakers Design System Storybook": {
+    "prefix": "tdst",
+    "body": [
+      "import { Meta } from \"@storybook/react\";",
+      "import { ${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/} } from \"../${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/}\";",
+      "",
+      "export default {",
+      "\ttitle: \"@travelmakers-design-v2/core/General/${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/}\",",
+      "\tcomponent: ${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/},",
+      "\targTypes: {",
+      "\t\t/**",
+      "\t\t * ex)",
+      "\t\t *    props: {",
+      "\t\t *      // type, control, etc.",
+      "\t\t *      defaultValue: \"props의 defaultValue를 작성합니다.\",",
+      "\t\t *      description: \"props 각각의 description을 작성합니다.\",",
+      "\t\t *      table: {",
+      "\t\t *        type: {",
+      "\t\t *          summary: \"prop의 타입을 작성합니다.\",",
+      "\t\t *        },",
+      "\t\t *      },",
+      "\t\t *    },",
+      "\t\t */",
+      "\t},",
+      "} as Meta",
+      "",
+      "export const Default = () => {",
+      "\treturn <${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/} />;",
+      "};"
+    ],
+    "description": "Travelmakers Design System Storybook 📚"
+  }
+}
