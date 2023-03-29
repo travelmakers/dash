@@ -9,22 +9,22 @@ export function mergeTheme(
   }
 
   return Object.keys(currentTheme).reduce((acc, key) => {
-    if (key === "headings" && themeOverride.headings) {
-      const sizes = themeOverride.headings
-        ? Object.keys(currentTheme.headings).reduce((headingsAcc, h) => {
+    if (key === "typography" && themeOverride.typography) {
+      const sizes = themeOverride.typography
+        ? Object.keys(currentTheme.typography).reduce((typographyAcc, h) => {
             // eslint-disable-next-line no-param-reassign
-            headingsAcc[h] = {
-              ...currentTheme.headings[h],
-              ...themeOverride.headings[h],
+            typographyAcc[h] = {
+              ...currentTheme.typography[h],
+              ...themeOverride.typography[h],
             };
-            return headingsAcc;
-          }, {} as TmTheme["headings"])
-        : currentTheme.headings;
+            return typographyAcc;
+          }, {} as TmTheme["typography"])
+        : currentTheme.typography;
       return {
         ...acc,
-        headings: {
-          ...currentTheme.headings,
-          ...themeOverride.headings,
+        typography: {
+          ...currentTheme.typography,
+          ...themeOverride.typography,
           ...sizes,
         },
       };
