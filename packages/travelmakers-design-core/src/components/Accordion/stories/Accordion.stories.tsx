@@ -6,9 +6,12 @@ export default {
   component: Accordion,
   argTypes: {
     type: {
-      control: { type: "radio", options: ["small", "medium"] },
+      control: {
+        type: "radio",
+        options: ["small", "medium"],
+        default: "small",
+      },
       description: "Accordion의 사이즈를 정합니다.",
-      defaultValue: "small",
       table: {
         type: {
           summary: "string",
