@@ -5,9 +5,9 @@ import {
   TmComponentProps,
 } from "@travelmakers-design-v2/styles";
 import { createContext, forwardRef, PropsWithChildren } from "react";
-import { View } from "../View";
+import { View } from "../../View";
+import { AccordionItem } from "../AccordionItem";
 import useStyles from "./Accordion.style";
-import { AccordionItem } from "./AccordionItem";
 
 export type AccordionType = "small" | "medium";
 
@@ -19,11 +19,14 @@ AccordionContext.displayName = "AccordionContext";
 
 export type AccordionStylesNames = ClassNames<typeof useStyles>;
 
-export interface SharedAccordionProps
-  extends TmComponentProps<AccordionStylesNames> {
+export type Props = {
   gap?: number;
   type?: AccordionType;
-}
+};
+
+export interface SharedAccordionProps
+  extends Props,
+    TmComponentProps<AccordionStylesNames> {}
 
 export type AccordionProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedAccordionProps>;
@@ -46,7 +49,7 @@ export const Accordion: AccordionComponent & {
     }: PropsWithChildren<AccordionProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
-    const { classes, cx } = useStyles({});
+    const { classes, cx } = useStyles();
 
     return (
       <AccordionContext.Provider value={{ type, gap }}>

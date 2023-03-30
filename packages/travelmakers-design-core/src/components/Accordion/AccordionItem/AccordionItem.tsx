@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { IconAngle } from "../../assets/icon";
-import { View } from "../View";
-import { AccordionContext } from "./Accordion";
-import useStyles from "./Accordion.style";
+import { IconAngle } from "../../../assets/icon";
+import { View } from "../../View";
+import { AccordionContext } from "../Accordion/Accordion";
+import useStyles from "./AccordionItem.style";
 
 const ACCORDION_ICON_SIZE = {
   small: 16,

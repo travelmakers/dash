@@ -1,5 +1,5 @@
 import { createStyles, TmTheme } from "@travelmakers-design-v2/styles";
-import { AccordionType } from "./Accordion";
+import { AccordionType, Props } from "../Accordion/Accordion";
 
 const ACCORDION_HEIGHT: { [key in AccordionType]: string } = {
   small: "40px",
@@ -33,16 +33,9 @@ const getFontStyles = (theme: TmTheme, type: AccordionType) => {
 export default createStyles(
   (
     theme,
-    {
-      type,
-      gap,
-      isCollapse = true,
-    }: { type?: AccordionType; gap?: number; isCollapse?: boolean }
+    { type, gap, isCollapse = true }: Props & { isCollapse: boolean }
   ) => {
     return {
-      root: {
-        margin: 0,
-      },
       item: {
         maxHeight: `${isCollapse ? ACCORDION_HEIGHT[type] : "auto"}`,
         marginBottom: `${gap}px`,
