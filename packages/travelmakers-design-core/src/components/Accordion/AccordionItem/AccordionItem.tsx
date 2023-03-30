@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { IconAngle } from "../../../assets/icon";
+import { Icon } from "../../Icon/Icon";
 import { View } from "../../View";
 import { AccordionContext } from "../Accordion/Accordion";
 import useStyles from "./AccordionItem.style";
@@ -25,7 +25,7 @@ export const AccordionItem = ({
 }: Props) => {
   const [isCollapse, setIsCollapse] = useState(true);
   const { type, gap } = useContext(AccordionContext);
-  const { classes } = useStyles({ type, gap, isCollapse });
+  const { classes, cx } = useStyles({ type, gap, isCollapse });
 
   const handleClick = () => {
     setIsCollapse((isOpen) => !isOpen);
@@ -36,7 +36,12 @@ export const AccordionItem = ({
     <View<React.ElementType> key={idx} className={classes.item} {...props}>
       <dt className={classes.header} onClick={handleClick}>
         {header}
-        <IconAngle size={ACCORDION_ICON_SIZE[type]} className={classes.icon} />
+        <Icon
+          className={cx(classes.icon)}
+          type={"control"}
+          src={"IcAngleDown"}
+          width={ACCORDION_ICON_SIZE[type]}
+        />
       </dt>
       <dd className={classes.detail}>
         <div className={classes.divider} />

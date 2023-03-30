@@ -59,7 +59,7 @@ export default createStyles(
         cursor: "pointer",
       },
       icon: {
-        transform: `${isCollapse ? "rotate(180deg)" : "rotate(0)"}`,
+        transform: `${!isCollapse && "rotate(180deg)"}`,
       },
       detail: {
         margin: 0,
