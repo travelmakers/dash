@@ -3,8 +3,7 @@ import {
   PolymorphicRef,
   TmComponentProps,
 } from "@travelmakers-design-v2/styles";
-import React from "react";
-import { forwardRef, PropsWithChildren } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { IconTypes } from "./Type";
 
 import * as AssetCompanyComponent from "./_components/assets/company";
@@ -45,13 +44,25 @@ export const Icon: IconComponent & {
       try {
         switch (type) {
           case "company":
-            return React.createElement(AssetCompanyComponent[src], props);
+            return React.createElement(AssetCompanyComponent[src], {
+              className,
+              ...props,
+            });
           case "control":
-            return React.createElement(AssetControlComponent[src], props);
+            return React.createElement(AssetControlComponent[src], {
+              className,
+              ...props,
+            });
           case "logo":
-            return React.createElement(AssetLogoComponent[src], props);
+            return React.createElement(AssetLogoComponent[src], {
+              className,
+              ...props,
+            });
           case "pictogram":
-            return React.createElement(AssetPictogramComponent[src], props);
+            return React.createElement(AssetPictogramComponent[src], {
+              className,
+              ...props,
+            });
           default:
             return null;
         }
