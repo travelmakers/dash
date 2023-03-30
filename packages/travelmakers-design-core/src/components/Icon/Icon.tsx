@@ -1,10 +1,10 @@
 import {
   PolymorphicComponentProps,
   PolymorphicRef,
+  TmComponentProps,
 } from "@travelmakers-design-v2/styles";
 import React from "react";
 import { forwardRef, PropsWithChildren } from "react";
-import { View } from "../View";
 import { IconTypes } from "./Type";
 
 import * as AssetCompanyComponent from "./_components/assets/company";
@@ -12,7 +12,7 @@ import * as AssetControlComponent from "./_components/assets/control";
 import * as AssetLogoComponent from "./_components/assets/logo";
 import * as AssetPictogramComponent from "./_components/assets/pictogram";
 
-export interface Props {
+export interface Props extends TmComponentProps {
   type: IconTypes["type"];
   src: IconTypes["src"];
 }
@@ -24,14 +24,14 @@ export type IconProps<C extends React.ElementType> = PolymorphicComponentProps<
   SharedIconProps
 >;
 
-type IconComponent = <C extends React.ElementType = "div">(
+type IconComponent = <C extends React.ElementType = "svg">(
   props: IconProps<C>
 ) => React.ReactElement;
 
 export const Icon: IconComponent & {
   displayName?: string;
 } = forwardRef(
-  <C extends React.ElementType = "div">(
+  <C extends React.ElementType = "svg">(
     {
       type,
       src,
