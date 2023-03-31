@@ -31,38 +31,20 @@ export const Icon: IconComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "svg">(
-    {
-      type,
-      src,
-      className,
-      children,
-      ...props
-    }: PropsWithChildren<IconProps<C>>,
+    { type, src, children, ...props }: PropsWithChildren<IconProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
     const TypeComponent = () => {
       try {
         switch (type) {
           case "company":
-            return React.createElement(AssetCompanyComponent[src], {
-              className,
-              ...props,
-            });
+            return React.createElement(AssetCompanyComponent[src], props);
           case "control":
-            return React.createElement(AssetControlComponent[src], {
-              className,
-              ...props,
-            });
+            return React.createElement(AssetControlComponent[src], props);
           case "logo":
-            return React.createElement(AssetLogoComponent[src], {
-              className,
-              ...props,
-            });
+            return React.createElement(AssetLogoComponent[src], props);
           case "pictogram":
-            return React.createElement(AssetPictogramComponent[src], {
-              className,
-              ...props,
-            });
+            return React.createElement(AssetPictogramComponent[src], props);
           default:
             return null;
         }

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Icon } from "../../Icon/Icon";
+import { Icon } from "../../Icon";
 import { View } from "../../View";
 import { AccordionContext } from "../Accordion/Accordion";
 import useStyles from "./AccordionItem.style";
