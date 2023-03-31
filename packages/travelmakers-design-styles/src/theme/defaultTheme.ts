@@ -6,6 +6,7 @@ import {
   DEFAULT_FONT_SIZES,
   DEFAULT_MEDIA,
   DEFAULT_RADIUS,
+  DEFAULT_PALETTES,
   DEFAULT_SHADOWS,
   DEFAULT_SPACING,
 } from "./tokens";
@@ -14,6 +15,7 @@ import { TmTheme, TmThemeBase } from "./types";
 import { attachFunctions } from "./functions/attachFunctions";
 import { DEFAULT_TYPOGRAPHY } from "./tokens/typography";
 
+export const TM_PALETTES = Object.keys(DEFAULT_PALETTES);
 export const TM_COLORS = Object.keys(DEFAULT_COLORS);
 export const TM_SIZES = ["xsmall", "small", "medium", "large"] as const;
 export const TM_FONT_SIZES = [
@@ -47,6 +49,8 @@ export const _DEFAULT_THEME: TmThemeBase = {
     "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
 
   colors: DEFAULT_COLORS,
+
+  palettes: DEFAULT_PALETTES,
 
   shadows: DEFAULT_SHADOWS,
 

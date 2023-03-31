@@ -12,6 +12,8 @@ import { TmSize } from "./TmSize";
 import type { CSSProperties } from "react";
 import type { DeepPartial } from "./DeepPartial";
 import { CoTypography } from "../tokens/typography";
+import { TmPalette } from "../tokens/palettes";
+import { Tuple } from "./Tuple";
 
 export interface HeadingStyle {
   fontSize: CSSProperties["fontSize"];
@@ -38,6 +40,7 @@ export interface TmTheme {
   fontFamilyMonospace: CSSProperties["fontFamily"];
 
   colors: Record<TmColor, string>;
+  palettes: Record<TmPalette, Tuple<string, 3>>;
   fontSizes: Record<TmFontSizes, string>;
   lineHeights: Record<TmFontSizes, string>;
   radius: Record<CoRadius, number | string>;
