@@ -5,20 +5,6 @@ export default {
   title: "@travelmakers-design-v2/core/General/Icon",
   component: Icon,
   argTypes: {
-    type: {
-      control: {
-        type: "radio",
-        options: ["company", "control", "logo", "pictogram"],
-        default: "company",
-      },
-      defaultValue: "company",
-      description: "Icon의 타입을 정합니다.",
-      table: {
-        type: {
-          summary: "string",
-        },
-      },
-    },
     src: {
       defaultValue: "IcCompanyApple",
       control: {

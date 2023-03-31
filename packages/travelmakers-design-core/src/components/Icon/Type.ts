@@ -1,25 +1,8 @@
-interface IconCompanyProps {
-  type: "company";
-  src: IconCompanySrc;
-}
-interface IconControlProps {
-  type: "control";
-  src: IconControlSrc;
-}
-interface IconLogoProps {
-  type: "logo";
-  src: IconLogoSrc;
-}
-interface IconPictogramProps {
-  type: "pictogram";
-  src: IconPictogramSrc;
-}
-
 export type IconTypes =
-  | IconCompanyProps
-  | IconControlProps
-  | IconLogoProps
-  | IconPictogramProps;
+  | IconCompanySrc
+  | IconControlSrc
+  | IconLogoSrc
+  | IconPictogramSrc;
 
 export type IconCompanySrc =
   | "IcCompanyInstagram"

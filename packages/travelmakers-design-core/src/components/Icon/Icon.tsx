@@ -6,14 +6,10 @@ import {
 import React, { forwardRef, PropsWithChildren } from "react";
 import { IconTypes } from "./Type";
 
-import * as AssetCompanyComponent from "./_components/assets/company";
-import * as AssetControlComponent from "./_components/assets/control";
-import * as AssetLogoComponent from "./_components/assets/logo";
-import * as AssetPictogramComponent from "./_components/assets/pictogram";
+import * as AssetComponent from "./_components/assets";
 
 export interface Props extends TmComponentProps {
-  type: IconTypes["type"];
-  src: IconTypes["src"];
+  src: IconTypes;
 }
 
 export interface SharedIconProps extends Props {}
@@ -34,26 +30,7 @@ export const Icon: IconComponent & {
     { type, src, children, ...props }: PropsWithChildren<IconProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
-    const TypeComponent = () => {
-      try {
-        switch (type) {
-          case "company":
-            return React.createElement(AssetCompanyComponent[src], props);
-          case "control":
-            return React.createElement(AssetControlComponent[src], props);
-          case "logo":
-            return React.createElement(AssetLogoComponent[src], props);
-          case "pictogram":
-            return React.createElement(AssetPictogramComponent[src], props);
-          default:
-            return null;
-        }
-      } catch (error) {
-        return null;
-      }
-    };
-
-    return <>{TypeComponent()}</>;
+    return <>{React.createElement(AssetComponent[src], props)}</>;
   }
 );
 
