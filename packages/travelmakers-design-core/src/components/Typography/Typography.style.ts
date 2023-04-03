@@ -54,6 +54,19 @@ export default createStyles(
     }: TypographyStylesProps,
     getRef
   ) => {
+    const getColor = () => {
+      if (!color) {
+        return {};
+      }
+      return {
+        color: disabled
+          ? theme.colors.primary4
+          : color
+          ? color
+          : theme.colors.black,
+      };
+    };
+
     return {
       solid: {
         fontWeight: strong ? (family === "Noto Serif KR" ? 600 : 700) : 400,
@@ -65,11 +78,7 @@ export default createStyles(
       root: {
         ...getFontFamily(family)["font"],
         ...theme.typography[level],
-        color: disabled
-          ? theme.colors.primary4
-          : color
-          ? color
-          : theme.colors.black,
+        ...getColor(),
         textAlign: `${textAlign}`,
 
         [`${theme.media.mobile}`]: {

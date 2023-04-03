@@ -17,7 +17,7 @@ import { DEFAULT_TYPOGRAPHY } from "./tokens/typography";
 
 export const TM_PALETTES = Object.keys(DEFAULT_PALETTES);
 export const TM_COLORS = Object.keys(DEFAULT_COLORS);
-export const TM_SIZES = ["xsmall", "small", "medium", "large"] as const;
+export const TM_SIZES = ["small", "medium", "large"] as const;
 export const TM_FONT_SIZES = [
   "b3",
   "b2",

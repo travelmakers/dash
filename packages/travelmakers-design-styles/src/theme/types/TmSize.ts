@@ -12,7 +12,7 @@ export type TmFontSize =
   | "body3"
   | "caption";
 
-export type TmSize = "xsmall" | "small" | "medium" | "large";
+export type TmSize = "small" | "medium" | "large";
 
 export type TmFontFamily = "Noto Serif KR" | "Pretendard";
 
