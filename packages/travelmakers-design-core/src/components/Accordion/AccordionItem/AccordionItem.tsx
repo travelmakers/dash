@@ -38,7 +38,6 @@ export const AccordionItem = ({
         {header}
         <Icon
           className={cx(classes.icon)}
-          type={"control"}
           src={"IcAngleDown"}
           width={ACCORDION_ICON_SIZE[type]}
         />
