@@ -3,7 +3,7 @@ import {
   PolymorphicRef,
   TmComponentProps,
 } from "@travelmakers-design-v2/styles";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { PropsWithChildren, forwardRef } from "react";
 import { IconTypes } from "./Type";
 
 import * as AssetComponent from "./_components/assets";
@@ -27,7 +27,7 @@ export const Icon: IconComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "svg">(
-    { type, src, children, ...props }: PropsWithChildren<IconProps<C>>,
+    { src, children, ...props }: PropsWithChildren<IconProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
     return <>{React.createElement(AssetComponent[src], props)}</>;

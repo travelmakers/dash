@@ -49,7 +49,7 @@ export const IconTag: IconTagComponent & {
         className={cx(classes.root, className)}
         {...props}
       >
-        <Icon type={"pictogram"} src={"IcDiscount"} width={16} height={16} />
+        <Icon src={"IcDiscount"} width={16} height={16} />
         {label}
       </View>
     );
