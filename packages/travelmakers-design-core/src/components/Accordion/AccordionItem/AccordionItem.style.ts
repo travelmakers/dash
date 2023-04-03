@@ -1,9 +1,18 @@
-import { createStyles, TmTheme } from "@travelmakers-design-v2/styles";
+import {
+  createStyles,
+  TmFontSize,
+  TmTheme,
+} from "@travelmakers-design-v2/styles";
 import { AccordionType, Props } from "../Accordion/Accordion";
 
-const ACCORDION_HEIGHT: { [key in AccordionType]: string } = {
+const ACCORDION_HEIGHT: Record<AccordionType, string> = {
   small: "40px",
   medium: "56px",
+};
+
+const ACCORDION_FONT: Record<AccordionType, TmFontSize> = {
+  small: "subhead2",
+  medium: "subhead1",
 };
 
 const getSpacing = (theme: TmTheme, type: AccordionType) => {
@@ -19,28 +28,19 @@ const getSpacing = (theme: TmTheme, type: AccordionType) => {
   }
 };
 
-const getFontStyles = (theme: TmTheme, type: AccordionType) => {
-  switch (type) {
-    case "small":
-      return theme.typography.subhead2;
-    case "medium":
-      return theme.typography.subhead1;
-    default:
-      return;
-  }
-};
-
 export default createStyles(
   (
     theme,
     { type, gap, isCollapse = true }: Props & { isCollapse: boolean }
   ) => {
+    const { colors, radius, typography, spacing } = theme;
+
     return {
       item: {
         maxHeight: `${isCollapse ? ACCORDION_HEIGHT[type] : "auto"}`,
         marginBottom: `${gap}px`,
-        color: `${theme.colors.primary1}`,
-        borderRadius: theme.radius.radius20,
+        color: `${colors.primary1}`,
+        borderRadius: radius.radius20,
         backgroundColor: "#fff",
         overflow: "hidden",
 
@@ -54,7 +54,7 @@ export default createStyles(
         justifyContent: "space-between",
         height: ACCORDION_HEIGHT[type],
         ...getSpacing(theme, type),
-        ...getFontStyles(theme, type),
+        ...typography[ACCORDION_FONT[type]],
         fontWeight: 700,
         cursor: "pointer",
       },
@@ -66,13 +66,13 @@ export default createStyles(
       },
       divider: {
         height: "1px",
-        margin: `0 ${theme.spacing.spacing30}`,
-        backgroundColor: theme.colors.outline,
+        margin: `0 ${spacing.spacing30}`,
+        backgroundColor: colors.outline,
       },
       content: {
         margin: 0,
         ...getSpacing(theme, type),
-        ...getFontStyles(theme, "small"),
+        ...typography[ACCORDION_FONT["small"]],
       },
     };
   }
