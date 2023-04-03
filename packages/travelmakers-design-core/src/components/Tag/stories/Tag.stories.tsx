@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Tag } from "../Tag/Tag";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Tag",
+  title: "@travelmakers-design-v2/core/General/Tag/Tag",
   component: Tag,
   argTypes: {
     type: {

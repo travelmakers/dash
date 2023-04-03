@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { IconTag } from "../IconTag/IconTag";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/IconTag",
+  title: "@travelmakers-design-v2/core/General/Tag/IconTag",
   component: IconTag,
   argTypes: {
     type: {
