@@ -40,7 +40,7 @@ export interface TmTheme {
   fontFamilyMonospace: CSSProperties["fontFamily"];
 
   colors: Record<TmColor, string>;
-  palettes: Record<TmPalette, Tuple<string, 3>>;
+  palettes: Record<TmPalette, Tuple<string, 6>>;
   fontSizes: Record<TmFontSizes, string>;
   lineHeights: Record<TmFontSizes, string>;
   radius: Record<CoRadius, number | string>;
