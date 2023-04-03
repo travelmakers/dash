@@ -8,7 +8,7 @@ const styles = css`
   },
 
   body: {
-    padding: 300px,
+    margin: 0;
   },
 
   .sr-only {
