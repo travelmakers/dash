@@ -24,88 +24,90 @@ const getFontSize = (
   }
 };
 
+const getBaseStyle = (theme: TmTheme, type: DotBadgeType): CSSObject => {
+  switch (type) {
+    case "text":
+      return {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontWeight: 700,
+        borderRadius: "6px",
+      };
+    case "number":
+      return {
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: `0 ${theme.spacing.spacing10}`,
+        borderRadius: theme.radius.radius100,
+      };
+    case "bullet":
+      return {
+        borderRadius: theme.radius.radius100,
+      };
+    default:
+      break;
+  }
+};
+
 const getStyle = (
   theme: TmTheme,
   type: DotBadgeType,
   size: DotBadgeSize<DotBadgeType>
 ) => {
-  const textBaseStyle: CSSObject = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontWeight: 700,
-    borderRadius: "6px",
-  };
-
-  const numberBaseStyle: CSSObject = {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: `0 ${theme.spacing.spacing10}`,
-    borderRadius: theme.radius.radius100,
-  };
-
-  const bulletBaseStyle: CSSObject = {
-    borderRadius: theme.radius.radius100,
-  };
-
-  const styleMap = {
+  const sizeMap: Record<
+    DotBadgeType,
+    Record<DotBadgeSize<DotBadgeType>, CSSObject>
+  > = {
     text: {
       small: {
-        ...textBaseStyle,
         width: "16px",
         height: "16px",
       },
       medium: {
-        ...textBaseStyle,
         width: "20px",
         height: "20px",
       },
       large: {
-        ...textBaseStyle,
         width: "24px",
         height: "24px",
       },
+      xLarge: {},
     },
     number: {
       small: {
-        ...numberBaseStyle,
         height: "16px",
       },
       medium: {
-        ...numberBaseStyle,
         height: "20px",
       },
       large: {
-        ...numberBaseStyle,
         height: "24px",
       },
+      xLarge: {},
     },
     bullet: {
       small: {
-        ...bulletBaseStyle,
         width: "8px",
         height: "8px",
       },
       medium: {
-        ...bulletBaseStyle,
         width: "16px",
         height: "16px",
       },
       large: {
-        ...bulletBaseStyle,
         width: "20px",
         height: "20px",
       },
       xLarge: {
-        ...bulletBaseStyle,
         width: "24px",
         height: "24px",
       },
     },
   };
 
-  return styleMap[type][size];
+  return { ...sizeMap[type][size], ...getBaseStyle(theme, type) };
 };
 
 export default createStyles(
