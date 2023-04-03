@@ -37,7 +37,7 @@ export const TagItem: TagItemComponent & {
     const { classes, cx } = useStyles({ type, color, size, roundness });
 
     return (
-      <View
+      <View<React.ElementType>
         component={"li"}
         ref={ref}
         className={cx(classes.item, className)}
