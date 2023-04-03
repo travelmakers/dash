@@ -9,6 +9,7 @@ import {
 import { forwardRef, PropsWithChildren, useRef } from "react";
 import { View } from "../../View";
 import useStyles from "./Button.style";
+import { Typography } from "../../Typography/Typography";
 
 export type ButtonStylesNames = ClassNames<typeof useStyles>;
 
@@ -87,7 +88,14 @@ export const Button: ButtonComponent & {
         <div className={classes.inner}>
           {leftIcon && <span className={cx(classes.icon)}>{leftIcon}</span>}
 
-          <span className={classes.label}>{children}</span>
+          <Typography
+            level={
+              size === "small" ? "body3" : size === "medium" ? "body2" : "body1"
+            }
+            className={classes.label}
+          >
+            {children}
+          </Typography>
 
           {rightIcon && <span className={cx(classes.icon)}>{rightIcon}</span>}
         </div>
