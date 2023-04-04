@@ -1,3 +1,6 @@
+import { PolymorphicComponentProps } from "@travelmakers-design-v2/styles";
+import { Props } from "./Icon";
+
 export type IconTypes =
   | IconCompanySrc
   | IconControlSrc
@@ -52,3 +55,14 @@ export type IconPictogramSrc =
   | "IcSearch"
   | "IcSettings"
   | "IcTalk";
+
+export interface SharedIconProps extends Props {}
+
+export type IconProps<C extends React.ElementType> = PolymorphicComponentProps<
+  C,
+  SharedIconProps
+>;
+
+type IconComponent = <C extends React.ElementType = "svg">(
+  props: IconProps<C>
+) => React.ReactElement;

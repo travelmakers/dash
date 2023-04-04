@@ -1,35 +1,17 @@
-import {
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
-import React, { PropsWithChildren, forwardRef } from "react";
-import { IconTypes } from "./Type";
-
+import { TmComponentProps } from "@travelmakers-design-v2/styles";
+import React, { forwardRef } from "react";
+import { IconTagComponent } from "../Tag/IconTag/IconTag.type";
+import { IconProps, IconTypes } from "./Icon.type";
 import * as AssetComponent from "./_components/assets";
 
 export interface Props extends TmComponentProps {
   src: IconTypes;
 }
 
-export interface SharedIconProps extends Props {}
-
-export type IconProps<C extends React.ElementType> = PolymorphicComponentProps<
-  C,
-  SharedIconProps
->;
-
-type IconComponent = <C extends React.ElementType = "svg">(
-  props: IconProps<C>
-) => React.ReactElement;
-
-export const Icon: IconComponent & {
+export const Icon: IconTagComponent & {
   displayName?: string;
 } = forwardRef(
-  <C extends React.ElementType = "svg">(
-    { src, children, ...props }: PropsWithChildren<IconProps<C>>,
-    ref: PolymorphicRef<C>
-  ) => {
+  <C extends React.ElementType = "svg">({ src, ...props }: IconProps<C>) => {
     return <>{React.createElement(AssetComponent[src], props)}</>;
   }
 );
