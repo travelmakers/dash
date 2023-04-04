@@ -1,32 +1,10 @@
 import {
-  PolymorphicComponentProps,
   PolymorphicRef,
-  Tm,
-  TmComponentProps,
-  TmTheme,
   useCss,
   useTmTheme,
 } from "@travelmakers-design-v2/styles";
 import React, { forwardRef } from "react";
-
-type ViewTm = Tm | Tm[];
-
-interface _ViewProps extends Omit<TmComponentProps, "tm" | "overrideStyles"> {
-  tm?: ViewTm;
-}
-
-export type ViewProps<C extends React.ElementType> = PolymorphicComponentProps<
-  C,
-  _ViewProps
->;
-
-type ViewComponent = <C extends React.ElementType = "div">(
-  props: ViewProps<C>
-) => React.ReactElement;
-
-function extractTm(tm: Tm, theme: TmTheme) {
-  return typeof tm === "function" ? tm(theme) : tm;
-}
+import { ViewComponent, ViewTm, extractTm } from "./View.type";
 
 function useBoxTm(tm: ViewTm, className: string) {
   const { css, cx } = useCss();
@@ -57,4 +35,4 @@ export const View: ViewComponent & { displayName?: string } = forwardRef(
   }
 );
 
-View.displayName = "@travelmakers-design-v2/core/View";
+View.displayName = "View";
