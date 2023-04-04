@@ -1,31 +1,15 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
 import { Icon } from "../../Icon";
 import { View } from "../../View";
-import { TagItemType } from "../Tag/Tag";
+import { TagItemType } from "../Tag/Tag.type";
 import useStyles from "./IconTag.style";
-
-export type IconTagStylesNames = ClassNames<typeof useStyles>;
+import { IconTagComponent, IconTagProps } from "./IconTag.type";
 
 export interface Props {
   type: TagItemType;
   label?: React.ReactNode;
 }
-export interface SharedIconTagProps
-  extends Props,
-    TmComponentProps<IconTagStylesNames> {}
-
-export type IconTagProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedIconTagProps>;
-
-type IconTagComponent = <C extends React.ElementType = "div">(
-  props: IconTagProps<C>
-) => React.ReactElement;
 
 export const IconTag: IconTagComponent & {
   displayName?: string;

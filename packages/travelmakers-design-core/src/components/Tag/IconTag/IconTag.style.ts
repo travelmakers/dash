@@ -1,17 +1,19 @@
 import { createStyles, TmTheme } from "@travelmakers-design-v2/styles";
-import { TagItemType } from "../Tag/Tag";
+import { TagItemType } from "../Tag/Tag.type";
 import { Props } from "./IconTag";
 
 const getStyle = (theme: TmTheme, type: TagItemType) => {
+  const { colors } = theme;
+
   switch (type) {
     case "fill":
       return {
-        backgroundColor: theme.colors.secondaryContainer,
+        backgroundColor: colors.secondaryContainer,
       };
     case "line":
       return {
         backgroundColor: "#fff",
-        border: `1px solid ${theme.colors.secondary}`,
+        border: `1px solid ${colors.secondary}`,
       };
 
     default:
@@ -20,18 +22,20 @@ const getStyle = (theme: TmTheme, type: TagItemType) => {
 };
 
 export default createStyles((theme, { type }: Pick<Props, "type">) => {
+  const { colors, spacing, typography, radius } = theme;
+
   return {
     root: {
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "space-between",
-      gap: theme.spacing.spacing5,
-      color: theme.colors.secondary1,
-      padding: `2px ${theme.spacing.spacing5}`,
-      ...theme.typography.caption,
+      gap: spacing.spacing5,
+      color: colors.secondary1,
+      padding: `2px ${spacing.spacing5}`,
+      ...typography.caption,
       fontWeight: 700,
       ...getStyle(theme, type),
-      borderRadius: theme.radius.radius10,
+      borderRadius: radius.radius10,
     },
   };
 });

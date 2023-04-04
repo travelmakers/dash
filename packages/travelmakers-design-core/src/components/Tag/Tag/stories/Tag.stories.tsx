@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Tag } from "../Tag/Tag";
+import { Tag } from "../Tag";
 
 export default {
   title: "@travelmakers-design-v2/core/General/Tag/Tag",

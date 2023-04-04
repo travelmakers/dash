@@ -1,11 +1,17 @@
-import { createStyles, TmTheme } from "@travelmakers-design-v2/styles";
 import {
-  Props,
-  TagItemColor,
-  TagItemType,
-  TagRound,
-  TagSize,
-} from "../Tag/Tag";
+  CoRadius,
+  createStyles,
+  CSSObject,
+  TmTheme,
+} from "@travelmakers-design-v2/styles";
+import { Props } from "../Tag/Tag";
+import { TagItemColor, TagItemType, TagRound, TagSize } from "../Tag/Tag.type";
+
+const TAGITEM_ROUND: Record<TagRound, CoRadius | ""> = {
+  default: "",
+  half: "radius20",
+  full: "radius100",
+};
 
 const getSize = (theme: TmTheme, size: TagSize) => {
   const { typography, spacing } = theme;
@@ -37,22 +43,13 @@ const getSize = (theme: TmTheme, size: TagSize) => {
 const getStyle = (theme: TmTheme, type: TagItemType, color: TagItemColor) => {
   const { colors } = theme;
 
-  const styles: {
-    color: string;
-    backgroundColor: string;
-    border: number | string;
-  } = {
+  const styles: CSSObject = {
     color: "",
     backgroundColor: "#fff",
     border: 0,
   };
 
-  const colorMap: {
-    [key in TagItemColor]: {
-      fill: { color: string; backgroundColor: string };
-      line: { color: string; backgroundColor?: string; border: string };
-    };
-  } = {
+  const colorMap: Record<TagItemColor, Record<TagItemType, CSSObject>> = {
     green: {
       fill: {
         color: colors.onSecondary,
@@ -107,17 +104,6 @@ const getStyle = (theme: TmTheme, type: TagItemType, color: TagItemColor) => {
   return styles;
 };
 
-const getRound = (theme: TmTheme, roundness: TagRound) => {
-  switch (roundness) {
-    case "half":
-      return { borderRadius: theme.radius.radius20 };
-    case "full":
-      return { borderRadius: theme.radius.radius100 };
-    default:
-      return { borderRadius: 0 };
-  }
-};
-
 export default createStyles(
   (
     theme,
@@ -133,7 +119,7 @@ export default createStyles(
         listStyle: "none",
         ...getStyle(theme, type, color),
         ...getSize(theme, size),
-        ...getRound(theme, roundness),
+        borderRadius: theme.radius[TAGITEM_ROUND[roundness]] ?? 0,
       },
     };
   }

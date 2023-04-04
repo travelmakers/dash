@@ -1,2 +1,2 @@
 export { TagItem } from "./TagItem";
-export type { TagItemProps } from "./TagItem";
+export type { TagItemProps } from "./TagItem.type";

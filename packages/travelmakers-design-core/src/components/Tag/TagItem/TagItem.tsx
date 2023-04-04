@@ -1,30 +1,13 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef, useContext } from "react";
 import { View } from "../../View";
 import { TagContext } from "../Tag/Tag";
 import useStyles from "./TagItem.style";
-
-type TagItemStylesNames = ClassNames<typeof useStyles>;
+import { TagItemComponent, TagItemProps } from "./TagItem.type";
 
 export interface Props {
   label: React.ReactNode;
 }
-
-export interface SharedTagItemProps
-  extends Props,
-    TmComponentProps<TagItemStylesNames> {}
-
-export type TagItemProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedTagItemProps>;
-
-type TagItemComponent = <C extends React.ElementType = "li">(
-  props: TagItemProps<C>
-) => React.ReactElement;
 
 export const TagItem: TagItemComponent & {
   displayName?: string;

@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { IconTag } from "../IconTag/IconTag";
+import { IconTag } from "../IconTag";
 
 export default {
   title: "@travelmakers-design-v2/core/General/Tag/IconTag",
@@ -16,7 +16,7 @@ export default {
       },
     },
     label: {
-      type: "string",
+      control: { type: "text" },
       defaultValue: "쿠폰 적용가",
       description: "쿠폰의 적용될 라벨을 작성합니다.",
       table: {

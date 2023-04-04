@@ -1,13 +1,16 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
-import { createContext, forwardRef, PropsWithChildren, useEffect } from "react";
+import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { PropsWithChildren, createContext, forwardRef, useEffect } from "react";
 import { View } from "../../View";
 import { TagItem } from "../TagItem";
 import useStyles from "./Tag.style";
+import {
+  TagComponent,
+  TagItemColor,
+  TagItemType,
+  TagProps,
+  TagRound,
+  TagSize,
+} from "./Tag.type";
 
 export interface Props {
   type: TagItemType;
@@ -24,26 +27,6 @@ export const TagContext = createContext<Omit<Props, "gap">>({
   roundness: "default",
 });
 TagContext.displayName = "TagContext";
-
-export type TagStylesNames = ClassNames<typeof useStyles>;
-
-export type TagItemType = "fill" | "line";
-export type TagItemColor = "green" | "blue" | "purple" | "gray";
-export type TagSize = "small" | "medium" | "large";
-export type TagRound = "default" | "half" | "full";
-
-export interface SharedTagProps
-  extends Props,
-    TmComponentProps<TagStylesNames> {}
-
-export type TagProps<C extends React.ElementType> = PolymorphicComponentProps<
-  C,
-  SharedTagProps
->;
-
-type TagComponent = <C extends React.ElementType = "ul">(
-  props: TagProps<C>
-) => React.ReactElement;
 
 export const Tag: TagComponent & {
   displayName?: string;
