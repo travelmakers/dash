@@ -1,7 +1,6 @@
 import { createStyles } from "@travelmakers-design-v2/styles";
 
 interface BottomBarStylesProps {}
-import { deviceSizes } from "@travelmakers-design-v2/styles/src/theme/types/TmSize";
 
 export default createStyles((theme, {}: BottomBarStylesProps, getRef) => {
   return {
@@ -11,7 +10,7 @@ export default createStyles((theme, {}: BottomBarStylesProps, getRef) => {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: `${theme.spacing.spacing10}px ${theme.spacing.spacing50}px`,
+      padding: `${theme.spacing.spacing10} ${theme.spacing.spacing50}`,
       gap: "80px",
       height: "64px",
       width: "100%",

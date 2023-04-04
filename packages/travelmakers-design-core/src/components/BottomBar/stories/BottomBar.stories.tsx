@@ -9,7 +9,6 @@ import {
 } from "@storybook/addon-docs";
 
 import { Meta } from "@storybook/react";
-import React from "react";
 import { BottomBar } from "../BottomBar";
 
 export default {

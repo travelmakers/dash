@@ -1,22 +1,20 @@
 import {
   ClassNames,
-  PolymorphicComponentProps,
   PolymorphicRef,
-  TmComponentProps,
   useTmTheme,
 } from "@travelmakers-design-v2/styles";
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useState } from "react";
 
+import Link from "next/link";
+import { IconHome, IconMypage, IconSearch } from "../../assets/icon";
+import { Typography } from "../Typography";
 import { View } from "../View";
 import useStyles from "./BottomBar.style";
-import { IconHome, IconSearch, IconMypage } from "../../assets/icon";
-import { Typography } from "../Typography";
-import Link from "next/link";
+import { BottomBarComponent, BottomBarProps } from "./BottomBar.type";
 
 export type BottomBarStylesNames = ClassNames<typeof useStyles>;
 
-export interface SharedBottomBarProps
-  extends TmComponentProps<BottomBarStylesNames> {
+export type Props = {
   /** BottomBar 컴포넌트의 초기 선택 값을 정합니다. */
   initSelectedId?: number;
 
@@ -28,14 +26,7 @@ export interface SharedBottomBarProps
 
   /** BottomBar 컴포넌트의 Click Event */
   onClick?: (menuId: number) => void;
-}
-
-export type BottomBarProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedBottomBarProps>;
-
-type BottomBarComponent = <C extends React.ElementType = "div">(
-  props: BottomBarProps<C>
-) => React.ReactElement;
+};
 
 export const BottomBar: BottomBarComponent & { displayName?: string } =
   forwardRef(
