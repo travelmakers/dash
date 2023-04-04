@@ -1,33 +1,18 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-  TmFontSize,
-} from "@travelmakers-design-v2/styles";
+import { PolymorphicRef, TmFontSize } from "@travelmakers-design-v2/styles";
 import { PropsWithChildren, forwardRef } from "react";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./NewBadge.style";
-
-export type NewBadgeStylesNames = ClassNames<typeof useStyles>;
-
-export type NewBadgeType = "small" | "medium";
+import {
+  NewBadgeComponent,
+  NewBadgeProps,
+  NewBadgeType,
+} from "./NewBadge.type";
 
 export interface Props {
   // 컴포넌트 내에서 사용할 props 타입 정의
   type: NewBadgeType;
 }
-export interface SharedNewBadgeProps
-  extends Props,
-    TmComponentProps<NewBadgeStylesNames> {}
-
-export type NewBadgeProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedNewBadgeProps>;
-
-type NewBadgeComponent = <C extends React.ElementType = "div">(
-  props: NewBadgeProps<C>
-) => React.ReactElement;
 
 const fontMap: Record<NewBadgeType, TmFontSize> = {
   small: "display6",

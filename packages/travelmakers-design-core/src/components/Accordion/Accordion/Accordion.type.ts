@@ -17,6 +17,6 @@ interface SharedAccordionProps
 export type AccordionProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedAccordionProps>;
 
-export type AccordionComponent = <C extends React.ElementType = "div">(
+export type AccordionComponent = <C extends React.ElementType = "dl">(
   props: AccordionProps<C>
 ) => React.ReactElement;

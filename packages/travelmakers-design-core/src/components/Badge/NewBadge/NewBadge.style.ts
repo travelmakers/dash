@@ -7,14 +7,16 @@ const NEWBADGE_SIZE = {
 };
 
 export default createStyles((theme: TmTheme, { type }: Props) => {
+  const { colors, spacing } = theme;
+
   return {
     root: {
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
       height: NEWBADGE_SIZE[type],
-      padding: `0 ${theme.spacing.spacing30}`,
-      backgroundColor: theme.colors.secondary,
+      padding: `0 ${spacing.spacing30}`,
+      backgroundColor: colors.secondary,
     },
   };
 });

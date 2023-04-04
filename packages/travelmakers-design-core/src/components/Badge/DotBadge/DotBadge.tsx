@@ -1,38 +1,21 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+import { ClassNames, PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef, useEffect } from "react";
 import { View } from "../../View";
 import useStyles from "./DotBadge.style";
+import {
+  DotBadgeComponent,
+  DotBadgeProps,
+  DotBadgeSize,
+  DotBadgeType,
+} from "./DotBadge.type";
 
 export type DotBadgeStylesNames = ClassNames<typeof useStyles>;
-
-export type DotBadgeType = "text" | "number" | "bullet";
-export type DotBadgeNormalSize = "small" | "medium" | "large";
-export type DotBadgeBulletSize = DotBadgeNormalSize | "xLarge";
-export type DotBadgeSize<T> = T extends "bullet"
-  ? DotBadgeBulletSize
-  : DotBadgeNormalSize;
 
 export interface Props<T extends DotBadgeType> {
   type: T;
   size: DotBadgeSize<T>;
   label?: string | number;
 }
-
-export interface SharedDotBadgeProps
-  extends Props<DotBadgeType>,
-    TmComponentProps<DotBadgeStylesNames> {}
-
-export type DotBadgeProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedDotBadgeProps>;
-
-type DotBadgeComponent = <C extends React.ElementType = "div">(
-  props: DotBadgeProps<C>
-) => React.ReactElement;
 
 export const DotBadge: DotBadgeComponent & {
   displayName?: string;

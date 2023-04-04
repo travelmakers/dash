@@ -1,33 +1,19 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
 import { Icon } from "../..//Icon";
 import { View } from "../../View";
 import useStyles from "./GradeBadge.style";
-
-export type GradeBadgeStylesNames = ClassNames<typeof useStyles>;
-
-export type GradeBadgeType = "grade" | "minihotel" | "residence";
+import {
+  GradeBadgeComponent,
+  GradeBadgeProps,
+  GradeBadgeType,
+} from "./GradeBadge.type";
 
 export interface Props {
   type: GradeBadgeType;
   grade: number;
   hotelType?: string;
 }
-export interface SharedGradeBadgeProps
-  extends Props,
-    TmComponentProps<GradeBadgeStylesNames> {}
-
-export type GradeBadgeProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedGradeBadgeProps>;
-
-type GradeBadgeComponent = <C extends React.ElementType = "div">(
-  props: GradeBadgeProps<C>
-) => React.ReactElement;
 
 export const GradeBadge: GradeBadgeComponent & {
   displayName?: string;

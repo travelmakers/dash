@@ -3,7 +3,8 @@ import {
   CSSObject,
   TmTheme,
 } from "@travelmakers-design-v2/styles";
-import { DotBadgeSize, DotBadgeType, Props } from "./DotBadge";
+import { Props } from "./DotBadge";
+import { DotBadgeSize, DotBadgeType } from "./DotBadge.type";
 
 const getFontSize = (
   theme: TmTheme,

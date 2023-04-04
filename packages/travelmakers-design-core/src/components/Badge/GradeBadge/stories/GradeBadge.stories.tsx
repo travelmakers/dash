@@ -26,7 +26,7 @@ export default {
       },
     },
     hotelType: {
-      type: "string",
+      control: { type: "string" },
       description: "호텔의 종류를 지정합니다.",
       table: {
         type: {
