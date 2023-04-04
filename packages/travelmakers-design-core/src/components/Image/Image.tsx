@@ -1,50 +1,71 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+"use client";
+
+import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { forwardRef, PropsWithChildren, useState } from "react";
 import useStyles from "./Image.style";
-import BaseImage from "next/image";
-import type { ImageProps as BaseImageProps } from "next/image";
-import { View } from "../View";
+import { ImageComponent, ImageProps } from "./Image.type";
 
-export type ImageStylesNames = ClassNames<typeof useStyles>;
+export interface Props {
+  /** true일 경우 lazy load가 적용됩니다. */
+  lazy?: boolean;
 
-export interface Props extends BaseImageProps {}
-export interface SharedImageProps
-  extends Props,
-    TmComponentProps<ImageStylesNames> {}
+  /** 이미지 src를 정합니다. */
+  src: string;
 
-export type ImageProps<C extends React.ElementType> = PolymorphicComponentProps<
-  C,
-  SharedImageProps
->;
+  /** Image 컴포넌트의 너비를 정합니다. */
+  width?: number | string;
 
-type ImageComponent = <C extends React.ElementType = "img">(
-  props: ImageProps<C>
-) => React.ReactElement;
+  /** Image 컴포넌트의 높이를 정합니다. */
+  height?: number | string;
+
+  /** 이미지 설명을 추가합니다. */
+  alt: string;
+}
 
 export const Image: ImageComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "img">(
-    { className, children, ...props }: PropsWithChildren<ImageProps<C>>,
+    {
+      lazy = true,
+      src,
+      alt,
+      className,
+      children,
+      ...props
+    }: PropsWithChildren<ImageProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
-    const { classes, cx } = useStyles();
+    const [load, setLoad] = useState(false);
+    const [error, setError] = useState(false);
+    const { classes, cx } = useStyles({ load });
 
     return (
-      <View<React.ElementType> component={"div"}>
-        <BaseImage
+      <>
+        <img
           ref={ref}
-          src={props.src}
-          alt={props.alt}
-          className={cx(className, classes.image)}
+          src={src}
+          alt={alt}
+          loading={lazy ? "lazy" : "eager"}
+          className={cx(className, !load && classes.loading)}
+          onLoad={() => setLoad(true)}
+          onError={(e) => {
+            setLoad(true);
+            setError(true);
+            e.currentTarget.src = require("./img/error.png");
+          }}
           {...props}
         />
-      </View>
+        {!load && (
+          <img
+            src={
+              "data:image/gif;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8UA8AAiUBUcc3qzwAAAAASUVORK5CYII="
+            }
+            alt={alt}
+            {...props}
+          />
+        )}
+      </>
     );
   }
 );
