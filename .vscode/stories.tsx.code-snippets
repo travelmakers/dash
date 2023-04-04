@@ -1,6 +1,6 @@
 {
   "Travelmakers Design System Storybook": {
-    "prefix": "tdst",
+    "prefix": "tdsb",
     "body": [
       "import { Meta } from \"@storybook/react\";",
       "import { ${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/} } from \"../${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/}\";",
