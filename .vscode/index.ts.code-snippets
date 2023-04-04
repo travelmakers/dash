@@ -1,0 +1,10 @@
+{
+  "Travelmakers Design System Index": {
+    "prefix": "tdsi",
+    "body": [
+      "export { ${TM_DIRECTORY/.*\\/(\\w+)$/$1/} } from \"./${TM_DIRECTORY/.*\\/(\\w+)$/$1/}\"",
+      "export type { ${TM_DIRECTORY/.*\\/(\\w+)$/$1/}Props } from \"./${TM_DIRECTORY/.*\\/(\\w+)$/$1/}.type\""
+    ],
+    "description": "Travelmakers Design System Index 👻"
+  }
+}
