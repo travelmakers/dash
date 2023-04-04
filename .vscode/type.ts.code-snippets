@@ -1,0 +1,28 @@
+{
+  "Travelmakers Design System Component": {
+    "prefix": "tdst",
+    "body": [
+      "import {",
+      "\tClassNames,",
+      "\tPolymorphicComponentProps,",
+      "\tTmComponentProps,",
+      "} from \"@travelmakers-design-v2/styles\";",
+      "import { Props } from \"./${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}\"",
+      "import useStyles from \"./${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}.style\";",
+      "",
+      "type ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}StylesNames = ClassNames<typeof useStyles>;",
+      "",
+      "interface Shared${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Props",
+      "\textends Props,",
+      "\t\tTmComponentProps<${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}StylesNames> {}",
+      "",
+      "export type ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Props<C extends React.ElementType> =",
+      "\tPolymorphicComponentProps<C, Shared${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Props>;",
+      "",
+      "export type ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Component = <C extends React.ElementType = \"div\">(",
+      "\tprops: ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Props<C>",
+      ") => React.ReactElement;"
+    ],
+    "description": "Travelmakers Design System Type 📝"
+  }
+}
