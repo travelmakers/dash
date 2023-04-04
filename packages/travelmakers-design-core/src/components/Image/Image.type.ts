@@ -3,8 +3,8 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers-design-v2/styles";
-import useStyles from "./Image.style";
 import { Props } from "./Image";
+import useStyles from "./Image.style";
 
 export type ImageStylesNames = ClassNames<typeof useStyles>;
 

@@ -22,7 +22,7 @@ export const Image: ImageComponent & {
     ref: PolymorphicRef<C>
   ) => {
     const [load, setLoad] = useState(false);
-    const { classes, cx } = useStyles({ load });
+    const { classes, cx } = useStyles();
 
     return (
       <>
