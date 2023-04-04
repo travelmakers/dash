@@ -1,24 +1,19 @@
 import {
-  ClassNames,
-  PolymorphicComponentProps,
   PolymorphicRef,
   TmColor,
-  TmComponentProps,
   TmFontFamily,
   TmFontSize,
-  useTmTheme,
 } from "@travelmakers-design-v2/styles";
 import React, { forwardRef } from "react";
-
 import { View } from "../View";
 import useStyles from "./Typography.style";
+import {
+  TypographyComponent,
+  TypographyProps,
+  TypographyTextAlign,
+} from "./Typography.type";
 
-export type TypographyStylesNames = ClassNames<typeof useStyles>;
-
-export type TypographyTextAlign = "left" | "center" | "right";
-
-export interface SharedTypographyProps
-  extends TmComponentProps<TypographyStylesNames> {
+export type Props = {
   id?: string;
 
   /** Typography 컴포넌트의 font-family를 정합니다. */
@@ -50,14 +45,7 @@ export interface SharedTypographyProps
 
   /** tablet일 경우의 Typography 컴포넌트의 크기를 지정합니다. */
   tabletLevel?: TmFontSize;
-}
-
-export type TypographyProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedTypographyProps>;
-
-type TypographyComponent = <C extends React.ElementType = "span">(
-  props: TypographyProps<C>
-) => React.ReactElement;
+};
 
 export const Typography: TypographyComponent & { displayName?: string } =
   forwardRef(
@@ -83,7 +71,6 @@ export const Typography: TypographyComponent & { displayName?: string } =
       }: TypographyProps<C>,
       ref: PolymorphicRef<C>
     ) => {
-      const theme = useTmTheme();
       const { classes, cx } = useStyles(
         {
           family,

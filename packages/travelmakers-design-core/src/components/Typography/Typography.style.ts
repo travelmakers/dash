@@ -3,10 +3,8 @@ import {
   TmColor,
   TmFontFamily,
   TmFontSize,
-  TmTheme,
 } from "@travelmakers-design-v2/styles";
-
-import { TypographyTextAlign } from "./Typography";
+import { TypographyTextAlign } from "./Typography.type";
 
 interface TypographyStylesProps {
   family: TmFontFamily;
@@ -51,8 +49,7 @@ export default createStyles(
       color,
       mobile,
       tablet,
-    }: TypographyStylesProps,
-    getRef
+    }: TypographyStylesProps
   ) => {
     const getColor = () => {
       if (!color) {
