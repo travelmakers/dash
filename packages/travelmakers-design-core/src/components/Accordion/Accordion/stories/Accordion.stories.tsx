@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Accordion } from "../Accordion";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Accordion",
+  title: "@travelmakers-design-v2/core/General/Accoridion/Accordion",
   component: Accordion,
   argTypes: {
     type: {
@@ -52,7 +52,7 @@ export const Small = (props) => {
       <Accordion {...props}>
         {accordionData.map((data) => (
           <Accordion.Item
-            idx={data.id}
+            key={data.id}
             header={data.question}
             content={data.answer}
           />
@@ -68,7 +68,7 @@ export const Medium = (props) => {
       <Accordion type={"medium"} {...props}>
         {accordionData.map((data) => (
           <Accordion.Item
-            idx={data.id}
+            key={data.id}
             header={data.question}
             content={data.answer}
           />

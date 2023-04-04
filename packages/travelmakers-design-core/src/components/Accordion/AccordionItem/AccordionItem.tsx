@@ -10,14 +10,12 @@ const ACCORDION_ICON_SIZE = {
 };
 
 export interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  idx: number | string;
   header: React.ReactNode;
   content: React.ReactNode;
   handleHeader?: () => void;
 }
 
 export const AccordionItem = ({
-  idx,
   header,
   content,
   handleHeader,
@@ -33,7 +31,7 @@ export const AccordionItem = ({
   };
 
   return (
-    <View<React.ElementType> key={idx} className={classes.item} {...props}>
+    <View<React.ElementType> className={classes.item} {...props}>
       <dt className={classes.header} onClick={handleClick}>
         {header}
         <Icon

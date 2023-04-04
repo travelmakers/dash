@@ -3,7 +3,8 @@ import {
   TmFontSize,
   TmTheme,
 } from "@travelmakers-design-v2/styles";
-import { AccordionType, Props } from "../Accordion/Accordion";
+import { Props } from "../Accordion/Accordion";
+import { AccordionType } from "../Accordion/Accordion.type";
 
 const ACCORDION_HEIGHT: Record<AccordionType, string> = {
   small: "40px",
