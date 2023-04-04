@@ -1,17 +1,9 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-  TmSize,
-  useTmTheme,
-} from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { PolymorphicRef, useTmTheme } from "@travelmakers-design-v2/styles";
+import { PropsWithChildren, forwardRef } from "react";
 import { Icon } from "../../Icon";
 import { View } from "../../View";
 import useStyles from "./ButtonIcon.style";
-
-export type ButtonIconStylesNames = ClassNames<typeof useStyles>;
+import { ButtonIconComponent, ButtonIconProps } from "./ButtonIcon.type";
 
 export interface Props {
   /** ButtonIcon 컴포넌트의 크기를 정합니다. */
@@ -27,16 +19,6 @@ export interface Props {
 
   buttonTheme?: "light" | "dark";
 }
-export interface SharedButtonIconProps
-  extends Props,
-    TmComponentProps<ButtonIconStylesNames> {}
-
-export type ButtonIconProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedButtonIconProps>;
-
-type ButtonIconComponent = <C extends React.ElementType = "button">(
-  props: ButtonIconProps<C>
-) => React.ReactElement;
 
 export const ButtonIcon: ButtonIconComponent & {
   displayName?: string;
@@ -57,8 +39,6 @@ export const ButtonIcon: ButtonIconComponent & {
     const { classes, cx } = useStyles({
       size,
       variant,
-      disabled,
-      type,
       buttonTheme,
     });
     const theme = useTmTheme();

@@ -1,5 +1,4 @@
 import { createStyles } from "@travelmakers-design-v2/styles";
-import { TM_HEIGHTS } from "../../../constants";
 import { Props } from "./ButtonIcon";
 
 const sizes = {
@@ -21,7 +20,14 @@ const sizes = {
 };
 
 export default createStyles(
-  (theme, { size, variant, disabled, type, buttonTheme }: Props) => {
+  (
+    theme,
+    {
+      size,
+      variant,
+      buttonTheme,
+    }: Pick<Props, "size" | "variant" | "buttonTheme">
+  ) => {
     const getBackgroundColor = (type: "default" | "active" | "disabled") => {
       switch (type) {
         case "active":

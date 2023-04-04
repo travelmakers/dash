@@ -8,10 +8,8 @@ import {
   Title,
 } from "@storybook/addon-docs";
 
-import { Button } from "../Button";
 import { Meta } from "@storybook/react";
-import React from "react";
-import { Icon } from "../../../Icon";
+import { Button } from "../Button";
 
 export default {
   title: "@travelmakers-design-v2/core/General/Button",

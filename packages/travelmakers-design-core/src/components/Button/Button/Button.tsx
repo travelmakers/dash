@@ -1,17 +1,13 @@
 import {
-  ClassNames,
-  PolymorphicComponentProps,
   PolymorphicRef,
-  TmComponentProps,
-  TmSize,
   TmPalette,
+  TmSize,
 } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren, useRef } from "react";
+import { PropsWithChildren, forwardRef } from "react";
+import { Typography } from "../../Typography/Typography";
 import { View } from "../../View";
 import useStyles from "./Button.style";
-import { Typography } from "../../Typography/Typography";
-
-export type ButtonStylesNames = ClassNames<typeof useStyles>;
+import { ButtonComponent, ButtonProps } from "./Button.type";
 
 export interface Props {
   // 컴포넌트 내에서 사용할 props 타입 정의
@@ -39,21 +35,11 @@ export interface Props {
   /** Button 컴포넌트 좌측 영역에 요소를 추가합니다. */
   rightIcon?: React.ReactNode;
 }
-export interface SharedButtonProps
-  extends Props,
-    TmComponentProps<ButtonStylesNames> {}
-
-export type ButtonProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedButtonProps>;
-
-type ButtonComponent = <C extends React.ElementType = "div">(
-  props: ButtonProps<C>
-) => React.ReactElement;
 
 export const Button: ButtonComponent & {
   displayName?: string;
 } = forwardRef(
-  <C extends React.ElementType = "div">(
+  <C extends React.ElementType = "button">(
     {
       size = "small",
       variant = "primary",
