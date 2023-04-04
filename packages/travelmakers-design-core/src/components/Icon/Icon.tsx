@@ -1,14 +1,13 @@
 import { TmComponentProps } from "@travelmakers-design-v2/styles";
 import React, { forwardRef } from "react";
-import { IconTagComponent } from "../Tag/IconTag/IconTag.type";
-import { IconProps, IconTypes } from "./Icon.type";
+import { IconComponent, IconProps, IconTypes } from "./Icon.type";
 import * as AssetComponent from "./_components/assets";
 
 export interface Props extends TmComponentProps {
   src: IconTypes;
 }
 
-export const Icon: IconTagComponent & {
+export const Icon: IconComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "svg">({ src, ...props }: IconProps<C>) => {
