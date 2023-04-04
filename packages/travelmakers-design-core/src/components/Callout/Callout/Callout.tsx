@@ -1,18 +1,10 @@
-import {
-  ClassNames,
-  PolymorphicComponentProps,
-  PolymorphicRef,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
 import { View } from "../../View";
 import { CalloutHeader } from "../CalloutHader";
 import { CalloutItem } from "../CalloutItem";
 import useStyles from "./Callout.style";
-
-export type CalloutStylesNames = ClassNames<typeof useStyles>;
-
-export type CalloutType = "default" | "warning";
+import { CalloutComponent, CalloutProps, CalloutType } from "./Callout.type";
 
 export interface Props {
   type?: CalloutType;
@@ -20,16 +12,6 @@ export interface Props {
   items?: string[];
   emptyText?: string;
 }
-export interface SharedCalloutProps
-  extends Props,
-    TmComponentProps<CalloutStylesNames> {}
-
-export type CalloutProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, SharedCalloutProps>;
-
-type CalloutComponent = <C extends React.ElementType = "dl">(
-  props: CalloutProps<C>
-) => React.ReactElement;
 
 export const Callout: CalloutComponent & {
   displayName?: string;

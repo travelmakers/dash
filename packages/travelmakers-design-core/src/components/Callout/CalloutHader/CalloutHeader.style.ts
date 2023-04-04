@@ -1,5 +1,5 @@
 import { createStyles } from "@travelmakers-design-v2/styles";
-import { CalloutType } from "../Callout/Callout";
+import { CalloutType } from "../Callout/Callout.type";
 import { CALLOUT_COLOR } from "./CalloutHeader";
 
 export default createStyles((theme, { type }: { type: CalloutType }) => {

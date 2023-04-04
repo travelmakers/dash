@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { Icon } from "../../Icon";
-import { View } from "../../View";
 import { AccordionContext } from "../Accordion/Accordion";
 import useStyles from "./AccordionItem.style";
 
@@ -31,7 +30,7 @@ export const AccordionItem = ({
   };
 
   return (
-    <View<React.ElementType> className={classes.item} {...props}>
+    <div className={classes.item} {...props}>
       <dt className={classes.header} onClick={handleClick}>
         {header}
         <Icon
@@ -44,7 +43,7 @@ export const AccordionItem = ({
         <div className={classes.divider} />
         <p className={classes.content}>{content}</p>
       </dd>
-    </View>
+    </div>
   );
 };
 
