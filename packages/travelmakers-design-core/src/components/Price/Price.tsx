@@ -1,9 +1,9 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
+import { Icon } from "../Icon";
 import { View } from "../View";
 import useStyles from "./Price.style";
-import { PriceProps, PriceComponent } from "./Price.type";
-import { Icon } from "../Icon";
+import { PriceComponent, PriceProps } from "./Price.type";
 
 export interface Props {
   /** Price 컴포넌트의 타입을 정합니다. */
@@ -42,7 +42,7 @@ export const Price: PriceComponent & {
       isCoupon = true,
       className,
       ...props
-    }: PropsWithChildren<PriceProps<C>>,
+    }: PriceProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({ type });

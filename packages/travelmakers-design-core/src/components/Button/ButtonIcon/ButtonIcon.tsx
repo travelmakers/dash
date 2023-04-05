@@ -1,5 +1,5 @@
 import { PolymorphicRef, useTmTheme } from "@travelmakers-design-v2/styles";
-import { PropsWithChildren, forwardRef } from "react";
+import { forwardRef } from "react";
 import { Icon } from "../../Icon";
 import { View } from "../../View";
 import useStyles from "./ButtonIcon.style";
@@ -31,9 +31,8 @@ export const ButtonIcon: ButtonIconComponent & {
       type,
       buttonTheme = "dark",
       className,
-      children,
       ...props
-    }: PropsWithChildren<ButtonIconProps<C>>,
+    }: ButtonIconProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({
