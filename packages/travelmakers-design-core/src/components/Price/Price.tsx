@@ -13,7 +13,7 @@ export interface Props {
   label?: string;
 
   /** Price 컴포넌트의 할인율을 표시합니다. */
-  percentText?: string;
+  percentText?: number;
 
   /** Price 컴포넌트의 1박을 표시합니다. */
   nightText?: number;
