@@ -10,9 +10,9 @@ import {
 import { TmSize } from "./TmSize";
 
 import type { CSSProperties } from "react";
-import type { DeepPartial } from "./DeepPartial";
-import { CoTypography } from "../tokens/typography";
 import { TmPalette } from "../tokens/palettes";
+import { CoTypography } from "../tokens/typography";
+import type { DeepPartial } from "./DeepPartial";
 import { Tuple } from "./Tuple";
 
 export interface HeadingStyle {
