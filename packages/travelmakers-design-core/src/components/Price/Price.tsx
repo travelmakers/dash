@@ -41,7 +41,6 @@ export const Price: PriceComponent & {
       priceStartText,
       isCoupon = true,
       className,
-      children,
       ...props
     }: PropsWithChildren<PriceProps<C>>,
     ref: PolymorphicRef<C>
