@@ -14,7 +14,7 @@ export default createStyles((theme) => {
       ...typography.body2,
       color: colors.primary,
       textDecoration: "none",
-      backgroundColor: "#fff",
+      backgroundColor: colors.white,
     },
   };
 });

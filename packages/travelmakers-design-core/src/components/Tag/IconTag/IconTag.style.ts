@@ -12,7 +12,7 @@ const getStyle = (theme: TmTheme, type: TagItemType) => {
       };
     case "line":
       return {
-        backgroundColor: "#fff",
+        backgroundColor: colors.white,
         border: `1px solid ${colors.secondary}`,
       };
 

@@ -42,7 +42,7 @@ export default createStyles(
         marginBottom: `${gap}px`,
         color: `${colors.primary1}`,
         borderRadius: radius.radius20,
-        backgroundColor: "#fff",
+        backgroundColor: colors.white,
         overflow: "hidden",
 
         ["&:last-child"]: {

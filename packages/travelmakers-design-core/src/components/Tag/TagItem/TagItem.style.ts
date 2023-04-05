@@ -45,7 +45,7 @@ const getStyle = (theme: TmTheme, type: TagItemType, color: TagItemColor) => {
 
   const styles: CSSObject = {
     color: "",
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     border: 0,
   };
 
@@ -72,7 +72,7 @@ const getStyle = (theme: TmTheme, type: TagItemType, color: TagItemColor) => {
     },
     purple: {
       fill: {
-        color: "#fff",
+        color: colors.white,
         backgroundColor: colors.purple1,
       },
       line: {
