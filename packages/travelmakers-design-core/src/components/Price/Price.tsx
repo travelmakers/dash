@@ -16,7 +16,7 @@ export interface Props {
   percentText?: string;
 
   /** Price 컴포넌트의 1박을 표시합니다. */
-  nightText?: string;
+  nightText?: number;
 
   /** Price 컴포넌트의 가격을 표시합니다. */
   priceText?: number;
@@ -60,7 +60,7 @@ export const Price: PriceComponent & {
             <span className={cx(classes.percentText)}>{percentText}%</span>
           )}
           {nightText && (
-            <span className={cx(classes.nightText)}>{nightText}</span>
+            <span className={cx(classes.nightText)}>{nightText}박</span>
           )}
           {priceText && (
             <>
@@ -89,7 +89,9 @@ export const Price: PriceComponent & {
         >
           {label && <span className={cx(classes.labelSecondary)}>{label}</span>}
           {nightText && (
-            <span className={cx(classes.nightSecondaryText)}>{nightText}</span>
+            <span className={cx(classes.nightSecondaryText)}>
+              {nightText}박
+            </span>
           )}
           {priceText && (
             <>

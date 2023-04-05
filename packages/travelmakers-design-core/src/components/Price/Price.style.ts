@@ -13,21 +13,21 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
     percentText: {
       ...theme.typography.display6,
       fontWeight: "700",
-      color: theme.colors.error,
       width: "39px",
+      color: theme.colors.error,
     },
     nightText: {
       ...theme.typography.body3,
       fontWeight: "700",
-      color: theme.colors.primary1,
       textAlign: "right",
       width: "28px",
+      color: theme.colors.primary1,
     },
     priceText: {
       ...theme.typography.display4,
       fontWeight: "700",
       color: theme.colors.primary1,
-      marginLeft: "2px",
+      marginLeft: theme.spacing.spacing5,
     },
     priceBeforeText: {
       ...theme.typography.body2,
@@ -38,7 +38,7 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       ...theme.typography.body3,
       fontWeight: "400",
       color: theme.colors.primary2,
-      marginLeft: "4px",
+      marginLeft: theme.spacing.spacing5,
     },
 
     // NOTE: Type is 'secondary'
@@ -46,25 +46,23 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       ...theme.typography.body3,
       fontWeight: "400",
       color: theme.colors.primary1,
-      marginRight: "4px",
+      marginRight: theme.spacing.spacing5,
     },
     nightSecondaryText: {
       ...theme.typography.body3,
       fontWeight: "700",
       color: theme.colors.primary1,
       textAlign: "right",
-      marginRight: "4px",
+      marginRight: theme.spacing.spacing5,
     },
     priceSecondaryText: {
       ...theme.typography.body3,
       fontWeight: "400",
-      textDecorationLine: "line-through",
       color: theme.colors.primary2,
     },
     priceBeforeSecondaryText: {
       ...theme.typography.body3,
       fontWeight: "400",
-      textDecorationLine: "line-through",
       color: theme.colors.primary2,
     },
     couponWrap: {
@@ -72,16 +70,12 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       alignItems: "center",
       width: "74px",
       background: theme.colors.secondaryContainer,
-      borderRadius: "4px",
-      marginLeft: "4px",
+      borderRadius: theme.spacing.spacing5,
+      marginLeft: theme.spacing.spacing5,
     },
     couponWord: {
-      display: "block",
-      width: "fit-content",
-      fontStyle: "normal",
+      ...theme.typography.caption,
       fontWeight: "700",
-      fontSize: "10px",
-      lineHeight: "16px",
       color: theme.colors.secondary1,
     },
   };

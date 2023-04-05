@@ -22,27 +22,27 @@ export default {
       control: { type: "text" },
     },
     percentText: {
-      defaultValue: "70",
+      defaultValue: 70,
       description: "Price 컴포넌트의 할인율을 표시합니다.",
       table: {
         type: {
-          summary: "string",
+          summary: "number",
         },
       },
-      control: { type: "text" },
+      control: { type: "number" },
     },
     nightText: {
-      defaultValue: "1박",
+      defaultValue: 1,
       description: "Price 컴포넌트의 1박을 표시합니다.",
       table: {
         type: {
-          summary: "string",
+          summary: "number",
         },
       },
-      control: { type: "text" },
+      control: { type: "number" },
     },
     priceText: {
-      defaultValue: "10000",
+      defaultValue: 10000,
       description: "Price 컴포넌트의 가격을 표시합니다.",
       table: {
         type: {
