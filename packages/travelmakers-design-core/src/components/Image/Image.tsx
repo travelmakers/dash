@@ -42,9 +42,7 @@ export const Image: ImageComponent & {
         {!load && (
           <img
             loading={lazy ? "lazy" : "eager"}
-            src={
-              "data:image/gif;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8UA8AAiUBUcc3qzwAAAAASUVORK5CYII="
-            }
+            src={require("./img/loading.png")}
             {...props}
           />
         )}
