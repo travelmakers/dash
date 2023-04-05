@@ -1,5 +1,6 @@
 "use client";
 
+import { useRemainingTimer } from "@travelmakers-design-v2/hooks";
 import {
   PolymorphicRef,
   TmColor,
@@ -38,6 +39,7 @@ export const Timer: TimerComponent & {
   ) => {
     const { colors } = useTmTheme();
     const { classes, cx } = useStyles({ type, size });
+    const { remainingTime } = useRemainingTimer(time);
 
     return (
       <View<React.ElementType>
@@ -57,7 +59,7 @@ export const Timer: TimerComponent & {
           <strong className={classes.text}>{text}</strong>
         </div>
         <time className={classes.time} dateTime={dateTime}>
-          {time}
+          {remainingTime}
         </time>
       </View>
     );

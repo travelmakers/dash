@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/react";
+import { getDayjs } from "@travelmakers-design-v2/utils";
 import { Timer } from "../Timer";
 
 export default {
@@ -35,7 +36,6 @@ export default {
     },
     time: {
       control: { type: "text" },
-      defaultValue: "4일 23 : 04 : 31",
       description: "타임 세일 기간",
       table: {
         type: {
@@ -58,9 +58,11 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
+  const dayjs = getDayjs();
+
   return (
     <div style={{ backgroundColor: props.type === "white" && "gray" }}>
-      <Timer {...props} />
+      <Timer {...props} time={dayjs()} />
     </div>
   );
 };

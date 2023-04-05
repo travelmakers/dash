@@ -9,6 +9,14 @@
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "lib",
-    "composite": true
-  }
+    "composite": true,
+    "paths": {
+      "@travelmakers-design-v2/styles": ["../travelmakers-design-styles"],
+      "@travelmakers-design-v2/utils": ["../travelmakers-design-utils"]
+    }
+  },
+  "references": [
+    { "path": "../travelmakers-design-styles" },
+    { "path": "../travelmakers-design-utils" }
+  ]
 }
