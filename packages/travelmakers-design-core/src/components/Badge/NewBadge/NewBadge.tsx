@@ -10,7 +10,6 @@ import {
 } from "./NewBadge.type";
 
 export interface Props {
-  // 컴포넌트 내에서 사용할 props 타입 정의
   type: NewBadgeType;
 }
 
@@ -41,7 +40,11 @@ export const NewBadge: NewBadgeComponent & {
         className={cx(classes.root, className)}
         {...props}
       >
-        <Typography family={"Noto Serif KR"} level={fontMap[type]} color="#fff">
+        <Typography
+          family={"Noto Serif KR"}
+          level={fontMap[type]}
+          color="white"
+        >
           {children || "New"}
         </Typography>
       </View>
