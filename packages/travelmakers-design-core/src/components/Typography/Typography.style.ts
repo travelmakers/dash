@@ -59,7 +59,7 @@ export default createStyles(
         color: disabled
           ? theme.colors.primary4
           : color
-          ? color
+          ? theme.colors[color]
           : theme.colors.black,
       };
     };
