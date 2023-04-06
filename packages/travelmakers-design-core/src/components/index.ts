@@ -8,5 +8,6 @@ export * from "./Image";
 export * from "./Menu";
 export * from "./Price";
 export * from "./Tag";
+export * from "./Timer";
 export * from "./Typography";
 export * from "./View";
