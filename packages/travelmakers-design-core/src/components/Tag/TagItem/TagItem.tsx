@@ -2,10 +2,12 @@ import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef, useContext } from "react";
 import { View } from "../../View";
 import { TagContext } from "../Tag/Tag";
+import { TagItemColorType } from "../Tag/Tag.type";
 import useStyles from "./TagItem.style";
 import { TagItemComponent, TagItemProps } from "./TagItem.type";
 
 export interface Props {
+  colorIdx?: number;
   label: React.ReactNode;
 }
 
@@ -13,11 +15,25 @@ export const TagItem: TagItemComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "li">(
-    { label, className, ...props }: TagItemProps<C>,
+    { colorIdx = 0, label, className, ...props }: TagItemProps<C>,
     ref: PolymorphicRef<C>
   ) => {
+    const generateColor = (_colorIdx: number) => {
+      const colors = ["green", "blue", "purple"];
+      return colors[_colorIdx % colors.length] as Exclude<
+        TagItemColorType,
+        "gray"
+      >;
+    };
+
     const { type, color, size, roundness } = useContext(TagContext);
-    const { classes, cx } = useStyles({ type, color, size, roundness });
+
+    const { classes, cx } = useStyles({
+      type,
+      color: color || generateColor(colorIdx),
+      size,
+      roundness,
+    });
 
     return (
       <View<React.ElementType>

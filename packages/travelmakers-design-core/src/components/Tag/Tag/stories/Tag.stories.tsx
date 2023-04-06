@@ -1,6 +1,8 @@
 import { Meta } from "@storybook/react";
 import { Tag } from "../Tag";
 
+const data = ["레이블1", "레이블2", "레이블3", "레이블4"];
+
 export default {
   title: "@travelmakers-design-v2/core/General/Tag/Tag",
   component: Tag,
@@ -24,7 +26,8 @@ export default {
         options: ["green", "blue", "purple", "gray"],
         default: "green",
       },
-      description: "TagItem의 색상을 정합니다.",
+      description:
+        "TagItem의 색상을 통일할 경우 사용합니다. TagItem의 colorIdx보다 우선순위를 가집니다.",
       table: {
         type: {
           summary: "string",
@@ -62,12 +65,23 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
+  const items = data.map((item, idx) => <Tag.Item key={idx} label={item} />);
+
   return (
-    <Tag type="fill" color="blue" {...props}>
-      <Tag.Item label="레이블" />
-      <Tag.Item label="레이블" />
-      <Tag.Item label="레이블" />
-      <Tag.Item label="레이블" />
+    <Tag type="fill" color="green" {...props}>
+      {items}
+    </Tag>
+  );
+};
+
+export const TagUsingIdx = (props) => {
+  const items = data.map((item, idx) => (
+    <Tag.Item key={idx} colorIdx={idx} label={item} />
+  ));
+
+  return (
+    <Tag type="fill" {...props}>
+      {items}
     </Tag>
   );
 };

@@ -7,7 +7,7 @@ import { TagItem } from "../TagItem";
 import useStyles from "./Tag.style";
 import {
   TagComponent,
-  TagItemColor,
+  TagItemColorType,
   TagItemType,
   TagProps,
   TagRound,
@@ -16,7 +16,7 @@ import {
 
 export interface Props {
   type: TagItemType;
-  color: TagItemColor;
+  color?: TagItemColorType;
   size?: TagSize;
   gap?: number;
   roundness?: TagRound;
@@ -24,7 +24,6 @@ export interface Props {
 
 export const TagContext = createContext<Omit<Props, "gap">>({
   type: "fill",
-  color: "green",
   size: "small",
   roundness: "default",
 });

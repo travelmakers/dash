@@ -5,7 +5,12 @@ import {
   TmTheme,
 } from "@travelmakers-design-v2/styles";
 import { Props } from "../Tag/Tag";
-import { TagItemColor, TagItemType, TagRound, TagSize } from "../Tag/Tag.type";
+import {
+  TagItemColorType,
+  TagItemType,
+  TagRound,
+  TagSize,
+} from "../Tag/Tag.type";
 
 const TAGITEM_ROUND: Record<TagRound, CoRadius | ""> = {
   default: "",
@@ -40,7 +45,11 @@ const getSize = (theme: TmTheme, size: TagSize) => {
   }
 };
 
-const getStyle = (theme: TmTheme, type: TagItemType, color: TagItemColor) => {
+const getStyle = (
+  theme: TmTheme,
+  type: TagItemType,
+  color: TagItemColorType
+) => {
   const { colors } = theme;
 
   const styles: CSSObject = {
@@ -49,7 +58,7 @@ const getStyle = (theme: TmTheme, type: TagItemType, color: TagItemColor) => {
     border: 0,
   };
 
-  const colorMap: Record<TagItemColor, Record<TagItemType, CSSObject>> = {
+  const colorMap: Record<TagItemColorType, Record<TagItemType, CSSObject>> = {
     green: {
       fill: {
         color: colors.onSecondary,

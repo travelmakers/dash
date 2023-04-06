@@ -7,7 +7,8 @@ import { Props } from "./Tag";
 import useStyles from "./Tag.style";
 
 export type TagItemType = "fill" | "line";
-export type TagItemColor = "green" | "blue" | "purple" | "gray";
+export const TagItemColor = ["green", "blue", "purple", "gray"] as const;
+export type TagItemColorType = typeof TagItemColor[number];
 export type TagSize = "small" | "medium" | "large";
 export type TagRound = "default" | "half" | "full";
 
