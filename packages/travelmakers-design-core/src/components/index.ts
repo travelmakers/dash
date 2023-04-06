@@ -3,6 +3,7 @@ export * from "./Badge";
 export * from "./BottomBar";
 export * from "./Button";
 export * from "./Callout";
+export * from "./HeaderSection";
 export * from "./Icon";
 export * from "./Image";
 export * from "./Menu";

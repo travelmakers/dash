@@ -18,7 +18,6 @@ export default {
     initSelectedId: {
       defaultValue: 0,
       description: "BottomBar의 초기 선택 값을 정합니다.",
-
       table: {
         type: {
           summary: "number",

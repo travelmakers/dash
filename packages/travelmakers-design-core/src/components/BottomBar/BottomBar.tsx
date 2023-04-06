@@ -1,6 +1,7 @@
 import {
   ClassNames,
   PolymorphicRef,
+  TmColor,
   useTmTheme,
 } from "@travelmakers-design-v2/styles";
 import React, { forwardRef, useState } from "react";
@@ -58,9 +59,9 @@ export const BottomBar: BottomBarComponent & { displayName?: string } =
     ) => {
       const theme = useTmTheme();
       const [selected, setSelected] = useState(initSelectedId);
-      const [color1, setColor1] = useState(theme.colors.neutral70);
-      const [color2, setColor2] = useState(theme.colors.neutral70);
-      const [color3, setColor3] = useState(theme.colors.neutral70);
+      const [color1, setColor1] = useState<TmColor>("neutral70");
+      const [color2, setColor2] = useState<TmColor>("neutral70");
+      const [color3, setColor3] = useState<TmColor>("neutral70");
       const color = [color1, color2, color3];
       const setColor = [setColor1, setColor2, setColor3];
       const { classes, cx } = useStyles(
@@ -71,21 +72,27 @@ export const BottomBar: BottomBarComponent & { displayName?: string } =
         {
           icon: (
             <IconHome
-              color={selected === 0 ? theme.colors.secondary : color1}
+              color={
+                selected === 0 ? theme.colors.secondary : theme.colors[color1]
+              }
             />
           ),
         },
         {
           icon: (
             <IconSearch
-              color={selected === 1 ? theme.colors.secondary : color2}
+              color={
+                selected === 1 ? theme.colors.secondary : theme.colors[color2]
+              }
             />
           ),
         },
         {
           icon: (
             <IconMypage
-              color={selected === 2 ? theme.colors.secondary : color3}
+              color={
+                selected === 2 ? theme.colors.secondary : theme.colors[color3]
+              }
             />
           ),
         },
@@ -95,7 +102,7 @@ export const BottomBar: BottomBarComponent & { displayName?: string } =
        * @param value
        * @param index
        */
-      const changeColor = (value: string, index: number) => {
+      const changeColor = (value: TmColor, index: number) => {
         if (index !== selected) {
           setColor[index](value);
         }
@@ -116,19 +123,15 @@ export const BottomBar: BottomBarComponent & { displayName?: string } =
               }}
               href={links[index].url}
               className={cx(classes.item)}
-              onMouseOver={() => changeColor(theme.colors.primary, index)}
-              onMouseLeave={() => changeColor(theme.colors.neutral70, index)}
-              onMouseDown={() =>
-                changeColor(theme.colors.primaryInteract, index)
-              }
-              onMouseUp={() => changeColor(theme.colors.neutral70, index)}
+              onMouseOver={() => changeColor("primary", index)}
+              onMouseLeave={() => changeColor("neutral70", index)}
+              onMouseDown={() => changeColor("primaryInteract", index)}
+              onMouseUp={() => changeColor("neutral70", index)}
             >
               {menu.icon}
               <Typography
                 level="caption"
-                color={
-                  selected === index ? theme.colors.secondary : color[index]
-                }
+                color={selected === index ? "secondary" : color[index]}
               >
                 {links[index].name}
               </Typography>
