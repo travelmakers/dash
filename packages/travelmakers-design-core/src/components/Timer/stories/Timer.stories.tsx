@@ -17,6 +17,7 @@ export default {
     },
     size: {
       control: { type: "radio", options: ["small", "large"], default: "small" },
+      defaultValue: "small",
       description: "Timer의 사이즈",
       table: {
         type: {
@@ -39,7 +40,7 @@ export default {
       description: "타임 세일 기간",
       table: {
         type: {
-          summary: "string",
+          summary: "dayjs.ConfigType",
         },
       },
     },

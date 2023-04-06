@@ -6,6 +6,7 @@ import {
   TmColor,
   useTmTheme,
 } from "@travelmakers-design-v2/styles";
+import dayjs from "dayjs";
 import { forwardRef } from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
@@ -14,10 +15,10 @@ import { TimerComponent, TimerProps, TimerSize, TimerType } from "./Timer.type";
 
 export interface Props {
   type: TimerType;
-  size: TimerSize;
+  size?: TimerSize;
   text: "string";
-  time: "string";
-  dateTime?: "string";
+  time: dayjs.ConfigType;
+  dateTime?: string;
 }
 
 const TIMER_ICON_SIZE: Record<TimerSize, number> = {
@@ -34,7 +35,15 @@ export const Timer: TimerComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "div">(
-    { type, size, text, time, dateTime, className, ...props }: TimerProps<C>,
+    {
+      type,
+      size = "small",
+      text,
+      time,
+      dateTime,
+      className,
+      ...props
+    }: TimerProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { colors } = useTmTheme();
