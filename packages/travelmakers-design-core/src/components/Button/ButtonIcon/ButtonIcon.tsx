@@ -1,5 +1,5 @@
 import { PolymorphicRef, useTmTheme } from "@travelmakers-design-v2/styles";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { Icon } from "../../Icon";
 import { View } from "../../View";
 import useStyles from "./ButtonIcon.style";
@@ -19,6 +19,11 @@ export interface Props {
 
   buttonTheme?: "light" | "dark";
 }
+
+const ARIA_LABLE = {
+  prev: "이전",
+  next: "다음",
+};
 
 export const ButtonIcon: ButtonIconComponent & {
   displayName?: string;
@@ -73,6 +78,7 @@ export const ButtonIcon: ButtonIconComponent & {
         type="button"
         disabled={disabled}
         className={cx(className, classes.button)}
+        aria-label={ARIA_LABLE[type]}
         {...props}
       >
         {type === "prev" ? (
