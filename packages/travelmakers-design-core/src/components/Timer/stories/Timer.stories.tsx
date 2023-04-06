@@ -37,7 +37,8 @@ export default {
     },
     time: {
       control: { type: "text" },
-      description: "타임 세일 기간",
+      description:
+        "타임 세일 기간 ex) Thu Apr 06 2023 10:52:19 GMT+0900 (한국 표준시)",
       table: {
         type: {
           summary: "dayjs.ConfigType",
@@ -59,11 +60,19 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
+  const { time, type, size, text, dateTime } = props;
   const dayjs = getDayjs();
+  const now = dayjs();
 
   return (
     <div style={{ backgroundColor: props.type === "white" && "gray" }}>
-      <Timer {...props} time={dayjs()} />
+      <Timer
+        time={time || now}
+        type={type}
+        size={size}
+        text={text}
+        dateTime={dateTime}
+      />
     </div>
   );
 };

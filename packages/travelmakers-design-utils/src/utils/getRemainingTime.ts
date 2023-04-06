@@ -25,6 +25,9 @@ export const getRemainingTime = (
   const target = dayjs(targetDate);
   const now = dayjs();
   const diff = target.diff(now);
+  const isReachedTime = now.isSame(target) || diff <= 0;
+  if (isReachedTime) return "00:00:00";
+
   const days = dayjs.duration(diff).days();
 
   // NOTE: 당일이라면 일자는 표시x
