@@ -5,5 +5,9 @@ export default createStyles((theme) => {
     loading: {
       display: "none",
     },
+    image: {
+      objectFit: "cover",
+      aspectRatio: "4 / 3",
+    },
   };
 });

@@ -31,7 +31,8 @@ export const Image: ImageComponent & {
           src={src}
           alt={alt}
           loading={lazy ? "lazy" : "eager"}
-          className={cx(className, !load && classes.loading)}
+          decoding={lazy ? "async" : "auto"}
+          className={cx(className, classes.image, !load && classes.loading)}
           onLoad={() => setLoad(true)}
           onError={(e) => {
             setLoad(true);
