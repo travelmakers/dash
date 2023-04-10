@@ -16,9 +16,11 @@ export interface Props {
 
 const processing = (status: ProcessStatus) => {
   switch (status) {
-    case "reservation_purchase_before" || "extend_purchase_before":
+    case "extend_purchase_before":
+    case "reservation_purchase_before":
       return "before";
-    case "reservation_purchase_done" || "extend_purchase_done":
+    case "extend_purchase_done":
+    case "reservation_purchase_done":
       return "done";
   }
 };
@@ -54,6 +56,7 @@ export const Process: ProcessComponent & {
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
+
     const items = sequence(status);
     const renderer = items.map((item, idx) => (
       <ProcessItem key={idx} item={item} hasIcon={idx + 1 !== items.length} />

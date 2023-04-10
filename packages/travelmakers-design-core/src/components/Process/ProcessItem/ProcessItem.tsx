@@ -9,11 +9,13 @@ export interface Props {
 
 export const ProcessItem = ({ item, hasIcon }: Props) => {
   const { processor, process, isProcessing } = item;
-  const { classes } = useStyles({ isProcessing });
+  const { classes, cx } = useStyles({ isProcessing });
 
   return (
     <li className={classes.root}>
-      <div className={classes.process}>
+      <div
+        className={cx(classes.process, { "process-line-height": processor })}
+      >
         {processor && <span className={classes.processor}>{processor}</span>}
         {process}
       </div>

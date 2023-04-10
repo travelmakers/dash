@@ -1,9 +1,11 @@
 import { SequenceType } from "../Process/Process.type";
 import useStyles from "./ProcessIcon.style";
 
-export const ProcessIcon = ({
-  isProcessing,
-}: Pick<SequenceType, "isProcessing">) => {
+type Props = {
+  isProcessing: Pick<SequenceType, "isProcessing">["isProcessing"];
+};
+
+export const ProcessIcon = ({ isProcessing }: Props) => {
   const { classes } = useStyles({ isProcessing });
 
   const renderPaths = () => {
