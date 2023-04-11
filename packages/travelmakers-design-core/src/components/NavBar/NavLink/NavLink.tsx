@@ -27,7 +27,7 @@ export const NavLink: NavLinkComponent & {
     return (
       <Link
         ref={ref}
-        className={cx(classes.root, "sub-element", className)}
+        className={cx(classes.root, className)}
         onClick={onClickHandler}
         tabindex={isDisable ? -1 : 0}
         aria-disabled={isDisable}

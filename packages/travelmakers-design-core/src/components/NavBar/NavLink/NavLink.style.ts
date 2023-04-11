@@ -27,10 +27,12 @@ const interactionStyles = (theme: TmTheme, isDisable: boolean) => {
 
 export default createStyles(
   (theme: TmTheme, { isDisable }: { isDisable: boolean }) => {
-    const { colors } = theme;
+    const { colors, typography } = theme;
 
     return {
       root: {
+        ...typography.body3,
+        marginLeft: "auto",
         color: colors.primary,
         textDecoration: "none",
         ...interactionStyles(theme, isDisable),

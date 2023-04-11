@@ -1,10 +1,12 @@
 import { createStyles } from "@travelmakers-design-v2/styles";
 
 export default createStyles((theme) => {
-  const { colors, shadows } = theme;
+  const { colors, shadows, typography } = theme;
 
   return {
     root: {
+      ...typography.body3,
+      marginLeft: "auto",
       padding: 0,
       color: colors.primary,
       backgroundColor: "transparent",

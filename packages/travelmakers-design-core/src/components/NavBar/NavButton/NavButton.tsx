@@ -22,7 +22,7 @@ export const NavButton: NavButtonComponent & {
       <View<React.ElementType>
         component={"button"}
         ref={ref}
-        className={cx(classes.root, "sub-element", className)}
+        className={cx(classes.root, className)}
         disabled={isDisable}
         {...props}
       >
