@@ -1,4 +1,4 @@
-import { PolymorphicRef, useTmTheme } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef, PropsWithChildren } from "react";
 import { View } from "../../View";
 import useStyles from "./HotelTitleCard.style";
@@ -14,22 +14,22 @@ import { getCurrencyNumber } from "@travelmakers-design-v2/utils";
 import { Price, PriceProps } from "../../Price";
 
 export interface Props {
-  /** HotelFeatureCard 컴포넌트의 호텔타입을 정합니다. */
+  /** HotelTitleCard 컴포넌트의 호텔타입을 정합니다. */
   type: HotelTitleCardType["type"];
 
-  /** HotelFeatureCard 컴포넌트의 호텔타입이 default일 경우 몇성호텔인지를 표시합니다. */
+  /** HotelTitleCard 컴포넌트의 호텔타입이 default일 경우 몇성호텔인지를 표시합니다. */
   star?: HotelTitleCardType["star"];
 
-  /** HotelFeatureCard 컴포넌트의 몇주살기에 대한 레이블을 표시합니다. */
+  /** HotelTitleCard 컴포넌트의 이미지내 상단 레이블을 표시합니다. */
   groupTags?: string[];
 
-  /** HotelCard 컴포넌트의 쿠폰 표시여부를 결정합니다. */
+  /** HotelTitleCard 컴포넌트의 쿠폰 표시여부를 결정합니다. */
   isCoupon?: boolean;
 
-  /** HotelFeatureCard 컴포넌트의 몇주살기에 대한 레이블을 표시합니다. */
+  /** HotelTitleCard 컴포넌트의 이미지내 하단 레이블을 표시합니다. */
   tags?: string[];
 
-  /** HotelCard 컴포넌트의 레이블을 표시합니다. */
+  /** HotelTitleCard 컴포넌트의 가격을 표시합니다. */
   price?: PriceProps<"div">[];
 }
 
@@ -50,7 +50,6 @@ export const HotelTitleCard: HotelTitleCardComponent & {
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
-    const theme = useTmTheme();
 
     return (
       <View<React.ElementType>

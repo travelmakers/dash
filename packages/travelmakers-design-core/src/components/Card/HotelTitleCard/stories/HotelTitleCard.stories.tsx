@@ -14,7 +14,7 @@ export default {
     star: {
       defaultValue: 5,
       description:
-        "HotelFeatureCard 컴포넌트의 호텔타입이 default일 경우 몇성호텔인지를 표시합니다.",
+        "HotelTitleCard 컴포넌트의 호텔타입이 default일 경우 몇성호텔인지를 표시합니다.",
       table: {
         type: {
           summary: "number",
@@ -25,7 +25,7 @@ export default {
     groupTags: {
       defaultValue: ["레이블", "레이블", "레이블"],
       description:
-        "HotelFeaturedCard 컴포넌트의 이미지내 상단 레이블을 표시합니다.",
+        "HotelTitleCard 컴포넌트의 이미지내 상단 레이블을 표시합니다.",
       table: {
         type: {
           summary: "array",
@@ -36,7 +36,7 @@ export default {
     tags: {
       defaultValue: ["레이블", "레이블", "레이블", "레이블"],
       description:
-        "HotelFeaturedCard 컴포넌트의 이미지내 상단 레이블을 표시합니다.",
+        "HotelTitleCard 컴포넌트의 이미지내 하단 레이블을 표시합니다.",
       table: {
         type: {
           summary: "array",
@@ -46,7 +46,7 @@ export default {
     },
     isCoupon: {
       defaultValue: true,
-      description: "HotelCard 컴포넌트의 쿠폰 표시여부를 결정합니다.",
+      description: "HotelTitleCard 컴포넌트의 쿠폰 표시여부를 결정합니다.",
       table: {
         type: {
           summary: "boolean",
@@ -64,7 +64,7 @@ export default {
         priceStartText: "1박 100,000원부터",
         isCoupon: true,
       },
-      description: "HotelFeaturedCard 컴포넌트의 레이블을 표시합니다.",
+      description: "HotelTitleCard 컴포넌트의 가격을 표시합니다.",
       table: {
         type: {
           summary: "object",

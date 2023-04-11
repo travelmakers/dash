@@ -10,6 +10,9 @@ export default createStyles((theme) => {
       display: "flex",
       flexDirection: "column",
       gap: theme.spacing.spacing30,
+      ["& > a"]: {
+        textDecoration: "none",
+      },
     },
     divider: {
       backgroundColor: theme.colors.outline,

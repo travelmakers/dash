@@ -85,7 +85,7 @@ export default {
         priceStartText: "1박 100,000원부터",
         isCoupon: true,
       },
-      description: "HotelFeaturedCard 컴포넌트의 레이블을 표시합니다.",
+      description: "HotelFeaturedCard 컴포넌트의 가격을 표시합니다.",
       table: {
         type: {
           summary: "object",
