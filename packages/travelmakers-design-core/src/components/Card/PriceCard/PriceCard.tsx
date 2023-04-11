@@ -1,4 +1,4 @@
-import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef, TmColor } from "@travelmakers-design-v2/styles";
 import { forwardRef, PropsWithChildren } from "react";
 import { View } from "../../View";
 import useStyles from "./PriceCard.style";
@@ -40,7 +40,10 @@ export const PriceCard: PriceCardComponent & {
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({ status });
-    const STATUS_COLOR = { active: "primary1", disabled: "primary4" };
+    const STATUS_COLOR: {
+      active: TmColor;
+      disabled: TmColor;
+    } = { active: "primary1", disabled: "primary4" };
 
     return (
       <View<React.ElementType>

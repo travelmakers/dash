@@ -139,13 +139,7 @@ export const HotelCard: HotelCardComponent & {
             <Image src={src} alt="hotelCard" width={"100%"} height={"100%"} />
             {disabled && (
               <div className={cx(classes.soldOutBox)}>
-                <Typography
-                  family="Noto Serif KR"
-                  color="white"
-                  level="display4"
-                  italic
-                  strong
-                >
+                <Typography color="white" level="display4" strong>
                   Sold Out
                 </Typography>
                 <Typography color="white" level="body2">
