@@ -4,7 +4,7 @@ import { Props } from "./Button";
 
 export default createStyles(
   (theme, { size, variant, fullWidth, roundness }: Props) => {
-    const { radius, spacing, colors, palettes } = theme;
+    const { radius, spacing, colors, palettes, shadows } = theme;
     const isLineType = variant === "secondary";
     const isNonBoxShadow = variant === "text";
 
@@ -38,25 +38,21 @@ export default createStyles(
         border: isLineType ? `1px solid ${colors.primary}` : "none",
         [":not(:disabled)"]: {
           "&:hover": {
-            boxShadow: isNonBoxShadow
-              ? "none"
-              : "0px 4px 8px rgba(0, 0, 0, 0.15)",
+            boxShadow: isNonBoxShadow ? shadows.none : shadows.elevation1,
             filter: isNonBoxShadow
-              ? "drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15))"
-              : "none",
+              ? `drop-shadow(${shadows.elevation1})`
+              : shadows.none,
           },
 
           "&:focus-visible": {
             color: palettes[variant][4],
-            boxShadow: isNonBoxShadow
-              ? "none"
-              : "0px 4px 8px rgba(0, 0, 0, 0.15)",
+            boxShadow: isNonBoxShadow ? shadows.none : shadows.elevation1,
           },
 
           "&:active": {
             color: palettes[variant][4],
             backgroundColor: palettes[variant][1],
-            boxShadow: "none !important",
+            boxShadow: `${shadows.none} !important`,
           },
         },
 
