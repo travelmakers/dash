@@ -90,10 +90,10 @@ export default createStyles(
 
         [":not(:disabled)"]: {
           "&:hover": {
-            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)",
+            boxShadow: theme.shadows.elevation1,
           },
           "&:focus-visible": {
-            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)",
+            boxShadow: theme.shadows.elevation1,
           },
           "&:active": {
             ...getBackgroundColor("active"),
