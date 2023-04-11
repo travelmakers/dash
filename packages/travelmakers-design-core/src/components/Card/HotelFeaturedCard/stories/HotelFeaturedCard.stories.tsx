@@ -7,7 +7,8 @@ export default {
   argTypes: {
     href: {
       defaultValue: "#",
-      description: "이동링크",
+      description:
+        "HotelFeatureCard 컴포넌트를 클릭하여 이동할 경로를 설정합니다.",
       table: {
         type: {
           summary: "string",
@@ -44,7 +45,8 @@ export default {
     },
     labels: {
       defaultValue: ["레이블", "레이블", "레이블"],
-      description: "HotelFeaturedCard 컴포넌트의 레이블을 표시합니다.",
+      description:
+        "HotelFeaturedCard 컴포넌트의 이미지내 상단 레이블을 표시합니다.",
       table: {
         type: {
           summary: "array",
@@ -54,7 +56,7 @@ export default {
     },
     name: {
       defaultValue: "호텔명",
-      description: "이미지 src를 정합니다.",
+      description: "HotelFeaturedCard 컴포넌트의 호텔명칭을 입력합니다.",
       table: {
         type: {
           summary: "string",
@@ -64,7 +66,8 @@ export default {
     },
     timelineTags: {
       defaultValue: ["레이블", "레이블", "레이블"],
-      description: "HotelFeaturedCard 컴포넌트의 레이블을 표시합니다.",
+      description:
+        "HotelFeaturedCard 컴포넌트의 이미지 하단 레이블을 표시합니다.",
       table: {
         type: {
           summary: "array",

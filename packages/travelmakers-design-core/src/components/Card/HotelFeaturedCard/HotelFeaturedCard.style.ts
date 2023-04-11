@@ -4,6 +4,7 @@ export default createStyles((theme) => {
   return {
     container: {
       width: "328px",
+      display: "inline-block",
       ["& > a"]: {
         textDecoration: "none",
       },

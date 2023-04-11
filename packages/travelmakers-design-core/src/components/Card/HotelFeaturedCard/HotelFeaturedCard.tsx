@@ -70,19 +70,19 @@ export const HotelFeaturedCard: HotelFeaturedCardComponent & {
           <div className={cx(classes.cardBox)}>
             {/* SECTION: Image Section */}
             <div className={cx(classes.imageBox)}>
-              <div className={cx(classes.imageLabel)}>
-                <Tag type="fill" color="green">
-                  {labels?.map((label) => (
-                    <Tag.Item label={label} />
-                  ))}
-                </Tag>
-              </div>
               <Image
                 src={src}
                 alt={`featureCard-${name}`}
                 width={"100%"}
                 height={"100%"}
               />
+              <div className={cx(classes.imageLabel)}>
+                <Tag type="fill">
+                  {labels?.map((label, index) => (
+                    <Tag.Item label={label} colorIdx={index} />
+                  ))}
+                </Tag>
+              </div>
             </div>
 
             {/* SECTION: Content Section */}
