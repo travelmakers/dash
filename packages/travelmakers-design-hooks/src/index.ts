@@ -8,4 +8,5 @@ export * from "./useRafState";
 export * from "./useRemainingTimer";
 export * from "./useResize";
 export * from "./useTimeoutFn";
+export * from "./useToast";
 export * from "./useUpdateEffect";
