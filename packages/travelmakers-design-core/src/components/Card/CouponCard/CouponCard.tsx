@@ -79,7 +79,6 @@ export const CouponCard: CouponCardComponent & {
               적용중
             </Typography>
           );
-          break;
 
         case "checked":
           return (
@@ -92,11 +91,9 @@ export const CouponCard: CouponCardComponent & {
               />
             </div>
           );
-          break;
 
         default:
           return null;
-          break;
       }
     };
 

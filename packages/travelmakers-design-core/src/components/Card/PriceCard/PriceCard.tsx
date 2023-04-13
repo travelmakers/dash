@@ -34,7 +34,6 @@ export const PriceCard: PriceCardComponent & {
       description,
       tag,
       className,
-      children,
       ...props
     }: PropsWithChildren<PriceCardProps<C>>,
     ref: PolymorphicRef<C>
@@ -65,7 +64,6 @@ export const PriceCard: PriceCardComponent & {
             <Tag.Item label={description} />
           </Tag>
         )}
-        {children}
       </View>
     );
   }

@@ -26,7 +26,6 @@ export const MainReviewCard: MainReviewCardComponent & {
       job,
       content,
       className,
-      children,
       ...props
     }: PropsWithChildren<MainReviewCardProps<C>>,
     ref: PolymorphicRef<C>
