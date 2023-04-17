@@ -1,0 +1,20 @@
+import {
+  ClassNames,
+  PolymorphicComponentProps,
+  TmComponentProps,
+} from "@travelmakers-design-v2/styles";
+import { Props } from "./TimeLineBanner";
+import useStyles from "./TimeLineBanner.style";
+
+type TimeLineBannerStylesNames = ClassNames<typeof useStyles>;
+
+interface SharedTimeLineBannerProps
+  extends Props,
+    TmComponentProps<TimeLineBannerStylesNames> {}
+
+export type TimeLineBannerProps<C extends React.ElementType> =
+  PolymorphicComponentProps<C, SharedTimeLineBannerProps>;
+
+export type TimeLineBannerComponent = <C extends React.ElementType = "div">(
+  props: TimeLineBannerProps<C>
+) => React.ReactElement;
