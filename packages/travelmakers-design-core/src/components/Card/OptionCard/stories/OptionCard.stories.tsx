@@ -5,22 +5,159 @@ export default {
   title: "@travelmakers-design-v2/core/General/Card/OptionCard",
   component: OptionCard,
   argTypes: {
-    /**
-     * ex)
-     *    props: {
-     *      // type, control, etc.
-     *      defaultValue: "props의 defaultValue를 작성합니다.",
-     *      description: "props 각각의 description을 작성합니다.",
-     *      table: {
-     *        type: {
-     *          summary: "prop의 타입을 작성합니다.",
-     *        },
-     *      },
-     *    },
-     */
+    href: {
+      defaultValue: "#",
+      description:
+        "HotelFeatureCard 컴포넌트를 클릭하여 이동할 경로를 설정합니다.",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "text" },
+    },
+    labels: {
+      defaultValue: ["레이블", "레이블", "레이블"],
+      description:
+        "HotelFeaturedCard 컴포넌트의 이미지내 상단 레이블을 표시합니다.",
+      table: {
+        type: {
+          summary: "array",
+        },
+      },
+      control: { type: "array" },
+    },
+    headTitle: {
+      defaultValue: "Room Type",
+      description: "OptionCard 컴포넌트의 상단 Title Name을 표시합니다.",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "text" },
+    },
+    footerTitle: {
+      defaultValue: "Benefit",
+      description: "OptionCard 컴포넌트의 하단 Title Name을 표시합니다.",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "text" },
+    },
+    optionName: {
+      defaultValue: "옵션 설명",
+      description: "OptionCard 컴포넌트의 optionName을 표시합니다.",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "text" },
+    },
+    isDuration: {
+      defaultValue: true,
+      description: "OptionCard 컴포넌트의 Duration 표시여부를 판단합니다.",
+      table: {
+        type: {
+          summary: "boolean",
+        },
+      },
+      control: { type: "boolean" },
+    },
+    minNight: {
+      defaultValue: 1,
+      description: "OptionCard 컴포넌트의 최소 -박(night)을 표사합니다.",
+      table: {
+        type: {
+          summary: "number",
+        },
+      },
+      control: { type: "number" },
+    },
+    maxNight: {
+      defaultValue: 2,
+      description: "OptionCard 컴포넌트의 최대 -박(night)을 표사합니다.",
+      table: {
+        type: {
+          summary: "number",
+        },
+      },
+      control: { type: "number" },
+    },
+    roomType: {
+      defaultValue: "룸 타입 / 룸 타입",
+      description: "OptionCard 컴포넌트의 roomType을 표시합니다.",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "text" },
+    },
+    benefitList: {
+      defaultValue: [
+        {
+          content: "혜택 설명을 입력하세요",
+          only: false,
+          order: 1,
+        },
+        {
+          content: "혜택 설명을 입력하세요",
+          only: false,
+          order: 2,
+        },
+        {
+          content: "혜택 설명을 입력하세요",
+          only: false,
+          order: 3,
+        },
+      ],
+      description: "HotelFeaturedCard 컴포넌트의 가격을 표시합니다.",
+      table: {
+        type: {
+          summary: "array",
+        },
+      },
+      control: { type: "array" },
+    },
+    price: {
+      defaultValue: {
+        type: "primary",
+        label: "",
+        percentText: 70,
+        nightText: "",
+        priceText: 10000,
+        priceStartText: "",
+        isCoupon: true,
+      },
+      description: "HotelFeaturedCard 컴포넌트의 가격을 표시합니다.",
+      table: {
+        type: {
+          summary: "object",
+        },
+      },
+      control: { type: "object" },
+    },
+    buttonName: {
+      defaultValue: "예약하기",
+      description: "OptionCard 컴포넌트의 benefitContent을 표시합니다.",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "text" },
+    },
   },
 } as Meta;
 
 export const Default = (props) => {
-  return <OptionCard {...props} />;
+  return (
+    <div style={{ margin: 40 }}>
+      <OptionCard {...props} />
+    </div>
+  );
 };

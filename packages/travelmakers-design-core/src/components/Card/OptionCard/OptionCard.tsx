@@ -3,16 +3,74 @@ import { forwardRef, PropsWithChildren } from "react";
 import { View } from "../../View";
 import useStyles from "./OptionCard.style";
 import { OptionCardProps, OptionCardComponent } from "./OptionCard.type";
+import { Tag } from "../../Tag";
+import { Typography } from "../../Typography";
+import { Button } from "../../Button";
+import { Icon } from "../../Icon";
+import { Price, PriceProps } from "../../Price";
 
 export interface Props {
-  // 컴포넌트 내에서 사용할 props 타입 정의
+  isMore?: boolean;
+
+  labels?: string[];
+
+  /** OptionCard 컴포넌트의 상단 Title Name을 표시합니다. */
+  headTitle: string;
+
+  /** OptionCard 컴포넌트의 하단 Title Name을 표시합니다. */
+  footerTitle: string;
+
+  /** OptionCard 컴포넌트의 optionName을 표사합니다. */
+  optionName: string;
+
+  /** OptionCard 컴포넌트의 Duration 표시여부를 판단합니다. */
+  isDuration?: boolean;
+
+  /** OptionCard 컴포넌트의 최소 -박(night)을 표사합니다. */
+  minNight?: number;
+
+  /** OptionCard 컴포넌트의 최대 -박(night)을 표사합니다. */
+  maxNight?: number;
+
+  /** OptionCard 컴포넌트의 roomType을 표사합니다. */
+  roomType?: string;
+
+  /** OptionCard 컴포넌트의 benefitContent을 표사합니다. */
+  benefitList: {
+    content: string;
+    only: boolean;
+    order: number;
+  }[];
+
+  price: PriceProps<"div">;
+
+  /** OptionCard 컴포넌트의 buttonName을 표시합니다. */
+  buttonName?: string;
+
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const OptionCard: OptionCardComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "div">(
-    { className, ...props }: PropsWithChildren<OptionCardProps<C>>,
+    {
+      isMore = true,
+      labels = [],
+      headTitle = "Room Type",
+      footerTitle = "Benefit",
+      optionName = "옵션 설명",
+      isDuration = true,
+      minNight,
+      maxNight,
+      roomType,
+      benefitList = [],
+      price,
+      buttonName = "예약하기",
+      onClick,
+      className,
+      ...props
+    }: PropsWithChildren<OptionCardProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
@@ -21,10 +79,90 @@ export const OptionCard: OptionCardComponent & {
       <View<React.ElementType>
         component={"div"}
         ref={ref}
-        className={cx(className, classes.container)}
+        className={cx(className, classes.card)}
         {...props}
       >
-        <div></div>
+        <div className={classes.container}>
+          <div className={classes.headerGroup}>
+            {labels.length > 0 && (
+              <Tag type="fill" style={{ marginBottom: 4 }}>
+                {labels?.map((label, index) => (
+                  <Tag.Item label={label} colorIdx={index} />
+                ))}
+              </Tag>
+            )}
+            <div>
+              <Typography level="display5" color="primary1" strong>
+                {optionName}
+              </Typography>
+              {isDuration && (
+                <Typography level="body2" color="onPrimaryContainer">
+                  ({minNight && `${minNight}박`} - {maxNight && `${maxNight}박`}
+                  )
+                </Typography>
+              )}
+            </div>
+          </div>
+
+          <div className={classes.groupBox}>
+            <Typography level="subhead2" color="primary1">
+              {headTitle}
+            </Typography>
+            <div className={classes.divider} />
+            <Typography level="body2" color="primary3">
+              {roomType}
+            </Typography>
+          </div>
+
+          {benefitList.length > 0 && (
+            <div className={classes.groupBox}>
+              <div className={classes.titleBox}>
+                <Typography level="subhead2" color="primary1">
+                  {footerTitle}
+                </Typography>
+                {isMore && (
+                  <Button
+                    variant="text"
+                    rightIcon={
+                      <Icon src="IcAngleRight" width={16} height={16} />
+                    }
+                  >
+                    더보기
+                  </Button>
+                )}
+              </div>
+              <div className={classes.divider} />
+              <ul>
+                {benefitList.map(({ content }) => {
+                  return (
+                    <Typography level="body2" color="primary1" component="li">
+                      {content}
+                    </Typography>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+
+          {price && (
+            <>
+              <div className={classes.divider} />
+              <div className={classes.priceBox}>
+                <Price {...price} type="secondary" label="정가" />
+                <Price {...price} type="primary" />
+              </div>
+            </>
+          )}
+        </div>
+
+        <Button
+          className={classes.submitButton}
+          size={"medium"}
+          fullWidth
+          onClick={onClick}
+        >
+          {buttonName}
+        </Button>
       </View>
     );
   }
