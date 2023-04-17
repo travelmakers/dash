@@ -50,58 +50,61 @@ export const TimeLineBanner: TimeLineBannerComponent & {
     const { classes, cx } = useStyles({ status, arrowHidden });
 
     return (
-      <View<React.ElementType>
-        component={"div"}
-        ref={ref}
-        className={cx(className, classes.root)}
-        {...props}
-      >
-        <div className={cx(classes.titleWrapper)}>
-          <Typography
-            family="Pretendard"
-            level="body2"
-            color={"white"}
-            className={cx(classes.textMaxLength)}
-          >
-            <div
-              dangerouslySetInnerHTML={{
-                __html: title,
-              }}
-            />
-            <div
-              dangerouslySetInnerHTML={{
-                __html: message,
-              }}
-            />
-          </Typography>
-        </div>
-        <div className={cx(classes.labelWrapper)}>
-          <Typography
-            className={cx(classes.labelText, classes.textMaxLength)}
-            family="Pretendard"
-            level="body1"
-            color={"white"}
-            strong
-          >
-            <div
-              dangerouslySetInnerHTML={{
-                __html: label,
-              }}
-            />
-          </Typography>
-          {!arrowHidden && (
-            <Icon
-              src="IcAngleRight"
-              color="white"
-              width={16}
-              height={16}
-              className={cx(classes.arrowImage)}
-            />
-          )}
-        </div>
-        <div className={cx(classes.imageOval)} />
+      <>
+        <View<React.ElementType>
+          component={"div"}
+          ref={ref}
+          className={cx(className, classes.root)}
+          onClick={onClick}
+          {...props}
+        >
+          <div className={cx(classes.titleWrapper)}>
+            <Typography
+              family="Pretendard"
+              level="body2"
+              color={"white"}
+              className={cx(classes.textMaxLength)}
+            >
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: title,
+                }}
+              />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: message,
+                }}
+              />
+            </Typography>
+          </div>
+          <div className={cx(classes.labelWrapper)}>
+            <Typography
+              className={cx(classes.labelText, classes.textMaxLength)}
+              family="Pretendard"
+              level="body1"
+              color={"white"}
+              strong
+            >
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: label,
+                }}
+              />
+            </Typography>
+            {!arrowHidden && (
+              <Icon
+                src="IcAngleRight"
+                color="white"
+                width={16}
+                height={16}
+                className={cx(classes.arrowImage)}
+              />
+            )}
+          </div>
+          <div className={cx(classes.imageOval)} />
+        </View>
         {props.children}
-      </View>
+      </>
     );
   }
 );
