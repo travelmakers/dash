@@ -5,21 +5,9 @@ export default {
   title: "@travelmakers-design-v2/core/General/Card/OptionCard",
   component: OptionCard,
   argTypes: {
-    href: {
-      defaultValue: "#",
-      description:
-        "HotelFeatureCard 컴포넌트를 클릭하여 이동할 경로를 설정합니다.",
-      table: {
-        type: {
-          summary: "string",
-        },
-      },
-      control: { type: "text" },
-    },
     labels: {
       defaultValue: ["레이블", "레이블", "레이블"],
-      description:
-        "HotelFeaturedCard 컴포넌트의 이미지내 상단 레이블을 표시합니다.",
+      description: "OptionCard 컴포넌트의 상단 레이블을 표시합니다.",
       table: {
         type: {
           summary: "array",
@@ -115,7 +103,7 @@ export default {
           order: 3,
         },
       ],
-      description: "HotelFeaturedCard 컴포넌트의 가격을 표시합니다.",
+      description: "OptionCard 컴포넌트의 benefitContent을 표사합니다.",
       table: {
         type: {
           summary: "array",
@@ -133,7 +121,7 @@ export default {
         priceStartText: "",
         isCoupon: true,
       },
-      description: "HotelFeaturedCard 컴포넌트의 가격을 표시합니다.",
+      description: "OptionCard 컴포넌트의 가격을 표시합니다.",
       table: {
         type: {
           summary: "object",
@@ -143,7 +131,7 @@ export default {
     },
     buttonName: {
       defaultValue: "예약하기",
-      description: "OptionCard 컴포넌트의 benefitContent을 표시합니다.",
+      description: "OptionCard 컴포넌트의 buttonName을 표시합니다.",
       table: {
         type: {
           summary: "string",
