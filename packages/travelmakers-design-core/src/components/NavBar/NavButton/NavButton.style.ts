@@ -11,7 +11,7 @@ export default createStyles((theme) => {
       color: colors.primary,
       backgroundColor: "transparent",
       border: 0,
-      outline: 0,
+      outline: "none",
       cursor: "pointer",
 
       [":not(:disabled)"]: {
