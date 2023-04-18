@@ -1,0 +1,22 @@
+import {
+  ClassNames,
+  PolymorphicComponentProps,
+  TmComponentProps,
+} from "@travelmakers-design-v2/styles";
+import { Props } from "./PriceCard";
+import useStyles from "./PriceCard.style";
+
+type PriceCardStylesNames = ClassNames<typeof useStyles>;
+
+interface SharedPriceCardProps
+  extends Props,
+    TmComponentProps<PriceCardStylesNames> {}
+
+export type PriceCardProps<C extends React.ElementType> =
+  PolymorphicComponentProps<C, SharedPriceCardProps>;
+
+export type PriceCardComponent = <C extends React.ElementType = "div">(
+  props: PriceCardProps<C>
+) => React.ReactElement;
+
+export type StatusType = "active" | "disabled";

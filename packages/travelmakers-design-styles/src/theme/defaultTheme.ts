@@ -35,7 +35,7 @@ export const defaultFontStyles = (theme: TmTheme) => {
   return {
     WebkitFontSmoothing: "antialiased",
     MozOsxFontSmoothing: "grayscale",
-    fontFamily: theme.fontFamily || "sans-serif",
+    fontFamily: theme.fontFamily || "sans-serif" || "Noto Serif KR",
   };
 };
 

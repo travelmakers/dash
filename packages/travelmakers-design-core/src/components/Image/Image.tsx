@@ -22,7 +22,8 @@ export const Image: ImageComponent & {
     ref: PolymorphicRef<C>
   ) => {
     const [load, setLoad] = useState(false);
-    const { classes, cx } = useStyles();
+    const [error, setError] = useState(false);
+    const { classes, cx } = useStyles({ load, error });
 
     return (
       <>
@@ -31,18 +32,34 @@ export const Image: ImageComponent & {
           src={src}
           alt={alt}
           loading={lazy ? "lazy" : "eager"}
-          className={cx(className, !load && classes.loading)}
+          decoding={lazy ? "async" : "auto"}
+          className={cx(className, classes.image)}
           onLoad={() => setLoad(true)}
           onError={(e) => {
             setLoad(true);
-            e.currentTarget.src = require("./img/error.png");
+            setError(true);
           }}
           {...props}
         />
+
+        {/* NOTE: 로딩중... */}
         {!load && (
           <img
             loading={lazy ? "lazy" : "eager"}
+            decoding={lazy ? "async" : "auto"}
+            className={cx(className, classes.loading)}
             src={require("./img/loading.png")}
+            {...props}
+          />
+        )}
+
+        {/* NOTE: 에러이미지... */}
+        {error && (
+          <img
+            loading={lazy ? "lazy" : "eager"}
+            decoding={lazy ? "async" : "auto"}
+            className={cx(className, classes.loading)}
+            src={require("./img/error.png")}
             {...props}
           />
         )}

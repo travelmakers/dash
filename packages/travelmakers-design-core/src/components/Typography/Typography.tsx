@@ -38,7 +38,7 @@ export type Props = {
   underline?: boolean;
 
   /** Text가 컴포넌트의 색상을 정합니다. */
-  color?: TmColor | string;
+  color?: TmColor;
 
   /** mobile일 경우의 Typography 컴포넌트의 크기를 지정합니다. */
   mobileLevel?: TmFontSize;

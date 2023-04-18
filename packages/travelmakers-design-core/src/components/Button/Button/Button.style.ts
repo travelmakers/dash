@@ -12,7 +12,7 @@ export default createStyles(
       root: {
         width: fullWidth && "100%",
         height: TM_HEIGHTS[size],
-        padding: `0 ${spacing.spacing50}`,
+        padding: isNonBoxShadow ? 0 : `0 ${spacing.spacing50}`,
         borderRadius: roundness ? radius.radius100 : radius.radius20,
         cursor: "pointer",
       },
