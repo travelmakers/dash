@@ -1,5 +1,4 @@
 import { createStyles } from "@travelmakers-design-v2/styles";
-// import { Props } from "./OptionCard";
 
 export default createStyles((theme) => {
   return {

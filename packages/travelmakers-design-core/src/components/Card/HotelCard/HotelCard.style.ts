@@ -17,6 +17,7 @@ export default createStyles(
         display: "inline-block",
         boxShadow: theme.shadows.elevation2,
         borderRadius: theme.radius.radius20,
+        overflow: "hidden",
         ["& > a"]: {
           textDecoration: "none",
         },
@@ -26,7 +27,6 @@ export default createStyles(
         overflow: "hidden",
         display: "flex",
         justifyContent: "center",
-        borderRadius: `${theme.radius.radius20} ${theme.radius.radius20} 0 0`,
         alignItems: "end",
         height: "183px",
         ["& > img"]: {
@@ -54,7 +54,6 @@ export default createStyles(
         display: "flex",
         flexDirection: "column",
         overflowY: "hidden",
-        ["&::hover"]: {},
       },
       contentScroll: {
         position: "absolute",

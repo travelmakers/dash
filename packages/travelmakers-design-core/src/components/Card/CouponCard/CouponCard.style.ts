@@ -22,6 +22,7 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       height: "142px",
       backgroundColor: theme.colors.primary99,
       borderRadius: theme.radius.radius20,
+      overflow: "hidden",
       display: "flex",
     },
     leftBox: {
@@ -30,7 +31,6 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       display: "flex",
       flexDirection: "column",
       padding: theme.spacing.spacing10,
-      borderRadius: `${theme.radius.radius20} 0 0 ${theme.radius.radius20}`,
     },
     rightBox: {
       width: "100%",

@@ -5,6 +5,7 @@ import {
 } from "@travelmakers-design-v2/styles";
 import { Props } from "./HotelTitleCard";
 import useStyles from "./HotelTitleCard.style";
+import { HotelType } from "../../../types/hotelType.type";
 
 type HotelTitleCardStylesNames = ClassNames<typeof useStyles>;
 
@@ -18,8 +19,6 @@ export type HotelTitleCardProps<C extends React.ElementType> =
 export type HotelTitleCardComponent = <C extends React.ElementType = "div">(
   props: HotelTitleCardProps<C>
 ) => React.ReactElement;
-
-export type HotelType = "minihotel" | "residence";
 
 export interface HotelTitleCardType1 {
   type: "grade";

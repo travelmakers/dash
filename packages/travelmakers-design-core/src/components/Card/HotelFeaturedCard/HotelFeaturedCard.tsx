@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
 import useStyles from "./HotelFeaturedCard.style";
 import {
   HotelFeaturedCardProps,
@@ -12,10 +12,10 @@ import { Image } from "../../Image";
 import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { GradeBadge } from "../../Badge";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 
 export interface Props {
-  href: string;
+  href: LinkProps["href"];
 
   /** HotelFeatureCard 컴포넌트의 호텔타입을 정합니다. */
   type: HotelFeatureType["type"];
@@ -54,7 +54,7 @@ export const HotelFeaturedCard: HotelFeaturedCardComponent & {
       price,
       className,
       ...props
-    }: PropsWithChildren<HotelFeaturedCardProps<C>>,
+    }: HotelFeaturedCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();

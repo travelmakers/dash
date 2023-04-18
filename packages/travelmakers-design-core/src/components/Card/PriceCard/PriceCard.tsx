@@ -1,5 +1,5 @@
 import { PolymorphicRef, TmColor } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./PriceCard.style";
 import {
@@ -28,14 +28,7 @@ export const PriceCard: PriceCardComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "div">(
-    {
-      status,
-      name,
-      description,
-      tag,
-      className,
-      ...props
-    }: PropsWithChildren<PriceCardProps<C>>,
+    { status, name, description, tag, className, ...props }: PriceCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({ status });

@@ -31,7 +31,6 @@ export default createStyles(
         display: "flex",
         alignItems: !isLabel && "flex-end !important",
       },
-      footer: {},
       textBreak: {
         overflow: "hidden",
         textOverflow: "ellipsis",

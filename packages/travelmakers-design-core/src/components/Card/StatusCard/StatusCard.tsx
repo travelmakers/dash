@@ -136,7 +136,7 @@ export const StatusCard: StatusCardComponent & {
                 family="Pretendard"
                 level="body3"
                 color={"primary1"}
-                className={cx(classes.footer, classes.textRoomBreak)}
+                className={cx(classes.textRoomBreak)}
               >
                 {roomType}
               </Typography>

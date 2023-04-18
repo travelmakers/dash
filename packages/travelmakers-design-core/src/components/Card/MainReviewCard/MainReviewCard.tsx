@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./MainReviewCard.style";
 import {
@@ -20,14 +20,7 @@ export const MainReviewCard: MainReviewCardComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "div">(
-    {
-      src,
-      title,
-      job,
-      content,
-      className,
-      ...props
-    }: PropsWithChildren<MainReviewCardProps<C>>,
+    { src, title, job, content, className, ...props }: MainReviewCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();

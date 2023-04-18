@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren, useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { View } from "../../View";
 import useStyles from "./HotelCard.style";
 import {
@@ -13,7 +13,7 @@ import { GradeBadge } from "../../Badge";
 import { IconTag } from "../../Tag";
 import { PriceCard, PriceCardProps } from "../PriceCard";
 import { Icon } from "../../Icon";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 
 export interface Props {
   /** HotelCard 컴포넌트의 호텔명을 표시합니다. */
@@ -32,7 +32,7 @@ export interface Props {
   src?: string;
 
   /** HotelCard 컴포넌트를 클릭하여 이동할 경로를 설정합니다. */
-  href: string;
+  href: LinkProps["href"];
 
   /** HotelCard 컴포넌트의 레이블을 표시합니다. */
   price?: PriceCardProps<"div">[];
@@ -60,7 +60,7 @@ export const HotelCard: HotelCardComponent & {
       disabled = false,
       className,
       ...props
-    }: PropsWithChildren<HotelCardProps<C>>,
+    }: HotelCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const INIT_PAGE = 0;
@@ -76,56 +76,50 @@ export const HotelCard: HotelCardComponent & {
       rightArrowHover,
     });
 
-    function getArrowClick(arrow: "left" | "right") {
-      switch (arrow) {
-        case "left":
-          if (page > INIT_PAGE) {
-            const currentContent = contentRef.current?.[page - 1];
-            let pageMove = 2;
-            if (!currentContent || page - 1 === 0) {
-              pageMove = 1;
-              setLeftArrowHover(false);
-              setRightArrowHover(true);
-            } else {
-              setLeftArrowHover(true);
-              setRightArrowHover(true);
-            }
+    function arrowClickHandler(arrow: "left" | "right") {
+      const isLeftArrow = arrow === "left";
+      const pageMove = calculatePageMove(isLeftArrow);
+      const newPage = isLeftArrow ? page - pageMove : page + pageMove;
 
-            setPage((prev) => prev - pageMove);
-            contentRef.current?.[page - pageMove]?.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-          }
-          break;
-
-        default:
-          if (page < MAX_COUNT) {
-            const currentContent = contentRef.current?.[page + 2];
-            let pageMove = 2;
-            if (!currentContent) {
-              pageMove = 1;
-            } else if (page === 0) {
-              pageMove = 3;
-            }
-            if (page + pageMove >= MAX_COUNT) {
-              setRightArrowHover(false);
-              setLeftArrowHover(true);
-            } else {
-              setLeftArrowHover(true);
-              setRightArrowHover(true);
-            }
-
-            setPage((prev) => prev + pageMove);
-            contentRef.current?.[page + pageMove]?.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-          }
-          break;
+      if (pageMove !== 0) {
+        arrowHover(isLeftArrow, newPage);
+        setPage(newPage);
+        moveScroll(newPage);
       }
     }
 
+    function arrowHover(isLeftArrow: boolean, newPage: number) {
+      if (isLeftArrow) {
+        setLeftArrowHover(newPage > INIT_PAGE);
+        setRightArrowHover(true);
+      } else {
+        setLeftArrowHover(true);
+        setRightArrowHover(newPage < MAX_COUNT);
+      }
+    }
+
+    function calculatePageMove(isLeftArrow: boolean) {
+      const defaultPageMove = 2;
+
+      if (isLeftArrow) {
+        if (page <= INIT_PAGE) return 0;
+
+        const currentContent = contentRef.current?.[page - 1];
+        return !currentContent || page - 1 === 0 ? 1 : defaultPageMove;
+      } else {
+        if (page >= MAX_COUNT) return 0;
+
+        const currentContent = contentRef.current?.[page + defaultPageMove];
+        return !currentContent ? 1 : page === 0 ? 3 : defaultPageMove;
+      }
+    }
+
+    function moveScroll(newPage: number) {
+      contentRef.current?.[newPage].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
     return (
       <View<React.ElementType>
         component={"div"}
@@ -198,7 +192,7 @@ export const HotelCard: HotelCardComponent & {
                 className={cx(classes.contentScroll, classes.contentScrollLeft)}
                 onClick={(e) => {
                   e.preventDefault();
-                  getArrowClick("left");
+                  arrowClickHandler("left");
                 }}
               >
                 <Icon src="IcAngleLeft" width={16} height={16} />
@@ -211,7 +205,7 @@ export const HotelCard: HotelCardComponent & {
                 )}
                 onClick={(e) => {
                   e.preventDefault();
-                  getArrowClick("right");
+                  arrowClickHandler("right");
                 }}
               >
                 <Icon src="IcAngleRight" width={16} height={16} />

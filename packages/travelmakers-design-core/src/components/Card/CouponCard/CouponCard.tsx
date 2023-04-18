@@ -1,5 +1,5 @@
 import { PolymorphicRef, useTmTheme } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./CouponCard.style";
 import { CouponCardProps, CouponCardComponent } from "./CouponCard.type";
@@ -47,7 +47,7 @@ export const CouponCard: CouponCardComponent & {
       content,
       className,
       ...props
-    }: PropsWithChildren<CouponCardProps<C>>,
+    }: CouponCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({ type });

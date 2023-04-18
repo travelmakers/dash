@@ -1,5 +1,4 @@
 import { createStyles } from "@travelmakers-design-v2/styles";
-// import { Props } from "./HotelReviewCard";
 
 export default createStyles((theme) => {
   return {

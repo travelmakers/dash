@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./HotelTitleCard.style";
 import {
@@ -46,7 +46,7 @@ export const HotelTitleCard: HotelTitleCardComponent & {
       price,
       className,
       ...props
-    }: PropsWithChildren<HotelTitleCardProps<C>>,
+    }: HotelTitleCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();

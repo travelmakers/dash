@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./OptionCard.style";
 import { OptionCardProps, OptionCardComponent } from "./OptionCard.type";
@@ -70,7 +70,7 @@ export const OptionCard: OptionCardComponent & {
       onClick,
       className,
       ...props
-    }: PropsWithChildren<OptionCardProps<C>>,
+    }: OptionCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();

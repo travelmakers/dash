@@ -1,19 +1,19 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./HotelReviewCard.style";
 import {
   HotelReviewCardProps,
   HotelReviewCardComponent,
 } from "./HotelReviewCard.type";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import { Typography } from "../../Typography";
 import { Tag } from "../../Tag";
 import { Image } from "../../Image";
 import { Icon } from "../../Icon";
 
 export interface Props {
-  href: string;
+  href: LinkProps["href"];
   src?: string;
   /** HotelFeatureCard 컴포넌트의 이미지 부분에 표시되는 레이블을 표시합니다. */
   labels?: string[];
@@ -38,7 +38,7 @@ export const HotelReviewCard: HotelReviewCardComponent & {
       product,
       className,
       ...props
-    }: PropsWithChildren<HotelReviewCardProps<C>>,
+    }: HotelReviewCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
