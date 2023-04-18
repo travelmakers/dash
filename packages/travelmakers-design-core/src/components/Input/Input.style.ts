@@ -22,14 +22,14 @@ export default createStyles(
     theme,
     { subfix, isError }: { subfix?: Props["subfix"]; isError: Props["isError"] }
   ) => {
-    const { typography, colors, spacing } = theme;
+    const { typography, colors, spacing, radius } = theme;
 
     return {
       root: {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
-        rowGap: "4px",
+        rowGap: spacing.spacing5,
       },
       focus: {
         border: `1px solid ${getBorderColor(colors, isError, colors.primary)}`,
@@ -45,7 +45,7 @@ export default createStyles(
         minHeight: "44px",
         padding: `0 ${spacing.spacing30}`,
         border: `1px solid ${getBorderColor(colors, isError, colors.outline)}`,
-        borderRadius: spacing.spacing10,
+        borderRadius: radius.radius20,
         overflow: "hidden",
       },
       input: {
