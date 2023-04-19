@@ -9,6 +9,7 @@ export interface Props extends React.HTMLAttributes<HTMLTextAreaElement> {
   feedback?: string;
   value?: string;
   placeholder?: string;
+  autoComplete?: HTMLTextAreaElement["autocomplete"];
   onChange?: () => void;
 }
 
@@ -23,6 +24,7 @@ export const TextArea: TextAreaComponent & {
       feedback,
       value = "",
       placeholder = "정보를 입력해주세요.",
+      autoComplete = "off",
       onChange,
       className,
       ...props
@@ -48,6 +50,7 @@ export const TextArea: TextAreaComponent & {
           className={cx(classes.textArea, className)}
           value={textAreaValue}
           placeholder={placeholder}
+          autoComplete={autoComplete}
           onChange={(e) => {
             setTextAreaValue(e.target.value);
             onChange && onChange();

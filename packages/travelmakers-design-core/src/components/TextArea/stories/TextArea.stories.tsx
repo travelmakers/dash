@@ -63,6 +63,19 @@ export default {
         },
       },
     },
+    autoComplete: {
+      control: {
+        type: "radio",
+        options: ["on", "off"],
+      },
+      defaultValue: "off",
+      description: "textarea autoComplete",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+    },
   },
 } as Meta;
 
