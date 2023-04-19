@@ -36,6 +36,7 @@ export default createStyles(
       },
       disabled: {
         backgroundColor: colors.surface,
+        userSelect: "none",
       },
       container: {
         display: "flex",

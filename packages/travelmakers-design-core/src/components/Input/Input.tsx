@@ -60,9 +60,10 @@ export const Input: InputComponent & {
           <div
             className={cx(
               classes.container,
-              isFocus && classes.focus,
-              props.disabled && classes.disabled
+              { [classes.focus]: isFocus },
+              { [classes.disabled]: props.disabled }
             )}
+            aria-readonly={props.disabled}
           >
             <View<React.ElementType>
               component={"input"}
@@ -78,7 +79,9 @@ export const Input: InputComponent & {
               value={inputValue}
               {...props}
             />
-            <div className={classes.subfix}>{subfix}</div>
+            <div className={classes.subfix} aria-readonly={props.disabled}>
+              {subfix}
+            </div>
           </div>
         );
       }
@@ -96,6 +99,7 @@ export const Input: InputComponent & {
           onBlur={onBlur}
           onChange={onChangeHandler}
           value={inputValue}
+          aria-readonly={props.disabled}
           {...props}
         />
       );

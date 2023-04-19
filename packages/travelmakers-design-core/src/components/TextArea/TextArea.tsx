@@ -53,6 +53,7 @@ export const TextArea: TextAreaComponent & {
           placeholder={placeholder}
           autoComplete={autoComplete || "off"}
           onChange={onChangeHandler}
+          aria-readonly={props.disabled}
           {...props}
         />
         {feedback && <strong className={classes.feedback}>{feedback}</strong>}

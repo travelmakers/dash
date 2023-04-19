@@ -85,6 +85,7 @@ export const Search: SearchComponent & {
           onChange={onChangeHandler}
           value={inputValue}
           autoComplete={autoComplete ?? "off"}
+          aria-readonly={props.disabled}
           {...props}
         />
         {isVisibleResetBtn && (
