@@ -1,5 +1,14 @@
 import { useEffect, useReducer } from "react";
+import {
+  getDays,
+  createEvents,
+  addEvent,
+  removeEvent,
+} from "./useCalendar.date";
 import * as actionTypes from "./useCalendar.type";
+import { addDays, format } from "date-fns";
+import { CalendarState } from "./useCalendar.type";
+import { ko } from "date-fns/locale";
 
 const initialState = {
   startDate: null,
@@ -12,11 +21,15 @@ const initialState = {
     numOfWeeks: 6,
     numOfDays: 7,
     rtl: false,
-    locale: undefined,
+    locale: ko,
   },
 };
-// https://github.com/gregnb/react-use-calendar/blob/master/src/date.js
-function reducer(state, action) {
+
+function dateDep(date) {
+  return date ? format(date, "yyyy-MM-dd") : null;
+}
+
+function reducer(state, action): CalendarState {
   switch (action.type) {
     case actionTypes.SET_OPTIONS:
       return {
@@ -39,8 +52,47 @@ function reducer(state, action) {
   }
 }
 
-export function useCalendar() {
-  const [state, dispatch] = useReducer(reducer, initialState, () =>
-    initialize(date || new Date(), options)
-  );
+function initialize(date, options) {
+  const events = {
+    ...initialState,
+    ...createEvents(options, initialState),
+    options: { ...initialState.options, ...options },
+  };
+  return {
+    ...events,
+    ...getDays(date, events),
+  };
 }
+
+function useCalendar(
+  date: Date,
+  options?: {
+    events: {
+      startDate: Date;
+      endDate: Date;
+      note: string;
+    }[];
+  }
+) {
+  const [state, dispatch] = useReducer(reducer, initialState, () =>
+    initialize(date || new Date(), options || {})
+  );
+  const { days, weeks, month, year, events } = state;
+
+  useEffect(() => {
+    return () => dispatch({ type: actionTypes.SET_DATE, date });
+  }, [dateDep(date)]);
+
+  return [
+    { days, weeks, month, year, events },
+    {
+      setDate: (date) => dispatch({ date, type: actionTypes.SET_DATE }),
+      getNextMonth: () => dispatch({ type: actionTypes.GET_NEXT_MONTH }),
+      getPrevMonth: () => dispatch({ type: actionTypes.GET_PREV_MONTH }),
+      addEvent: (event) => dispatch({ event, type: actionTypes.ADD_EVENT }),
+      removeEvent: (id) => dispatch({ id, type: actionTypes.REMOVE_EVENT }),
+    },
+  ];
+}
+
+export default useCalendar;
