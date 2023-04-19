@@ -8,6 +8,7 @@ export interface Props extends React.HTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   feedback?: string;
   value?: string;
+  placeholder?: string;
   onChange?: () => void;
 }
 
@@ -21,6 +22,7 @@ export const TextArea: TextAreaComponent & {
       label,
       feedback,
       value = "",
+      placeholder = "정보를 입력해주세요.",
       onChange,
       className,
       ...props
@@ -45,6 +47,7 @@ export const TextArea: TextAreaComponent & {
           ref={ref}
           className={cx(classes.textArea, className)}
           value={textAreaValue}
+          placeholder={placeholder}
           onChange={(e) => {
             setTextAreaValue(e.target.value);
             onChange && onChange();
