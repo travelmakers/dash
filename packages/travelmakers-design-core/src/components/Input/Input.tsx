@@ -39,6 +39,16 @@ export const Input: InputComponent & {
     const [id] = useState(() => String(defaultId++));
     const elementId = `tm-input-${id}`;
 
+    const onClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
+      setIsFocus(true);
+      onClick && onClick(e);
+    };
+
+    const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocus(false);
+      onBlur && onBlur(e);
+    };
+
     const inputContent = () => {
       if (subfix) {
         return (
@@ -57,14 +67,8 @@ export const Input: InputComponent & {
               ref={ref}
               placeholder={placeholder}
               autoComplete={autoComplete}
-              onClick={(e: React.MouseEvent<HTMLInputElement>) => {
-                setIsFocus(true);
-                onClick && onClick(e);
-              }}
-              onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
-                setIsFocus(false);
-                onBlur && onBlur(e);
-              }}
+              onClick={onClickHandler}
+              onBlur={onBlurHandler}
               {...props}
             />
             <div className={classes.subfix}>{subfix}</div>

@@ -37,6 +37,11 @@ export const TextArea: TextAreaComponent & {
     const [id] = useState(() => String(defaultId++));
     const elementId = `tm-textarea-${id}`;
 
+    const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setTextAreaValue(e.target.value);
+      onChange && onChange(e);
+    };
+
     return (
       <div className={classes.root}>
         {label && (
@@ -51,10 +56,7 @@ export const TextArea: TextAreaComponent & {
           value={textAreaValue}
           placeholder={placeholder}
           autoComplete={autoComplete}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-            setTextAreaValue(e.target.value);
-            onChange && onChange(e);
-          }}
+          onChange={onChangeHandler}
           {...props}
         />
         {feedback && <strong className={classes.feedback}>{feedback}</strong>}
