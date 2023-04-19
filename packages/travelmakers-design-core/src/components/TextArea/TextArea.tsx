@@ -10,7 +10,7 @@ export interface Props extends React.HTMLAttributes<HTMLTextAreaElement> {
   value?: string;
   placeholder?: string;
   autoComplete?: HTMLTextAreaElement["autocomplete"];
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 let defaultId = 0;
@@ -51,9 +51,9 @@ export const TextArea: TextAreaComponent & {
           value={textAreaValue}
           placeholder={placeholder}
           autoComplete={autoComplete}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
             setTextAreaValue(e.target.value);
-            onChange && onChange();
+            onChange && onChange(e);
           }}
           {...props}
         />

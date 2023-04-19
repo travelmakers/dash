@@ -10,8 +10,8 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   subfix?: string | number;
   autoComplete?: HTMLInputElement["autocomplete"];
   isError?: boolean;
-  onClick?: () => void;
-  onBlur?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 let defaultId = 0;
@@ -57,13 +57,13 @@ export const Input: InputComponent & {
               ref={ref}
               placeholder={placeholder}
               autoComplete={autoComplete}
-              onClick={() => {
+              onClick={(e: React.MouseEvent<HTMLInputElement>) => {
                 setIsFocus(true);
-                onClick && onClick();
+                onClick && onClick(e);
               }}
-              onBlur={() => {
+              onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
                 setIsFocus(false);
-                onBlur && onBlur();
+                onBlur && onBlur(e);
               }}
               {...props}
             />
