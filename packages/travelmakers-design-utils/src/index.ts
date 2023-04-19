@@ -7,4 +7,3 @@ export * from "./getTimeLineStateFunc";
 export * from "./getCurrencyNumber";
 export * from "./utils/getCountDown";
 export * from "./utils/getRemainingTime";
-export * from "./utils/getTimeStamp";
