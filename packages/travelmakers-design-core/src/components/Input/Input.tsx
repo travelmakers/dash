@@ -2,16 +2,13 @@ import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef, useState } from "react";
 import { View } from "../View";
 import useStyles from "./Input.style";
-import { InputProps, InputComponent } from "./Input.type";
+import { InputComponent, InputProps } from "./Input.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   label?: string;
-  feedback?: string;
   subfix?: string | number;
-  autoComplete?: HTMLInputElement["autocomplete"];
+  feedback?: string;
   isError?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 let defaultId = 0;
@@ -22,20 +19,23 @@ export const Input: InputComponent & {
   <C extends React.ElementType = "input">(
     {
       label,
-      placeholder = "정보를 입력해주세요.",
-      feedback,
       subfix,
+      feedback,
       isError = null,
-      autoComplete = "off",
+      value,
+      placeholder = "정보를 입력해주세요.",
+      autoComplete,
       onClick,
       onBlur,
+      onChange,
       className,
       ...props
     }: InputProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const { classes, cx } = useStyles({ subfix, isError });
+    const [inputValue, setInputValue] = useState(value ?? "");
     const [isFocus, setIsFocus] = useState(false);
+    const { classes, cx } = useStyles({ subfix, isError });
     const [id] = useState(() => String(defaultId++));
     const elementId = `tm-input-${id}`;
 
@@ -47,6 +47,11 @@ export const Input: InputComponent & {
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
       setIsFocus(false);
       onBlur && onBlur(e);
+    };
+
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
+      onChange && onChange(e);
     };
 
     const inputContent = () => {
@@ -66,9 +71,11 @@ export const Input: InputComponent & {
               type={"text"}
               ref={ref}
               placeholder={placeholder}
-              autoComplete={autoComplete}
+              autoComplete={autoComplete ?? "off"}
               onClick={onClickHandler}
               onBlur={onBlurHandler}
+              onChange={onChangeHandler}
+              value={inputValue}
               {...props}
             />
             <div className={classes.subfix}>{subfix}</div>
@@ -84,9 +91,11 @@ export const Input: InputComponent & {
           type={"text"}
           ref={ref}
           placeholder={placeholder}
-          autoComplete={autoComplete}
+          autoComplete={autoComplete ?? "off"}
           onClick={onClick}
           onBlur={onBlur}
+          onChange={onChangeHandler}
+          value={inputValue}
           {...props}
         />
       );

@@ -16,30 +16,6 @@ export default {
         },
       },
     },
-    placeholder: {
-      control: {
-        type: "text",
-      },
-      defaultValue: "정보를 입력해주세요.",
-      description: "textarea placeholder",
-      table: {
-        type: {
-          summary: "string",
-        },
-      },
-    },
-    value: {
-      control: {
-        type: "text",
-      },
-      defaultValue: "",
-      description: "textarea value",
-      table: {
-        type: {
-          summary: "string",
-        },
-      },
-    },
     feedback: {
       control: {
         type: "text",
@@ -56,23 +32,10 @@ export default {
         type: "boolean",
       },
       defaultValue: false,
-      description: "textarea disabled",
+      description: "textarea Disabled 여부",
       table: {
         type: {
           summary: "boolean",
-        },
-      },
-    },
-    autoComplete: {
-      control: {
-        type: "radio",
-        options: ["on", "off"],
-      },
-      defaultValue: "off",
-      description: "textarea autoComplete",
-      table: {
-        type: {
-          summary: "string",
         },
       },
     },

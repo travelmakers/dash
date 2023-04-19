@@ -16,15 +16,14 @@ export default {
         },
       },
     },
-    placeholder: {
+    subfix: {
       control: {
         type: "text",
       },
-      defaultValue: "정보를 입력해주세요.",
-      description: "input placeholder",
+      description: "input 사용 시 인증 시간,결과 등을 나타냅니다.",
       table: {
         type: {
-          summary: "string",
+          summary: ["string", "number"],
         },
       },
     },
@@ -36,17 +35,6 @@ export default {
       table: {
         type: {
           summary: "string",
-        },
-      },
-    },
-    subfix: {
-      control: {
-        type: "text",
-      },
-      description: "input 사용 시 인증 시간,결과 등을 나타냅니다.",
-      table: {
-        type: {
-          summary: ["string", "number"],
         },
       },
     },
@@ -67,23 +55,10 @@ export default {
         type: "boolean",
       },
       defaultValue: false,
-      description: "input disabled",
+      description: "input Disabled 여부",
       table: {
         type: {
           summary: "boolean",
-        },
-      },
-    },
-    autoComplete: {
-      control: {
-        type: "radio",
-        options: ["on", "off"],
-      },
-      defaultValue: "off",
-      description: "input autoComplete",
-      table: {
-        type: {
-          summary: "string",
         },
       },
     },

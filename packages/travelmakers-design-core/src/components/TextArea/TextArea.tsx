@@ -2,15 +2,11 @@ import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef, useState } from "react";
 import { View } from "../View";
 import useStyles from "./TextArea.style";
-import { TextAreaProps, TextAreaComponent } from "./TextArea.type";
+import { TextAreaComponent, TextAreaProps } from "./TextArea.type";
 
 export interface Props extends React.HTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   feedback?: string;
-  value?: string;
-  placeholder?: string;
-  autoComplete?: HTMLTextAreaElement["autocomplete"];
-  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 let defaultId = 0;
@@ -22,16 +18,16 @@ export const TextArea: TextAreaComponent & {
     {
       label,
       feedback,
-      value = "",
+      value,
       placeholder = "정보를 입력해주세요.",
-      autoComplete = "off",
+      autoComplete,
       onChange,
       className,
       ...props
     }: TextAreaProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const [textAreaValue, setTextAreaValue] = useState(value);
+    const [textAreaValue, setTextAreaValue] = useState(value ?? "");
     const isFilled = textAreaValue;
     const { classes, cx } = useStyles({ isFilled });
     const [id] = useState(() => String(defaultId++));
@@ -55,7 +51,7 @@ export const TextArea: TextAreaComponent & {
           className={cx(classes.textArea, className)}
           value={textAreaValue}
           placeholder={placeholder}
-          autoComplete={autoComplete}
+          autoComplete={autoComplete || "off"}
           onChange={onChangeHandler}
           {...props}
         />
