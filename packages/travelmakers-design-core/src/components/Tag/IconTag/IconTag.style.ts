@@ -9,6 +9,7 @@ const getStyle = (theme: TmTheme, type: TagItemType) => {
     case "fill":
       return {
         backgroundColor: colors.secondaryContainer,
+        border: `1px solid ${colors.secondaryContainer}`,
       };
     case "line":
       return {
