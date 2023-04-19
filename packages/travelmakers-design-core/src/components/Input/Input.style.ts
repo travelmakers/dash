@@ -53,7 +53,7 @@ export default createStyles(
         padding: 0,
         color: colors.primary2,
         border: 0,
-        outline: "none",
+        outline: 0,
         width: subfix ? "100%" : "auto",
 
         ["&::placeholder"]: {

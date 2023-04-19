@@ -18,7 +18,7 @@ export default createStyles((theme, { isFilled }: { isFilled: string }) => {
       color: colors.primary2,
       border: `1px solid ${isFilled ? colors.primary3 : colors.outline}`,
       borderRadius: radius.radius20,
-      outline: "none",
+      outline: 0,
       resize: "none",
 
       ["&::placeholder"]: {
