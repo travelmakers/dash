@@ -39,7 +39,7 @@ export const TextArea: TextAreaComponent & {
     };
 
     return (
-      <div className={classes.root}>
+      <div className={cx(classes.root, className)}>
         {label && (
           <label className={classes.label} htmlFor={elementId}>
             {label}
@@ -48,7 +48,7 @@ export const TextArea: TextAreaComponent & {
         <View<React.ElementType>
           component={"textarea"}
           ref={ref}
-          className={cx(classes.textArea, className)}
+          className={classes.textArea}
           value={textAreaValue}
           placeholder={placeholder}
           autoComplete={autoComplete || "off"}

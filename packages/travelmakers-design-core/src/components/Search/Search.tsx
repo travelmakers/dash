@@ -69,7 +69,13 @@ export const Search: SearchComponent & {
     return (
       <form
         ref={formRef}
-        className={cx(classes.form, { [classes.disabled]: props.disabled })}
+        className={cx(
+          classes.form,
+          {
+            [classes.disabled]: props.disabled,
+          },
+          className
+        )}
         onSubmit={onSubmitHandler}
         onReset={onResetHandler}
       >
@@ -78,7 +84,7 @@ export const Search: SearchComponent & {
           component={"input"}
           type={"search"}
           ref={ref}
-          className={cx(classes.input, className)}
+          className={cx(classes.input)}
           placeholder={placeholder}
           onClick={onClickHandler}
           onBlur={onBlurHandler}
