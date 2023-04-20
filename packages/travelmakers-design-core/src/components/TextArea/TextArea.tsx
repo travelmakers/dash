@@ -35,7 +35,7 @@ export const TextArea: TextAreaComponent & {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setTextAreaValue(e.target.value);
-      onChange && onChange(e);
+      onChange?.(e);
     };
 
     return (

@@ -41,17 +41,17 @@ export const Input: InputComponent & {
 
     const onClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
       setIsFocus(true);
-      onClick && onClick(e);
+      onClick?.(e);
     };
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
       setIsFocus(false);
-      onBlur && onBlur(e);
+      onBlur?.(e);
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
-      onChange && onChange(e);
+      onChange?.(e);
     };
 
     const inputContent = () => {

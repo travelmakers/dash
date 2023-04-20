@@ -41,29 +41,29 @@ export const Search: SearchComponent & {
       e.preventDefault();
 
       formRef.current.reset();
-      formSubmit && formSubmit(e);
+      formSubmit?.(e);
     };
 
     const onResetHandler = (e: React.FormEvent<HTMLFormElement>) => {
       setInputValue("");
 
-      formReset && formReset(e);
+      formReset?.(e);
     };
 
     const onClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
       setIsFocus(true);
-      onClick && onClick(e);
+      onClick?.(e);
     };
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
       setIsFocus(false);
-      onBlur && onBlur(e);
+      onBlur?.(e);
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
 
-      onChange && onChange(e);
+      onChange?.(e);
     };
 
     return (
