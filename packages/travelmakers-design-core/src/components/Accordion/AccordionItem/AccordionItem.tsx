@@ -26,7 +26,7 @@ export const AccordionItem = ({
 
   const handleClick = () => {
     setIsCollapse((isOpen) => !isOpen);
-    handleHeader && handleHeader();
+    handleHeader?.();
   };
 
   return (
