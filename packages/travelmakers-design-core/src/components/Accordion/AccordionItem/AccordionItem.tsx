@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Divider } from "../../Divider";
 import { Icon } from "../../Icon";
 import { AccordionContext } from "../Accordion/Accordion";
 import useStyles from "./AccordionItem.style";
@@ -40,7 +41,12 @@ export const AccordionItem = ({
         />
       </dt>
       <dd className={classes.detail}>
-        <div className={classes.divider} />
+        <Divider
+          className={classes.divider}
+          type={"horizontal"}
+          color={"outline"}
+          width="auto"
+        />
         <p className={classes.content}>{content}</p>
       </dd>
     </div>

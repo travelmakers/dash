@@ -1,16 +1,17 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
+import { Divider } from "../../Divider";
+import { Icon } from "../../Icon";
+import { Image } from "../../Image";
+import { Tag } from "../../Tag";
+import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./HotelReviewCard.style";
 import {
-  HotelReviewCardProps,
   HotelReviewCardComponent,
+  HotelReviewCardProps,
 } from "./HotelReviewCard.type";
-import Link, { LinkProps } from "next/link";
-import { Typography } from "../../Typography";
-import { Tag } from "../../Tag";
-import { Image } from "../../Image";
-import { Icon } from "../../Icon";
 
 export interface Props {
   href: LinkProps["href"];
@@ -78,7 +79,7 @@ export const HotelReviewCard: HotelReviewCardComponent & {
                 />
               )}
             </div>
-            <div className={classes.divider} />
+            <Divider type={"horizontal"} color={"outline"} />
             <div className={classes.footerBox}>
               <Typography level="body3" color="primary1">
                 {writer}

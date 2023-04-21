@@ -38,9 +38,5 @@ export default createStyles((theme) => {
       display: "flex",
       gap: theme.spacing.spacing10,
     },
-    divider: {
-      backgroundColor: theme.colors.outline,
-      height: "1px",
-    },
   };
 });

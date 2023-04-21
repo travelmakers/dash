@@ -14,10 +14,6 @@ export default createStyles((theme) => {
         textDecoration: "none",
       },
     },
-    divider: {
-      backgroundColor: theme.colors.outline,
-      height: "1px",
-    },
     currencyContainer: {
       display: "flex",
       flexDirection: "column",

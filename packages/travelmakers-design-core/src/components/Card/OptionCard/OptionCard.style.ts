@@ -15,10 +15,6 @@ export default createStyles((theme) => {
       gap: theme.spacing.spacing20,
       minHeight: "395px",
     },
-    divider: {
-      height: 1,
-      backgroundColor: theme.colors.primary,
-    },
     headerGroup: {
       minHeight: 52,
       display: "flex",

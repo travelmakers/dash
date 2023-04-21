@@ -66,9 +66,7 @@ export default createStyles(
         margin: 0,
       },
       divider: {
-        height: "1px",
         margin: `0 ${spacing.spacing30}`,
-        backgroundColor: colors.outline,
       },
       content: {
         margin: 0,

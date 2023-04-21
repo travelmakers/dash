@@ -1,18 +1,19 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
-import useStyles from "./HotelFeaturedCard.style";
-import {
-  HotelFeaturedCardProps,
-  HotelFeaturedCardComponent,
-  HotelFeatureType,
-} from "./HotelFeaturedCard.type";
-import { View } from "../../View";
-import { Price, PriceProps } from "../../Price";
+import { GradeBadge } from "../../Badge";
+import { Divider } from "../../Divider";
 import { Image } from "../../Image";
+import { Price, PriceProps } from "../../Price";
 import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
-import { GradeBadge } from "../../Badge";
-import Link, { LinkProps } from "next/link";
+import { View } from "../../View";
+import useStyles from "./HotelFeaturedCard.style";
+import {
+  HotelFeatureType,
+  HotelFeaturedCardComponent,
+  HotelFeaturedCardProps,
+} from "./HotelFeaturedCard.type";
 
 export interface Props {
   href: LinkProps["href"];
@@ -100,7 +101,7 @@ export const HotelFeaturedCard: HotelFeaturedCardComponent & {
                   <GradeBadge grade={star} type={type} />
                 </div>
               </div>
-              <div className={cx(classes.divider)} />
+              <Divider type={"horizontal"} color="outline" />
               <div>
                 <Price {...price} type="secondary" />
                 <Price {...price} type="primary" />

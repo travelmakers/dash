@@ -1,13 +1,14 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
-import { View } from "../../View";
-import useStyles from "./OptionCard.style";
-import { OptionCardProps, OptionCardComponent } from "./OptionCard.type";
-import { Tag } from "../../Tag";
-import { Typography } from "../../Typography";
 import { Button } from "../../Button";
+import { Divider } from "../../Divider";
 import { Icon } from "../../Icon";
 import { Price, PriceProps } from "../../Price";
+import { Tag } from "../../Tag";
+import { Typography } from "../../Typography";
+import { View } from "../../View";
+import useStyles from "./OptionCard.style";
+import { OptionCardComponent, OptionCardProps } from "./OptionCard.type";
 
 export interface Props {
   isMore?: boolean;
@@ -108,7 +109,7 @@ export const OptionCard: OptionCardComponent & {
             <Typography level="subhead2" color="primary1">
               {headTitle}
             </Typography>
-            <div className={classes.divider} />
+            <Divider type={"horizontal"} color={"primary"} />
             <Typography level="body2" color="primary3">
               {roomType}
             </Typography>
@@ -131,7 +132,7 @@ export const OptionCard: OptionCardComponent & {
                   </Button>
                 )}
               </div>
-              <div className={classes.divider} />
+              <Divider type={"horizontal"} color={"primary"} />
               <ul>
                 {benefitList.map(({ content }) => {
                   return (
@@ -143,10 +144,9 @@ export const OptionCard: OptionCardComponent & {
               </ul>
             </div>
           )}
-
           {price && (
             <>
-              <div className={classes.divider} />
+              <Divider type={"horizontal"} color={"primary"} />
               <div className={classes.priceBox}>
                 <Price {...price} type="secondary" label="정가" />
                 <Price {...price} type="primary" />

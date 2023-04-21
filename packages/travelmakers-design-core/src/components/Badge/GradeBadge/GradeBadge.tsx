@@ -1,6 +1,7 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
 import { Icon } from "../..//Icon";
+import { Divider } from "../../Divider";
 import { View } from "../../View";
 import useStyles from "./GradeBadge.style";
 import {
@@ -30,7 +31,7 @@ export const GradeBadge: GradeBadgeComponent & {
           <>
             <Icon src={"IcStar"} width={16} height={16} />
             {`${grade}성급`}
-            <div className={classes.vertical} />
+            <Divider type="vertical" height="10px" />
             {hotelType ?? "호텔"}
           </>
         );
@@ -40,7 +41,7 @@ export const GradeBadge: GradeBadgeComponent & {
         return (
           <>
             <Icon src={"IcHotelTypeMini"} width={16} height={16} />
-            <div className={classes.vertical} />
+            <Divider type="vertical" height="10px" />
             {hotelType ?? "미니호텔"}
           </>
         );
@@ -50,7 +51,7 @@ export const GradeBadge: GradeBadgeComponent & {
         return (
           <>
             <Icon src={"IcHotelTypeResidence"} width={16} height={16} />
-            <div className={classes.vertical} />
+            <Divider type="vertical" height="10px" />
             {hotelType ?? "레지던스"}
           </>
         );

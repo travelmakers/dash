@@ -1,17 +1,18 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { getCurrencyNumber } from "@travelmakers-design-v2/utils";
 import { forwardRef } from "react";
+import { GradeBadge } from "../../Badge";
+import { Divider } from "../../Divider";
+import { Price, PriceProps } from "../../Price";
+import { IconTag, Tag } from "../../Tag";
+import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./HotelTitleCard.style";
 import {
-  HotelTitleCardProps,
   HotelTitleCardComponent,
+  HotelTitleCardProps,
   HotelTitleCardType,
 } from "./HotelTitleCard.type";
-import { Typography } from "../../Typography";
-import { GradeBadge } from "../../Badge";
-import { IconTag, Tag } from "../../Tag";
-import { getCurrencyNumber } from "@travelmakers-design-v2/utils";
-import { Price, PriceProps } from "../../Price";
 
 export interface Props {
   /** HotelTitleCard 컴포넌트의 호텔타입을 정합니다. */
@@ -77,7 +78,7 @@ export const HotelTitleCard: HotelTitleCardComponent & {
             </div>
           )}
         </div>
-        <div className={cx(classes.divider)} />
+        <Divider type={"horizontal"} color={"outline"} />
         <div className={classes.currencyContainer}>
           <div className={classes.currencyBox}>
             <Typography level="body3" color="primary1">

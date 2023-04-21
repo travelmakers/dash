@@ -60,10 +60,5 @@ export default createStyles((theme) => {
       alignItems: "center",
       gap: theme.spacing.spacing5,
     },
-
-    divider: {
-      backgroundColor: theme.colors.outline,
-      height: "1px",
-    },
   };
 });

@@ -12,10 +12,5 @@ export default createStyles((theme) => {
       columnGap: "3px",
       ...typography.body3,
     },
-    vertical: {
-      width: "1px",
-      height: "10px",
-      backgroundColor: colors.primary3,
-    },
   };
 });
