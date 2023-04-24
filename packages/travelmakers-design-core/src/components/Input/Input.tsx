@@ -1,23 +1,24 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
+import { useId } from "../../../../travelmakers-design-hooks/src";
 import { View } from "../View";
 import useStyles from "./Input.style";
 import { InputComponent, InputProps } from "./Input.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
+  name: string;
   label?: string;
   subfix?: string | number;
   feedback?: string;
   isError?: boolean;
 }
 
-let defaultId = 0;
-
 export const Input: InputComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "input">(
     {
+      name,
       label,
       subfix,
       feedback,
@@ -33,11 +34,16 @@ export const Input: InputComponent & {
     }: InputProps<C>,
     ref: PolymorphicRef<C>
   ) => {
+    const id = useId(name);
     const [inputValue, setInputValue] = useState(value ?? "");
     const [isFocus, setIsFocus] = useState(false);
     const { classes, cx } = useStyles({ subfix, isError });
-    const [id] = useState(() => String(defaultId++));
-    const elementId = `tm-input-${id}`;
+
+    useEffect(() => {
+      if (name) return;
+
+      console.error("The Input component requires a name prop to be used.");
+    }, [name]);
 
     const onClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
       setIsFocus(true);
@@ -68,7 +74,7 @@ export const Input: InputComponent & {
             <View<React.ElementType>
               component={"input"}
               className={classes.input}
-              id={elementId}
+              id={id}
               type={"text"}
               ref={ref}
               placeholder={placeholder}
@@ -77,6 +83,7 @@ export const Input: InputComponent & {
               onBlur={onBlurHandler}
               onChange={onChangeHandler}
               value={inputValue}
+              name={name}
               {...props}
             />
             <div className={classes.subfix} aria-readonly={props.disabled}>
@@ -90,7 +97,7 @@ export const Input: InputComponent & {
         <View<React.ElementType>
           component={"input"}
           className={cx(classes.input, classes.container)}
-          id={elementId}
+          id={id}
           type={"text"}
           ref={ref}
           placeholder={placeholder}
@@ -99,6 +106,7 @@ export const Input: InputComponent & {
           onBlur={onBlur}
           onChange={onChangeHandler}
           value={inputValue}
+          name={name}
           aria-readonly={props.disabled}
           {...props}
         />
@@ -108,7 +116,7 @@ export const Input: InputComponent & {
     return (
       <div className={cx(classes.root, className)}>
         {label && (
-          <label className={classes.label} htmlFor={elementId}>
+          <label className={classes.label} htmlFor={id}>
             {label}
           </label>
         )}

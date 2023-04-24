@@ -5,6 +5,17 @@ export default {
   title: "@travelmakers-design-v2/core/General/TextArea",
   component: TextArea,
   argTypes: {
+    name: {
+      control: {
+        type: "text",
+      },
+      description: "textarea의 id 생성을 위한 필수 요소",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+    },
     label: {
       control: {
         type: "text",

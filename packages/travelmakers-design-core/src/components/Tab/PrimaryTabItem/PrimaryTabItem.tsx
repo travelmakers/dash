@@ -1,5 +1,6 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { ChangeEvent, forwardRef, useState } from "react";
+import { ChangeEvent, forwardRef } from "react";
+import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { Divider } from "../../Divider";
 import { View } from "../../View";
 import useStyles from "./PrimaryTabItem.style";
@@ -9,21 +10,25 @@ import {
 } from "./PrimaryTabItem.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
+  name?: string;
   label: string;
 }
-
-let defaultId = 0;
 
 export const PrimaryTabItem: PrimaryTabItemComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "input">(
-    { label, className, onChange, ...props }: PrimaryTabItemProps<C>,
+    {
+      name = "primary-tab-item",
+      label,
+      className,
+      onChange,
+      ...props
+    }: PrimaryTabItemProps<C>,
     ref: PolymorphicRef<C>
   ) => {
+    const id = useId(name);
     const { classes, cx } = useStyles();
-    const [id] = useState(() => String(defaultId++));
-    const elementId = `tm-tab-${id}`;
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       onChange?.(e);
@@ -31,13 +36,13 @@ export const PrimaryTabItem: PrimaryTabItemComponent & {
 
     return (
       <li className={cx(classes.item, className)}>
-        <label htmlFor={elementId} className={classes.label}>
+        <label htmlFor={id} className={classes.label}>
           <View<React.ElementType>
             component={"input"}
-            id={elementId}
+            id={id}
             ref={ref}
             type="radio"
-            name="primary"
+            name={name}
             className={cx(classes.input, "sr-only")}
             onChange={onChangeHandler}
             {...props}

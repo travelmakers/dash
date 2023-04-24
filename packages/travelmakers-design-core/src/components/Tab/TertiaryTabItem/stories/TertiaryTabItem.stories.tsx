@@ -6,6 +6,18 @@ export default {
   title: "@travelmakers-design-v2/core/General/Tab/TertiaryTab/TertiaryTabItem",
   component: TertiaryTabItem,
   argTypes: {
+    name: {
+      control: {
+        type: "text",
+      },
+      defaultValue: "tertiary-tab-item",
+      description: "TertiaryTabItem들의 radio group을 지정합니다.",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+    },
     label: {
       control: { type: "text" },
       defaultValue: "label",
