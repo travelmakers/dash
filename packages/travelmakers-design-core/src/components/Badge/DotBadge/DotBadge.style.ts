@@ -57,7 +57,7 @@ const getStyle = (
   type: DotBadgeType,
   size: DotBadgeSize<DotBadgeType>
 ) => {
-  const sizeMap: Record<
+  const styleMap: Record<
     DotBadgeType,
     Record<DotBadgeSize<DotBadgeType>, CSSObject>
   > = {
@@ -74,7 +74,9 @@ const getStyle = (
         width: "24px",
         height: "24px",
       },
-      xLarge: {},
+      xLarge: {
+        display: "none",
+      },
     },
     number: {
       small: {
@@ -86,7 +88,9 @@ const getStyle = (
       large: {
         height: "24px",
       },
-      xLarge: {},
+      xLarge: {
+        display: "none",
+      },
     },
     bullet: {
       small: {
@@ -108,7 +112,7 @@ const getStyle = (
     },
   };
 
-  return { ...sizeMap[type][size], ...getBaseStyle(theme, type) };
+  return { ...getBaseStyle(theme, type), ...styleMap[type][size] };
 };
 
 export default createStyles(

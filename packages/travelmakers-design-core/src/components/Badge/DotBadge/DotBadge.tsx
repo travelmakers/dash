@@ -29,7 +29,7 @@ export const DotBadge: DotBadgeComponent & {
     useEffect(() => {
       if (type !== "bullet" && size === "xLarge")
         console.error(
-          '"xLarge" size는 type이 "bullet"의 경우에만 사용이 가능합니다.'
+          '"xLarge" in the size prop is only available if the type prop is "bullet".'
         );
     }, [type, size]);
 
