@@ -42,7 +42,7 @@ export const PrimaryTabItem: PrimaryTabItemComponent & {
             onChange={onChangeHandler}
             {...props}
           />
-          <div className={cx(classes.content, "tm-tab__content")}>{label}</div>
+          <div className={"tm-tab__content"}>{label}</div>
         </label>
         <Divider className={"tm-tab__divider"} type="vertical" height="20px" />
       </li>

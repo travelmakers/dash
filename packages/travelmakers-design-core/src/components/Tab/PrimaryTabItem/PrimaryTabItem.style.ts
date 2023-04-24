@@ -8,6 +8,7 @@ export default createStyles((theme) => {
       display: "flex",
       alignItems: "center",
 
+      ".tm-tab__content": { ...typography.body1, color: colors.primary3 },
       "&:last-child > .tm-tab__divider": { display: "none" },
       "& > .tm-tab__divider": { margin: `0 ${spacing.spacing20}` },
     },
@@ -19,6 +20,5 @@ export default createStyles((theme) => {
         fontWeight: 700,
       },
     },
-    content: { ...typography.body1, color: colors.primary3 },
   };
 });
