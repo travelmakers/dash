@@ -1,5 +1,3 @@
-"use client";
-
 import { ClassNames, PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef, useEffect } from "react";
 import { View } from "../../View";
