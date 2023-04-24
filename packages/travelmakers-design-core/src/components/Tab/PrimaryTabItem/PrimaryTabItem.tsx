@@ -30,7 +30,7 @@ export const PrimaryTabItem: PrimaryTabItemComponent & {
     };
 
     return (
-      <li className={classes.item}>
+      <li className={cx(classes.item, className)}>
         <label htmlFor={elementId} className={classes.label}>
           <View<React.ElementType>
             component={"input"}
