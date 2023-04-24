@@ -4,6 +4,7 @@ import {
   TmComponentProps,
 } from "@travelmakers-design-v2/styles";
 import { Props } from "./Calendar";
+import { DateCellDay } from "./_components/DateCell/DateCell.type";
 import useStyles from "./Calendar.style";
 
 type CalendarStylesNames = ClassNames<typeof useStyles>;
@@ -22,6 +23,11 @@ export type week = {
   month: string;
   year: number;
 };
+
+export interface SelectedDays {
+  from: DateCellDay;
+  to: DateCellDay;
+}
 
 interface SharedCalendarProps
   extends Props,

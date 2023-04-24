@@ -5,12 +5,20 @@ import { week } from "../../Calendar.type";
 
 const DAYS = ["일", "월", "화", "수", "목", "금", "토"];
 
-const TableHead = ({ week, index }: { week: week; index: number }) => {
+const TableHead = ({
+  week,
+  index,
+  onClear,
+}: {
+  week: week;
+  index: number;
+  onClear: () => void;
+}) => {
   const { classes, cx } = useStyles();
   if (week.weekIndex === 0) {
     return (
       <thead className={index !== 0 && classes.mt10}>
-        <HeadMonthly week={week} />
+        <HeadMonthly week={week} onClear={onClear} />
         <HeadTitle />
       </thead>
     );

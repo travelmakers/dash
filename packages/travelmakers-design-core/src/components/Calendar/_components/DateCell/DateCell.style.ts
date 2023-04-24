@@ -2,6 +2,34 @@ import { createStyles } from "@travelmakers-design-v2/styles";
 import { Props } from "./DateCell";
 
 export default createStyles((theme, { type }: Pick<Props, "type">) => {
+  const getToBackgroundCssObject = () => {
+    return {
+      borderRadius: "100px 0px 0px 100px",
+      transform: "matrix(-1, 0, 0, 1, 0, 0)",
+      width: "37px",
+      left: 0,
+      ["& > div > span"]: {
+        transform: "matrix(-1, 0, 0, 1, 0, 0)",
+      },
+    };
+  };
+  const getBackgroundColor = () => {
+    return {
+      backgroundColor: theme.colors.surface,
+    };
+  };
+
+  const getIsNotAllowed = () => {
+    if (
+      type === "not-allowed" ||
+      type === "not-allowed-to-between" ||
+      type === "not-allowed-between"
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   return {
     container: {
       ...theme.typography.body2,
@@ -9,10 +37,20 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       cursor: "pointer",
       position: "relative",
       margin: "auto",
+      width: 48,
+      height: 48,
     },
+    calendar: {},
     box: {
-      display: "flex",
+      display: "inline-flex",
       alignItems: "center",
+
+      ["& > span"]: {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+      },
     },
     boxText: {
       width: 24,
@@ -22,15 +60,15 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
 
     // NOTE: day에 대한 css
     strikeBox: {
-      display: "flex",
+      display: getIsNotAllowed() ? "flex" : "none",
       position: "absolute",
       alignItems: "center",
       top: "50%",
-      left: 0,
-      transform: "translate(0, -50%)",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
     },
     strike: {
-      display: type === "not-allowed" ? "block" : "none",
+      display: "block",
       width: "25px",
       height: "1px",
       backgroundColor: theme.colors.primary3,
@@ -42,10 +80,21 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       color: theme.colors.tertiary,
     },
 
-    // cell-type
+    // NOTE: cell-type
     default: {},
     "default-between": {},
-    "disabled-between": {},
+    "disabled-between": {
+      color: theme.colors.primary4,
+    },
+    "disabled-to-between": {
+      color: theme.colors.primary4,
+    },
+    "not-allowed-between": {
+      color: theme.colors.primary3,
+    },
+    "not-allowed-to-between": {
+      color: theme.colors.primary3,
+    },
     "to-between": {},
     focus: {
       color: theme.colors.white,
@@ -59,38 +108,58 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       color: theme.colors.white,
       backgroundColor: theme.colors.secondary,
     },
-    disabled: {},
+    disabled: {
+      color: theme.colors.primary4,
+    },
     "not-allowed": {
       color: theme.colors.primary3,
     },
     forbidden: {},
 
-    // cell-background-type
+    // NOTE: cell-background-type
+    background: {
+      position: "absolute",
+      display: "flex",
+      alignItems: "center",
+      top: "24%",
+      width: "100%",
+      height: "26px",
+    },
     "background-default": {},
     "background-focus": {},
     "background-disabled": {},
     "background-not-allowed": {},
     "background-forbidden": {},
     "background-default-between": {
-      backgroundColor: theme.colors.surface,
+      ...getBackgroundColor(),
     },
     "background-disabled-between": {
-      backgroundColor: theme.colors.surface,
+      ...getBackgroundColor(),
+    },
+    "background-disabled-to-between": {
+      ...getBackgroundColor(),
+      ...getToBackgroundCssObject(),
+    },
+    "background-not-allowed-between": {
+      ...getBackgroundColor(),
+    },
+    "background-not-allowed-to-between": {
+      ...getBackgroundColor(),
+      ...getToBackgroundCssObject(),
     },
     "background-to-between": {
-      backgroundColor: theme.colors.surface,
+      ...getBackgroundColor(),
+      ...getToBackgroundCssObject(),
     },
     "background-from": {
-      backgroundColor: theme.colors.surface,
+      ...getBackgroundColor(),
       borderRadius: "100px 0px 0px 100px",
+      width: "37px",
+      right: -1,
     },
     "background-to": {
-      backgroundColor: theme.colors.surface,
-      borderRadius: "100px 0px 0px 100px",
-      transform: "matrix(-1, 0, 0, 1, 0, 0)",
-      ["& > div > span"]: {
-        transform: "matrix(-1, 0, 0, 1, 0, 0)",
-      },
+      ...getBackgroundColor(),
+      ...getToBackgroundCssObject(),
     },
   };
 });

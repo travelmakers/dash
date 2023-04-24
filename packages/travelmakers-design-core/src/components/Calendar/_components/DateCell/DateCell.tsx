@@ -25,12 +25,19 @@ export const DateCell: DateCellComponent & {
   ) => {
     const { classes, cx } = useStyles({ type });
     const DAY_CLASSES = {
+      /** 일요일 */
       0: [classes.sunday],
+      /** 월요일 */
       1: [],
+      /** 화요일 */
       2: [],
+      /** 수요일 */
       3: [],
+      /** 목요일 */
       4: [],
+      /** 금요일 */
       5: [],
+      /** 토요일 */
       6: [classes.saturday],
     };
 
@@ -38,29 +45,29 @@ export const DateCell: DateCellComponent & {
       <View<React.ElementType>
         component={"td"}
         ref={ref}
-        className={cx(
-          className,
-          classes.container,
-          classes[`background-${type}`]
-        )}
+        className={cx(className, classes.container)}
         onClick={() => onClick(day)}
         {...props}
       >
-        <div className={classes.box}>
-          <span
-            className={cx(
-              classes.boxText,
-              ...DAY_CLASSES[day.dayIndex],
-              classes[type]
-            )}
-          >
-            {day.dayOfMonth}
-          </span>
+        <div className={cx(classes.calendar)}>
+          <div
+            className={cx(classes.background, classes[`background-${type}`])}
+          />
+          <div className={classes.box}>
+            <span
+              className={cx(
+                classes.boxText,
+                ...DAY_CLASSES[day.dayIndex],
+                classes[type]
+              )}
+            >
+              {day.dayOfMonth}
+            </span>
+          </div>
+          <div className={classes.strikeBox}>
+            <span className={classes.strike} />
+          </div>
         </div>
-        <div className={classes.strikeBox}>
-          <span className={classes.strike} />
-        </div>
-        {/* <div className={classes[`background-${type}`]} /> */}
       </View>
     );
   }

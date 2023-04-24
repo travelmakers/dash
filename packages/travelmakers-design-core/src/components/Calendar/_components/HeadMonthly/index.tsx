@@ -3,7 +3,13 @@ import { Button } from "../../../Button";
 import { week } from "../../Calendar.type";
 import useStyles from "../../Calendar.style";
 
-const HeadMonthly = ({ week }: { week: week }) => {
+const HeadMonthly = ({
+  week,
+  onClear,
+}: {
+  week: week;
+  onClear: () => void;
+}) => {
   const { classes, cx } = useStyles();
   return (
     <tr className={classes.tableHead}>
@@ -13,8 +19,8 @@ const HeadMonthly = ({ week }: { week: week }) => {
         </Typography>
       </td>
       <td colSpan={3} className={classes.tableMonthly}>
-        <Button variant="secondary" size="small" roundness>
-          더보기
+        <Button variant="secondary" size="small" roundness onClick={onClear}>
+          초기화
         </Button>
       </td>
     </tr>

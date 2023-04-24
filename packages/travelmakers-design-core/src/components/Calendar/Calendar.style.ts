@@ -7,8 +7,11 @@ export default createStyles((theme) => {
       backgroundColor: theme.colors.white,
       overflowY: "scroll",
       ["& > table"]: {
-        // width: "100%",
+        borderCollapse: "collapse",
         color: theme.colors.primary1,
+        ["tr"]: {
+          height: 48,
+        },
       },
     },
     tableHead: {
