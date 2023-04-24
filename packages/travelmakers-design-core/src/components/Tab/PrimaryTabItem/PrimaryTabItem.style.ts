@@ -9,16 +9,16 @@ export default createStyles((theme) => {
       alignItems: "center",
 
       "&:last-child > .tm-tab__divider": { display: "none" },
+      "& > .tm-tab__divider": { margin: `0 ${spacing.spacing20}` },
     },
     label: { minWidth: "52px", textAlign: "center", cursor: "pointer" },
     input: {
-      "&:checked + .tm-tab__divider": {
+      "&:checked + .tm-tab__content": {
         ...typography.subhead1,
         color: colors.secondary1,
         fontWeight: 700,
       },
     },
     content: { ...typography.body1, color: colors.primary3 },
-    ".tm-tab__divider": { margin: `0 ${spacing.spacing20}` },
   };
 });

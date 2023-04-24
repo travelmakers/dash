@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef, useState } from "react";
+import { ChangeEvent, forwardRef, useState } from "react";
 import { Divider } from "../../Divider";
 import { View } from "../../View";
 import useStyles from "./PrimaryTabItem.style";
@@ -18,15 +18,15 @@ export const PrimaryTabItem: PrimaryTabItemComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "input">(
-    { label, className, ...props }: PrimaryTabItemProps<C>,
+    { label, className, onChange, ...props }: PrimaryTabItemProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
     const [id] = useState(() => String(defaultId++));
     const elementId = `tm-tab-${id}`;
 
-    const onChangeHandler = (e) => {
-      console.log(e.target.value);
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e);
     };
 
     return (
@@ -42,7 +42,7 @@ export const PrimaryTabItem: PrimaryTabItemComponent & {
             onChange={onChangeHandler}
             {...props}
           />
-          <div className={classes.content}>{label}</div>
+          <div className={cx(classes.content, "tm-tab__content")}>{label}</div>
         </label>
         <Divider className={"tm-tab__divider"} type="vertical" height="20px" />
       </li>
