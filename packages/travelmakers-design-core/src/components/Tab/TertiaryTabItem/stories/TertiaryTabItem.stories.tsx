@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/react";
+import { TertiaryTab } from "../../TertiaryTab/TertiaryTab";
 import { TertiaryTabItem } from "../TertiaryTabItem";
 
 export default {
@@ -29,5 +30,10 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <TertiaryTabItem {...props} />;
+  return (
+    <TertiaryTab
+      legend={"검색 기준 선택"}
+      items={[<TertiaryTabItem {...props} />]}
+    />
+  );
 };
