@@ -1,5 +1,6 @@
 import {
   addDays,
+  differenceInCalendarWeeks,
   eachDayOfInterval,
   endOfWeek,
   format,
@@ -10,7 +11,9 @@ import {
   isSameDay,
   isSameMonth,
   isWeekend,
+  lastDayOfMonth,
   startOfWeek,
+  toDate,
 } from "date-fns";
 import {
   CalendarEvent,
@@ -19,7 +22,7 @@ import {
 } from "./useCalendar.type";
 
 function omitKey(data, key) {
-  const { [key]: omit, ...other } = data; // eslint-disable-line no-unused-vars
+  const { [key]: omit, ...other } = data;
   return other;
 }
 
@@ -103,22 +106,41 @@ function createEvents({ events }: { events?: CalendarEvent[] }, prevEvents) {
   return { events: newEvents, eventsIndex: newEventsIndex };
 }
 
-function getDays(date, { options, events, eventsIndex }) {
-  let currentDate = startOfWeek(new Date(getYear(date), getMonth(date)));
-  const weeks = Array.from({ length: options.numOfWeeks }).map(
-    (_, weekIndex) => {
-      const days = Array.from({ length: options.numOfDays }).map(
-        (_, dayIndex) => {
-          const day = transformDate(date, currentDate, options.locale);
-          const dayEvents = getEventsForDate(currentDate, events, eventsIndex);
-          currentDate = addDays(currentDate, 1);
-          return { dayIndex, weekIndex, events: dayEvents, ...day };
-        }
-      );
-      return options.rtl ? days.reverse() : days;
-    }
-  );
+function getWeeks(date, currentDate, { options, events, eventsIndex }) {
+  const firstDay = toDate(new Date(currentDate));
+  const lastDay = startOfWeek(lastDayOfMonth(date));
+  const diff = differenceInCalendarWeeks(lastDay, firstDay) + 1;
+  const weeks = Array.from({ length: diff }).map((_, weekIndex) => {
+    const days = Array.from({ length: options.numOfDays }).map(
+      (_, dayIndex) => {
+        const day = transformDate(date, currentDate, options.locale);
+        const dayEvents = getEventsForDate(currentDate, events, eventsIndex);
+        const month = format(date, "LLLL", { locale: options.locale });
+        const year = getYear(date);
+        currentDate = addDays(currentDate, 1);
+        return {
+          year,
+          month,
+          dayIndex,
+          weekIndex,
+          events: dayEvents,
+          ...day,
+        };
+      }
+    );
+    return options.rtl ? days.reverse() : days;
+  });
+  return weeks;
+}
 
+/**
+ * ANCHOR: 해당 월의 일자를 생성한다.
+ * @param date
+ * @returns
+ */
+function getDays(date, { options, events, eventsIndex }, isInfinite = false) {
+  let currentDate = startOfWeek(new Date(getYear(date), getMonth(date)));
+  const weeks = getWeeks(date, currentDate, { options, events, eventsIndex });
   const days = eachDayOfInterval({
     start: startOfWeek(currentDate),
     end: endOfWeek(currentDate),

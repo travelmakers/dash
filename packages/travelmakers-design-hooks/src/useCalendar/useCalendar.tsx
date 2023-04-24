@@ -6,7 +6,7 @@ import {
   removeEvent,
 } from "./useCalendar.date";
 import * as actionTypes from "./useCalendar.type";
-import { addDays, format } from "date-fns";
+import { addDays, addMonths, format } from "date-fns";
 import { CalendarState } from "./useCalendar.type";
 import { ko } from "date-fns/locale";
 
@@ -18,7 +18,6 @@ const initialState = {
   events: [],
   eventsIndex: {},
   options: {
-    numOfWeeks: 6,
     numOfDays: 7,
     rtl: false,
     locale: ko,
@@ -38,15 +37,38 @@ function reducer(state, action): CalendarState {
         options: { ...state.options, ...action.options },
       };
     case actionTypes.SET_DATE:
-      return { ...state, ...getDays(action.date, state) };
+      return {
+        ...state,
+        ...getDays(action.date, state),
+      };
+    case actionTypes.GET_INFINITE_NEXT_MONTH:
+      const nextMonths = getDays(addMonths(state.startDate, 1), state);
+      state.weeks.push(...nextMonths.weeks);
+      return {
+        ...state,
+        ...nextMonths,
+        weeks: state.weeks,
+      };
     case actionTypes.GET_NEXT_MONTH:
-      return { ...state, ...getDays(addDays(state.startDate, 30), state) };
+      return {
+        ...state,
+        ...getDays(addMonths(state.startDate, 1), state),
+      };
     case actionTypes.GET_PREV_MONTH:
-      return { ...state, ...getDays(addDays(state.startDate, -30), state) };
+      return {
+        ...state,
+        ...getDays(addMonths(state.startDate, -1), state),
+      };
     case actionTypes.ADD_EVENT:
-      return { ...state, ...addEvent(action.event, state) };
+      return {
+        ...state,
+        ...addEvent(action.event, state),
+      };
     case actionTypes.REMOVE_EVENT:
-      return { ...state, ...removeEvent(action.id, state) };
+      return {
+        ...state,
+        ...removeEvent(action.id, state),
+      };
     default:
       return state;
   }
@@ -64,10 +86,10 @@ function initialize(date, options) {
   };
 }
 
-function useCalendar(
+export function useCalendar(
   date: Date,
   options?: {
-    events: {
+    events?: {
       startDate: Date;
       endDate: Date;
       note: string;
@@ -88,11 +110,11 @@ function useCalendar(
     {
       setDate: (date) => dispatch({ date, type: actionTypes.SET_DATE }),
       getNextMonth: () => dispatch({ type: actionTypes.GET_NEXT_MONTH }),
+      getInfiniteNextMonth: () =>
+        dispatch({ type: actionTypes.GET_INFINITE_NEXT_MONTH }),
       getPrevMonth: () => dispatch({ type: actionTypes.GET_PREV_MONTH }),
       addEvent: (event) => dispatch({ event, type: actionTypes.ADD_EVENT }),
       removeEvent: (id) => dispatch({ id, type: actionTypes.REMOVE_EVENT }),
     },
   ];
 }
-
-export default useCalendar;

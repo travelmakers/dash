@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useCalendar from "../useCalendar";
+import { useCalendar } from "../useCalendar";
 import { Button } from "@travelmakers-design-v2/core";
 
 export default {
@@ -21,6 +21,7 @@ export const Default = () => {
       },
     ],
   });
+  console.log(state);
 
   return (
     <div>

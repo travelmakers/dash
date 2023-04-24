@@ -19,11 +19,15 @@ export interface CalendarState {
     dayIndex: number;
     weekIndex: number;
     events: any;
+
+    month: string;
+    year: number;
   }[][];
 }
 
 // ===========
 const GET_NEXT_MONTH = "GET_NEXT_MONTH";
+const GET_INFINITE_NEXT_MONTH = "GET_INFINITE_NEXT_MONTH";
 const GET_PREV_MONTH = "GET_PREV_MONTH";
 const SET_DATE = "SET_DATE";
 const SET_OPTIONS = "SET_OPTIONS";
@@ -32,6 +36,7 @@ const REMOVE_EVENT = "REMOVE_EVENT";
 
 export {
   GET_NEXT_MONTH,
+  GET_INFINITE_NEXT_MONTH,
   GET_PREV_MONTH,
   SET_DATE,
   ADD_EVENT,
