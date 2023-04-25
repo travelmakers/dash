@@ -3,6 +3,8 @@ import { createStyles } from "@travelmakers-design-v2/styles";
 interface BottomBarStylesProps {}
 
 export default createStyles((theme, {}: BottomBarStylesProps, getRef) => {
+  const { colors } = theme;
+
   return {
     root: {
       backgroundColor: theme.colors.neutral99,
@@ -14,6 +16,8 @@ export default createStyles((theme, {}: BottomBarStylesProps, getRef) => {
       gap: "80px",
       height: "64px",
       width: "100%",
+      borderTop: `1px solid ${colors.outline}`,
+
       a: {
         textDecoration: "none",
       },
