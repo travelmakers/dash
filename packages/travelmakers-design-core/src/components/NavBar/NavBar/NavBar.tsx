@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { PropsWithChildren, forwardRef } from "react";
+import { forwardRef } from "react";
 import { Icon } from "../../Icon";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
@@ -9,8 +9,10 @@ import useStyles from "./NavBar.style";
 import { NavBarComponent, NavBarProps } from "./NavBar.type";
 
 export interface Props {
-  hasBack?: boolean;
   title: string;
+  hasBack?: boolean;
+  backBtnProps?: React.HTMLAttributes<HTMLButtonElement>;
+  actionEl?: React.ReactNode;
 }
 
 export const NavBar: NavBarComponent & {
@@ -22,13 +24,15 @@ export const NavBar: NavBarComponent & {
     {
       hasBack = false,
       title,
+      backBtnProps = {},
+      actionEl,
       className,
-      children,
       ...props
-    }: PropsWithChildren<NavBarProps<C>>,
+    }: NavBarProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
+    const { className: backBtnClassName, ...backBtnRest } = backBtnProps;
 
     return (
       <View<React.ElementType>
@@ -37,7 +41,16 @@ export const NavBar: NavBarComponent & {
         className={cx(classes.root, className)}
         {...props}
       >
-        {hasBack && <Icon src={"IcArrowLeft"} width={24} height={24} />}
+        {hasBack && (
+          <button
+            type={"button"}
+            className={cx(classes.button, backBtnClassName)}
+            aria-label={"뒤로가기"}
+            {...backBtnRest}
+          >
+            <Icon src={"IcArrowLeft"} width={24} height={24} />
+          </button>
+        )}
         <Typography
           level={"subhead2"}
           color={"primary"}
@@ -46,7 +59,7 @@ export const NavBar: NavBarComponent & {
         >
           {title}
         </Typography>
-        {children}
+        {actionEl}
       </View>
     );
   }

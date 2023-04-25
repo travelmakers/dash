@@ -61,27 +61,28 @@ export default {
         },
       },
     },
+    items: {
+      control: { type: "array" },
+      description: "Tag에 표시될 리스트 입니다. Tag.Item를 사용합니다.",
+      table: {
+        type: {
+          summary: "React.ReactNode[]",
+        },
+      },
+    },
   },
 } as Meta;
 
 export const Default = (props) => {
-  const items = data.map((item, idx) => <Tag.Item key={idx} label={item} />);
+  const _items = data.map((item, idx) => <Tag.Item key={idx} label={item} />);
 
-  return (
-    <Tag type="fill" color="green" {...props}>
-      {items}
-    </Tag>
-  );
+  return <Tag type="fill" color="green" {...props} items={_items} />;
 };
 
 export const TagUsingIdx = (props) => {
-  const items = data.map((item, idx) => (
+  const _items = data.map((item, idx) => (
     <Tag.Item key={idx} colorIdx={idx} label={item} />
   ));
 
-  return (
-    <Tag type="fill" {...props}>
-      {items}
-    </Tag>
-  );
+  return <Tag type="fill" {...props} items={_items} />;
 };

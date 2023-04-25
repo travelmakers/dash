@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { PropsWithChildren, createContext, forwardRef } from "react";
+import React, { createContext, forwardRef } from "react";
 import { View } from "../../View";
 import { AccordionItem } from "../AccordionItem";
 import useStyles from "./Accordion.style";
@@ -12,9 +12,13 @@ import {
 export type Props = {
   gap?: number;
   type?: AccordionType;
+  items: React.ReactNode[];
 };
 
-export const AccordionContext = createContext<Props>({ type: "small", gap: 4 });
+export const AccordionContext = createContext<Omit<Props, "items">>({
+  type: "small",
+  gap: 4,
+});
 AccordionContext.displayName = "AccordionContext";
 
 export const Accordion: AccordionComponent & {
@@ -22,13 +26,7 @@ export const Accordion: AccordionComponent & {
   Item?: typeof AccordionItem;
 } = forwardRef(
   <C extends React.ElementType = "dl">(
-    {
-      gap = 4,
-      type = "small",
-      className,
-      children,
-      ...props
-    }: PropsWithChildren<AccordionProps<C>>,
+    { gap = 4, type = "small", items, className, ...props }: AccordionProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
@@ -41,7 +39,7 @@ export const Accordion: AccordionComponent & {
           className={cx(classes.root, className)}
           {...props}
         >
-          {children}
+          {items}
         </View>
       </AccordionContext.Provider>
     );

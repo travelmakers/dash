@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { PropsWithChildren, createContext, forwardRef, useEffect } from "react";
+import { PropsWithChildren, createContext, forwardRef } from "react";
 import { View } from "../../View";
 import { TagItem } from "../TagItem";
 import useStyles from "./Tag.style";
@@ -18,9 +18,10 @@ export interface Props {
   size?: TagSize;
   gap?: number;
   roundness?: TagRound;
+  items: React.ReactNode[];
 }
 
-export const TagContext = createContext<Omit<Props, "gap">>({
+export const TagContext = createContext<Omit<Props, "gap" | "items">>({
   type: "fill",
   size: "small",
   roundness: "default",
@@ -38,17 +39,13 @@ export const Tag: TagComponent & {
       size = "small",
       gap = 0,
       roundness = "default",
+      items,
       className,
       children,
       ...props
     }: PropsWithChildren<TagProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
-    useEffect(() => {
-      if (!children)
-        console.error("1개 이상의 <Tag.Item /> 컴포넌트가 존재해야 합니다.");
-    }, []);
-
     const { classes, cx } = useStyles({ gap });
 
     return (
@@ -59,7 +56,7 @@ export const Tag: TagComponent & {
           className={cx(classes.root, className)}
           {...props}
         >
-          {children}
+          {items}
         </View>
       </TagContext.Provider>
     );

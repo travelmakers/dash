@@ -30,9 +30,5 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return (
-    <Menu>
-      <MenuItem {...props} />
-    </Menu>
-  );
+  return <Menu items={[<MenuItem {...props} />]} />;
 };

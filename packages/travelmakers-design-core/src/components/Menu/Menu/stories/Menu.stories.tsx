@@ -1,5 +1,4 @@
 import { Meta } from "@storybook/react";
-import { MenuItem } from "../../MenuItem";
 import { Menu } from "../Menu";
 
 const menus = [
@@ -14,24 +13,24 @@ export default {
   title: "@travelmakers-design-v2/core/General/Menu/Menu",
   component: Menu,
   argTypes: {
-    /**
-     * ex)
-     *    props: {
-     *      // type, control, etc.
-     *      defaultValue: "props의 defaultValue를 작성합니다.",
-     *      description: "props 각각의 description을 작성합니다.",
-     *
-     *    },
-     */
+    items: {
+      control: { type: "array" },
+      description: "Menu에 표시될 리스트 입니다. Menu.Item를 사용합니다.",
+      table: {
+        type: {
+          summary: "React.ReactNode[]",
+        },
+      },
+    },
   },
 } as Meta;
 
 export const Default = () => {
-  const items = menus.map((menu, idx) => {
+  const _items = menus.map((menu, idx) => {
     const { href, name } = menu;
 
-    return <MenuItem key={idx} href={href} menu={name} />;
+    return <Menu.Item key={idx} href={href} menu={name} />;
   });
 
-  return <Menu>{items}</Menu>;
+  return <Menu items={_items} />;
 };

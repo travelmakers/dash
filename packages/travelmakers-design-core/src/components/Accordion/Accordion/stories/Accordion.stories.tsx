@@ -28,6 +28,16 @@ export default {
         },
       },
     },
+    items: {
+      control: { type: "array" },
+      description:
+        "Accordion에 표시될 리스트 입니다. Accordion.Item를 사용합니다.",
+      table: {
+        type: {
+          summary: "React.ReactNode[]",
+        },
+      },
+    },
   },
 } as Meta;
 
@@ -47,33 +57,33 @@ const accordionData = [
 ];
 
 export const Small = (props) => {
+  const _items = accordionData.map((data) => (
+    <Accordion.Item
+      key={data.id}
+      header={data.question}
+      content={data.answer}
+    />
+  ));
+
   return (
     <div style={{ backgroundColor: "#EDEDED", padding: "30px 0" }}>
-      <Accordion {...props}>
-        {accordionData.map((data) => (
-          <Accordion.Item
-            key={data.id}
-            header={data.question}
-            content={data.answer}
-          />
-        ))}
-      </Accordion>
+      <Accordion {...props} items={_items} />
     </div>
   );
 };
 
 export const Medium = (props) => {
+  const _items = accordionData.map((data) => (
+    <Accordion.Item
+      key={data.id}
+      header={data.question}
+      content={data.answer}
+    />
+  ));
+
   return (
     <div style={{ backgroundColor: "#EDEDED", padding: "30px 0" }}>
-      <Accordion type={"medium"} {...props}>
-        {accordionData.map((data) => (
-          <Accordion.Item
-            key={data.id}
-            header={data.question}
-            content={data.answer}
-          />
-        ))}
-      </Accordion>
+      <Accordion type={"medium"} {...props} items={_items} />
     </div>
   );
 };
