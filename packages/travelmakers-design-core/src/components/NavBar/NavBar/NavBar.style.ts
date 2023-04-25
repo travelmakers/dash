@@ -15,6 +15,7 @@ export default createStyles((theme) => {
       backgroundColor: "transparent",
       border: 0,
       outline: 0,
+      cursor: "pointer",
     },
     title: {
       margin: "0 auto",
