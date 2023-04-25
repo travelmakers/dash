@@ -20,5 +20,6 @@ export * from "./Tag";
 export * from "./TextArea";
 export * from "./Timer";
 export * from "./Toast";
+export * from "./Toggle";
 export * from "./Typography";
 export * from "./View";
