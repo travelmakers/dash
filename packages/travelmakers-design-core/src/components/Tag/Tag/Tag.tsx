@@ -1,5 +1,3 @@
-"use client";
-
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { PropsWithChildren, createContext, forwardRef, useEffect } from "react";
 import { View } from "../../View";

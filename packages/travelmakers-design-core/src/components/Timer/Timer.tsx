@@ -1,5 +1,3 @@
-"use client";
-
 import { useRemainingTimer } from "@travelmakers-design-v2/hooks";
 import {
   PolymorphicRef,

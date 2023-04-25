@@ -3,6 +3,7 @@ export * from "./useClipboard";
 export * from "./useDebounce";
 export * from "./useForceUpdate";
 export * from "./useHiddenBodyOverflow";
+export * from "./useId";
 export * from "./useLoading";
 export * from "./useRafState";
 export * from "./useRemainingTimer";

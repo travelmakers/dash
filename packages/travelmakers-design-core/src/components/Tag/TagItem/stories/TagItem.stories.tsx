@@ -19,7 +19,7 @@ export default {
     label: {
       control: { type: "text" },
       defaultValue: "label",
-      description: "props 각각의 description을 작성합니다.",
+      description: "TagItem label",
       table: {
         type: {
           summary: "string",
