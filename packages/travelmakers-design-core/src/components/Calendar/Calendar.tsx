@@ -1,5 +1,11 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import React, { forwardRef, useEffect, useState } from "react";
+import React, {
+  PropsWithChildren,
+  forwardRef,
+  useEffect,
+  useState,
+} from "react";
+import { addDays, differenceInDays, getMonth, isEqual } from "date-fns";
 import { View } from "../View";
 import useStyles from "./Calendar.style";
 import {
@@ -18,46 +24,62 @@ import {
   DateCellType,
 } from "./_components/DateCell/DateCell.type";
 import TableHead from "./_components/TableHead";
-import { addDays, differenceInDays, isEqual } from "date-fns";
+import Indicator from "./_components/Indicator";
+import OptionBox from "./_components/OptionBox";
 import _ from "lodash";
 
 export interface Props {
+  /** 캘린더의 타입 */
+  type: "tour" | "move-in";
+
+  /** 선택 가능한 일자 */
+  selectableDates: Date[];
+
+  /** 선택가능한 최소 일자 */
+  minNight: number;
+
+  /** 선택가능한 최대 일자 */
+  maxNight: number;
+
+  onChange: (selected: SelectedDays) => void;
+
   /** initial Date */
   selected?: SelectedDays;
-
-  /** soldOut 되어서 선택이 불가능한 일자 */
-  notAllowedDays?: Date[];
 
   /** 선택 불가능한 일자 */
   disabledDays?: Date[];
 
-  /** 한번에 보여줄 개월 수 */
-  visibleMonth: number;
-
-  /** 선택할 수 있는 날짜 수 */
-  visibleDay: number;
-
   /** 허용하지 않는 날짜를 클릭하였을 경우 출력할 메시지 */
   notAllowedMessage?: string;
-
-  onChange: (selected: SelectedDays) => void;
 }
 
+/**
+ * ANCHOR: Travelmakers Calendar
+ * - type이 'tour(투어)' 일 경우 일자는 범위 선택이 아니라 하나의 일자에 대해서만 선택이 가능하다.
+ * - type이 'move-in(입주)' 일 경우 범위(from~to)형태로 일자를 선택한다.
+ * - selectableDates에 선택 가능한 일자를 넣어야만 정상적으로 일자에 대한 선택이 가능하다.
+ * - minNight로 최소 선택가능 범위를 작성해주어야한다.
+ * - maxNight로 최대 선택가능 범위를 작성해주어야한다.
+ * - onChange함수를 통해 선택한 일자에 대해서 확인할 수 있다.
+ */
 export const Calendar: CalendarComponent & {
   displayName?: string;
+  OptionBox?: typeof OptionBox;
 } = forwardRef(
   <C extends React.ElementType = "div">(
     {
+      type = "move-in",
       selected,
-      notAllowedDays = [],
       disabledDays = [],
-      visibleMonth = 3,
-      visibleDay = 30,
+      selectableDates = [],
       notAllowedMessage = "해당 일자는 예약이 불가합니다. \n다른 일자를 선택해주세요.",
+      minNight = 30,
+      maxNight = 59,
       onChange,
+      children,
       className,
       ...props
-    }: CalendarProps<C>,
+    }: PropsWithChildren<CalendarProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
     const { toast } = useToast();
@@ -90,6 +112,15 @@ export const Calendar: CalendarComponent & {
       return false;
     };
 
+    const isMinNightDays = (day: DateCellDay) => {
+      if (checked.from) {
+        const resultDay = differenceInDays(day.date, checked.from.date);
+        if (resultDay > minNight) return true;
+        return false;
+      }
+      return false;
+    };
+
     /**
      * ANCHOR: From Date, To Date 날짜 사이에 대해서 체크
      * @param day
@@ -108,31 +139,22 @@ export const Calendar: CalendarComponent & {
     };
 
     /**
-     * ANCHOR: 허용하지 않는 날짜(notAllowedDays) 사이에 대해서 체크
-     * @param day
-     * @returns
-     */
-    const isNotAllowedDay = (day: DateCellDay) => {
-      let isCloset = false;
-      for (const notAllowedDay of notAllowedDays) {
-        if (isEqual(notAllowedDay, day.date)) {
-          isCloset = true;
-          break;
-        }
-      }
-      return isCloset;
-    };
-
-    /**
      * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
      * @param day
      * @returns
      */
     const isDisabledDay = (day: DateCellDay) => {
-      let isCloset = false;
+      let isCloset = true;
       for (const disabledDay of disabledDays) {
         if (isEqual(disabledDay, day.date)) {
           isCloset = true;
+          break;
+        }
+      }
+
+      for (const selectableDate of selectableDates) {
+        if (isEqual(selectableDate, day.date)) {
+          isCloset = false;
           break;
         }
       }
@@ -144,20 +166,31 @@ export const Calendar: CalendarComponent & {
     };
 
     const onClick = (day: DateCellDay) => {
-      if (isNotAllowedDay(day) || isDisabledDay(day)) {
+      if (isDisabledDay(day)) {
         toast({
           text: notAllowedMessage,
+        });
+      } else if (type === "tour") {
+        setChecked((prev) => {
+          return { ...prev, from: day, to: day };
         });
       } else if (!checked.from) {
         setChecked((prev) => {
           return { ...prev, from: day };
         });
-        setEnabledDays(addDays(day.date, visibleDay));
+        setEnabledDays(addDays(day.date, maxNight));
+      } else if (
+        isBetweenNotSelectedDays(day) &&
+        (isDisabledDay(day) || !isMinNightDays(day))
+      ) {
+        toast({
+          text: notAllowedMessage,
+        });
       } else if (isBetweenNotSelectedDays(day)) {
         setChecked((prev) => {
           return { ...prev, to: day };
         });
-        setEnabledDays(addDays(day.date, visibleDay));
+        setEnabledDays(addDays(day.date, maxNight));
       } else {
         setChecked({ to: null, from: null });
       }
@@ -183,33 +216,27 @@ export const Calendar: CalendarComponent & {
         }
       }
 
-      if (isNotAllowedDay(day)) {
-        if (checked.from && isEqual(checked.to?.date, day.date)) {
-          return "not-allowed-to-between";
-        } else if (
-          checked.from &&
-          differenceInDays(day.date, checked.from.date) > 0 &&
-          differenceInDays(enabledDays, day.date) >= 0 &&
-          (!checked.to || differenceInDays(checked.to?.date, day.date) >= 0)
-        ) {
-          if (differenceInDays(enabledDays, day.date) > 0) {
-            return "not-allowed-between";
+      if (isBetweenNotSelectedDays(day)) {
+        const isMinNight = isMinNightDays(day);
+        if (differenceInDays(enabledDays, day.date) > 0) {
+          if (isMinNight) {
+            return "default-between";
           } else {
-            return "not-allowed-to-between";
+            return "disabled-between";
           }
         } else {
-          return "not-allowed";
-        }
-      }
-
-      if (isBetweenNotSelectedDays(day)) {
-        if (differenceInDays(enabledDays, day.date) > 0) {
-          return "default-between";
-        } else {
-          return "to-between";
+          if (isMinNight) {
+            return "to-between";
+          } else {
+            return "disabled-to-between";
+          }
         }
       } else if (isEqual(day.date, checked.from?.date)) {
-        return "from";
+        if (type === "move-in") {
+          return "from";
+        } else {
+          return "focus";
+        }
       } else if (isEqual(day.date, checked.to?.date)) {
         return "to";
       } else if (isBetweenFromAndToDays(day)) {
@@ -220,7 +247,8 @@ export const Calendar: CalendarComponent & {
     };
 
     const handleCalendar = () => {
-      Array.from({ length: visibleMonth }).map(() => {
+      const months = Math.ceil(maxNight / 30);
+      Array.from({ length: months }).map(() => {
         actions.getInfiniteNextMonth();
       });
     };
@@ -230,27 +258,48 @@ export const Calendar: CalendarComponent & {
     }, []);
 
     return (
-      <View<React.ElementType>
-        component={"div"}
-        ref={ref}
-        className={cx(className, classes.container)}
-        {...props}
-      >
-        <table>
-          {state.weeks.map((week, index) => (
-            <>
-              <TableHead week={_.first(week)} index={index} onClear={onClear} />
-              <tr key={index}>
-                {week.map((day) => (
-                  <DateCell day={day} type={onType(day)} onClick={onClick} />
-                ))}
-              </tr>
-            </>
-          ))}
-        </table>
+      <View<React.ElementType> component={"div"} className={cx(classes.root)}>
+        <View<React.ElementType>
+          component={"div"}
+          ref={ref}
+          className={cx(className, classes.container)}
+          {...props}
+        >
+          <Indicator checked={checked} onClear={onClear} />
+          <div className={classes.calendar}>
+            <table>
+              {state.weeks.map((week, index) => (
+                <>
+                  <TableHead
+                    week={_.first(week)}
+                    index={index}
+                    onClear={onClear}
+                  />
+                  <tr key={index}>
+                    {week.map((day) => {
+                      return (
+                        <DateCell
+                          day={day}
+                          type={onType(day)}
+                          onClick={onClick}
+                          visible={
+                            _.first(week).month ===
+                            `${getMonth(day.date) + 1}월`
+                          }
+                        />
+                      );
+                    })}
+                  </tr>
+                </>
+              ))}
+            </table>
+          </div>
+          {children}
+        </View>
       </View>
     );
   }
 );
 
 Calendar.displayName = "Calendar";
+Calendar.OptionBox = OptionBox;

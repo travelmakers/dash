@@ -5,6 +5,74 @@ export default {
   title: "@travelmakers-design-v2/core/General/Calendar",
   component: Calendar,
   argTypes: {
+    type: {
+      defaultValue: "move-in",
+      description: "캘린더의 타입",
+      options: ["move-in", "tour"],
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "inline-radio" },
+    },
+    selectableDates: {
+      defaultValue: [
+        new Date(2023, 3, 25),
+        new Date(2023, 3, 26),
+        new Date(2023, 3, 27),
+        new Date(2023, 3, 28),
+        new Date(2023, 3, 29),
+        new Date(2023, 3, 30),
+        new Date(2023, 4, 1),
+        new Date(2023, 4, 2),
+        new Date(2023, 4, 3),
+        new Date(2023, 4, 4),
+        new Date(2023, 4, 5),
+        new Date(2023, 4, 6),
+        new Date(2023, 4, 7),
+        new Date(2023, 4, 8),
+        new Date(2023, 4, 9),
+        new Date(2023, 4, 10),
+        new Date(2023, 4, 11),
+        new Date(2023, 4, 12),
+        new Date(2023, 4, 13),
+        new Date(2023, 4, 14),
+        new Date(2023, 4, 15),
+        new Date(2023, 4, 16),
+        new Date(2023, 4, 17),
+        new Date(2023, 4, 18),
+        new Date(2023, 4, 19),
+        new Date(2023, 4, 20),
+      ],
+      description: "선택 가능한 일자",
+      table: {
+        type: {
+          summary: "array",
+        },
+      },
+      control: { type: "array" },
+    },
+    minNight: {
+      defaultValue: 5,
+      description: "선택가능한 최소 일자",
+      table: {
+        type: {
+          summary: "number",
+        },
+      },
+      control: { type: "number" },
+    },
+    maxNight: {
+      defaultValue: 59,
+      description: "선택가능한 최대 일자",
+      table: {
+        type: {
+          summary: "number",
+        },
+      },
+      control: { type: "number" },
+    },
     selected: {
       defaultValue: {
         from: {
@@ -44,20 +112,6 @@ export default {
       },
       control: { type: "object" },
     },
-    notAllowedDays: {
-      defaultValue: [
-        new Date(2023, 4, 21),
-        new Date(2023, 4, 22),
-        new Date(2023, 4, 23),
-      ],
-      description: "soldOut 되어서 선택이 불가능한 일자",
-      table: {
-        type: {
-          summary: "array",
-        },
-      },
-      control: { type: "array" },
-    },
     disabledDays: {
       defaultValue: [
         new Date(2023, 5, 21),
@@ -71,26 +125,6 @@ export default {
         },
       },
       control: { type: "array" },
-    },
-    visibleMonth: {
-      defaultValue: 3,
-      description: "한번에 보여줄 개월 수",
-      table: {
-        type: {
-          summary: "number",
-        },
-      },
-      control: { type: "number" },
-    },
-    visibleDay: {
-      defaultValue: 30,
-      description: "선택할 수 있는 날짜 수",
-      table: {
-        type: {
-          summary: "number",
-        },
-      },
-      control: { type: "number" },
     },
     notAllowedMessage: {
       defaultValue:
@@ -107,5 +141,17 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <Calendar {...props} />;
+  return (
+    <Calendar {...props}>
+      <Calendar.OptionBox
+        title={"시간 선택하기"}
+        buttonTitle={"예약하기"}
+        onClick={() => {
+          console.log("OptionBox-log");
+        }}
+      >
+        1234
+      </Calendar.OptionBox>
+    </Calendar>
+  );
 };

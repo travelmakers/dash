@@ -19,7 +19,7 @@ const HeadMonthly = ({
         </Typography>
       </td>
       <td colSpan={3} className={classes.tableMonthly}>
-        <Button variant="secondary" size="small" roundness onClick={onClear}>
+        <Button variant="text" size="small" roundness onClick={onClear}>
           초기화
         </Button>
       </td>

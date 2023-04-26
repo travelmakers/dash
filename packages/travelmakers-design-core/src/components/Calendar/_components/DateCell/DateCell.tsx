@@ -8,11 +8,11 @@ import {
   DateCellDay,
   DateCellType,
 } from "./DateCell.type";
-import { Typography } from "src/components/Typography";
 
 export interface Props {
   day: DateCellDay;
   type: DateCellType;
+  visible: boolean;
   onClick?: (day: DateCellDay) => void;
 }
 
@@ -20,10 +20,10 @@ export const DateCell: DateCellComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "td">(
-    { day, type, onClick, className, ...props }: DateCellProps<C>,
+    { day, type, visible, onClick, className, ...props }: DateCellProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const { classes, cx } = useStyles({ type });
+    const { classes, cx } = useStyles({ type, visible });
     const DAY_CLASSES = {
       /** 일요일 */
       0: [classes.sunday],
@@ -46,28 +46,30 @@ export const DateCell: DateCellComponent & {
         component={"td"}
         ref={ref}
         className={cx(className, classes.container)}
-        onClick={() => onClick(day)}
+        onClick={() => visible && onClick(day)}
         {...props}
       >
-        <div className={cx(classes.calendar)}>
-          <div
-            className={cx(classes.background, classes[`background-${type}`])}
-          />
-          <div className={classes.box}>
-            <span
-              className={cx(
-                classes.boxText,
-                ...DAY_CLASSES[day.dayIndex],
-                classes[type]
-              )}
-            >
-              {day.dayOfMonth}
-            </span>
+        {visible && (
+          <div className={cx(classes.calendar)}>
+            <div
+              className={cx(classes.background, classes[`background-${type}`])}
+            />
+            <div className={classes.box}>
+              <span
+                className={cx(
+                  classes.boxText,
+                  ...DAY_CLASSES[day.dayIndex],
+                  classes[type]
+                )}
+              >
+                {day.dayOfMonth}
+              </span>
+            </div>
+            <div className={classes.strikeBox}>
+              <span className={classes.strike} />
+            </div>
           </div>
-          <div className={classes.strikeBox}>
-            <span className={classes.strike} />
-          </div>
-        </div>
+        )}
       </View>
     );
   }

@@ -18,12 +18,10 @@ export type TmFontFamily = "Noto Serif KR" | "Pretendard";
 
 export const deviceSizes = {
   mobileS: 320,
-  mobileM: 375,
+  mobileM: 760,
   mobileL: 450,
   mobile: 480,
-  tablet: 768,
-  desktop: 1024,
-  maxSize: 1200,
+  maxSize: 768,
 };
 
 export type CoNumberSize = TmSize | TmFontSize | number;
