@@ -35,7 +35,6 @@ export const BottomBar: BottomBarComponent & { displayName?: string } =
       {
         onClick,
         initSelectedId = 0,
-        children,
         component,
         className,
         overrideStyles,

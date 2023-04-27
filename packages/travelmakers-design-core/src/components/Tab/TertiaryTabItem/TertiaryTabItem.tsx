@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import React, { ChangeEvent, forwardRef, PropsWithChildren } from "react";
+import React, { ChangeEvent, forwardRef } from "react";
 import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { View } from "../../View";
 import useStyles from "./TertiaryTabItem.style";
@@ -21,10 +21,9 @@ export const TertiaryTabItem: TertiaryTabItemComponent & {
       name = "tertiary-tab-item",
       label,
       className,
-      children,
       onChange,
       ...props
-    }: PropsWithChildren<TertiaryTabItemProps<C>>,
+    }: TertiaryTabItemProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const id = useId(name);
