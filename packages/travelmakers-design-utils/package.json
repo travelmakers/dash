@@ -19,6 +19,7 @@
     "directory": "packages/travelmakers-design-utils"
   },
   "peerDependencies": {
+    "date-fns": ">=2.29.3",
     "dayjs": ">=1.11.7",
     "react": ">=18.2.0"
   }

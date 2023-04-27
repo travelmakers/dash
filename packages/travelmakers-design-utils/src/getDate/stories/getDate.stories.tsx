@@ -1,4 +1,4 @@
-import { getDate, getDateTime, getDay, getFullDate } from "../getDate";
+import { getDate, getDay } from "../getDate";
 
 import React from "react";
 
@@ -35,13 +35,18 @@ export default {
 export const Default = (props) => {
   return (
     <div>
-      getDate: {getDate("2022-12-22T01:37:27.391Z")}
+      getDate(YYYY-MM-DD HH:mm):{" "}
+      {getDate("2022-12-22 12:00", "YYYY-MM-DD HH:mm:ss").format}
       <br />
-      getDateTime: {getDateTime("2022-12-22T01:37:27.391Z")}
+      getDate(YYYY-MM-DDTHH:mm:ssZ[Z]):{" "}
+      {getDate("2022-12-22T01:37:27.391Z").format}
       <br />
-      getFullDate: {getFullDate("2022-12-22T01:37:27.391Z")}
+      getDate(YYYY-MM-DDTHH:mm:ssZ[Z]):{" "}
+      {getDate("2022-12-22T01:37:27.391Z", "YYYY-MM-DD HH:mm:ss").format}
       <br />
-      getDay: {getDay("2022-12-22T01:37:27.391Z")}
+      getDay(YYYY-MM-DDTHH:mm:ssZ[Z]): {getDay("2022-12-22T01:37:27.391Z")}
+      <br />
+      {getDate().date.unix()}
     </div>
   );
 };

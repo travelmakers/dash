@@ -1,6 +1,7 @@
 import {
   DARK_COLORS,
   DEFAULT_BREAKPOINTS,
+  DEFAULT_DEVICE_SIZES,
   DEFAULT_COLORS,
   DEFAULT_FONT_HEIGHT,
   DEFAULT_FONT_SIZES,
@@ -9,11 +10,11 @@ import {
   DEFAULT_PALETTES,
   DEFAULT_SHADOWS,
   DEFAULT_SPACING,
+  DEFAULT_TYPOGRAPHY,
 } from "./tokens";
 import { TmTheme, TmThemeBase } from "./types";
 
 import { attachFunctions } from "./functions/attachFunctions";
-import { DEFAULT_TYPOGRAPHY } from "./tokens/typography";
 
 export const TM_PALETTES = Object.keys(DEFAULT_PALETTES);
 export const TM_COLORS = Object.keys(DEFAULT_COLORS);
@@ -67,6 +68,8 @@ export const _DEFAULT_THEME: TmThemeBase = {
   breakpoints: DEFAULT_BREAKPOINTS,
 
   media: DEFAULT_MEDIA,
+
+  deviceSizes: DEFAULT_DEVICE_SIZES,
 };
 
 export const _DARK_THEME: TmThemeBase = {

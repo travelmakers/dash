@@ -1,7 +1,5 @@
-import { getTimeStamp, getTimeStampCheckIn } from "../utils/getTimeStamp";
-
 import { getCountDown } from "../utils/getCountDown";
-import { getKorMoment } from "../getDate";
+import { getDate } from "../getDate";
 
 type ReservationState =
   | "default"
@@ -120,7 +118,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `투어 확정 전`,
         secondLineText: (expectedDate) =>
-          `${getTimeStamp(getKorMoment(expectedDate))} 이내 확정 예정`,
+          `${getDate(expectedDate, "MM월 DD일")} 이내 확정 예정`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -136,7 +134,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `투어 확정`,
         secondLineText: (startDate) =>
-          `${getTimeStamp(getKorMoment(startDate), true)} 방문`,
+          `${getDate(startDate, "MM월 DD일 HH:SS")} 방문`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -152,7 +150,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `투어 완료`,
         secondLineText: (startDate) =>
-          `${getTimeStamp(getKorMoment(startDate), true)} 방문`,
+          `${getDate(startDate, "MM월 DD일 HH:SS")} 방문`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -218,7 +216,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `예악 확정 전`,
         secondLineText: (expectedDate) =>
-          `${getTimeStamp(getKorMoment(expectedDate))} 이내 확정`,
+          `${getDate(expectedDate, "MM월 DD일")} 이내 확정`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -239,7 +237,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
           return `체크인 D-${dDay}`;
         },
         secondLineText: (startDate) =>
-          `${getTimeStamp(getKorMoment(startDate), true)} 체크인`,
+          `${getDate(startDate, "MM월 DD일 HH:SS")} 체크인`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -255,7 +253,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `호텔 이용 중`,
         secondLineText: (endDate) =>
-          `${getTimeStamp(getKorMoment(endDate), true)} 체크아웃`,
+          `${getDate(endDate, "MM월 DD일 HH:SS")} 체크아웃`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -271,7 +269,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `연장 확정 전`,
         secondLineText: (expectedDate) =>
-          `${getTimeStamp(getKorMoment(expectedDate))} 이내 확정 예정`,
+          `${getDate(expectedDate, "MM월 DD일")} 이내 확정 예정`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -287,7 +285,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `연장 확정`,
         secondLineText: (startDate) =>
-          `${getTimeStamp(getKorMoment(startDate), true)} 체크인`,
+          `${getDate(startDate, "MM월 DD일 HH:SS")} 체크인`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -303,7 +301,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `예약 변경 중`,
         secondLineText: (expectedDate) =>
-          `${getTimeStamp(getKorMoment(expectedDate))} 이내 확정`,
+          `${getDate(expectedDate, "MM월 DD일")} 이내 확정`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -324,7 +322,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
           return `체크아웃 D-${dDay}`;
         },
         secondLineText: (end_date) =>
-          `${getTimeStamp(getKorMoment(end_date), true)} 체크아웃`,
+          `${getDate(end_date, "MM월 DD일 HH:SS")} 체크아웃`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => false,
@@ -345,7 +343,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
           return `체크아웃 D-${dDay}`;
         },
         secondLineText: (end_date) =>
-          `${getTimeStamp(getKorMoment(end_date), true)} 체크아웃`,
+          `${getDate(end_date, "MM월 DD일 HH:SS")} 체크아웃`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         link: (url?: string) => {
@@ -374,7 +372,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `투어 취소`,
         secondLineText: (cancelDate) =>
-          `${getTimeStamp(getKorMoment(cancelDate), true)} 방문 취소`,
+          `${getDate(cancelDate, "MM월 DD일 HH:SS")} 방문 취소`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => true,
@@ -390,7 +388,7 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `취소 완료`,
         secondLineText: (cancelDate) =>
-          `${getTimeStamp(getKorMoment(cancelDate), true)} 방문 취소`,
+          `${getDate(cancelDate, "MM월 DD일 HH:SS")} 방문 취소`,
         thirdLineText: (hotelName) => hotelName,
         roomTypeText: (roomType) => roomType,
         titleDisable: () => true,

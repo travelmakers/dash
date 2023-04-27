@@ -1,5 +1,4 @@
 import {
-  CoBreakpoints,
   CoRadius,
   CoShadows,
   CoSpacing,
@@ -14,6 +13,8 @@ import { TmPalette } from "../tokens/palettes";
 import { CoTypography } from "../tokens/typography";
 import type { DeepPartial } from "./DeepPartial";
 import { Tuple } from "./Tuple";
+import { TmDeviceSizes } from "../tokens/deviceSizes";
+import { CoBreakpoints } from "../tokens/breakpoints";
 
 export interface HeadingStyle {
   fontSize: CSSProperties["fontSize"];
@@ -45,11 +46,11 @@ export interface TmTheme {
   lineHeights: Record<TmFontSizes, string>;
   radius: Record<CoRadius, number | string>;
   spacing: Record<CoSpacing, string>;
-  breakpoints: Record<CoBreakpoints, number>;
   shadows: Record<CoShadows, string>;
   media: TmMedia;
-
+  breakpoints: Record<CoBreakpoints, number>;
   typography: CoTypography;
+  deviceSizes: TmDeviceSizes;
 
   fn: TmThemeFunctions;
 }
