@@ -15,6 +15,7 @@ export * from "./NavBar";
 export * from "./Price";
 export * from "./Process";
 export * from "./Search";
+export * from "./Selection";
 export * from "./Tab";
 export * from "./Tag";
 export * from "./TextArea";

@@ -36,6 +36,7 @@ export const SelectButtonItem: SelectButtonItemComponent & {
           type={"radio"}
           ref={ref}
           className={cx(classes.input, "sr-only")}
+          name={name}
           {...props}
         />
         <div className="select-button-item__content">{content}</div>
