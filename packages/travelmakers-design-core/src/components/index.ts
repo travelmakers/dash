@@ -2,6 +2,7 @@ export * from "./Accordion";
 export * from "./Badge";
 export * from "./BottomBar";
 export * from "./Button";
+export * from "./Calendar";
 export * from "./Callout";
 export * from "./Card";
 export * from "./Divider";
