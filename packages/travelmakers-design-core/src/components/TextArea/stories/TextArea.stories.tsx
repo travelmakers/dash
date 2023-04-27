@@ -54,5 +54,9 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <TextArea {...props} />;
+  return (
+    <div style={{ display: "inline-flex" }}>
+      <TextArea {...props} />
+    </div>
+  );
 };

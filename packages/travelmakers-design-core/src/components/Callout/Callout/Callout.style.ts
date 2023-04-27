@@ -5,7 +5,7 @@ export default createStyles((theme) => {
 
   return {
     root: {
-      display: "inline-flex",
+      display: "flex",
       flexDirection: "column",
       rowGap: spacing.spacing10,
       margin: 0,

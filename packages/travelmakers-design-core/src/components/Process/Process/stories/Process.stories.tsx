@@ -30,7 +30,7 @@ export const Default = (props) => {
   return (
     <div
       style={{
-        display: "inline-block",
+        display: "inline-flex",
         backgroundColor: "gray",
         padding: "20px 10px",
       }}

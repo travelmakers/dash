@@ -32,5 +32,9 @@ export const Default = () => {
     return <Menu.Item key={idx} href={href} menu={name} />;
   });
 
-  return <Menu items={_items} />;
+  return (
+    <div style={{ display: "inline-flex" }}>
+      <Menu items={_items} />
+    </div>
+  );
 };

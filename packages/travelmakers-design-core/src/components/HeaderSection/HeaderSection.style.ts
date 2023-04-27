@@ -6,7 +6,7 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
 
   return {
     root: {
-      display: "inline-flex",
+      display: "flex",
       alignItems: "center",
       minWidth: "328px",
       minHeight: "53px",

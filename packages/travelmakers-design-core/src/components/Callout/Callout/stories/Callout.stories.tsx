@@ -50,15 +50,21 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <Callout title={data.title} {...props} items={data.items} />;
+  return (
+    <div style={{ display: "inline-flex" }}>
+      <Callout title={data.title} {...props} items={data.items} />
+    </div>
+  );
 };
 
 export const CalloutWithoutItems = (props) => {
   return (
-    <Callout
-      title={dataWithoutItems.title}
-      items={dataWithoutItems.items}
-      {...props}
-    />
+    <div style={{ display: "inline-flex" }}>
+      <Callout
+        title={dataWithoutItems.title}
+        items={dataWithoutItems.items}
+        {...props}
+      />
+    </div>
   );
 };
