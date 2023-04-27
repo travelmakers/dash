@@ -5,11 +5,8 @@ export default createStyles((theme) => {
     indicatorBox: {
       width: "100%",
       height: "64px",
-
-      position: "fixed",
       top: 0,
       maxWidth: theme.deviceSizes.mobile,
-
       display: "flex",
       justifyContent: "space-between",
       backgroundColor: theme.colors.surface,

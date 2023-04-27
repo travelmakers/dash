@@ -82,8 +82,6 @@ export default createStyles(
       },
 
       // NOTE: cell-type
-      default: {},
-      "default-between": {},
       "disabled-between": {
         color: theme.colors.primary4,
       },
@@ -96,7 +94,6 @@ export default createStyles(
       "not-allowed-to-between": {
         color: theme.colors.primary3,
       },
-      "to-between": {},
       focus: {
         color: theme.colors.white,
         backgroundColor: theme.colors.secondary,
@@ -115,7 +112,6 @@ export default createStyles(
       "not-allowed": {
         color: theme.colors.primary3,
       },
-      forbidden: {},
 
       // NOTE: cell-background-type
       background: {
@@ -126,11 +122,6 @@ export default createStyles(
         width: "100%",
         height: "26px",
       },
-      "background-default": {},
-      "background-focus": {},
-      "background-disabled": {},
-      "background-not-allowed": {},
-      "background-forbidden": {},
       "background-default-between": {
         ...getBackgroundColor(),
       },

@@ -5,8 +5,8 @@ export interface CalendarNewEvents extends CalendarEvent {
 }
 export interface CalendarState {
   days: string[];
-  month: string;
-  year: number;
+  month: string[];
+  year: number[];
   events: { dates: string[]; startDate: Date; endDate: Date; note: string }[];
   weeks: {
     date: Date;

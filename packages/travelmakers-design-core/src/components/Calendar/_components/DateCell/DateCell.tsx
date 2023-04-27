@@ -46,7 +46,7 @@ export const DateCell: DateCellComponent & {
         component={"td"}
         ref={ref}
         className={cx(className, classes.container)}
-        onClick={() => visible && onClick(day)}
+        onClick={() => visible && onClick?.(day)}
         {...props}
       >
         {visible && (

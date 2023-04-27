@@ -1,29 +1,22 @@
 import { Typography } from "../../../Typography";
 import { Button } from "../../../Button";
-import { week } from "../../Calendar.type";
-import useStyles from "../../Calendar.style";
 
 const HeadMonthly = ({
-  week,
+  title,
   onClear,
 }: {
-  week: week;
+  title: string;
   onClear: () => void;
 }) => {
-  const { classes, cx } = useStyles();
   return (
-    <tr className={classes.tableHead}>
-      <td colSpan={4}>
-        <Typography level="subhead2" color="primary1" strong>
-          {week.year}년 {week.month}
-        </Typography>
-      </td>
-      <td colSpan={3} className={classes.tableMonthly}>
-        <Button variant="text" size="small" roundness onClick={onClear}>
-          초기화
-        </Button>
-      </td>
-    </tr>
+    <>
+      <Typography level="subhead2" color="primary1" strong>
+        {title}
+      </Typography>
+      <Button variant="text" size="small" roundness onClick={onClear}>
+        초기화
+      </Button>
+    </>
   );
 };
 

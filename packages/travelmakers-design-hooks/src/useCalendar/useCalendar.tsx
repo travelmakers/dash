@@ -6,13 +6,14 @@ import {
   removeEvent,
 } from "./useCalendar.date";
 import * as actionTypes from "./useCalendar.type";
-import { addDays, addMonths, format } from "date-fns";
+import { addMonths, format } from "date-fns";
 import { CalendarState } from "./useCalendar.type";
 import { ko } from "date-fns/locale";
 
 const initialState = {
   startDate: null,
-  month: null,
+  year: [],
+  month: [],
   days: [],
   weeks: [],
   events: [],
@@ -40,6 +41,8 @@ function reducer(state, action): CalendarState {
       return {
         ...state,
         ...getDays(action.date, state),
+        month: [...state.month, getDays(action.date, state).month],
+        year: [...state.year, getDays(action.date, state).year],
       };
     case actionTypes.GET_INFINITE_NEXT_MONTH:
       const nextMonths = getDays(addMonths(state.startDate, 1), state);
@@ -48,16 +51,34 @@ function reducer(state, action): CalendarState {
         ...state,
         ...nextMonths,
         weeks: state.weeks,
+        month: [...state.month, nextMonths.month],
+        year: [...state.year, nextMonths.year],
       };
     case actionTypes.GET_NEXT_MONTH:
       return {
         ...state,
         ...getDays(addMonths(state.startDate, 1), state),
+        month: [
+          ...state.month,
+          getDays(addMonths(state.startDate, 1), state).month,
+        ],
+        year: [
+          ...state.year,
+          getDays(addMonths(state.startDate, 1), state).year,
+        ],
       };
     case actionTypes.GET_PREV_MONTH:
       return {
         ...state,
         ...getDays(addMonths(state.startDate, -1), state),
+        month: [
+          ...state.month,
+          getDays(addMonths(state.startDate, -1), state).month,
+        ],
+        year: [
+          ...state.year,
+          getDays(addMonths(state.startDate, -1), state).year,
+        ],
       };
     case actionTypes.ADD_EVENT:
       return {
@@ -80,9 +101,12 @@ function initialize(date, options) {
     ...createEvents(options, initialState),
     options: { ...initialState.options, ...options },
   };
+  const days = getDays(date, events);
   return {
     ...events,
-    ...getDays(date, events),
+    ...days,
+    month: [...initialState.month, days.month],
+    year: [...initialState.year, days.year],
   };
 }
 

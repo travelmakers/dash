@@ -23,12 +23,15 @@ import {
   DateCellDay,
   DateCellType,
 } from "./_components/DateCell/DateCell.type";
-import TableHead from "./_components/TableHead";
 import Indicator from "./_components/Indicator";
 import OptionBox from "./_components/OptionBox";
+import HeadMonthly from "./_components/HeadMonthly";
+import HeadTitle from "./_components/HeadTitle";
 import _ from "lodash";
 
 export interface Props {
+  hotelName?: string;
+
   /** 캘린더의 타입 */
   type: "tour" | "move-in";
 
@@ -68,6 +71,7 @@ export const Calendar: CalendarComponent & {
 } = forwardRef(
   <C extends React.ElementType = "div">(
     {
+      hotelName = "",
       type = "move-in",
       selected,
       disabledDays = [],
@@ -101,22 +105,18 @@ export const Calendar: CalendarComponent & {
      * @returns
      */
     const isBetweenNotSelectedDays = (day: DateCellDay) => {
-      if (
+      return (
         checked.from &&
         !checked.to &&
         differenceInDays(day.date, checked.from.date) > 0 &&
         differenceInDays(enabledDays, day.date) >= 0
-      ) {
-        return true;
-      }
-      return false;
+      );
     };
 
     const isMinNightDays = (day: DateCellDay) => {
       if (checked.from) {
         const resultDay = differenceInDays(day.date, checked.from.date);
-        if (resultDay > minNight) return true;
-        return false;
+        return resultDay > minNight;
       }
       return false;
     };
@@ -127,15 +127,12 @@ export const Calendar: CalendarComponent & {
      * @returns
      */
     const isBetweenFromAndToDays = (day: DateCellDay) => {
-      if (
+      return (
         checked.from &&
         checked.to &&
         differenceInDays(day.date, checked.from.date) > 0 &&
         differenceInDays(checked.to.date, day.date) > 0
-      ) {
-        return true;
-      }
-      return false;
+      );
     };
 
     /**
@@ -144,21 +141,13 @@ export const Calendar: CalendarComponent & {
      * @returns
      */
     const isDisabledDay = (day: DateCellDay) => {
-      let isCloset = true;
-      for (const disabledDay of disabledDays) {
-        if (isEqual(disabledDay, day.date)) {
-          isCloset = true;
-          break;
-        }
-      }
-
-      for (const selectableDate of selectableDates) {
-        if (isEqual(selectableDate, day.date)) {
-          isCloset = false;
-          break;
-        }
-      }
-      return isCloset;
+      const isDisable = disabledDays.some((disabledDay) =>
+        isEqual(disabledDay, day.date)
+      );
+      const isSelectable = !selectableDates.some((selectableDate) =>
+        isEqual(selectableDate, day.date)
+      );
+      return isDisable || isSelectable;
     };
 
     const onClear = () => {
@@ -206,11 +195,9 @@ export const Calendar: CalendarComponent & {
           differenceInDays(enabledDays, day.date) >= 0 &&
           (!checked.to || differenceInDays(checked.to?.date, day.date) >= 0)
         ) {
-          if (differenceInDays(enabledDays, day.date) > 0) {
-            return "disabled-between";
-          } else {
-            return "disabled-to-between";
-          }
+          return differenceInDays(enabledDays, day.date) > 0
+            ? "disabled-between"
+            : "disabled-to-between";
         } else {
           return "disabled";
         }
@@ -219,24 +206,12 @@ export const Calendar: CalendarComponent & {
       if (isBetweenNotSelectedDays(day)) {
         const isMinNight = isMinNightDays(day);
         if (differenceInDays(enabledDays, day.date) > 0) {
-          if (isMinNight) {
-            return "default-between";
-          } else {
-            return "disabled-between";
-          }
+          return isMinNight ? "default-between" : "disabled-between";
         } else {
-          if (isMinNight) {
-            return "to-between";
-          } else {
-            return "disabled-to-between";
-          }
+          return isMinNight ? "to-between" : "disabled-to-between";
         }
       } else if (isEqual(day.date, checked.from?.date)) {
-        if (type === "move-in") {
-          return "from";
-        } else {
-          return "focus";
-        }
+        return type === "move-in" ? "from" : "focus";
       } else if (isEqual(day.date, checked.to?.date)) {
         return "to";
       } else if (isBetweenFromAndToDays(day)) {
@@ -257,6 +232,8 @@ export const Calendar: CalendarComponent & {
       state && handleCalendar();
     }, []);
 
+    console.log(state, state.month);
+
     return (
       <View<React.ElementType> component={"div"} className={cx(classes.root)}>
         <View<React.ElementType>
@@ -267,32 +244,49 @@ export const Calendar: CalendarComponent & {
         >
           <Indicator checked={checked} onClear={onClear} />
           <div className={classes.calendar}>
-            <table>
-              {state.weeks.map((week, index) => (
+            {state.month.map((month, index) => {
+              const title = `${state.year[index]}년 ${month}`;
+              return (
                 <>
-                  <TableHead
-                    week={_.first(week)}
-                    index={index}
-                    onClear={onClear}
-                  />
-                  <tr key={index}>
-                    {week.map((day) => {
-                      return (
-                        <DateCell
-                          day={day}
-                          type={onType(day)}
-                          onClick={onClick}
-                          visible={
-                            _.first(week).month ===
-                            `${getMonth(day.date) + 1}월`
-                          }
-                        />
-                      );
-                    })}
-                  </tr>
+                  <div className={classes.tableHead}>
+                    <HeadMonthly title={title} onClear={onClear} />
+                  </div>
+                  <table>
+                    <caption className={"sr-only"}>
+                      {hotelName && `${hotelName} :`} {title} 달력
+                    </caption>
+                    <thead className={classes.mt10}>
+                      <HeadTitle />
+                    </thead>
+                    <tbody>
+                      {state.weeks
+                        .filter((week) => _.first(week).month === month)
+                        .map((week, index) => {
+                          return (
+                            <>
+                              <tr key={index}>
+                                {week.map((day) => {
+                                  return (
+                                    <DateCell
+                                      day={day}
+                                      type={onType(day)}
+                                      onClick={onClick}
+                                      visible={
+                                        _.first(week).month ===
+                                        `${getMonth(day.date) + 1}월`
+                                      }
+                                    />
+                                  );
+                                })}
+                              </tr>
+                            </>
+                          );
+                        })}
+                    </tbody>
+                  </table>
                 </>
-              ))}
-            </table>
+              );
+            })}
           </div>
           {children}
         </View>

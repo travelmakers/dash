@@ -9,11 +9,11 @@ const HeadTitle: React.FC = () => {
     <tr>
       {DAYS.map((day) => {
         return (
-          <td key={day} className={classes.tableCell}>
+          <th key={day} className={classes.tableCell}>
             <Typography level="body2" color="primary1" strong>
               {day}
             </Typography>
-          </td>
+          </th>
         );
       })}
     </tr>

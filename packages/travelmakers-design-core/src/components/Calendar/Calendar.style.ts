@@ -18,7 +18,6 @@ export default createStyles((theme) => {
       padding: theme.spacing.spacing30,
       height: "calc(100% - 120px)",
       backgroundColor: theme.colors.white,
-      marginTop: "64px",
       paddingBottom: "120px",
       overflowY: "scroll",
       width: "100%",
@@ -32,10 +31,10 @@ export default createStyles((theme) => {
       },
     },
     tableHead: {
-      backgroundColor: theme.colors.white,
-      ["& > td"]: {
-        padding: `${theme.spacing.spacing10} ${theme.spacing.spacing30}`,
-      },
+      padding: `${theme.spacing.spacing10} ${theme.spacing.spacing30}`,
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
     },
     tableCell: {
       textAlign: "center",

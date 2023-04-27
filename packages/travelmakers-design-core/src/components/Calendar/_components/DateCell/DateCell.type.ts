@@ -15,7 +15,7 @@ interface SharedDateCellProps
 export type DateCellProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedDateCellProps>;
 
-export type DateCellComponent = <C extends React.ElementType = "div">(
+export type DateCellComponent = <C extends React.ElementType = "td">(
   props: DateCellProps<C>
 ) => React.ReactElement;
 
