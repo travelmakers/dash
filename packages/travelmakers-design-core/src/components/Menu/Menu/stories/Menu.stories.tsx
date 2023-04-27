@@ -18,7 +18,7 @@ export default {
       description: "Menu에 표시될 리스트 입니다. Menu.Item를 사용합니다.",
       table: {
         type: {
-          summary: "React.ReactNode[]",
+          summary: "MenuItem[]",
         },
       },
     },

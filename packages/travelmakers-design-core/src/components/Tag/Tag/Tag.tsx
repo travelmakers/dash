@@ -18,7 +18,7 @@ export interface Props {
   size?: TagSize;
   gap?: number;
   roundness?: TagRound;
-  items: React.ReactNode[];
+  items: typeof TagItem[];
 }
 
 export const TagContext = createContext<Omit<Props, "gap" | "items">>({

@@ -12,7 +12,7 @@ import {
 export type Props = {
   gap?: number;
   type?: AccordionType;
-  items: React.ReactNode[];
+  items: typeof AccordionItem[];
 };
 
 export const AccordionContext = createContext<Omit<Props, "items">>({
