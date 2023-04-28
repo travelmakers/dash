@@ -63,7 +63,7 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  const [currentTab, setCurrentTab] = useState("선택2");
+  const [currentTab, setCurrentTab] = useState("선택1");
 
   const _items = data.map((item, idx) => (
     <SelectButton.Item
