@@ -1,13 +1,5 @@
 {
-  "exclude": [
-    "node_modules",
-    "lib",
-    "esm",
-    "cjs",
-    "config/storybook/main.js"
-    // "config/storybook/manager.js",
-    // "config/storybook/theme.js"
-  ],
+  "exclude": ["node_modules", "lib", "esm", "cjs", "config/storybook/main.js"],
   "compilerOptions": {
     "target": "es2015",
     "lib": ["dom", "esnext"],
