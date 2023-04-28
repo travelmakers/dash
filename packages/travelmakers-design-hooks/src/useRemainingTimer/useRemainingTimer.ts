@@ -1,4 +1,4 @@
-import { getRemainingTime } from "@travelmakers-design-v2/utils";
+import { getRemainingTime } from "../utils/getRemainingTime";
 import dayjs from "dayjs";
 import { useLayoutEffect, useState } from "react";
 
