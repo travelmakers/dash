@@ -1,4 +1,8 @@
-import { CSSObject, PolymorphicRef } from "@travelmakers-design-v2/styles";
+import {
+  CSSObject,
+  CoTypography,
+  PolymorphicRef,
+} from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
 import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { Icon } from "../../Icon";
@@ -14,9 +18,11 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   type?: SelectCheckType;
   label: string;
   gap?: number | "full";
+  typography?: keyof CoTypography;
   fontWeight?: CSSObject["fontWeight"];
   isVisibleLabel?: boolean;
   isReverse?: boolean;
+  hasParent?: boolean;
   name?: string;
 }
 
@@ -28,9 +34,11 @@ export const SelectCheck: SelectCheckComponent & {
       type = "small",
       label,
       gap = 8,
+      typography,
       fontWeight = 700,
       isVisibleLabel = false,
       isReverse = false,
+      hasParent = false,
       name = "select-check-box-icon",
       className,
       ...props
@@ -38,10 +46,20 @@ export const SelectCheck: SelectCheckComponent & {
     ref: PolymorphicRef<C>
   ) => {
     const id = useId(name);
-    const { classes, cx } = useStyles({ type, gap, fontWeight, isReverse });
+    const { classes, cx } = useStyles({
+      type,
+      gap,
+      typography,
+      fontWeight,
+      isReverse,
+    });
 
     return (
-      <label htmlFor={id} className={cx(classes.root, className)}>
+      <label
+        htmlFor={id}
+        className={cx(classes.root, className)}
+        onClick={(e) => hasParent && e.stopPropagation()}
+      >
         <View<React.ElementType>
           id={id}
           type={"checkbox"}

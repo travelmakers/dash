@@ -23,6 +23,16 @@ const CHECK_ICON_LABEL_TYPOGRAPHY: Record<Props["type"], keyof CoTypography> = {
   medium: "body2",
 };
 
+const getTypography = (
+  typography: CoTypography,
+  type: Props["type"],
+  typo: Props["typography"]
+) => {
+  if (!typo) return typography[CHECK_ICON_LABEL_TYPOGRAPHY[type]];
+
+  return typography[typo];
+};
+
 const getRootStyle = (gap: Props["gap"]) => {
   switch (gap) {
     case "full":
@@ -30,6 +40,7 @@ const getRootStyle = (gap: Props["gap"]) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        width: "100%",
       };
 
     default:
@@ -47,9 +58,10 @@ export default createStyles(
     {
       type,
       gap,
+      typography: _typography,
       fontWeight,
       isReverse,
-    }: Pick<Props, "type" | "gap" | "fontWeight" | "isReverse">
+    }: Pick<Props, "type" | "gap" | "typography" | "fontWeight" | "isReverse">
   ) => {
     const { colors, radius, typography } = theme;
 
@@ -57,6 +69,8 @@ export default createStyles(
       root: {
         ...getRootStyle(gap),
         flexDirection: !isReverse ? "row" : "row-reverse",
+        height: "100%",
+        cursor: "pointer",
 
         ".tm-select-check__icon": {
           ...CHECK_ICON_SIZE[type],
@@ -75,7 +89,7 @@ export default createStyles(
         },
       },
       label: {
-        ...typography[CHECK_ICON_LABEL_TYPOGRAPHY[type]],
+        ...getTypography(typography, type, _typography),
         color: colors.primary1,
         fontWeight,
       },

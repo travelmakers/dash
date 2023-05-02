@@ -25,7 +25,8 @@ export default {
     },
     gap: {
       control: { type: "radio", options: [8, "full"] },
-      description: "SelectCheck아이콘과 label 간격",
+      description:
+        "SelectCheck내 아이콘과 label 간격입니다. 숫자 혹은 'full'입력시 justifyContent: 'space-between'로 변경됩니다.",
       table: {
         type: {
           summary: ["number", "full"],
