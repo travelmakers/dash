@@ -1,6 +1,7 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
 import { View } from "../../View";
+import useStyles from "./DropdownItems.style";
 import {
   DropdownItemsComponent,
   DropdownItemsProps,
@@ -14,12 +15,15 @@ export const DropdownItems: DropdownItemsComponent & {
   displayName?: string;
 } = forwardRef(
   <C extends React.ElementType = "ul">(
-    { items, ...props }: DropdownItemsProps<C>,
+    { items, className, ...props }: DropdownItemsProps<C>,
     ref: PolymorphicRef<C>
   ) => {
+    const { classes, cx } = useStyles();
+
     return (
       <View<React.ElementType>
         component={"ul"}
+        className={cx(classes.root, className)}
         role="listbox"
         ref={ref}
         {...props}

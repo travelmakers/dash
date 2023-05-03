@@ -1,7 +1,16 @@
-import { PolymorphicComponentProps } from "@travelmakers-design-v2/styles";
+import {
+  ClassNames,
+  PolymorphicComponentProps,
+  TmComponentProps,
+} from "@travelmakers-design-v2/styles";
 import { Props } from "./DropdownTrigger";
+import useStyles from "./DropdownTrigger.style";
 
-interface SharedDropdownTriggerProps extends Props {}
+type SelectDropBoxStylesNames = ClassNames<typeof useStyles>;
+
+interface SharedDropdownTriggerProps
+  extends Props,
+    TmComponentProps<SelectDropBoxStylesNames> {}
 
 export type DropdownTriggerProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedDropdownTriggerProps>;

@@ -2,6 +2,7 @@ import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import React, { forwardRef, useContext } from "react";
 import { View } from "../../View";
 import { DropdownContext } from "../Dropdown/Dropdown";
+import useStyles from "./DropdownTrigger.style";
 import {
   DropdownTriggerComponent,
   DropdownTriggerProps,
@@ -20,6 +21,7 @@ export const DropdownTrigger: DropdownTriggerComponent & {
     { onClick, className, children, ...props }: DropdownTriggerProps<C>,
     ref: PolymorphicRef<C>
   ) => {
+    const { classes, cx } = useStyles();
     const { isToggle, setIsToggle } = useContext(DropdownContext);
 
     const _children =
@@ -34,7 +36,7 @@ export const DropdownTrigger: DropdownTriggerComponent & {
       <View<React.ElementType>
         component={"button"}
         ref={ref}
-        className={className}
+        className={cx(classes.root, className)}
         onClick={onClickHandler}
         aria-haspopup="listbox"
         aria-expanded={isToggle}
