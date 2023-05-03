@@ -2,8 +2,7 @@ import { Meta } from "@storybook/react";
 import { SelectCheckBox } from "../SelectCheckBox";
 
 export default {
-  title:
-    "@travelmakers-design-v2/core/General/Selection/SelectCheckBox/SelectCheckBox",
+  title: "@travelmakers-design-v2/core/General/Selection/SelectCheckBox",
   component: SelectCheckBox,
   argTypes: {
     label: {
