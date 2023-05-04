@@ -82,6 +82,11 @@ export default createStyles(
         backgroundColor: colors.white,
         zIndex: 2,
       },
+      content: {
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+      },
       icon: {
         transform: `rotate(${showOptions ? "180deg" : "0"})`,
       },

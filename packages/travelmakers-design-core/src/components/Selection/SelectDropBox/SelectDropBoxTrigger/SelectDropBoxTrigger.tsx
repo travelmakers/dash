@@ -41,7 +41,9 @@ export const SelectDropBoxTrigger: SelectDropBoxTriggerComponent & {
 
           return (
             <>
-              {currentValue || placeholder}
+              <span className={classes.content}>
+                {currentValue || placeholder}
+              </span>
               {!disabled && (
                 <Icon
                   className={classes.icon}
