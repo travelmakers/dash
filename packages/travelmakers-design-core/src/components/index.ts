@@ -6,6 +6,7 @@ export * from "./Calendar";
 export * from "./Callout";
 export * from "./Card";
 export * from "./Divider";
+export * from "./Dropdown";
 export * from "./HeaderSection";
 export * from "./Icon";
 export * from "./Image";
