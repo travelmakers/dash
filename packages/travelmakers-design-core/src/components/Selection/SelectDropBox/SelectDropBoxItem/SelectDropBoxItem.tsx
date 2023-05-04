@@ -41,7 +41,7 @@ export const SelectDropBoxItem: SelectDropBoxItemComponent & {
         onClick={() => onClickHandler(value)}
         {...props}
       >
-        <Divider type={"horizontal"} />
+        <Divider type={"horizontal"} color={"outline"} />
         {value}
       </View>
     );
