@@ -15,8 +15,7 @@ export const Default = () => {
 
   const _items = data.map((item) => (
     <Dropdown.Item
-      onClick={(v) => setCurrentValue(v)}
-      item={item}
+      onClick={() => setCurrentValue(item)}
       ariaSelected={currentValue === item}
     >
       {item}

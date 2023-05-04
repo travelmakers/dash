@@ -5,7 +5,6 @@ import { DropdownContext } from "../Dropdown/Dropdown";
 import { DropdownItemComponent, DropdownItemProps } from "./DropdownItem.type";
 
 export interface Props {
-  item: unknown;
   ariaSelected: boolean;
 }
 
@@ -14,7 +13,6 @@ export const DropdownItem: DropdownItemComponent & {
 } = forwardRef(
   <C extends React.ElementType = "li">(
     {
-      item,
       ariaSelected,
       onClick,
       children,
@@ -26,7 +24,7 @@ export const DropdownItem: DropdownItemComponent & {
 
     const onClickHandler = () => {
       setIsToggle(false);
-      onClick?.(item);
+      onClick?.();
     };
 
     return (
