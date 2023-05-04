@@ -1,0 +1,23 @@
+import {
+  ClassNames,
+  PolymorphicComponentProps,
+  TmComponentProps,
+} from "@travelmakers-design-v2/styles";
+import { Dropdown } from "../../../Dropdown";
+import { Props } from "./SelectDropBoxItems";
+import useStyles from "./SelectDropBoxItems.style";
+
+type SelectDropBoxItemsStylesNames = ClassNames<typeof useStyles>;
+
+interface SharedSelectDropBoxItemsProps
+  extends Props,
+    TmComponentProps<SelectDropBoxItemsStylesNames> {}
+
+export type SelectDropBoxItemsProps<C extends React.ElementType> =
+  PolymorphicComponentProps<C, SharedSelectDropBoxItemsProps>;
+
+export type SelectDropBoxItemsComponent = <
+  C extends React.ElementType = typeof Dropdown.Items
+>(
+  props: SelectDropBoxItemsProps<C>
+) => React.ReactElement;
