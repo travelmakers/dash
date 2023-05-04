@@ -64,16 +64,22 @@ export default createStyles(
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        height: SELECT_DROP_BOX_HEIGHT[type],
+        height: showOptions
+          ? `calc(${SELECT_DROP_BOX_HEIGHT[type]} - 1px)`
+          : SELECT_DROP_BOX_HEIGHT[type],
         padding: `0 ${spacing.spacing30}`,
         color: getTriggerColor(colors, disabled, showPlaceholder, type),
         fontWeight: showPlaceholder
           ? 400
           : SELECT_DROP_BOX_TRIGGER_FONT_WEIGHT[type],
         borderWidth: "1px",
+        borderBottomWidth: showOptions ? 0 : "1px",
         borderStyle: "solid",
-        borderColor: showOptions ? colors.transparent : colors.outline,
-        borderRadius: radius.radius20,
+        borderColor: showOptions ? colors.primary : colors.outline,
+        borderRadius: showOptions
+          ? `${radius.radius20} ${radius.radius20} 0 0`
+          : radius.radius20,
+        backgroundColor: colors.white,
         zIndex: 2,
       },
       icon: {
