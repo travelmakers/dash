@@ -62,12 +62,13 @@ export default {
   },
 } as Meta;
 
-const Overlay = () => {
+const FullPageModal = ({ ...props }) => {
   const overlay = useOverlay();
 
   const onModal = () =>
     overlay.open(({ isOpen, close }) => (
       <ModalFullPage
+        {...props}
         isOpen={isOpen}
         title="테스트"
         contentTitle="테스트 중입니다."
@@ -78,16 +79,19 @@ const Overlay = () => {
     ));
 
   return (
-    <button type={"button"} onClick={onModal}>
-      풀페이지 버튼
-    </button>
+    <>
+      <div id={"modal"} />
+      <button type={"button"} onClick={onModal}>
+        풀페이지 버튼
+      </button>
+    </>
   );
 };
 
-export const Default = () => {
+export const Default = (props) => {
   return (
     <OverlayProvider>
-      <Overlay />
+      <FullPageModal {...props} />
     </OverlayProvider>
   );
 };

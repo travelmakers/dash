@@ -2,14 +2,14 @@ import { Global, css } from "@emotion/react";
 
 const styles = css`
   html: {
-    fontFamily: "sans-serif",
-    lineHeight: "1.15",
-    textSizeAdjust: "100%",
-  },
+    fontfamily: "sans-serif";
+    line-height: "1.15";
+    text-size-adjust: "100%";
+  }
 
   body: {
     margin: 0;
-  },
+  }
 
   .sr-only {
     position: absolute;
@@ -18,9 +18,13 @@ const styles = css`
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+  }
+
+  .tm-block-scrolling {
+    overflow: hidden;
   }
 `;
 

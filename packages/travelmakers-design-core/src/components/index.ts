@@ -11,6 +11,7 @@ export * from "./Icon";
 export * from "./Image";
 export * from "./Input";
 export * from "./Menu";
+export * from "./Modal";
 export * from "./NavBar";
 export * from "./Price";
 export * from "./Process";
