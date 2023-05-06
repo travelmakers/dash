@@ -18,5 +18,9 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <ModalFullPageFooter {...props} />;
+  return (
+    <div style={{ width: "360px" }}>
+      <ModalFullPageFooter {...props} label={props.label || "버튼"} />
+    </div>
+  );
 };

@@ -3,6 +3,7 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers-design-v2/styles";
+import { Button } from "../../Button";
 import { Props } from "./ModalFullPageFooter";
 import useStyles from "./ModalFullPageFooter.style";
 
@@ -16,7 +17,7 @@ export type ModalFullPageFooterProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedModalFullPageFooterProps>;
 
 export type ModalFullPageFooterComponent = <
-  C extends React.ElementType = "button"
+  C extends React.ElementType = typeof Button
 >(
   props: ModalFullPageFooterProps<C>
 ) => React.ReactElement;

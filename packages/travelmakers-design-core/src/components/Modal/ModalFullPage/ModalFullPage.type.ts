@@ -15,6 +15,6 @@ interface SharedModalFullPageProps
 export type ModalFullPageProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedModalFullPageProps>;
 
-export type ModalFullPageComponent = <C extends React.ElementType = "div">(
+export type ModalFullPageComponent = <C extends React.ElementType = "dialog">(
   props: ModalFullPageProps<C>
 ) => React.ReactElement;

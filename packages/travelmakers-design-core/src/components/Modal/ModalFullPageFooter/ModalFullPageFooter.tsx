@@ -1,20 +1,22 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
+import { Button, ButtonProps } from "../../Button";
 import { View } from "../../View";
 import useStyles from "./ModalFullPageFooter.style";
 import {
-  ModalFullPageFooterProps,
   ModalFullPageFooterComponent,
+  ModalFullPageFooterProps,
 } from "./ModalFullPageFooter.type";
 
-export interface Props {
+export interface Props
+  extends Omit<ButtonProps<typeof Button>, "overrideStyles"> {
   label: string;
 }
 
 export const ModalFullPageFooter: ModalFullPageFooterComponent & {
   displayName?: string;
 } = forwardRef(
-  <C extends React.ElementType = "button">(
+  <C extends React.ElementType = typeof Button>(
     { label, className, ...props }: ModalFullPageFooterProps<C>,
     ref: PolymorphicRef<C>
   ) => {
@@ -23,9 +25,10 @@ export const ModalFullPageFooter: ModalFullPageFooterComponent & {
     return (
       <div className={classes.root}>
         <View<React.ElementType>
-          component={"button"}
+          component={Button}
           ref={ref}
           className={cx(classes.button, className)}
+          size={"medium"}
           {...props}
         >
           {label}

@@ -1,18 +1,19 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
 import { View } from "../../View";
+import { ModalFullPageFooter } from "../ModalFullPageFooter";
 import useStyles from "./ModalFullPage.style";
 import {
-  ModalFullPageProps,
   ModalFullPageComponent,
+  ModalFullPageProps,
 } from "./ModalFullPage.type";
-import { ModalFullPageFooter } from "../ModalFullPageFooter";
 
 export interface Props {
   title: string;
   contentTitle: string;
   content: string;
-  closeBtnProps?: React.HTMLAttributes<HTMLButtonElement>;
+  closeBtnProps: React.HTMLAttributes<HTMLButtonElement> & { label?: string };
+  isOpen: boolean;
   footer?: React.ReactNode;
 }
 
@@ -20,7 +21,7 @@ export const ModalFullPage: ModalFullPageComponent & {
   displayName?: string;
   Footer?: typeof ModalFullPageFooter;
 } = forwardRef(
-  <C extends React.ElementType = "div">(
+  <C extends React.ElementType = "dialog">(
     {
       className,
       title,
@@ -28,34 +29,42 @@ export const ModalFullPage: ModalFullPageComponent & {
       content,
       closeBtnProps,
       footer,
+      isOpen,
       ...props
     }: ModalFullPageProps<C>,
     ref: PolymorphicRef<C>
   ) => {
+    const { label: closeBtnLabel = "닫기", ...closeBtnPropsRest } =
+      closeBtnProps;
     const { classes, cx } = useStyles();
 
+    if (!isOpen) return null;
+
     return (
-      <View<React.ElementType>
-        component={"div"}
-        ref={ref}
-        className={cx(classes.root, className)}
-        {...props}
-      >
-        <header className={classes.header}>
-          <strong className={classes.title}>{title}</strong>
-          <button className={classes.button} {...closeBtnProps}>
-            닫기
-          </button>
-        </header>
-        <div className={classes.body}>
-          <strong className={classes.bodyTitle}>{contentTitle}</strong>
-          <p
-            className={classes.bodyText}
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-        </div>
-        {footer}
-      </View>
+      <div className={cx(classes.root, className)}>
+        <View<React.ElementType>
+          component={"dialog"}
+          ref={ref}
+          className={classes.dialog}
+          open={isOpen}
+          {...props}
+        >
+          <header className={classes.header}>
+            <strong className={classes.title}>{title}</strong>
+            <button className={classes.button} {...closeBtnPropsRest}>
+              {closeBtnLabel}
+            </button>
+          </header>
+          <div className={classes.body}>
+            <strong className={classes.bodyTitle}>{contentTitle}</strong>
+            <p
+              className={classes.bodyText}
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          </div>
+          {footer}
+        </View>
+      </div>
     );
   }
 );

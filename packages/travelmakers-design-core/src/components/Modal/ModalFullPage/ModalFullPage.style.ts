@@ -1,11 +1,34 @@
 import { createStyles } from "@travelmakers-design-v2/styles";
 
 export default createStyles((theme) => {
-  const { colors, spacing, typography } = theme;
+  const { colors, spacing, typography, shadows, radius } = theme;
 
   return {
     root: {
-      width: "360px",
+      position: "absolute",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      backdropFilter: "blur(8px)",
+    },
+    dialog: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      width: "100%",
+      height: "100%",
+      maxWidth: "480px",
+      maxHeight: "720px",
+      padding: 0,
+      filter: `drop-shadow(${shadows.elevation5})`,
+      border: 0,
+      borderRadius: radius.radius20,
+      overflow: "hidden",
     },
     header: {
       display: "grid",
@@ -37,6 +60,7 @@ export default createStyles((theme) => {
       padding: `${spacing.spacing50} ${spacing.spacing30}`,
       backgroundColor: colors.surface,
       overflowY: "scroll",
+      flex: 1,
     },
     bodyTitle: {
       ...typography.subhead2,
