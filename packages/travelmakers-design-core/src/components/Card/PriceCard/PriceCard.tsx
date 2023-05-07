@@ -1,14 +1,14 @@
 import { PolymorphicRef, TmColor } from "@travelmakers-design-v2/styles";
 import { forwardRef } from "react";
+import { Tag } from "../../Tag";
+import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./PriceCard.style";
 import {
-  PriceCardProps,
   PriceCardComponent,
+  PriceCardProps,
   StatusType,
 } from "./PriceCard.type";
-import { Typography } from "../../Typography";
-import { Tag } from "../../Tag";
 
 export interface Props {
   /** Hotel 타입을 정합니다. */
@@ -53,9 +53,12 @@ export const PriceCard: PriceCardComponent & {
         </Typography>
         <br />
         {status === "active" && (
-          <Tag type="fill" color="gray" roundness="half">
-            <Tag.Item label={description} />
-          </Tag>
+          <Tag
+            type="fill"
+            color="gray"
+            roundness="half"
+            items={[<Tag.Item label={description} />]}
+          />
         )}
       </View>
     );

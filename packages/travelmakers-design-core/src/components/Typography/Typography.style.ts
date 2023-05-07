@@ -10,7 +10,7 @@ interface TypographyStylesProps {
   family: TmFontFamily;
   level: TmFontSize;
   mobile?: TmFontSize;
-  tablet?: TmFontSize;
+  wide?: TmFontSize;
   textAlign?: TypographyTextAlign;
   disabled?: boolean;
   strong?: boolean;
@@ -48,7 +48,7 @@ export default createStyles(
       underline,
       color,
       mobile,
-      tablet,
+      wide,
     }: TypographyStylesProps
   ) => {
     const getColor = () => {
@@ -82,8 +82,8 @@ export default createStyles(
           ...theme.typography[mobile],
         },
 
-        [`${theme.media.tablet}`]: {
-          ...theme.typography[tablet],
+        [`${theme.media.wide}`]: {
+          ...theme.typography[wide],
         },
       },
     };

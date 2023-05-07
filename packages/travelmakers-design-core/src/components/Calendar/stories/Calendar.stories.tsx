@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/react";
+import { Toaster } from "../../Toast";
 import { Calendar } from "../Calendar";
 
 export default {
@@ -142,16 +143,19 @@ export default {
 
 export const Default = (props) => {
   return (
-    <Calendar {...props}>
-      <Calendar.OptionBox
-        title={"시간 선택하기"}
-        buttonTitle={"예약하기"}
-        onClick={() => {
-          console.log("OptionBox-log");
-        }}
-      >
-        1234
-      </Calendar.OptionBox>
-    </Calendar>
+    <>
+      <Toaster />
+      <Calendar {...props}>
+        <Calendar.OptionBox
+          title={"시간 선택하기"}
+          buttonTitle={"예약하기"}
+          onClick={() => {
+            console.log("OptionBox-log");
+          }}
+        >
+          1234
+        </Calendar.OptionBox>
+      </Calendar>
+    </>
   );
 };

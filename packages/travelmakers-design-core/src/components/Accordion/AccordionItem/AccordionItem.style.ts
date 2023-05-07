@@ -32,7 +32,11 @@ const getSpacing = (theme: TmTheme, type: AccordionType) => {
 export default createStyles(
   (
     theme,
-    { type, gap, isCollapse = true }: Props & { isCollapse: boolean }
+    {
+      type,
+      gap,
+      isCollapse = true,
+    }: Omit<Props, "items"> & { isCollapse: boolean }
   ) => {
     const { colors, radius, typography, spacing } = theme;
 

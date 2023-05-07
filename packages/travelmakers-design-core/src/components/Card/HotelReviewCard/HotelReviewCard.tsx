@@ -60,11 +60,15 @@ export const HotelReviewCard: HotelReviewCardComponent & {
               <Icon src="IcAngleRight" width={16} height={16} />
             </div>
             {labels.length > 0 && (
-              <Tag type="fill" roundness="half" color="gray" gap={4}>
-                {labels?.map((label) => (
+              <Tag
+                type="fill"
+                roundness="half"
+                color="gray"
+                gap={4}
+                items={labels?.map((label) => (
                   <Tag.Item label={label} />
                 ))}
-              </Tag>
+              />
             )}
             <div className={classes.contentBox}>
               <Typography level="body2" color="primary1">

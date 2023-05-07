@@ -16,16 +16,6 @@
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "lib",
-    "composite": true,
-    "paths": {
-      "@travelmakers-design-v2/core": ["../travelmakers-design-core"],
-      "@travelmakers-design-v2/styles": ["../travelmakers-design-styles"],
-      "@travelmakers-design-v2/utils": ["../travelmakers-design-utils"]
-    }
-  },
-  "references": [
-    { "path": "../travelmakers-design-core" },
-    { "path": "../travelmakers-design-utils" },
-    { "path": "../travelmakers-design-styles" }
-  ]
+    "composite": true
+  }
 }

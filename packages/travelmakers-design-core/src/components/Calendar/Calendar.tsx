@@ -1,33 +1,31 @@
+import { useCalendar, useUpdateEffect } from "@travelmakers-design-v2/hooks";
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { addDays, differenceInDays, getMonth, isEqual } from "date-fns";
+import _ from "lodash";
 import React, {
   PropsWithChildren,
   forwardRef,
   useEffect,
   useState,
 } from "react";
-import { addDays, differenceInDays, getMonth, isEqual } from "date-fns";
+import { toast } from "react-hot-toast";
+import { Toast } from "../Toast";
 import { View } from "../View";
 import useStyles from "./Calendar.style";
 import {
-  CalendarProps,
   CalendarComponent,
+  CalendarProps,
   SelectedDays,
 } from "./Calendar.type";
-import {
-  useCalendar,
-  useToast,
-  useUpdateEffect,
-} from "@travelmakers-design-v2/hooks";
 import { DateCell } from "./_components/DateCell";
 import {
   DateCellDay,
   DateCellType,
 } from "./_components/DateCell/DateCell.type";
-import Indicator from "./_components/Indicator";
-import OptionBox from "./_components/OptionBox";
 import HeadMonthly from "./_components/HeadMonthly";
 import HeadTitle from "./_components/HeadTitle";
-import _ from "lodash";
+import Indicator from "./_components/Indicator";
+import OptionBox from "./_components/OptionBox";
 
 export interface Props {
   hotelName?: string;
@@ -86,7 +84,6 @@ export const Calendar: CalendarComponent & {
     }: PropsWithChildren<CalendarProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
-    const { toast } = useToast();
     const { classes, cx } = useStyles();
     const [state, actions] = useCalendar(null);
     const [enabledDays, setEnabledDays] = useState<Date>();
@@ -156,9 +153,7 @@ export const Calendar: CalendarComponent & {
 
     const onClick = (day: DateCellDay) => {
       if (isDisabledDay(day)) {
-        toast({
-          text: notAllowedMessage,
-        });
+        toast(<Toast text={notAllowedMessage} />);
       } else if (type === "tour") {
         setChecked((prev) => {
           return { ...prev, from: day, to: day };
@@ -172,9 +167,7 @@ export const Calendar: CalendarComponent & {
         isBetweenNotSelectedDays(day) &&
         (isDisabledDay(day) || !isMinNightDays(day))
       ) {
-        toast({
-          text: notAllowedMessage,
-        });
+        toast(<Toast text={notAllowedMessage} />);
       } else if (isBetweenNotSelectedDays(day)) {
         setChecked((prev) => {
           return { ...prev, to: day };

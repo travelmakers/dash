@@ -19,5 +19,6 @@ export * from "./Tab";
 export * from "./Tag";
 export * from "./TextArea";
 export * from "./Timer";
+export * from "./Toast";
 export * from "./Typography";
 export * from "./View";

@@ -1,6 +1,7 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
+import { View } from "../../View";
 import useStyles from "./MenuItem.style";
 import { MenuItemComponent, MenuItemProps } from "./MenuItem.type";
 
@@ -11,7 +12,7 @@ export interface Props extends LinkProps {
 export const MenuItem: MenuItemComponent & {
   displayName?: string;
 } = forwardRef(
-  <C extends React.ElementType = "a">(
+  <C extends React.ElementType = typeof Link>(
     { className, menu, ...props }: MenuItemProps<C>,
     ref: PolymorphicRef<C>
   ) => {
@@ -19,9 +20,14 @@ export const MenuItem: MenuItemComponent & {
 
     return (
       <li className={cx(classes.root, className)}>
-        <Link ref={ref} className={classes.link} {...props}>
+        <View<React.ElementType>
+          component={Link}
+          ref={ref}
+          className={classes.link}
+          {...props}
+        >
           {menu}
-        </Link>
+        </View>
       </li>
     );
   }

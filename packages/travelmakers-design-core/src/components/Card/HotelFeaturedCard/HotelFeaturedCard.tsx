@@ -78,21 +78,25 @@ export const HotelFeaturedCard: HotelFeaturedCardComponent & {
                 height={"100%"}
               />
               <div className={cx(classes.imageLabel)}>
-                <Tag type="fill">
-                  {labels?.map((label, index) => (
+                <Tag
+                  type="fill"
+                  items={labels?.map((label, index) => (
                     <Tag.Item label={label} colorIdx={index} />
                   ))}
-                </Tag>
+                />
               </div>
             </div>
 
             {/* SECTION: Content Section */}
             <div className={cx(classes.contentBox)}>
-              <Tag type="line" color="gray" roundness="half">
-                {timelineTags.map((timelineTag) => (
+              <Tag
+                type="line"
+                color="gray"
+                roundness="half"
+                items={timelineTags.map((timelineTag) => (
                   <Tag.Item label={timelineTag} />
                 ))}
-              </Tag>
+              />
               <div>
                 <Typography level="body2" color={"black"}>
                   {name}

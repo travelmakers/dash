@@ -3,6 +3,7 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers-design-v2/styles";
+import Link from "next/link";
 import { Props } from "./NavLink";
 import useStyles from "./NavLink.style";
 
@@ -15,6 +16,6 @@ interface SharedNavLinkProps
 export type NavLinkProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedNavLinkProps>;
 
-export type NavLinkComponent = <C extends React.ElementType = "a">(
+export type NavLinkComponent = <C extends React.ElementType = typeof Link>(
   props: NavLinkProps<C>
 ) => React.ReactElement;

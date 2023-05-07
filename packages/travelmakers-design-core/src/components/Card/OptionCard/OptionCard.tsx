@@ -86,11 +86,13 @@ export const OptionCard: OptionCardComponent & {
         <div className={classes.container}>
           <div className={classes.headerGroup}>
             {labels.length > 0 && (
-              <Tag type="fill" style={{ marginBottom: 4 }}>
-                {labels?.map((label, index) => (
+              <Tag
+                type="fill"
+                style={{ marginBottom: 4 }}
+                items={labels?.map((label, index) => (
                   <Tag.Item label={label} colorIdx={index} />
                 ))}
-              </Tag>
+              />
             )}
             <div>
               <Typography level="display5" color="primary1" strong>

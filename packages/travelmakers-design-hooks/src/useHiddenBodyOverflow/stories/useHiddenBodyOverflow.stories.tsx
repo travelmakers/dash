@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import useHiddenBodyOverflow from "../useHiddenBodyOverflow";
 
 export default {
