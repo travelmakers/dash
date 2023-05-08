@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { createContext, forwardRef } from "react";
+import React, { createContext, forwardRef } from "react";
 import { View } from "../../View";
 import { TagItem } from "../TagItem";
 import useStyles from "./Tag.style";
@@ -18,7 +18,7 @@ export interface Props {
   size?: TagSize;
   gap?: number;
   roundness?: TagRound;
-  items: typeof TagItem[];
+  items: React.ReactNode[];
 }
 
 export const TagContext = createContext<Omit<Props, "gap" | "items">>({
