@@ -1,5 +1,4 @@
 import { Meta } from "@storybook/react";
-import { getDayjs } from "@travelmakers-design-v2/utils";
 import { Timer } from "../Timer";
 
 export default {
@@ -61,8 +60,7 @@ export default {
 
 export const Default = (props) => {
   const { time, type, size, text, dateTime } = props;
-  const dayjs = getDayjs();
-  const now = dayjs();
+  const now = new Date();
 
   return (
     <div style={{ backgroundColor: props.type === "white" && "gray" }}>
