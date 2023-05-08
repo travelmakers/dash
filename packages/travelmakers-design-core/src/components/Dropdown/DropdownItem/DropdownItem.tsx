@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { PropsWithChildren, forwardRef, useContext } from "react";
+import React, { PropsWithChildren, forwardRef, useContext } from "react";
 import { View } from "../../View";
 import { DropdownContext } from "../Dropdown/Dropdown";
 import { DropdownItemComponent, DropdownItemProps } from "./DropdownItem.type";

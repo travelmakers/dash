@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { View } from "../../View";
 import { ProcessItem } from "../ProcessItem";
 import useStyles from "./Process.style";

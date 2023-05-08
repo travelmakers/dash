@@ -1,5 +1,5 @@
 import { PolymorphicRef, TmFontSize } from "@travelmakers/styles";
-import { PropsWithChildren, forwardRef } from "react";
+import React, { PropsWithChildren, forwardRef } from "react";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./NewBadge.style";

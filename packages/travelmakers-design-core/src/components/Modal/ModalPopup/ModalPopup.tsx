@@ -1,6 +1,6 @@
 import { useBlockScrolling } from "@travelmakers/hooks";
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { View } from "../../View";
 import { ModalPortal } from "../ModalPortal";
 import useStyles from "./ModalPopup.style";

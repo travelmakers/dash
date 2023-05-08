@@ -1,6 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import { getCurrencyNumber } from "@travelmakers/utils";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
 import { Divider } from "../../Divider";
 import { Price, PriceProps } from "../../Price";

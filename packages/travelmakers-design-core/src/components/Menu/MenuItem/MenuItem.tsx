@@ -1,6 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import Link, { LinkProps } from "next/link";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./MenuItem.style";
 import { MenuItemComponent, MenuItemProps } from "./MenuItem.type";

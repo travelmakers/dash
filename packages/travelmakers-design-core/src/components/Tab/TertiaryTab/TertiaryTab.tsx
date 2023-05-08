@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { View } from "../../View";
 import { TertiaryTabItem } from "../TertiaryTabItem";
 import useStyles from "./TertiaryTab.style";

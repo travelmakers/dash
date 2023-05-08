@@ -1,5 +1,5 @@
 import { PolymorphicRef, useTmTheme } from "@travelmakers/styles";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./CouponCard.style";
 import { CouponCardProps, CouponCardComponent } from "./CouponCard.type";

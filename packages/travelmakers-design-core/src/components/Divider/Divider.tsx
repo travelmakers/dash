@@ -1,5 +1,5 @@
 import { PolymorphicRef, TmColor } from "@travelmakers/styles";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { View } from "../View";
 import useStyles from "./Divider.style";
 import { DividerComponent, DividerProps, DividerType } from "./Divider.type";

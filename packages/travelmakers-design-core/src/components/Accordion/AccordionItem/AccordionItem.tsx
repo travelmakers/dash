@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Divider } from "../../Divider";
 import { Icon } from "../../Icon";
 import { AccordionContext } from "../Accordion/Accordion";

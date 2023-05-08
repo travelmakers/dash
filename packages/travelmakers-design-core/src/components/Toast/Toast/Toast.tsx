@@ -1,3 +1,4 @@
+import React from "react";
 import { Icon } from "../../Icon";
 import { IconTypes } from "../../Icon/Icon.type";
 import useStyles from "./Toast.style";

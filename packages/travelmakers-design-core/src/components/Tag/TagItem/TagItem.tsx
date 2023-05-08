@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef, useContext } from "react";
+import React, { forwardRef, useContext } from "react";
 import { View } from "../../View";
 import { TagContext } from "../Tag/Tag";
 import { TagItemColorType } from "../Tag/Tag.type";

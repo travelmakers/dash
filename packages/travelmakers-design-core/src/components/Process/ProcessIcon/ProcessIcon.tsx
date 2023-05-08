@@ -1,3 +1,4 @@
+import React from "react";
 import { SequenceType } from "../Process/Process.type";
 import useStyles from "./ProcessIcon.style";
 

@@ -1,5 +1,5 @@
 import { PolymorphicRef, TmColor } from "@travelmakers/styles";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { Typography } from "../Typography";
 import { View } from "../View";
 import useStyles from "./HeaderSection.style";

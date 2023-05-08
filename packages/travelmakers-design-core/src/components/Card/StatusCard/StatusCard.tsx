@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { View } from "../../View";
 import useStyles from "./StatusCard.style";
 import { StatusCardProps, StatusCardComponent } from "./StatusCard.type";

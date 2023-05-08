@@ -1,6 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import Link, { LinkProps } from "next/link";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
 import { Divider } from "../../Divider";
 import { Image } from "../../Image";

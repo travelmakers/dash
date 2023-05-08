@@ -1,5 +1,5 @@
 import { PolymorphicRef, TmPalette, TmSize } from "@travelmakers/styles";
-import { PropsWithChildren, forwardRef } from "react";
+import React, { PropsWithChildren, forwardRef } from "react";
 import { Typography } from "../../Typography/Typography";
 import { View } from "../../View";
 import useStyles from "./Button.style";

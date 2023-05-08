@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef, useRef, useState } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 import { View } from "../../View";
 import useStyles from "./HotelCard.style";
 import {
