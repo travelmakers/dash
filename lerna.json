@@ -1,15 +1,8 @@
 {
   "version": "independent",
   "npmClient": "yarn",
-  "npmClientArgs": [
-    "--frozen-lockfile"
-  ],
+  "npmClientArgs": ["--frozen-lockfile"],
   "useWorkspaces": true,
-  "ignoreChanges": [
-    "**/stories/**",
-    "**/*.md"
-  ],
-  "packages": [
-    "packages/*"
-  ]
+  "ignoreChanges": ["**/stories/**"],
+  "packages": ["packages/*"]
 }
