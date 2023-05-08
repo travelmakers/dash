@@ -35,11 +35,12 @@ export const SelectCheck: SelectCheckComponent & {
       label,
       gap = 8,
       typography,
-      fontWeight = 700,
+      fontWeight = 400,
       isVisibleLabel = false,
       isReverse = false,
       hasParent = false,
       name = "select-check-box-icon",
+      disabled,
       className,
       ...props
     }: SelectCheckProps<C>,
@@ -52,6 +53,7 @@ export const SelectCheck: SelectCheckComponent & {
       typography,
       fontWeight,
       isReverse,
+      disabled,
     });
 
     return (
@@ -67,6 +69,7 @@ export const SelectCheck: SelectCheckComponent & {
           ref={ref}
           className={cx(classes.input, "sr-only")}
           name={name}
+          disabled={disabled}
           {...props}
         />
         <div className="tm-select-check__icon">

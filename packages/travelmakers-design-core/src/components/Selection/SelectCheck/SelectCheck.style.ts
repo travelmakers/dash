@@ -61,7 +61,11 @@ export default createStyles(
       typography: _typography,
       fontWeight,
       isReverse,
-    }: Pick<Props, "type" | "gap" | "typography" | "fontWeight" | "isReverse">
+      disabled,
+    }: Pick<
+      Props,
+      "type" | "gap" | "typography" | "fontWeight" | "isReverse"
+    > & { disabled: HTMLInputElement["disabled"] }
   ) => {
     const { colors, radius, typography } = theme;
 
@@ -70,7 +74,7 @@ export default createStyles(
         ...getRootStyle(gap),
         flexDirection: !isReverse ? "row" : "row-reverse",
         height: "100%",
-        cursor: "pointer",
+        cursor: disabled ? "default" : "pointer",
 
         ".tm-select-check__icon": {
           ...CHECK_ICON_SIZE[type],

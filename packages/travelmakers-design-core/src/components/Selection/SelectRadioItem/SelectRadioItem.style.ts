@@ -35,6 +35,7 @@ export default createStyles(
     return {
       root: {
         ...getLabelStyle(spacing, isVisibleLabel),
+        cursor: disabled ? "default" : "pointer",
 
         ".tm-select-radio__item": {
           width: "16px",
@@ -56,7 +57,7 @@ export default createStyles(
         },
 
         "&:active > .tm-select-radio__item": {
-          borderColor: colors.surfaceInteract,
+          borderColor: !disabled ? colors.surfaceInteract : colors.surface,
           filter: shadows.none,
         },
       },

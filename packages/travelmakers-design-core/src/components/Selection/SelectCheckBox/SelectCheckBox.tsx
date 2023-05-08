@@ -58,6 +58,7 @@ export const SelectCheckBox: SelectCheckBoxComponent & {
           typography={"body3"}
           gap={!hasAction ? "full" : 12}
           isReverse={!hasAction}
+          fontWeight={700}
           isVisibleLabel
           hasParent
         />
