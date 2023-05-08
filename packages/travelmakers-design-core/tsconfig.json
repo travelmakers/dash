@@ -11,9 +11,9 @@
     "declarationDir": "lib",
     "composite": true,
     "paths": {
-      "@travelmakers-design-v2/hooks": ["../travelmakers-design-hooks"],
-      "@travelmakers-design-v2/styles": ["../travelmakers-design-styles"],
-      "@travelmakers-design-v2/utils": ["../travelmakers-design-utils"]
+      "@travelmakers/hooks": ["../travelmakers-design-hooks"],
+      "@travelmakers/styles": ["../travelmakers-design-styles"],
+      "@travelmakers/utils": ["../travelmakers-design-utils"]
     }
   },
   "references": [

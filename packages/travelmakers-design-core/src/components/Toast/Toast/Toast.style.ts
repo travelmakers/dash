@@ -1,4 +1,4 @@
-import { CSSObject, createStyles } from "@travelmakers-design-v2/styles";
+import { CSSObject, createStyles } from "@travelmakers/styles";
 import { Props } from "./Toast";
 import { ToastAlignType } from "./Toast.type";
 

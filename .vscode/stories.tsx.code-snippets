@@ -6,7 +6,7 @@
       "import { ${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/} } from \"../${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/}\";",
       "",
       "export default {",
-      "\ttitle: \"@travelmakers-design-v2/core/General/${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/}\",",
+      "\ttitle: \"@travelmakers/core/General/${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/}\",",
       "\tcomponent: ${TM_FILENAME/^(\\w+?)\\.stories\\.tsx/$1/},",
       "\targTypes: {",
       "\t\t/**",

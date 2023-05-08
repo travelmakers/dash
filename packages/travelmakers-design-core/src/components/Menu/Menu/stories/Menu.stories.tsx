@@ -10,7 +10,7 @@ const menus = [
 ];
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Menu/Menu",
+  title: "@travelmakers/core/General/Menu/Menu",
   component: Menu,
   argTypes: {
     items: {

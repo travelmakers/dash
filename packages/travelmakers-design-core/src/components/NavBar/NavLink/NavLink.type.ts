@@ -2,7 +2,7 @@ import {
   ClassNames,
   PolymorphicComponentProps,
   TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import Link from "next/link";
 import { Props } from "./NavLink";
 import useStyles from "./NavLink.style";

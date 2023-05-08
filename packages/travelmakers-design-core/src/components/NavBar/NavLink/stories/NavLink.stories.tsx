@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { NavLink } from "../NavLink";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/NavBar/NavLink",
+  title: "@travelmakers/core/General/NavBar/NavLink",
   component: NavLink,
   argTypes: {
     href: {

@@ -12,7 +12,7 @@ import { Meta } from "@storybook/react";
 import { BottomBar } from "../BottomBar";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/BottomBar",
+  title: "@travelmakers/core/General/BottomBar",
   component: BottomBar,
   argTypes: {
     initSelectedId: {

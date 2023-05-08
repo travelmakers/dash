@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Divider } from "../Divider";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Divider",
+  title: "@travelmakers/core/General/Divider",
   component: Divider,
   argTypes: {
     type: {

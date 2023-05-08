@@ -2,7 +2,7 @@ import {
   ClassNames,
   PolymorphicComponentProps,
   TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import { Props } from "./Calendar";
 import { DateCellDay } from "./_components/DateCell/DateCell.type";
 import useStyles from "./Calendar.style";

@@ -2,7 +2,7 @@ import {
   ClassNames,
   PolymorphicComponentProps,
   TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import { Dispatch, SetStateAction } from "react";
 import { Props } from "./SelectDropBox";
 import useStyles from "./SelectDropBox.style";

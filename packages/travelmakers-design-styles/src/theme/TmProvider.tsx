@@ -100,4 +100,4 @@ export const TmProvider = ({
   );
 };
 
-TmProvider.displayName = "@travelmakers-design-v2/styles/TmProvider";
+TmProvider.displayName = "@travelmakers/styles/TmProvider";

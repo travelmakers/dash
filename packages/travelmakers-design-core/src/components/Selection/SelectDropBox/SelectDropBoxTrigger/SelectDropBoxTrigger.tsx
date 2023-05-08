@@ -1,4 +1,4 @@
-import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers/styles";
 import { forwardRef, useContext, useState } from "react";
 import { Dropdown } from "../../../Dropdown";
 import { Icon } from "../../../Icon";

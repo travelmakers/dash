@@ -13,7 +13,7 @@ import React from "react";
 import { SkeletonTimeLineBanner } from "../SkeletonTimeLineBanner";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Card/SkeletonTimeLineBanner",
+  title: "@travelmakers/core/General/Card/SkeletonTimeLineBanner",
   component: SkeletonTimeLineBanner,
   argTypes: {},
   parameters: {

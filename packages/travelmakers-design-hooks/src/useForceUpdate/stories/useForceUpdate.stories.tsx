@@ -2,7 +2,7 @@ import React from "react";
 import { useForceUpdate } from "../useForceUpdate";
 
 export default {
-  title: "@travelmakers-design-v2/hooks/useForceUpdate",
+  title: "@travelmakers/hooks/useForceUpdate",
 };
 
 export const Default = () => {

@@ -1,4 +1,4 @@
-import { TmComponentProps } from "@travelmakers-design-v2/styles";
+import { TmComponentProps } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { IconComponent, IconProps, IconTypes } from "./Icon.type";
 import * as AssetComponent from "./_components/assets";

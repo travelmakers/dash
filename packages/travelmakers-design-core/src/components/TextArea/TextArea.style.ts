@@ -1,4 +1,4 @@
-import { createStyles } from "@travelmakers-design-v2/styles";
+import { createStyles } from "@travelmakers/styles";
 
 export default createStyles((theme, { isFilled }: { isFilled: string }) => {
   const { spacing, typography, colors, radius } = theme;

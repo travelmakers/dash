@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { AccordionItem } from "../AccordionItem";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Accoridion/AccordionItem",
+  title: "@travelmakers/core/General/Accoridion/AccordionItem",
   component: AccordionItem,
   argTypes: {
     header: {

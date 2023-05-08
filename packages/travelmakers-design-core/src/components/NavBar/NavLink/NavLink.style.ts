@@ -1,4 +1,4 @@
-import { TmTheme, createStyles } from "@travelmakers-design-v2/styles";
+import { TmTheme, createStyles } from "@travelmakers/styles";
 
 const interactionStyles = (theme: TmTheme, isDisable: boolean) => {
   const { colors, shadows } = theme;

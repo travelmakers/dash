@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Search } from "../Search";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Search",
+  title: "@travelmakers/core/General/Search",
   component: Search,
   argTypes: {
     type: {

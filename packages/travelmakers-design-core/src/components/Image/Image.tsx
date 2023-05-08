@@ -1,4 +1,4 @@
-import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, useState } from "react";
 import useStyles from "./Image.style";
 import { ImageComponent, ImageProps } from "./Image.type";

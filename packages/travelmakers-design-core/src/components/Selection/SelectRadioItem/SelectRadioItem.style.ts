@@ -1,8 +1,4 @@
-import {
-  CSSObject,
-  TmTheme,
-  createStyles,
-} from "@travelmakers-design-v2/styles";
+import { CSSObject, TmTheme, createStyles } from "@travelmakers/styles";
 import { Props } from "./SelectRadioItem";
 
 const getLabelStyle = (

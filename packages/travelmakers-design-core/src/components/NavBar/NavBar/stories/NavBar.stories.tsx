@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { NavBar } from "..";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/NavBar",
+  title: "@travelmakers/core/General/NavBar",
   component: NavBar,
   argTypes: {
     title: {

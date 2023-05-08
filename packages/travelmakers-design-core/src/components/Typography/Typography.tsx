@@ -3,7 +3,7 @@ import {
   TmColor,
   TmFontFamily,
   TmFontSize,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { View } from "../View";
 import useStyles from "./Typography.style";

@@ -1,4 +1,4 @@
-import { TmTheme, createStyles } from "@travelmakers-design-v2/styles";
+import { TmTheme, createStyles } from "@travelmakers/styles";
 import { Props } from "./SelectDropBox";
 
 const SELECT_DROP_BOX_MIN_WIDTH: Record<Props["type"], string> = {
@@ -17,13 +17,7 @@ export const getBackgroundColor = (
 ) => (!disabled ? colors.white : colors.surface);
 
 export default createStyles(
-  (
-    theme,
-    {
-      type,
-      disabled,
-    }: Pick<Props, "type" | "disabled">
-  ) => {
+  (theme, { type, disabled }: Pick<Props, "type" | "disabled">) => {
     const { colors, spacing, typography, radius } = theme;
 
     return {

@@ -1,4 +1,4 @@
-import { ClassNames, TmComponentProps } from "@travelmakers-design-v2/styles";
+import { ClassNames, TmComponentProps } from "@travelmakers/styles";
 import { Props } from "./Toaster";
 import useStyles from "./Toaster.style";
 

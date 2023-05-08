@@ -5,8 +5,7 @@ import { SelectRadio } from "../SelectRadio";
 const data = ["선택1", "선택2"];
 
 export default {
-  title:
-    "@travelmakers-design-v2/core/General/Selection/SelectRadio/SelectRadio",
+  title: "@travelmakers/core/General/Selection/SelectRadio/SelectRadio",
   component: SelectRadio,
   argTypes: {
     items: {

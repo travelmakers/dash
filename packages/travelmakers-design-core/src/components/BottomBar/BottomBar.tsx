@@ -3,7 +3,7 @@ import {
   PolymorphicRef,
   TmColor,
   useTmTheme,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import React, { forwardRef, useState } from "react";
 
 import Link from "next/link";

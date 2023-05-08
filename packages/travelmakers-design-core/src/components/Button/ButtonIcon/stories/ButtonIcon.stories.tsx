@@ -12,7 +12,7 @@ import { Meta } from "@storybook/react";
 import { ButtonIcon } from "../ButtonIcon";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Button",
+  title: "@travelmakers/core/General/Button",
   component: ButtonIcon,
   argTypes: {
     size: {

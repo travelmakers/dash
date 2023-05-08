@@ -1,8 +1,4 @@
-import {
-  createStyles,
-  CSSObject,
-  TmTheme,
-} from "@travelmakers-design-v2/styles";
+import { createStyles, CSSObject, TmTheme } from "@travelmakers/styles";
 import { Props } from "./DotBadge";
 import { DotBadgeSize, DotBadgeType } from "./DotBadge.type";
 

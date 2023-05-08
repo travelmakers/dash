@@ -3,7 +3,7 @@ import { Toaster } from "../../Toast";
 import { Calendar } from "../Calendar";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Calendar",
+  title: "@travelmakers/core/General/Calendar",
   component: Calendar,
   argTypes: {
     type: {

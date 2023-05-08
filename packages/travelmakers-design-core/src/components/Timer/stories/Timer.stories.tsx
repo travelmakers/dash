@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Timer } from "../Timer";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Timer",
+  title: "@travelmakers/core/General/Timer",
   component: Timer,
   argTypes: {
     type: {

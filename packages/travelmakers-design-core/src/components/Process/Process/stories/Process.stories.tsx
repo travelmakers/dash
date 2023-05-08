@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Process } from "../Process";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Process",
+  title: "@travelmakers/core/General/Process",
   component: Process,
   argTypes: {
     status: {

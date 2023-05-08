@@ -3,7 +3,7 @@ import {
   Tm,
   TmComponentProps,
   TmTheme,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 
 export type ViewTm = Tm | Tm[];
 

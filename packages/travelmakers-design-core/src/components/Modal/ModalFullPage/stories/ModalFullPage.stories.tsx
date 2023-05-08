@@ -3,7 +3,7 @@ import { OverlayProvider, useOverlay } from "@toss/use-overlay";
 import { ModalFullPage } from "../ModalFullPage";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Modal/ModalFullPage",
+  title: "@travelmakers/core/General/Modal/ModalFullPage",
   component: ModalFullPage,
   argTypes: {
     title: {

@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { useId } from "../useId";
 
 export default {
-  title: "@travelmakers-design-v2/hooks/useId",
+  title: "@travelmakers/hooks/useId",
   argTypes: {
     idKey: {
       control: {

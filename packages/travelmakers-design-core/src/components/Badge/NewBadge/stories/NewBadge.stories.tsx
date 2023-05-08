@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { NewBadge } from "../NewBadge";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Badge/NewBadge",
+  title: "@travelmakers/core/General/Badge/NewBadge",
   component: NewBadge,
   argTypes: {
     type: {

@@ -3,7 +3,7 @@ import {
   createStyles,
   CSSObject,
   TmTheme,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import { Props } from "../Tag/Tag";
 import {
   TagItemColorType,

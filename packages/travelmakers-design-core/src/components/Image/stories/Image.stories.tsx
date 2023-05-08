@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Image } from "../Image";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Image",
+  title: "@travelmakers/core/General/Image",
   component: Image,
   argTypes: {
     src: {

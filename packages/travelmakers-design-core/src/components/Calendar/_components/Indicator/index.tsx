@@ -1,6 +1,6 @@
 import React from "react";
 import useStyles from "./Indicator.style";
-import { getDate, getDay } from "@travelmakers-design-v2/utils";
+import { getDate, getDay } from "@travelmakers/utils";
 import { Typography } from "../../../Typography";
 import { Divider } from "../../../Divider";
 import { differenceInDays } from "date-fns";

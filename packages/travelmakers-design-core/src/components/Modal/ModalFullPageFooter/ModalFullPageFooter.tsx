@@ -1,4 +1,4 @@
-import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { Button, ButtonProps } from "../../Button";
 import { View } from "../../View";

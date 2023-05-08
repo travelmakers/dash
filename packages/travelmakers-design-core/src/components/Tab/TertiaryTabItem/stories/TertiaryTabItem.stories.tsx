@@ -3,7 +3,7 @@ import { TertiaryTab } from "../../TertiaryTab/TertiaryTab";
 import { TertiaryTabItem } from "../TertiaryTabItem";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Tab/TertiaryTab/TertiaryTabItem",
+  title: "@travelmakers/core/General/Tab/TertiaryTab/TertiaryTabItem",
   component: TertiaryTabItem,
   argTypes: {
     name: {

@@ -1,18 +1,18 @@
-# @travelmakers-design-v2/core
+# @travelmakers/core
 
 ## Installation
 
 ```bash
 # With npm
-npm install @travelmakers-design-v2/core
+npm install @travelmakers/core
 
 # With yarn
-yarn add @travelmakers-design-v2/core
+yarn add @travelmakers/core
 ```
 
 ## License
 
-@travelmakers-design-v2/core is made available under the MIT License.
+@travelmakers/core is made available under the MIT License.
 
 ## ✨ Contributors
 

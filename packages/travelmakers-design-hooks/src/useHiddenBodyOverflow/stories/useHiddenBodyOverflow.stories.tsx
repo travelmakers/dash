@@ -1,7 +1,7 @@
 import useHiddenBodyOverflow from "../useHiddenBodyOverflow";
 
 export default {
-  title: "@travelmakers-design-v2/hooks/useHiddenBodyOverflow",
+  title: "@travelmakers/hooks/useHiddenBodyOverflow",
 };
 
 export const Default = () => {

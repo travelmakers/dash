@@ -5,7 +5,7 @@ import { TertiaryTab } from "../TertiaryTab";
 const data = ["지역으로 찾기", "기간으로 찾기"];
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Tab/TertiaryTab/TertiaryTab",
+  title: "@travelmakers/core/General/Tab/TertiaryTab/TertiaryTab",
   component: TertiaryTab,
   argTypes: {
     items: {

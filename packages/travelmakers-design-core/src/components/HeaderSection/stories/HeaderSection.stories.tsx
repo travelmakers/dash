@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { HeaderSection } from "../HeaderSection";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/HeaderSection",
+  title: "@travelmakers/core/General/HeaderSection",
   component: HeaderSection,
   argTypes: {
     type: {

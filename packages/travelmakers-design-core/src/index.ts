@@ -5,11 +5,7 @@ export {
   ColorSchemeProvider,
   useTmColorScheme,
   Global,
-} from "@travelmakers-design-v2/styles";
-export type {
-  TmTheme,
-  Tm,
-  TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
+export type { TmTheme, Tm, TmComponentProps } from "@travelmakers/styles";
 export * from "./assets/icon";
 export * from "./components";

@@ -13,7 +13,7 @@ import React from "react";
 import { TimeLineBanner } from "../TimeLineBanner";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Card/TimeLineBanner",
+  title: "@travelmakers/core/General/Card/TimeLineBanner",
   component: TimeLineBanner,
   argTypes: {
     status: {

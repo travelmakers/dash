@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { CouponCard } from "../CouponCard";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Card/CouponCard",
+  title: "@travelmakers/core/General/Card/CouponCard",
   component: CouponCard,
   argTypes: {
     type: {

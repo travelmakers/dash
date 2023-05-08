@@ -6,7 +6,7 @@
       "\tClassNames,",
       "\tPolymorphicComponentProps,",
       "\tTmComponentProps,",
-      "} from \"@travelmakers-design-v2/styles\";",
+      "} from \"@travelmakers/styles\";",
       "import { Props } from \"./${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}\"",
       "import useStyles from \"./${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}.style\";",
       "",

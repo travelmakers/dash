@@ -1,4 +1,4 @@
-import { PolymorphicRef, TmColor } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef, TmColor } from "@travelmakers/styles";
 import { forwardRef } from "react";
 import { View } from "../View";
 import useStyles from "./Divider.style";

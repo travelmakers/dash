@@ -2,7 +2,7 @@ import {
   ClassNames,
   PolymorphicComponentProps,
   TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import { Props } from "./Search";
 import useStyles from "./Search.style";
 

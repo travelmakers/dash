@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { useRemainingTimer } from "../useRemainingTimer";
 
 export default {
-  title: "@travelmakers-design-v2/hooks/useRemainingTimer",
+  title: "@travelmakers/hooks/useRemainingTimer",
 };
 
 export const Default = () => {

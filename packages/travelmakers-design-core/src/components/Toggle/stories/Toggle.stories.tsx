@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Toggle } from "../Toggle";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Toggle",
+  title: "@travelmakers/core/General/Toggle",
   component: Toggle,
   argTypes: {
     btnName: {

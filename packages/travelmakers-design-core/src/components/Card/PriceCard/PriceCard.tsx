@@ -1,4 +1,4 @@
-import { PolymorphicRef, TmColor } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef, TmColor } from "@travelmakers/styles";
 import { forwardRef } from "react";
 import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";

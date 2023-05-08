@@ -2,8 +2,7 @@ import { Meta } from "@storybook/react";
 import { SelectRadioItem } from "../SelectRadioItem";
 
 export default {
-  title:
-    "@travelmakers-design-v2/core/General/Selection/SelectRadio/SelectRadioItem",
+  title: "@travelmakers/core/General/Selection/SelectRadio/SelectRadioItem",
   component: SelectRadioItem,
   argTypes: {
     content: {

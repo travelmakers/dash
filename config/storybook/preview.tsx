@@ -1,5 +1,5 @@
 import { themes } from "@storybook/theming";
-import { ColorSchemeProvider, TmProvider } from "@travelmakers-design-v2/core";
+import { ColorSchemeProvider, TmProvider } from "@travelmakers/core";
 import { useDarkMode } from "storybook-dark-mode";
 
 export const parameters = {

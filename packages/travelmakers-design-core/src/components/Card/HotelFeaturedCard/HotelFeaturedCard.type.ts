@@ -2,7 +2,7 @@ import {
   ClassNames,
   PolymorphicComponentProps,
   TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import { Props } from "./HotelFeaturedCard";
 import useStyles from "./HotelFeaturedCard.style";
 import { HotelType } from "../../../types/hotelType.type";

@@ -1,4 +1,4 @@
-import { TmTheme, createStyles } from "@travelmakers-design-v2/styles";
+import { TmTheme, createStyles } from "@travelmakers/styles";
 import { Props } from "./NewBadge";
 
 const NEW_BADGE_SIZE = {

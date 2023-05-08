@@ -1,8 +1,4 @@
-import {
-  PolymorphicRef,
-  TmPalette,
-  TmSize,
-} from "@travelmakers-design-v2/styles";
+import { PolymorphicRef, TmPalette, TmSize } from "@travelmakers/styles";
 import { PropsWithChildren, forwardRef } from "react";
 import { Typography } from "../../Typography/Typography";
 import { View } from "../../View";

@@ -1,16 +1,16 @@
-# @travelmakers-design-v2/hooks
+# @travelmakers/hooks
 
 ## Installation
 ```bash
 # With npm
-npm install @travelmakers-design-v2/hooks
+npm install @travelmakers/hooks
 
 # With yarn
-yarn add @travelmakers-design-v2/hooks
+yarn add @travelmakers/hooks
 ```
 
 ## License
-@travelmakers-design-v2/hooks is made available under the MIT License.
+@travelmakers/hooks is made available under the MIT License.
 
 ## ✨ Contributors
 

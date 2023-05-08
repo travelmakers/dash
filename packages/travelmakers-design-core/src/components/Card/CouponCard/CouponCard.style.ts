@@ -1,4 +1,4 @@
-import { createStyles } from "@travelmakers-design-v2/styles";
+import { createStyles } from "@travelmakers/styles";
 import { Props } from "./CouponCard";
 
 export default createStyles((theme, { type }: Pick<Props, "type">) => {

@@ -4,18 +4,18 @@
   </a>
 </p>
 
-<h1 align="center">Travelmakers Design Version 2(개발중...)</h1>
+<h1 align="center">Dash Libraries</h1>
 
 <div align="center">
 
-<p align="center"><strong>Travelmakers Design is an open-source design system built by <a href="https://livinginhotel.com">Travelmakers, Inc.</a></strong></p>
+<p align="center"><strong>Dash Libraries is an open-source design system built by <a href="https://livinginhotel.com">Travelmakers, Inc.</a></strong></p>
 
 <p align='center'>
   <a href="https://livinginhotel.com">
     <img src="https://badgen.net/badge/icon/Made%20by%20travelmakers?icon=https://hotel-01.s3.ap-northeast-2.amazonaws.com/resource/logos/Symbol_Green.svg&label&color=5B69C3&labelColor=414C9A" />
   </a>
-  <a href='https://www.npmjs.com/package/@travelmakers-design-v2/core'>
-    <img src='https://img.shields.io/npm/v/@travelmakers-design-v2/core.svg' alt='Latest npm version'>
+  <a href='https://www.npmjs.com/package/@travelmakers/core'>
+    <img src='https://img.shields.io/npm/v/@travelmakers/core.svg' alt='Latest npm version'>
   </a>
   <a href="https://github.com/travelmakers/bloom/blob/master/.github/CONTRIBUTING.md">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome" />
@@ -26,30 +26,29 @@
 ## 📦 Install
 
 ```bash
-npm install @travelmakers/travelmakers-design-v2
+npm install @travelmakers/<package-name>
 ```
 
 ```bash
-yarn add @travelmakers/travelmakers-design-v2
+yarn add @travelmakers/<package-name>
 ```
 
 <!-- 구분!!! -->
 
 ## :rocket: Getting started
 
-| Package name                                      | Description                                 |
-| ------------------------------------------------- | ------------------------------------------- |
-| [`@travelmakers-design-v2/core`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-core)    | react에서 사용할 core |
-| [`@travelmakers-design-v2/hooks`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-hooks)    |  |
-| [`@travelmakers-design-v2/utils`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-utils)    |  |
-| [`@travelmakers-design-v2/styles`](https://github.com/travelmakers/travelmakers-design/tree/main/packages/travelmakers-design-styles)    |  |
+| Package name                                                                                                                          | Description           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| [`@travelmakers/core`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-core)               |  |
+| [`@travelmakers/hooks`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-hooks)   |                       |
+| [`@travelmakers/utils`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-utils)   |                       |
+| [`@travelmakers/styles`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-styles) |                       |
 
 ## :page_facing_up: License
 
 Tm Design is made available under the [MIT License](./LICENSE).
 
 ## ✨ Contributors
-
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->

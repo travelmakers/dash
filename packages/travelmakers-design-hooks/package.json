@@ -1,5 +1,5 @@
 {
-  "name": "@travelmakers-design-v2/hooks",
+  "name": "@travelmakers/hooks",
   "version": "0.0.1",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -14,7 +14,7 @@
     "build": "esno ../../scripts/build travelmakers-design-hooks"
   },
   "repository": {
-    "url": "https://github.com/travelmakers/travelmakers-design-v2.git",
+    "url": "https://github.com/travelmakers/dash.git",
     "type": "git",
     "directory": "packages/travelmakers-design-hooks"
   },

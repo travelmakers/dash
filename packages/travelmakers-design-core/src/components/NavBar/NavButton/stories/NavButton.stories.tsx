@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { NavButton } from "../NavButton";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/NavBar/NavButton",
+  title: "@travelmakers/core/General/NavBar/NavButton",
   component: NavButton,
   argTypes: {
     label: {

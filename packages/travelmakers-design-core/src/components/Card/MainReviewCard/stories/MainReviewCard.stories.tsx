@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { MainReviewCard } from "../MainReviewCard";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Card/MainReviewCard",
+  title: "@travelmakers/core/General/Card/MainReviewCard",
   component: MainReviewCard,
   argTypes: {
     title: {

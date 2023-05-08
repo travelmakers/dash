@@ -3,7 +3,7 @@ import { Menu } from "../../Menu/Menu";
 import { MenuItem } from "../MenuItem";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Menu/MenuItem",
+  title: "@travelmakers/core/General/Menu/MenuItem",
   component: MenuItem,
   argTypes: {
     href: {

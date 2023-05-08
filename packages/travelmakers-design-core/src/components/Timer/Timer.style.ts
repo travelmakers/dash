@@ -1,4 +1,4 @@
-import { TmFontSizes, createStyles } from "@travelmakers-design-v2/styles";
+import { TmFontSizes, createStyles } from "@travelmakers/styles";
 import { Props, TIMER_COLOR } from "./Timer";
 import { TimerSize } from "./Timer.type";
 

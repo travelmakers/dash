@@ -1,9 +1,5 @@
-import { useRemainingTimer } from "@travelmakers-design-v2/hooks";
-import {
-  PolymorphicRef,
-  TmColor,
-  useTmTheme,
-} from "@travelmakers-design-v2/styles";
+import { useRemainingTimer } from "@travelmakers/hooks";
+import { PolymorphicRef, TmColor, useTmTheme } from "@travelmakers/styles";
 import dayjs from "dayjs";
 import { forwardRef } from "react";
 import { Icon } from "../Icon";

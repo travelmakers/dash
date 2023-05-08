@@ -4,7 +4,7 @@ import { Tag } from "../Tag";
 const data = ["레이블1", "레이블2", "레이블3", "레이블4"];
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Tag/Tag",
+  title: "@travelmakers/core/General/Tag/Tag",
   component: Tag,
   argTypes: {
     type: {

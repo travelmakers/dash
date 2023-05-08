@@ -1,4 +1,4 @@
-import { TmColor, createStyles } from "@travelmakers-design-v2/styles";
+import { TmColor, createStyles } from "@travelmakers/styles";
 import { Props } from "./Divider";
 
 const getStyles = (

@@ -4,7 +4,7 @@ import { Button } from "../../../Button";
 import { ModalPopup } from "../ModalPopup";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Modal/ModalPopup",
+  title: "@travelmakers/core/General/Modal/ModalPopup",
   component: ModalPopup,
   argTypes: {
     title: {

@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { TagItem } from "..";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Tag/TagItem",
+  title: "@travelmakers/core/General/Tag/TagItem",
   component: TagItem,
   argTypes: {
     colorIdx: {

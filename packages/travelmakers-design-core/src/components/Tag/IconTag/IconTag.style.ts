@@ -1,4 +1,4 @@
-import { createStyles, TmTheme } from "@travelmakers-design-v2/styles";
+import { createStyles, TmTheme } from "@travelmakers/styles";
 import { TagItemType } from "../Tag/Tag.type";
 import { Props } from "./IconTag";
 

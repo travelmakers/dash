@@ -1,4 +1,4 @@
-import { TmTheme, createStyles } from "@travelmakers-design-v2/styles";
+import { TmTheme, createStyles } from "@travelmakers/styles";
 
 export default createStyles((theme: TmTheme) => {
   const { colors, typography } = theme;

@@ -1,4 +1,4 @@
-import { PolymorphicComponentProps } from "@travelmakers-design-v2/styles";
+import { PolymorphicComponentProps } from "@travelmakers/styles";
 import { Props } from "./Icon";
 
 export type IconTypes =

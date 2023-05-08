@@ -12,7 +12,7 @@ import { Meta } from "@storybook/react";
 import { Typography } from "../Typography";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Typography",
+  title: "@travelmakers/core/General/Typography",
   component: Typography,
   argTypes: {
     level: {

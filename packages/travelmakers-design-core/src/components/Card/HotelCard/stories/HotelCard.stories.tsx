@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { HotelCard } from "../HotelCard";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Card/HotelCard",
+  title: "@travelmakers/core/General/Card/HotelCard",
   component: HotelCard,
   argTypes: {
     href: {

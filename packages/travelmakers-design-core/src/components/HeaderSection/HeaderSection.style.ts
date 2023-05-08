@@ -1,4 +1,4 @@
-import { createStyles } from "@travelmakers-design-v2/styles";
+import { createStyles } from "@travelmakers/styles";
 import { HEADER_SECTION_COLOR, Props } from "./HeaderSection";
 
 export default createStyles((theme, { type }: Pick<Props, "type">) => {

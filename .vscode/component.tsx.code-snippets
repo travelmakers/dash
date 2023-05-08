@@ -2,7 +2,7 @@
   "Travelmakers Design System Component": {
     "prefix": "tdsc",
     "body": [
-      "import { PolymorphicRef } from \"@travelmakers-design-v2/styles\"",
+      "import { PolymorphicRef } from \"@travelmakers/styles\"",
       "import { forwardRef, PropsWithChildren } from \"react\";",
       "import { View } from \"../View\";",
       "import useStyles from \"./${TM_FILENAME_BASE}.style\";",

@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { PrimaryTabItem } from "../PrimaryTabItem";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Tab/PrimaryTab/PrimaryTabItem",
+  title: "@travelmakers/core/General/Tab/PrimaryTab/PrimaryTabItem",
   component: PrimaryTabItem,
   argTypes: {
     name: {

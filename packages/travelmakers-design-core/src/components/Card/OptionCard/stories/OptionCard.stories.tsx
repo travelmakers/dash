@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { OptionCard } from "../OptionCard";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Card/OptionCard",
+  title: "@travelmakers/core/General/Card/OptionCard",
   component: OptionCard,
   argTypes: {
     labels: {

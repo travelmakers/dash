@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { PriceCard } from "../PriceCard";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Card/PriceCard",
+  title: "@travelmakers/core/General/Card/PriceCard",
   component: PriceCard,
   argTypes: {
     status: {

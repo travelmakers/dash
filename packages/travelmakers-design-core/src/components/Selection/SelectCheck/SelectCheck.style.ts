@@ -1,8 +1,4 @@
-import {
-  CSSObject,
-  CoTypography,
-  createStyles,
-} from "@travelmakers-design-v2/styles";
+import { CSSObject, CoTypography, createStyles } from "@travelmakers/styles";
 import { Props } from "./SelectCheck";
 
 const CHECK_ICON_SIZE: Record<Props["type"], CSSObject> = {

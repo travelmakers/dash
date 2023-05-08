@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { ModalFullPageFooter } from "../ModalFullPageFooter";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Modal/ModalFullPageFooter",
+  title: "@travelmakers/core/General/Modal/ModalFullPageFooter",
   component: ModalFullPageFooter,
   argTypes: {
     label: {

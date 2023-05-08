@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { TextArea } from "../TextArea";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/TextArea",
+  title: "@travelmakers/core/General/TextArea",
   component: TextArea,
   argTypes: {
     name: {

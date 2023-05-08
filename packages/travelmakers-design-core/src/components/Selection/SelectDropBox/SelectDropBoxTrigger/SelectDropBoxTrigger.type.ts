@@ -2,7 +2,7 @@ import {
   ClassNames,
   PolymorphicComponentProps,
   TmComponentProps,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import { Dropdown } from "../../../Dropdown";
 import useStyles from "./SelectDropBoxTrigger.style";
 

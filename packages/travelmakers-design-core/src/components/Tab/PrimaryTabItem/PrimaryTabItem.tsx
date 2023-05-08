@@ -1,4 +1,4 @@
-import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers/styles";
 import { ChangeEvent, forwardRef } from "react";
 import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { Divider } from "../../Divider";

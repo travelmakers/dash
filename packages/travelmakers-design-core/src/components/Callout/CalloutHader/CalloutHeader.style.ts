@@ -1,4 +1,4 @@
-import { createStyles } from "@travelmakers-design-v2/styles";
+import { createStyles } from "@travelmakers/styles";
 import { CalloutType } from "../Callout/Callout.type";
 import { CALLOUT_COLOR } from "./CalloutHeader";
 

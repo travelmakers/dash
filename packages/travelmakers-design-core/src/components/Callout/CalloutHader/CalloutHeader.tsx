@@ -1,4 +1,4 @@
-import { TmColor, useTmTheme } from "@travelmakers-design-v2/styles";
+import { TmColor, useTmTheme } from "@travelmakers/styles";
 import { Icon } from "../../Icon";
 import { CalloutType } from "../Callout/Callout.type";
 import useStyles from "./CalloutHeader.style";

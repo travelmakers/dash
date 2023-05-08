@@ -5,7 +5,7 @@ import { PrimaryTab } from "../PrimaryTab";
 const data = ["서울", "제주", "경상", "수도권"];
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Tab/PrimaryTab/PrimaryTab",
+  title: "@travelmakers/core/General/Tab/PrimaryTab/PrimaryTab",
   component: PrimaryTab,
   argTypes: {
     items: {

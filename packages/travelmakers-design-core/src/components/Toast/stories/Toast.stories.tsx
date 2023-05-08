@@ -4,7 +4,7 @@ import { Toast } from "../Toast";
 import { Toaster } from "../Toaster";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Toast",
+  title: "@travelmakers/core/General/Toast",
   argTypes: {},
 } as Meta;
 

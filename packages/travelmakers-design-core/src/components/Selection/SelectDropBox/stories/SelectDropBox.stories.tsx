@@ -4,7 +4,7 @@ import { SelectDropBox } from "../SelectDropBox";
 const data = ["데이터1", "데이터2", "데이터3", "데이터4", "데이터5"];
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Selection/SelectDropBox",
+  title: "@travelmakers/core/General/Selection/SelectDropBox",
   component: SelectDropBox,
   argTypes: {
     type: {

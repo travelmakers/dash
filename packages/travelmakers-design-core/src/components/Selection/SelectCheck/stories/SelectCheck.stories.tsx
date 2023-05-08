@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { SelectCheck } from "../SelectCheck";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Selection/SelectCheck",
+  title: "@travelmakers/core/General/Selection/SelectCheck",
   component: SelectCheck,
   argTypes: {
     type: {

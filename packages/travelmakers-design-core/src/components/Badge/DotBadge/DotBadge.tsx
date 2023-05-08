@@ -1,4 +1,4 @@
-import { ClassNames, PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { ClassNames, PolymorphicRef } from "@travelmakers/styles";
 import { forwardRef, useEffect } from "react";
 import { View } from "../../View";
 import useStyles from "./DotBadge.style";

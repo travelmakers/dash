@@ -3,7 +3,7 @@ import {
   TmColor,
   TmFontFamily,
   TmFontSize,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import { TypographyTextAlign } from "./Typography.type";
 
 interface TypographyStylesProps {

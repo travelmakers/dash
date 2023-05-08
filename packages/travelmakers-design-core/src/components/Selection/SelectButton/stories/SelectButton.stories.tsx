@@ -5,8 +5,7 @@ import { SelectButton } from "../SelectButton";
 const data = ["선택1", "선택2", "선택3"];
 
 export default {
-  title:
-    "@travelmakers-design-v2/core/General/Selection/SelectButton/SelectButton",
+  title: "@travelmakers/core/General/Selection/SelectButton/SelectButton",
   component: SelectButton,
   argTypes: {
     label: {

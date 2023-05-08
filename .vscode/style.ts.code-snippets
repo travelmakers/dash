@@ -2,7 +2,7 @@
   "Travelmakers Design System Style": {
     "prefix": "tdss",
     "body": [
-      "import { createStyles } from \"@travelmakers-design-v2/styles\";",
+      "import { createStyles } from \"@travelmakers/styles\";",
       "// import { Props } from \"./${TM_FILENAME/^(\\w+?)\\.style\\.ts/$1/}\";",
       "",
       "/** style에서 사용할 Props Type을 선언합니다.",

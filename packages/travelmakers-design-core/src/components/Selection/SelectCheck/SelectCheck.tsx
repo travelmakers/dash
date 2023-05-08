@@ -1,8 +1,4 @@
-import {
-  CSSObject,
-  CoTypography,
-  PolymorphicRef,
-} from "@travelmakers-design-v2/styles";
+import { CSSObject, CoTypography, PolymorphicRef } from "@travelmakers/styles";
 import { forwardRef } from "react";
 import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { Icon } from "../../Icon";

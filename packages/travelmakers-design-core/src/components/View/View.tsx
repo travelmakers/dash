@@ -1,8 +1,4 @@
-import {
-  PolymorphicRef,
-  useCss,
-  useTmTheme,
-} from "@travelmakers-design-v2/styles";
+import { PolymorphicRef, useCss, useTmTheme } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { ViewComponent, ViewTm, extractTm } from "./View.type";
 

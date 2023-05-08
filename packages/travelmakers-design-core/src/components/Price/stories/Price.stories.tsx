@@ -2,7 +2,7 @@ import React from "react";
 import { Price } from "../Price";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Price",
+  title: "@travelmakers/core/General/Price",
   component: Price,
   argTypes: {
     type: {

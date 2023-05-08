@@ -5,7 +5,7 @@ import { Dropdown } from "../Dropdown";
 const data = ["데이터1", "데이터2", "데이터3"];
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Dropdown",
+  title: "@travelmakers/core/General/Dropdown",
   component: Dropdown,
   argTypes: {},
 } as Meta;

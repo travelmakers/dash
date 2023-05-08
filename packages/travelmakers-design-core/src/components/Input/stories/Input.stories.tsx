@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Input } from "../Input";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Input",
+  title: "@travelmakers/core/General/Input",
   component: Input,
   argTypes: {
     name: {

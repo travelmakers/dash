@@ -4,7 +4,7 @@
   "exclude": ["public", ".cache", "config/storybook/main.js"],
   "compilerOptions": {
     "paths": {
-      "@travelmakers-design-v2/*": ["packages/travelmakers-design-*/src"]
+      "@travelmakers/*": ["packages/travelmakers-design-*/src"]
     }
   }
 }

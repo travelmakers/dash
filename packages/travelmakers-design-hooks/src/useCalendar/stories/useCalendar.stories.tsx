@@ -1,7 +1,7 @@
 import { useCalendar } from "../useCalendar";
 
 export default {
-  title: "@travelmakers-design-v2/hooks/useCalendar",
+  title: "@travelmakers/hooks/useCalendar",
 };
 
 export const Default = () => {

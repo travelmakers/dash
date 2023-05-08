@@ -1,4 +1,4 @@
-import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef } from "@travelmakers/styles";
 import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
 import { GradeBadge } from "../../Badge";

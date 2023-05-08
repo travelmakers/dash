@@ -3,7 +3,7 @@ import { getDate, getDay } from "../getDate";
 import React from "react";
 
 export default {
-  title: "@travelmakers-design-v2/utils/getDate",
+  title: "@travelmakers/utils/getDate",
   argTypes: {
     state: {
       defaultValue: "default",

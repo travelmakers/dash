@@ -1,4 +1,4 @@
-import { createStyles } from "@travelmakers-design-v2/styles";
+import { createStyles } from "@travelmakers/styles";
 import { Props } from "./Tag";
 
 export default createStyles((theme, { gap }: Pick<Props, "gap">) => {

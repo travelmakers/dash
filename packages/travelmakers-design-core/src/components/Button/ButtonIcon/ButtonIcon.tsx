@@ -1,4 +1,4 @@
-import { PolymorphicRef, useTmTheme } from "@travelmakers-design-v2/styles";
+import { PolymorphicRef, useTmTheme } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { Icon } from "../../Icon";
 import { View } from "../../View";

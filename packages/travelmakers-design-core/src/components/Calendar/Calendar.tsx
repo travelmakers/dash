@@ -1,5 +1,5 @@
-import { useCalendar, useUpdateEffect } from "@travelmakers-design-v2/hooks";
-import { PolymorphicRef } from "@travelmakers-design-v2/styles";
+import { useCalendar, useUpdateEffect } from "@travelmakers/hooks";
+import { PolymorphicRef } from "@travelmakers/styles";
 import { addDays, differenceInDays, getMonth, isEqual } from "date-fns";
 import _ from "lodash";
 import React, {

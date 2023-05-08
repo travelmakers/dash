@@ -1,8 +1,4 @@
-import {
-  CoSpacing,
-  TmColor,
-  createStyles,
-} from "@travelmakers-design-v2/styles";
+import { CoSpacing, TmColor, createStyles } from "@travelmakers/styles";
 import { Props } from "../SelectDropBox/SelectDropBox";
 
 const SELECT_DROP_BOX_SPACING: Record<Props["type"], CoSpacing> = {

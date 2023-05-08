@@ -1,5 +1,5 @@
 import { keyframes } from "@emotion/react";
-import { TmTheme, createStyles } from "@travelmakers-design-v2/styles";
+import { TmTheme, createStyles } from "@travelmakers/styles";
 import { SequenceType } from "../Process/Process.type";
 
 const twinkle = keyframes`

@@ -1,7 +1,7 @@
 import { View } from "../View";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/View",
+  title: "@travelmakers/core/General/View",
   component: View,
 };
 

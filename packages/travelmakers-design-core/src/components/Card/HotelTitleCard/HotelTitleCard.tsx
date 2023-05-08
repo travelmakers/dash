@@ -1,5 +1,5 @@
-import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { getCurrencyNumber } from "@travelmakers-design-v2/utils";
+import { PolymorphicRef } from "@travelmakers/styles";
+import { getCurrencyNumber } from "@travelmakers/utils";
 import { forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
 import { Divider } from "../../Divider";

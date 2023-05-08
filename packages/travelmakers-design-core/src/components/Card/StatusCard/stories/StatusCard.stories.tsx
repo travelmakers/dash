@@ -12,7 +12,7 @@ import React from "react";
 import { StatusCard } from "../StatusCard";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Card/StatusCard",
+  title: "@travelmakers/core/General/Card/StatusCard",
   component: StatusCard,
   argTypes: {
     hotelImage: {

@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Icon } from "../Icon";
 
 export default {
-  title: "@travelmakers-design-v2/core/General/Icon",
+  title: "@travelmakers/core/General/Icon",
   component: Icon,
   argTypes: {
     src: {

@@ -1,8 +1,4 @@
-import {
-  createStyles,
-  TmFontSize,
-  TmTheme,
-} from "@travelmakers-design-v2/styles";
+import { createStyles, TmFontSize, TmTheme } from "@travelmakers/styles";
 import { Props } from "../Accordion/Accordion";
 import { AccordionType } from "../Accordion/Accordion.type";
 

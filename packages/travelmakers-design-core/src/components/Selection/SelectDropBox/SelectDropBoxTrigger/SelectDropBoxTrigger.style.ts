@@ -4,7 +4,7 @@ import {
   TmFontSize,
   TmTheme,
   createStyles,
-} from "@travelmakers-design-v2/styles";
+} from "@travelmakers/styles";
 import { Props } from "../SelectDropBox/SelectDropBox";
 import { SELECT_DROP_BOX_HEIGHT } from "../SelectDropBox/SelectDropBox.style";
 
