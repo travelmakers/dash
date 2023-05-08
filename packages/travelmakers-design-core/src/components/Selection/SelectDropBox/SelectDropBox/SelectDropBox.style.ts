@@ -21,7 +21,6 @@ export default createStyles(
     theme,
     {
       type,
-
       disabled,
     }: Pick<Props, "type" | "disabled">
   ) => {
