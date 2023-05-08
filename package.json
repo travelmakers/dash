@@ -12,12 +12,11 @@
   },
   "scripts": {
     "type": "tsc --noEmit",
-    "build": "lerna run build --include-dependencies --stream",
     "clean": "rimraf packages/*/{esm,cjs,lib,dist} packages/**/*.tsbuildinfo",
+    "build": "yarn clean & lerna run build --include-dependencies --stream",
     "storybook": "esno scripts/storybook-start",
     "build-storybook": "build-storybook -c ./config/storybook",
-    "deploy-storybook": "storybook-to-ghpages",
-    "publish": "lerna publish"
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
     "@emotion/cache": "^11.7.1",
