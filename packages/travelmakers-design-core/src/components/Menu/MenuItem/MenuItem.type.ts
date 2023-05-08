@@ -3,6 +3,7 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers-design-v2/styles";
+import Link from "next/link";
 import { Props } from "./MenuItem";
 import useStyles from "./MenuItem.style";
 
@@ -15,6 +16,6 @@ interface SharedMenuItemProps
 export type MenuItemProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedMenuItemProps>;
 
-export type MenuItemComponent = <C extends React.ElementType = "a">(
+export type MenuItemComponent = <C extends React.ElementType = typeof Link>(
   props: MenuItemProps<C>
 ) => React.ReactElement;

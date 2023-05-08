@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
 import { useCalendar } from "../useCalendar";
-import { Button } from "@travelmakers-design-v2/core";
 
 export default {
   title: "@travelmakers-design-v2/hooks/useCalendar",
@@ -34,8 +32,8 @@ export const Default = () => {
               </strong>
             </td>
             <td colSpan={2} style={{ textAlign: "right" }}>
-              <Button onClick={() => actions.getPrevMonth()}>&lt;</Button>
-              <Button onClick={() => actions.getNextMonth()}>&gt;</Button>
+              <button onClick={() => actions.getPrevMonth()}>&lt;</button>
+              <button onClick={() => actions.getNextMonth()}>&gt;</button>
             </td>
           </tr>
           <tr>

@@ -1,6 +1,7 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
 import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
+import { View } from "../../View";
 import useStyles from "./NavLink.style";
 import { NavLinkComponent, NavLinkProps } from "./NavLink.type";
 
@@ -12,7 +13,7 @@ export interface Props extends LinkProps {
 export const NavLink: NavLinkComponent & {
   displayName?: string;
 } = forwardRef(
-  <C extends React.ElementType = "a">(
+  <C extends React.ElementType = typeof Link>(
     { label, isDisable = false, className, ...props }: NavLinkProps<C>,
     ref: PolymorphicRef<C>
   ) => {
@@ -25,7 +26,8 @@ export const NavLink: NavLinkComponent & {
     };
 
     return (
-      <Link
+      <View<React.ElementType>
+        component={Link}
         ref={ref}
         className={cx(classes.root, className)}
         onClick={onClickHandler}
@@ -34,7 +36,7 @@ export const NavLink: NavLinkComponent & {
         {...props}
       >
         {label}
-      </Link>
+      </View>
     );
   }
 );

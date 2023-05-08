@@ -1,14 +1,12 @@
-export * from "./tokens";
-export * from "./types";
-
+export { ColorSchemeProvider, useTmColorScheme } from "./ColorSchemeProvider";
+export { TmProvider, useTmTheme } from "./TmProvider";
 export {
   DEFAULT_THEME,
-  TM_PALETTES,
   TM_COLORS,
-  TM_SIZES,
   TM_FONT_SIZES,
+  TM_PALETTES,
+  TM_SIZES,
   defaultFontStyles,
 } from "./defaultTheme";
-
-export { TmProvider, useTmTheme } from "./TmProvider";
-export { ColorSchemeProvider, useTmColorScheme } from "./ColorSchemeProvider";
+export * from "./tokens";
+export * from "./types";

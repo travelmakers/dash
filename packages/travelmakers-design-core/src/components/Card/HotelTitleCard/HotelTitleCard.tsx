@@ -70,11 +70,15 @@ export const HotelTitleCard: HotelTitleCardComponent & {
           </div>
           {groupTags.length > 0 && (
             <div>
-              <Tag type="line" color="gray" roundness="half" gap={4}>
-                {groupTags.map((groupTag) => (
+              <Tag
+                type="line"
+                color="gray"
+                roundness="half"
+                gap={4}
+                items={groupTags.map((groupTag) => (
                   <Tag.Item label={groupTag} />
                 ))}
-              </Tag>
+              />
             </div>
           )}
         </div>
@@ -94,11 +98,15 @@ export const HotelTitleCard: HotelTitleCardComponent & {
             세금 및 봉사료 포함
           </Typography>
         </div>
-        <Tag type="fill" color="gray" roundness="half" gap={4}>
-          {tags.map((tag) => (
+        <Tag
+          type="fill"
+          color="gray"
+          roundness="half"
+          gap={4}
+          items={tags.map((tag) => (
             <Tag.Item label={tag} />
           ))}
-        </Tag>
+        />
       </View>
     );
   }

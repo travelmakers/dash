@@ -44,7 +44,7 @@ export type Props = {
   mobileLevel?: TmFontSize;
 
   /** tablet일 경우의 Typography 컴포넌트의 크기를 지정합니다. */
-  tabletLevel?: TmFontSize;
+  wideLevel?: TmFontSize;
 };
 
 export const Typography: TypographyComponent & { displayName?: string } =
@@ -57,7 +57,7 @@ export const Typography: TypographyComponent & { displayName?: string } =
         family = "Pretendard",
         level = "body1",
         mobileLevel,
-        tabletLevel,
+        wideLevel,
         textAlign = "left",
         disabled = false,
         strong = false,
@@ -82,7 +82,7 @@ export const Typography: TypographyComponent & { displayName?: string } =
           textAlign,
           color,
           mobile: mobileLevel,
-          tablet: tabletLevel,
+          wide: wideLevel,
         },
         { overrideStyles, name: "typography" }
       );
