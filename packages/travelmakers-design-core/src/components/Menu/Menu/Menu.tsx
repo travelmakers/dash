@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import React, { forwardRef, PropsWithChildren } from "react";
+import React, { forwardRef } from "react";
 import { View } from "../../View";
 import { MenuItem } from "../MenuItem";
 import useStyles from "./Menu.style";
@@ -14,7 +14,7 @@ export const Menu: MenuComponent & {
   Item?: typeof MenuItem;
 } = forwardRef(
   <C extends React.ElementType = "ul">(
-    { className, items, children, ...props }: PropsWithChildren<MenuProps<C>>,
+    { className, items, ...props }: MenuProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();

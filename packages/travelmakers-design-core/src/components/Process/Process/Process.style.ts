@@ -5,7 +5,7 @@ export default createStyles((theme) => {
 
   return {
     root: {
-      display: "inline-flex",
+      display: "flex",
       minWidth: "328px",
       minHeight: "52px",
       margin: 0,

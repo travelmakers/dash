@@ -30,9 +30,11 @@ export default {
 
 export const Default = (props) => {
   return (
-    <HeaderSection
-      {...props}
-      style={{ backgroundColor: props.type === "white" && "gray" }}
-    />
+    <div style={{ display: "inline-flex" }}>
+      <HeaderSection
+        {...props}
+        style={{ backgroundColor: props.type === "white" && "gray" }}
+      />
+    </div>
   );
 };

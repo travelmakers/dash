@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers-design-v2/styles";
-import { PropsWithChildren, createContext, forwardRef } from "react";
+import React, { createContext, forwardRef } from "react";
 import { View } from "../../View";
 import { TagItem } from "../TagItem";
 import useStyles from "./Tag.style";
@@ -41,9 +41,8 @@ export const Tag: TagComponent & {
       roundness = "default",
       items,
       className,
-      children,
       ...props
-    }: PropsWithChildren<TagProps<C>>,
+    }: TagProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({ gap });
