@@ -48,7 +48,9 @@ export const Image: ImageComponent & {
             loading={lazy ? "lazy" : "eager"}
             decoding={lazy ? "async" : "auto"}
             className={cx(className, classes.loading)}
-            src={require("./img/loading.png")}
+            src={
+              "https://hotel-01.s3.ap-northeast-2.amazonaws.com/dash/Image/img/loading.png"
+            }
             {...props}
           />
         )}
@@ -59,7 +61,9 @@ export const Image: ImageComponent & {
             loading={lazy ? "lazy" : "eager"}
             decoding={lazy ? "async" : "auto"}
             className={cx(className, classes.loading)}
-            src={require("./img/error.png")}
+            src={
+              "https://hotel-01.s3.ap-northeast-2.amazonaws.com/dash/Image/img/error.png"
+            }
             {...props}
           />
         )}
