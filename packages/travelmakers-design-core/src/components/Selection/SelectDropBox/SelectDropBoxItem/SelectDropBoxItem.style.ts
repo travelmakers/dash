@@ -36,6 +36,10 @@ export default createStyles(
         }`,
         paddingTop: 0,
         cursor: "pointer",
+
+        "&:hover": {
+          color: colors[SELECT_DROP_BOX_ITEM_COLOR[type]],
+        },
       },
     };
   }
