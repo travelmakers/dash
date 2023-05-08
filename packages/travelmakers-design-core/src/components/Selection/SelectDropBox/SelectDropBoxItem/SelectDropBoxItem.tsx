@@ -42,7 +42,7 @@ export const SelectDropBoxItem: SelectDropBoxItemComponent & {
         {...props}
       >
         <Divider type={"horizontal"} color={"outline"} />
-        {value}
+        <span className={classes.content}>{value}</span>
       </View>
     );
   }

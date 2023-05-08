@@ -41,6 +41,11 @@ export default createStyles(
           color: colors[SELECT_DROP_BOX_ITEM_COLOR[type]],
         },
       },
+      content: {
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+      },
     };
   }
 );
