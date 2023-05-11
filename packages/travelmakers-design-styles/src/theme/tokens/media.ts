@@ -6,6 +6,6 @@ export type TmMedia = {
 };
 
 export const DEFAULT_MEDIA: TmMedia = {
-  mobile: `@media (max-width: ${deviceSizes.mobile}px)`,
-  wide: `@media (min-width: ${deviceSizes.mobile + 1}px)`,
+  mobile: `@media (max-width: ${deviceSizes.mobile})`,
+  wide: `@media (min-width: calc(${deviceSizes.mobile} + 1px))`,
 };
