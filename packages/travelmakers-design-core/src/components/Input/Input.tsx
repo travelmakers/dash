@@ -60,7 +60,7 @@ export const Input: InputComponent & {
       onChange?.(e);
     };
 
-    const InputContent = ({ subfix }) => {
+    const InputContent = (subfix) => {
       if (subfix) {
         return (
           <div
@@ -120,7 +120,7 @@ export const Input: InputComponent & {
             {label}
           </label>
         )}
-        <InputContent subfix={subfix} />
+        {InputContent(subfix)}
         {feedback && <strong className={classes.feedback}>{feedback}</strong>}
       </div>
     );
