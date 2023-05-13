@@ -54,7 +54,10 @@ export type IconPictogramSrc =
   | "IcProfile"
   | "IcSearch"
   | "IcSettings"
-  | "IcTalk";
+  | "IcTalk"
+  | "IcHome"
+  | "IcMembership"
+  | "IcUser";
 
 export interface SharedIconProps extends Props {}
 

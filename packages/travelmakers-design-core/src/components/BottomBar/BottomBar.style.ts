@@ -27,11 +27,6 @@ export default createStyles((theme, {}: BottomBarStylesProps, getRef) => {
       flexDirection: "column",
       alignItems: "center",
       height: "48px",
-
-      ["& > svg"]: {
-        width: "32px",
-        height: "32px",
-      },
     },
   };
 });

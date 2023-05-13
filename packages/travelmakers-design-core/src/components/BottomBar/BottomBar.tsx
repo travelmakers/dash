@@ -12,6 +12,7 @@ import { Typography } from "../Typography";
 import { View } from "../View";
 import useStyles from "./BottomBar.style";
 import { BottomBarComponent, BottomBarProps } from "./BottomBar.type";
+import { Icon } from "../Icon";
 
 export type BottomBarStylesNames = ClassNames<typeof useStyles>;
 
@@ -70,7 +71,10 @@ export const BottomBar: BottomBarComponent & { displayName?: string } =
       const menus = [
         {
           icon: (
-            <IconHome
+            <Icon
+              src="IcHome"
+              width={24}
+              height={24}
               color={
                 selected === 0 ? theme.colors.secondary : theme.colors[color1]
               }
@@ -79,7 +83,10 @@ export const BottomBar: BottomBarComponent & { displayName?: string } =
         },
         {
           icon: (
-            <IconSearch
+            <Icon
+              src="IcSearch"
+              width={24}
+              height={24}
               color={
                 selected === 1 ? theme.colors.secondary : theme.colors[color2]
               }
@@ -88,7 +95,10 @@ export const BottomBar: BottomBarComponent & { displayName?: string } =
         },
         {
           icon: (
-            <IconMypage
+            <Icon
+              src="IcUser"
+              width={24}
+              height={24}
               color={
                 selected === 2 ? theme.colors.secondary : theme.colors[color3]
               }
