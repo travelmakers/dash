@@ -1,7 +1,7 @@
 import { PolymorphicRef, TmPalette, TmSize } from "@travelmakers/styles";
 import React, { PropsWithChildren, forwardRef } from "react";
-import { TypographyComponent } from "../../Typography/Typography.type";
 import { Typography } from "../../Typography/Typography";
+import { TypographyProps } from "../../Typography/Typography.type";
 import { View } from "../../View";
 import useStyles from "./Button.style";
 import { ButtonComponent, ButtonProps } from "./Button.type";
@@ -32,7 +32,7 @@ export interface Props {
   /** Button 컴포넌트 좌측 영역에 요소를 추가합니다. */
   rightIcon?: React.ReactNode;
 
-  typoProps?: TypographyComponent;
+  typoProps?: TypographyProps<typeof Typography>;
 }
 
 export const Button: ButtonComponent & {
