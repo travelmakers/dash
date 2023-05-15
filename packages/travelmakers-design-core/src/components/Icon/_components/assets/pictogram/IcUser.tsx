@@ -12,14 +12,14 @@ const SvgIcUser = (props: SVGProps<SVGSVGElement>) => (
     <path
       d="M2 21.6924C2 21.5715 2 21.4515 2 21.3316C2 20.1105 2.06663 18.8762 2.47533 17.7256C3.71924 14.2236 6.7663 11 12 11C17.2336 11 20.2807 14.2235 21.5246 17.7255C21.9334 18.8762 22 20.1106 22 21.3317C22 21.4516 22 21.5715 22 21.6924C22 22.4146 21.5084 23 20.902 23H3.09804C2.49161 23 2 22.4146 2 21.6924Z"
       stroke={props.color ? "none" : "#30373F"}
-      stroke-width="2"
+      strokeWidth="2"
     />
     <circle
       cx="12"
       cy="5"
       r="4"
       stroke={props.color ? "none" : "#30373F"}
-      stroke-width="2"
+      strokeWidth="2"
     />
   </svg>
 );
