@@ -73,7 +73,6 @@ export const Button: ButtonComponent & {
       >
         <div className={classes.inner}>
           {leftIcon && <span className={cx(classes.icon)}>{leftIcon}</span>}
-
           <Typography
             level={
               size === "small" ? "body3" : size === "medium" ? "body2" : "body1"
@@ -83,7 +82,6 @@ export const Button: ButtonComponent & {
           >
             {children}
           </Typography>
-
           {rightIcon && <span className={cx(classes.icon)}>{rightIcon}</span>}
         </div>
       </View>
