@@ -15,6 +15,10 @@ interface SharedNavButtonProps
 export type NavButtonProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedNavButtonProps>;
 
-export type NavButtonComponent = <C extends React.ElementType = "button">(
+type NavButtonComponent = <C extends React.ElementType = "button">(
   props: NavButtonProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = NavButtonComponent & {
+  displayName?: string;
+};

@@ -3,7 +3,7 @@ import React, { forwardRef, useRef, useState } from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
 import useStyles from "./Search.style";
-import { SearchComponent, SearchProps, SearchType } from "./Search.type";
+import { ReturnType, SearchProps, SearchType } from "./Search.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   type?: SearchType;
@@ -11,9 +11,7 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   formReset?: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export const Search: SearchComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Search = forwardRef(
   <C extends React.ElementType = "input">(
     {
       type = "fill",
@@ -46,7 +44,6 @@ export const Search: SearchComponent & {
 
     const onResetHandler = (e: React.FormEvent<HTMLFormElement>) => {
       setInputValue("");
-
       formReset?.(e);
     };
 
@@ -62,7 +59,6 @@ export const Search: SearchComponent & {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
-
       onChange?.(e);
     };
 
@@ -106,6 +102,6 @@ export const Search: SearchComponent & {
       </form>
     );
   }
-);
+) as unknown as ReturnType;
 
 Search.displayName = "Search";

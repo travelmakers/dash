@@ -15,6 +15,10 @@ interface SharedCouponCardProps
 export type CouponCardProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedCouponCardProps>;
 
-export type CouponCardComponent = <C extends React.ElementType = "div">(
+type CouponCardComponent = <C extends React.ElementType = "div">(
   props: CouponCardProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = CouponCardComponent & {
+  displayName?: string;
+};

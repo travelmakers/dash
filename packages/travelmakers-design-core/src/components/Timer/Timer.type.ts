@@ -18,6 +18,10 @@ export type TimerProps<C extends React.ElementType> = PolymorphicComponentProps<
   SharedTimerProps
 >;
 
-export type TimerComponent = <C extends React.ElementType = "div">(
+type TimerComponent = <C extends React.ElementType = "div">(
   props: TimerProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = TimerComponent & {
+  displayName?: string;
+};

@@ -2,18 +2,13 @@ import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./DropdownItems.style";
-import {
-  DropdownItemsComponent,
-  DropdownItemsProps,
-} from "./DropdownItems.type";
+import { DropdownItemsProps, ReturnType } from "./DropdownItems.type";
 
 export interface Props {
   items: React.ReactNode[];
 }
 
-export const DropdownItems: DropdownItemsComponent & {
-  displayName?: string;
-} = forwardRef(
+export const DropdownItems = forwardRef(
   <C extends React.ElementType = "ul">(
     { items, className, ...props }: DropdownItemsProps<C>,
     ref: PolymorphicRef<C>
@@ -32,6 +27,6 @@ export const DropdownItems: DropdownItemsComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 DropdownItems.displayName = "DropdownItems";

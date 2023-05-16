@@ -16,10 +16,12 @@ export type ViewProps<C extends React.ElementType> = PolymorphicComponentProps<
   _ViewProps
 >;
 
-export type ViewComponent = <C extends React.ElementType = "div">(
+type ViewComponent = <C extends React.ElementType = "div">(
   props: ViewProps<C>
 ) => React.ReactElement;
 
 export function extractTm(tm: Tm, theme: TmTheme) {
   return typeof tm === "function" ? tm(theme) : tm;
 }
+
+export type ReturnType = ViewComponent & { displayName?: string };

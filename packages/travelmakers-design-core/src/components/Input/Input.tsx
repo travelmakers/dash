@@ -3,7 +3,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import { useId } from "../../../../travelmakers-design-hooks/src";
 import { View } from "../View";
 import useStyles from "./Input.style";
-import { InputComponent, InputProps } from "./Input.type";
+import { InputProps, ReturnType } from "./Input.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name: string;
@@ -13,9 +13,7 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   isError?: boolean;
 }
 
-export const Input: InputComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Input = forwardRef(
   <C extends React.ElementType = "input">(
     {
       name,
@@ -125,6 +123,6 @@ export const Input: InputComponent & {
       </div>
     );
   }
-);
+) as unknown as ReturnType;
 
 Input.displayName = "Input";

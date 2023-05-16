@@ -4,16 +4,14 @@ import { View } from "../../View";
 import { TagContext } from "../Tag/Tag";
 import { TagItemColorType } from "../Tag/Tag.type";
 import useStyles from "./TagItem.style";
-import { TagItemComponent, TagItemProps } from "./TagItem.type";
+import { ReturnType, TagItemProps } from "./TagItem.type";
 
 export interface Props {
   colorIdx?: number;
   label: React.ReactNode;
 }
 
-export const TagItem: TagItemComponent & {
-  displayName?: string;
-} = forwardRef(
+export const TagItem = forwardRef(
   <C extends React.ElementType = "li">(
     { colorIdx = 0, label, className, ...props }: TagItemProps<C>,
     ref: PolymorphicRef<C>
@@ -46,6 +44,6 @@ export const TagItem: TagItemComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 TagItem.displayName = "TagItem";

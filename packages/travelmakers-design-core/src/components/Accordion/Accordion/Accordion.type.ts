@@ -3,6 +3,7 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers/styles";
+import { AccordionItem } from "../AccordionItem";
 import { Props } from "./Accordion";
 import useStyles from "./Accordion.style";
 
@@ -17,6 +18,11 @@ interface SharedAccordionProps
 export type AccordionProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedAccordionProps>;
 
-export type AccordionComponent = <C extends React.ElementType = "dl">(
+type AccordionComponent = <C extends React.ElementType = "dl">(
   props: AccordionProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = AccordionComponent & {
+  displayName?: string;
+  Item: typeof AccordionItem;
+};

@@ -3,19 +3,14 @@ import React, { ChangeEvent, forwardRef } from "react";
 import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { View } from "../../View";
 import useStyles from "./TertiaryTabItem.style";
-import {
-  TertiaryTabItemComponent,
-  TertiaryTabItemProps,
-} from "./TertiaryTabItem.type";
+import { ReturnType, TertiaryTabItemProps } from "./TertiaryTabItem.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name?: string;
   label: string;
 }
 
-export const TertiaryTabItem: TertiaryTabItemComponent & {
-  displayName?: string;
-} = forwardRef(
+export const TertiaryTabItem = forwardRef(
   <C extends React.ElementType = "input">(
     {
       name = "tertiary-tab-item",
@@ -49,6 +44,6 @@ export const TertiaryTabItem: TertiaryTabItemComponent & {
       </label>
     );
   }
-);
+) as unknown as ReturnType;
 
 TertiaryTabItem.displayName = "TertiaryTabItem";

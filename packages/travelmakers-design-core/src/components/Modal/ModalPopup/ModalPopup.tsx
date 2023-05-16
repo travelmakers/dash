@@ -4,7 +4,7 @@ import React, { forwardRef } from "react";
 import { View } from "../../View";
 import { ModalPortal } from "../ModalPortal";
 import useStyles from "./ModalPopup.style";
-import { ModalPopupComponent, ModalPopupProps } from "./ModalPopup.type";
+import { ModalPopupProps, ReturnType } from "./ModalPopup.type";
 
 export interface Props extends React.HTMLAttributes<HTMLDialogElement> {
   title: string;
@@ -14,9 +14,7 @@ export interface Props extends React.HTMLAttributes<HTMLDialogElement> {
   isOpen: boolean;
 }
 
-export const ModalPopup: ModalPopupComponent & {
-  displayName?: string;
-} = forwardRef(
+export const ModalPopup = forwardRef(
   <C extends React.ElementType = "dialog">(
     {
       title,
@@ -62,6 +60,6 @@ export const ModalPopup: ModalPopupComponent & {
       </ModalPortal>
     );
   }
-);
+) as unknown as ReturnType;
 
 ModalPopup.displayName = "ModalPopup";

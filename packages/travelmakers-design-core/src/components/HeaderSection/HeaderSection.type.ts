@@ -17,6 +17,10 @@ interface SharedHeaderSectionProps
 export type HeaderSectionProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedHeaderSectionProps>;
 
-export type HeaderSectionComponent = <C extends React.ElementType = "header">(
+type HeaderSectionComponent = <C extends React.ElementType = "header">(
   props: HeaderSectionProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = HeaderSectionComponent & {
+  displayName?: string;
+};

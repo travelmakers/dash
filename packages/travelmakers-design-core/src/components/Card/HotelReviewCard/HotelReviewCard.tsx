@@ -8,10 +8,7 @@ import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./HotelReviewCard.style";
-import {
-  HotelReviewCardComponent,
-  HotelReviewCardProps,
-} from "./HotelReviewCard.type";
+import { HotelReviewCardProps, ReturnType } from "./HotelReviewCard.type";
 
 export interface Props {
   href: LinkProps["href"];
@@ -26,9 +23,7 @@ export interface Props {
   product: string;
 }
 
-export const HotelReviewCard: HotelReviewCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const HotelReviewCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       href = "",
@@ -97,6 +92,6 @@ export const HotelReviewCard: HotelReviewCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 HotelReviewCard.displayName = "HotelReviewCard";

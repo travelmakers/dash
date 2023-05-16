@@ -5,7 +5,7 @@ import { View } from "../../View";
 import { SelectCheck } from "../SelectCheck/SelectCheck";
 import useStyles from "./SelectCheckBox.style";
 import {
-  SelectCheckBoxComponent,
+  ReturnType,
   SelectCheckBoxProps,
   SelectCheckBoxType,
 } from "./SelectCheckBox.type";
@@ -25,9 +25,7 @@ const ACTION_ICON_SIZE: Record<
   h48: { width: 24, height: 24 },
 };
 
-export const SelectCheckBox: SelectCheckBoxComponent & {
-  displayName?: string;
-} = forwardRef(
+export const SelectCheckBox = forwardRef(
   <C extends React.ElementType = "div">(
     {
       label,
@@ -66,6 +64,6 @@ export const SelectCheckBox: SelectCheckBoxComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 SelectCheckBox.displayName = "SelectCheckBox";

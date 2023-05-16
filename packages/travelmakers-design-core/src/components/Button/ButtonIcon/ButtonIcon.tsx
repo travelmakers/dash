@@ -3,7 +3,7 @@ import React, { forwardRef } from "react";
 import { Icon } from "../../Icon";
 import { View } from "../../View";
 import useStyles from "./ButtonIcon.style";
-import { ButtonIconComponent, ButtonIconProps } from "./ButtonIcon.type";
+import { ButtonIconProps, ReturnType } from "./ButtonIcon.type";
 
 export interface Props {
   /** ButtonIcon 컴포넌트의 크기를 정합니다. */
@@ -25,9 +25,7 @@ const ARIA_LABLE = {
   next: "다음",
 };
 
-export const ButtonIcon: ButtonIconComponent & {
-  displayName?: string;
-} = forwardRef(
+export const ButtonIcon = forwardRef(
   <C extends React.ElementType = "button">(
     {
       size,
@@ -95,6 +93,6 @@ export const ButtonIcon: ButtonIconComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 ButtonIcon.displayName = "ButtonIcon";

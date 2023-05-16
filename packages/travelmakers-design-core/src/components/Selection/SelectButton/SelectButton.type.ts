@@ -3,6 +3,8 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers/styles";
+import { Callout } from "src/components/Callout";
+import { SelectButtonItem } from "../SelectButtonItem";
 import { Props } from "./SelectButton";
 import useStyles from "./SelectButton.style";
 
@@ -18,3 +20,9 @@ export type SelectButtonProps<C extends React.ElementType> =
 export type SelectButtonComponent = <C extends React.ElementType = "fieldset">(
   props: SelectButtonProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SelectButtonComponent & {
+  displayName?: string;
+  Item: typeof SelectButtonItem;
+  Callout: typeof Callout;
+};

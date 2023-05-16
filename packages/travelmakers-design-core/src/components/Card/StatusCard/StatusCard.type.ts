@@ -15,6 +15,10 @@ interface SharedStatusCardProps
 export type StatusCardProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedStatusCardProps>;
 
-export type StatusCardComponent = <C extends React.ElementType = "div">(
+type StatusCardComponent = <C extends React.ElementType = "div">(
   props: StatusCardProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = StatusCardComponent & {
+  displayName?: string;
+};

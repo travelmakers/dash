@@ -17,6 +17,10 @@ interface SharedCalloutProps
 export type CalloutProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedCalloutProps>;
 
-export type CalloutComponent = <C extends React.ElementType = "dl">(
+type CalloutComponent = <C extends React.ElementType = "dl">(
   props: CalloutProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = CalloutComponent & {
+  displayName?: string;
+};

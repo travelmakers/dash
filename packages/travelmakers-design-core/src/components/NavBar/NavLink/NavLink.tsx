@@ -3,16 +3,14 @@ import Link, { LinkProps } from "next/link";
 import React, { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./NavLink.style";
-import { NavLinkComponent, NavLinkProps } from "./NavLink.type";
+import { NavLinkProps, ReturnType } from "./NavLink.type";
 
 export interface Props extends LinkProps {
   label: string;
   isDisable?: boolean;
 }
 
-export const NavLink: NavLinkComponent & {
-  displayName?: string;
-} = forwardRef(
+export const NavLink = forwardRef(
   <C extends React.ElementType = typeof Link>(
     { label, isDisable = false, className, ...props }: NavLinkProps<C>,
     ref: PolymorphicRef<C>
@@ -39,6 +37,6 @@ export const NavLink: NavLinkComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 NavLink.displayName = "NavLink";

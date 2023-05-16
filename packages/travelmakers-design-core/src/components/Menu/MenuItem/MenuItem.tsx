@@ -3,15 +3,13 @@ import Link, { LinkProps } from "next/link";
 import React, { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./MenuItem.style";
-import { MenuItemComponent, MenuItemProps } from "./MenuItem.type";
+import { MenuItemProps, ReturnType } from "./MenuItem.type";
 
 export interface Props extends LinkProps {
   menu: string;
 }
 
-export const MenuItem: MenuItemComponent & {
-  displayName?: string;
-} = forwardRef(
+export const MenuItem = forwardRef(
   <C extends React.ElementType = typeof Link>(
     { className, menu, ...props }: MenuItemProps<C>,
     ref: PolymorphicRef<C>
@@ -31,6 +29,6 @@ export const MenuItem: MenuItemComponent & {
       </li>
     );
   }
-);
+) as unknown as ReturnType;
 
 MenuItem.displayName = "MenuItem";

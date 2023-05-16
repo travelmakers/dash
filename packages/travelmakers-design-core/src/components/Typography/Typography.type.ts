@@ -17,6 +17,8 @@ interface SharedTypographyProps
 export type TypographyProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedTypographyProps>;
 
-export type TypographyComponent = <C extends React.ElementType = "span">(
+type TypographyComponent = <C extends React.ElementType = "span">(
   props: TypographyProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = TypographyComponent & { displayName?: string };

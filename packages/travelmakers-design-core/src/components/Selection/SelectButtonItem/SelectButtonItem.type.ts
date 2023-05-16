@@ -15,6 +15,10 @@ interface SharedSelectButtonItemProps
 export type SelectButtonItemProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedSelectButtonItemProps>;
 
-export type SelectButtonItemComponent = <C extends React.ElementType = "input">(
+type SelectButtonItemComponent = <C extends React.ElementType = "input">(
   props: SelectButtonItemProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SelectButtonItemComponent & {
+  displayName?: string;
+};

@@ -15,6 +15,10 @@ interface SharedPrimaryTabItemProps
 export type PrimaryTabItemProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedPrimaryTabItemProps>;
 
-export type PrimaryTabItemComponent = <C extends React.ElementType = "input">(
+type PrimaryTabItemComponent = <C extends React.ElementType = "input">(
   props: PrimaryTabItemProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = PrimaryTabItemComponent & {
+  displayName?: string;
+};

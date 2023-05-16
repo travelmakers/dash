@@ -15,6 +15,10 @@ interface SharedTagItemProps
 export type TagItemProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedTagItemProps>;
 
-export type TagItemComponent = <C extends React.ElementType = "li">(
+type TagItemComponent = <C extends React.ElementType = "li">(
   props: TagItemProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = TagItemComponent & {
+  displayName?: string;
+};

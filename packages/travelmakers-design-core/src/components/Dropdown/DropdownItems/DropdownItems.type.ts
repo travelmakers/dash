@@ -18,3 +18,7 @@ export type DropdownItemsProps<C extends React.ElementType> =
 export type DropdownItemsComponent = <C extends React.ElementType = "ul">(
   props: DropdownItemsProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = DropdownItemsComponent & {
+  displayName?: string;
+};

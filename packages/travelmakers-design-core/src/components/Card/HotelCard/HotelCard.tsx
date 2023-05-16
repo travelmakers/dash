@@ -1,19 +1,15 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import React, { forwardRef, useRef, useState } from "react";
-import { View } from "../../View";
-import useStyles from "./HotelCard.style";
-import {
-  HotelCardProps,
-  HotelCardComponent,
-  HotelCardType,
-} from "./HotelCard.type";
-import { Image } from "../../Image";
-import { Typography } from "../../Typography";
-import { GradeBadge } from "../../Badge";
-import { IconTag } from "../../Tag";
-import { PriceCard, PriceCardProps } from "../PriceCard";
-import { Icon } from "../../Icon";
 import Link, { LinkProps } from "next/link";
+import React, { forwardRef, useRef, useState } from "react";
+import { GradeBadge } from "../../Badge";
+import { Icon } from "../../Icon";
+import { Image } from "../../Image";
+import { IconTag } from "../../Tag";
+import { Typography } from "../../Typography";
+import { View } from "../../View";
+import { PriceCard, PriceCardProps } from "../PriceCard";
+import useStyles from "./HotelCard.style";
+import { HotelCardProps, HotelCardType, ReturnType } from "./HotelCard.type";
 
 export interface Props {
   /** HotelCard 컴포넌트의 호텔명을 표시합니다. */
@@ -44,9 +40,7 @@ export interface Props {
   disabled?: boolean;
 }
 
-export const HotelCard: HotelCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const HotelCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       name,
@@ -228,6 +222,6 @@ export const HotelCard: HotelCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 HotelCard.displayName = "HotelCard";

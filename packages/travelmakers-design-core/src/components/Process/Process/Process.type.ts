@@ -30,3 +30,7 @@ export type ProcessProps<C extends React.ElementType> =
 export type ProcessComponent = <C extends React.ElementType = "ol">(
   props: ProcessProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = ProcessComponent & {
+  displayName?: string;
+};

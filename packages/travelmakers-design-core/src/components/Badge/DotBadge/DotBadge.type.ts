@@ -22,6 +22,10 @@ interface SharedDotBadgeProps
 export type DotBadgeProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedDotBadgeProps>;
 
-export type DotBadgeComponent = <C extends React.ElementType = "div">(
+type DotBadgeComponent = <C extends React.ElementType = "div">(
   props: DotBadgeProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = DotBadgeComponent & {
+  displayName?: string;
+};

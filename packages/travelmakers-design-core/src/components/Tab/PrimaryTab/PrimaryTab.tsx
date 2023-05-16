@@ -3,16 +3,13 @@ import React, { forwardRef } from "react";
 import { View } from "../../View";
 import { PrimaryTabItem } from "../PrimaryTabItem";
 import useStyles from "./PrimaryTab.style";
-import { PrimaryTabComponent, PrimaryTabProps } from "./PrimaryTab.type";
+import { PrimaryTabProps, ReturnType } from "./PrimaryTab.type";
 
 export interface Props extends React.HTMLAttributes<HTMLUListElement> {
   items: React.ReactNode[];
 }
 
-export const PrimaryTab: PrimaryTabComponent & {
-  displayName?: string;
-  Item?: typeof PrimaryTabItem;
-} = forwardRef(
+export const PrimaryTab = forwardRef(
   <C extends React.ElementType = "ul">(
     { items, className, ...props }: PrimaryTabProps<C>,
     ref: PolymorphicRef<C>
@@ -30,7 +27,7 @@ export const PrimaryTab: PrimaryTabComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 PrimaryTab.displayName = "PrimaryTab";
 PrimaryTab.Item = PrimaryTabItem;

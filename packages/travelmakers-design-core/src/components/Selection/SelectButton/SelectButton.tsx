@@ -4,7 +4,7 @@ import { Callout } from "../../Callout";
 import { View } from "../../View";
 import { SelectButtonItem } from "../SelectButtonItem";
 import useStyles from "./SelectButton.style";
-import { SelectButtonComponent, SelectButtonProps } from "./SelectButton.type";
+import { ReturnType, SelectButtonProps } from "./SelectButton.type";
 
 export interface Props extends React.HTMLAttributes<HTMLFieldSetElement> {
   label: string;
@@ -14,11 +14,7 @@ export interface Props extends React.HTMLAttributes<HTMLFieldSetElement> {
   isVisibleLabel?: boolean;
 }
 
-export const SelectButton: SelectButtonComponent & {
-  displayName?: string;
-  Item?: typeof SelectButtonItem;
-  Callout?: typeof Callout;
-} = forwardRef(
+export const SelectButton = forwardRef(
   <C extends React.ElementType = "fieldset">(
     {
       label,
@@ -59,7 +55,7 @@ export const SelectButton: SelectButtonComponent & {
 
     return content;
   }
-);
+) as unknown as ReturnType;
 
 SelectButton.displayName = "SelectButton";
 SelectButton.Item = SelectButtonItem;

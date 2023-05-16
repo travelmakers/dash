@@ -4,11 +4,7 @@ import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./PriceCard.style";
-import {
-  PriceCardComponent,
-  PriceCardProps,
-  StatusType,
-} from "./PriceCard.type";
+import { PriceCardProps, ReturnType, StatusType } from "./PriceCard.type";
 
 export interface Props {
   /** Hotel 타입을 정합니다. */
@@ -24,9 +20,7 @@ export interface Props {
   tag?: string;
 }
 
-export const PriceCard: PriceCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const PriceCard = forwardRef(
   <C extends React.ElementType = "div">(
     { status, name, description, tag, className, ...props }: PriceCardProps<C>,
     ref: PolymorphicRef<C>
@@ -63,6 +57,6 @@ export const PriceCard: PriceCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 PriceCard.displayName = "PriceCard";

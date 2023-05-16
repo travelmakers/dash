@@ -17,6 +17,10 @@ interface SharedGradeBadgeProps
 export type GradeBadgeProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedGradeBadgeProps>;
 
-export type GradeBadgeComponent = <C extends React.ElementType = "div">(
+type GradeBadgeComponent = <C extends React.ElementType = "div">(
   props: GradeBadgeProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = GradeBadgeComponent & {
+  displayName?: string;
+};

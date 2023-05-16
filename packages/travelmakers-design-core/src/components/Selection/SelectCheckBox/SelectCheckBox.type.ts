@@ -17,6 +17,10 @@ interface SharedSelectCheckBoxProps
 export type SelectCheckBoxProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedSelectCheckBoxProps>;
 
-export type SelectCheckBoxComponent = <C extends React.ElementType = "div">(
+type SelectCheckBoxComponent = <C extends React.ElementType = "div">(
   props: SelectCheckBoxProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SelectCheckBoxComponent & {
+  displayName?: string;
+};

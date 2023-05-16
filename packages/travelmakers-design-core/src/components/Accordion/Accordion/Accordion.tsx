@@ -3,11 +3,7 @@ import React, { createContext, forwardRef } from "react";
 import { View } from "../../View";
 import { AccordionItem } from "../AccordionItem";
 import useStyles from "./Accordion.style";
-import {
-  AccordionComponent,
-  AccordionProps,
-  AccordionType,
-} from "./Accordion.type";
+import { AccordionProps, AccordionType, ReturnType } from "./Accordion.type";
 
 export type Props = {
   gap?: number;
@@ -21,10 +17,7 @@ export const AccordionContext = createContext<Omit<Props, "items">>({
 });
 AccordionContext.displayName = "AccordionContext";
 
-export const Accordion: AccordionComponent & {
-  displayName?: string;
-  Item?: typeof AccordionItem;
-} = forwardRef(
+export const Accordion = forwardRef(
   <C extends React.ElementType = "dl">(
     { gap = 4, type = "small", items, className, ...props }: AccordionProps<C>,
     ref: PolymorphicRef<C>
@@ -44,7 +37,7 @@ export const Accordion: AccordionComponent & {
       </AccordionContext.Provider>
     );
   }
-);
+) as unknown as ReturnType;
 
 Accordion.Item = AccordionItem;
 Accordion.displayName = "Accordion";

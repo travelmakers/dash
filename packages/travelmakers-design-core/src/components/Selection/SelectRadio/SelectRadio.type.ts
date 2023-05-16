@@ -3,6 +3,7 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers/styles";
+import { SelectRadioItem } from "../SelectRadioItem";
 import { Props } from "./SelectRadio";
 import useStyles from "./SelectRadio.style";
 
@@ -18,3 +19,8 @@ export type SelectRadioProps<C extends React.ElementType> =
 export type SelectRadioComponent = <C extends React.ElementType = "div">(
   props: SelectRadioProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SelectRadioComponent & {
+  displayName?: string;
+  Item: typeof SelectRadioItem;
+};

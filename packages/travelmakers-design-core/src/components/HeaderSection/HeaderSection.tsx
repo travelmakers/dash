@@ -4,9 +4,9 @@ import { Typography } from "../Typography";
 import { View } from "../View";
 import useStyles from "./HeaderSection.style";
 import {
-  HeaderSectionComponent,
   HeaderSectionProps,
   HeaderSectionType,
+  ReturnType,
 } from "./HeaderSection.type";
 
 export interface Props {
@@ -19,9 +19,7 @@ export const HEADER_SECTION_COLOR: Record<HeaderSectionType, TmColor> = {
   white: "white",
 };
 
-export const HeaderSection: HeaderSectionComponent & {
-  displayName?: string;
-} = forwardRef(
+export const HeaderSection = forwardRef(
   <C extends React.ElementType = "header">(
     { type, title, className, ...props }: HeaderSectionProps<C>,
     ref: PolymorphicRef<C>
@@ -49,6 +47,6 @@ export const HeaderSection: HeaderSectionComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 HeaderSection.displayName = "HeaderSection";

@@ -15,6 +15,10 @@ interface SharedButtonIconProps
 export type ButtonIconProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedButtonIconProps>;
 
-export type ButtonIconComponent = <C extends React.ElementType = "button">(
+type ButtonIconComponent = <C extends React.ElementType = "button">(
   props: ButtonIconProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = ButtonIconComponent & {
+  displayName?: string;
+};

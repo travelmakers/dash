@@ -17,6 +17,10 @@ export type ImageProps<C extends React.ElementType> = PolymorphicComponentProps<
   SharedImageProps
 >;
 
-export type ImageComponent = <C extends React.ElementType = "img">(
+type ImageComponent = <C extends React.ElementType = "img">(
   props: ImageProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = ImageComponent & {
+  displayName?: string;
+};

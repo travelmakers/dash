@@ -15,6 +15,8 @@ interface SharedBottomBarProps
 export type BottomBarProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedBottomBarProps>;
 
-export type BottomBarComponent = <C extends React.ElementType = "div">(
+type BottomBarComponent = <C extends React.ElementType = "div">(
   props: BottomBarProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = BottomBarComponent & { displayName?: string };

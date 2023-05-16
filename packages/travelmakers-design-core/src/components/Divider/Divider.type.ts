@@ -17,6 +17,10 @@ interface SharedDividerProps
 export type DividerProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedDividerProps>;
 
-export type DividerComponent = <C extends React.ElementType = "div">(
+type DividerComponent = <C extends React.ElementType = "div">(
   props: DividerProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = DividerComponent & {
+  displayName?: string;
+};

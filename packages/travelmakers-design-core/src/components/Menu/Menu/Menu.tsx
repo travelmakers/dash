@@ -3,16 +3,13 @@ import React, { forwardRef } from "react";
 import { View } from "../../View";
 import { MenuItem } from "../MenuItem";
 import useStyles from "./Menu.style";
-import { MenuComponent, MenuProps } from "./Menu.type";
+import { MenuProps, ReturnType } from "./Menu.type";
 
 export interface Props {
   items: React.ReactNode[];
 }
 
-export const Menu: MenuComponent & {
-  displayName?: string;
-  Item?: typeof MenuItem;
-} = forwardRef(
+export const Menu = forwardRef(
   <C extends React.ElementType = "ul">(
     { className, items, ...props }: MenuProps<C>,
     ref: PolymorphicRef<C>
@@ -30,7 +27,7 @@ export const Menu: MenuComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 Menu.displayName = "Menu";
 Menu.Item = MenuItem;

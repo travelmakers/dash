@@ -6,13 +6,11 @@ import { View } from "../../../View";
 import { SelectDropBoxContext } from "../SelectDropBox/SelectDropBox";
 import useStyles from "./SelectDropBoxTrigger.style";
 import {
-  SelectDropBoxTriggerComponent,
+  ReturnType,
   SelectDropBoxTriggerProps,
 } from "./SelectDropBoxTrigger.type";
 
-export const SelectDropBoxTrigger: SelectDropBoxTriggerComponent & {
-  displayName?: string;
-} = forwardRef(
+export const SelectDropBoxTrigger = forwardRef(
   <C extends React.ElementType = typeof Dropdown.Trigger>(
     { className, ...props }: SelectDropBoxTriggerProps<C>,
     ref: PolymorphicRef<C>
@@ -58,6 +56,6 @@ export const SelectDropBoxTrigger: SelectDropBoxTriggerComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 SelectDropBoxTrigger.displayName = "SelectDropBoxTrigger";

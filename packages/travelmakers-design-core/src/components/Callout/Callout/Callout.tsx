@@ -4,7 +4,7 @@ import { View } from "../../View";
 import { CalloutHeader } from "../CalloutHader";
 import { CalloutItem } from "../CalloutItem";
 import useStyles from "./Callout.style";
-import { CalloutComponent, CalloutProps, CalloutType } from "./Callout.type";
+import { CalloutProps, CalloutType, ReturnType } from "./Callout.type";
 
 export interface Props {
   type?: CalloutType;
@@ -13,9 +13,7 @@ export interface Props {
   emptyText?: string;
 }
 
-export const Callout: CalloutComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Callout = forwardRef(
   <C extends React.ElementType = "dl">(
     {
       type = "default",
@@ -48,6 +46,6 @@ export const Callout: CalloutComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 Callout.displayName = "Callout";

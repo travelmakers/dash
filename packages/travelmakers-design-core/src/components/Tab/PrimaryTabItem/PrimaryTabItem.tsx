@@ -4,19 +4,14 @@ import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { Divider } from "../../Divider";
 import { View } from "../../View";
 import useStyles from "./PrimaryTabItem.style";
-import {
-  PrimaryTabItemComponent,
-  PrimaryTabItemProps,
-} from "./PrimaryTabItem.type";
+import { PrimaryTabItemProps, ReturnType } from "./PrimaryTabItem.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name?: string;
   label: string;
 }
 
-export const PrimaryTabItem: PrimaryTabItemComponent & {
-  displayName?: string;
-} = forwardRef(
+export const PrimaryTabItem = forwardRef(
   <C extends React.ElementType = "input">(
     {
       name = "primary-tab-item",
@@ -53,6 +48,6 @@ export const PrimaryTabItem: PrimaryTabItemComponent & {
       </li>
     );
   }
-);
+) as unknown as ReturnType;
 
 PrimaryTabItem.displayName = "PrimaryTabItem";

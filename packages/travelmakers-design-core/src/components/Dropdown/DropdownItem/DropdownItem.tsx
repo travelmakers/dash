@@ -2,15 +2,13 @@ import { PolymorphicRef } from "@travelmakers/styles";
 import React, { PropsWithChildren, forwardRef, useContext } from "react";
 import { View } from "../../View";
 import { DropdownContext } from "../Dropdown/Dropdown";
-import { DropdownItemComponent, DropdownItemProps } from "./DropdownItem.type";
+import { DropdownItemProps, ReturnType } from "./DropdownItem.type";
 
 export interface Props {
   ariaSelected: boolean;
 }
 
-export const DropdownItem: DropdownItemComponent & {
-  displayName?: string;
-} = forwardRef(
+export const DropdownItem = forwardRef(
   <C extends React.ElementType = "li">(
     {
       ariaSelected,
@@ -41,6 +39,6 @@ export const DropdownItem: DropdownItemComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 DropdownItem.displayName = "DropdownItem";

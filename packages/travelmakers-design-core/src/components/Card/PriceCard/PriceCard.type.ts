@@ -15,8 +15,12 @@ interface SharedPriceCardProps
 export type PriceCardProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedPriceCardProps>;
 
-export type PriceCardComponent = <C extends React.ElementType = "div">(
+type PriceCardComponent = <C extends React.ElementType = "div">(
   props: PriceCardProps<C>
 ) => React.ReactElement;
 
 export type StatusType = "active" | "disabled";
+
+export type ReturnType = PriceCardComponent & {
+  displayName?: string;
+};

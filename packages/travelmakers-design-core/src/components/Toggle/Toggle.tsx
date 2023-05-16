@@ -3,16 +3,14 @@ import React, { forwardRef } from "react";
 import { useId } from "../../../../travelmakers-design-hooks/src";
 import { View } from "../View";
 import useStyles from "./Toggle.style";
-import { ToggleComponent, ToggleProps } from "./Toggle.type";
+import { ReturnType, ToggleProps } from "./Toggle.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   btnName: string;
   name?: string;
 }
 
-export const Toggle: ToggleComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Toggle = forwardRef(
   <C extends React.ElementType = "input">(
     { btnName, name = "toggle", className, ...props }: ToggleProps<C>,
     ref: PolymorphicRef<C>
@@ -38,6 +36,6 @@ export const Toggle: ToggleComponent & {
       </label>
     );
   }
-);
+) as unknown as ReturnType;
 
 Toggle.displayName = "Toggle";

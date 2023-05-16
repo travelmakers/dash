@@ -3,10 +3,7 @@ import React, { forwardRef, useContext } from "react";
 import { View } from "../../View";
 import { DropdownContext } from "../Dropdown/Dropdown";
 import useStyles from "./DropdownTrigger.style";
-import {
-  DropdownTriggerComponent,
-  DropdownTriggerProps,
-} from "./DropdownTrigger.type";
+import { DropdownTriggerProps, ReturnType } from "./DropdownTrigger.type";
 
 export interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   children:
@@ -14,9 +11,7 @@ export interface Props extends React.HTMLAttributes<HTMLButtonElement> {
     | React.ReactNode;
 }
 
-export const DropdownTrigger: DropdownTriggerComponent & {
-  displayName?: string;
-} = forwardRef(
+export const DropdownTrigger = forwardRef(
   <C extends React.ElementType = "button">(
     { onClick, className, children, ...props }: DropdownTriggerProps<C>,
     ref: PolymorphicRef<C>
@@ -46,6 +41,6 @@ export const DropdownTrigger: DropdownTriggerComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 DropdownTrigger.displayName = "DropdownTrigger";

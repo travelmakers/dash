@@ -1,6 +1,6 @@
 import { PolymorphicRef, useCss, useTmTheme } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
-import { ViewComponent, ViewTm, extractTm } from "./View.type";
+import { ReturnType, ViewTm, extractTm } from "./View.type";
 
 function useBoxTm(tm: ViewTm, className: string) {
   const { css, cx } = useCss();
@@ -14,7 +14,7 @@ function useBoxTm(tm: ViewTm, className: string) {
   return cx(className, css(extractTm(tm, theme)));
 }
 
-export const View: ViewComponent & { displayName?: string } = forwardRef(
+export const View = forwardRef(
   <C extends React.ElementType = "div">(
     { component, className, style, co, ...props }: any,
     ref: PolymorphicRef<C>
@@ -29,6 +29,6 @@ export const View: ViewComponent & { displayName?: string } = forwardRef(
       />
     );
   }
-);
+) as unknown as ReturnType;
 
 View.displayName = "View";

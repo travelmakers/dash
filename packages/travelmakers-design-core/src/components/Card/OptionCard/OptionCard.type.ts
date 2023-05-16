@@ -15,6 +15,10 @@ interface SharedOptionCardProps
 export type OptionCardProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedOptionCardProps>;
 
-export type OptionCardComponent = <C extends React.ElementType = "div">(
+type OptionCardComponent = <C extends React.ElementType = "div">(
   props: OptionCardProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = OptionCardComponent & {
+  displayName?: string;
+};

@@ -16,6 +16,10 @@ interface SharedNavLinkProps
 export type NavLinkProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedNavLinkProps>;
 
-export type NavLinkComponent = <C extends React.ElementType = typeof Link>(
+type NavLinkComponent = <C extends React.ElementType = typeof Link>(
   props: NavLinkProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = NavLinkComponent & {
+  displayName?: string;
+};

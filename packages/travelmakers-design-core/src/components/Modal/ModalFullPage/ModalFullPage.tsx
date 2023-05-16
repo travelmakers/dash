@@ -5,10 +5,7 @@ import { View } from "../../View";
 import { ModalFullPageFooter } from "../ModalFullPageFooter";
 import { ModalPortal } from "../ModalPortal";
 import useStyles from "./ModalFullPage.style";
-import {
-  ModalFullPageComponent,
-  ModalFullPageProps,
-} from "./ModalFullPage.type";
+import { ModalFullPageProps, ReturnType } from "./ModalFullPage.type";
 
 export interface Props {
   title: string;
@@ -19,10 +16,7 @@ export interface Props {
   footer?: React.ReactNode;
 }
 
-export const ModalFullPage: ModalFullPageComponent & {
-  displayName?: string;
-  Footer?: typeof ModalFullPageFooter;
-} = forwardRef(
+export const ModalFullPage = forwardRef(
   <C extends React.ElementType = "dialog">(
     {
       className,
@@ -74,7 +68,7 @@ export const ModalFullPage: ModalFullPageComponent & {
       </ModalPortal>
     );
   }
-);
+) as unknown as ReturnType;
 
 ModalFullPage.displayName = "ModalFullPage";
 ModalFullPage.Footer = ModalFullPageFooter;

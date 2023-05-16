@@ -9,9 +9,9 @@ import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./HotelTitleCard.style";
 import {
-  HotelTitleCardComponent,
   HotelTitleCardProps,
   HotelTitleCardType,
+  ReturnType,
 } from "./HotelTitleCard.type";
 
 export interface Props {
@@ -34,9 +34,7 @@ export interface Props {
   price?: PriceProps<"div">[];
 }
 
-export const HotelTitleCard: HotelTitleCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const HotelTitleCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type,
@@ -110,6 +108,6 @@ export const HotelTitleCard: HotelTitleCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 HotelTitleCard.displayName = "HotelTitleCard";

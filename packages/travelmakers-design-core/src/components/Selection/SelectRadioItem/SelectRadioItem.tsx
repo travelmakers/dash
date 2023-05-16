@@ -3,10 +3,7 @@ import React, { forwardRef } from "react";
 import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { View } from "../../View";
 import useStyles from "./SelectRadioItem.style";
-import {
-  SelectRadioItemComponent,
-  SelectRadioItemProps,
-} from "./SelectRadioItem.type";
+import { ReturnType, SelectRadioItemProps } from "./SelectRadioItem.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   label: string;
@@ -14,9 +11,7 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   isVisibleLabel?: boolean;
 }
 
-export const SelectRadioItem: SelectRadioItemComponent & {
-  displayName?: string;
-} = forwardRef(
+export const SelectRadioItem = forwardRef(
   <C extends React.ElementType = "input">(
     {
       label,
@@ -54,6 +49,6 @@ export const SelectRadioItem: SelectRadioItemComponent & {
       </label>
     );
   }
-);
+) as unknown as ReturnType;
 
 SelectRadioItem.displayName = "SelectRadioItem";

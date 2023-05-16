@@ -2,16 +2,14 @@ import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./NavButton.style";
-import { NavButtonComponent, NavButtonProps } from "./NavButton.type";
+import { NavButtonProps, ReturnType } from "./NavButton.type";
 
 export interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   label: string;
   isDisable?: boolean;
 }
 
-export const NavButton: NavButtonComponent & {
-  displayName?: string;
-} = forwardRef(
+export const NavButton = forwardRef(
   <C extends React.ElementType = "button">(
     { label, isDisable = false, className, ...props }: NavButtonProps<C>,
     ref: PolymorphicRef<C>
@@ -30,6 +28,6 @@ export const NavButton: NavButtonComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 NavButton.displayName = "NavButton";

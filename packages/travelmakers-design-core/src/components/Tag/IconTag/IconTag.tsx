@@ -4,16 +4,14 @@ import { Icon } from "../../Icon";
 import { View } from "../../View";
 import { TagItemType } from "../Tag/Tag.type";
 import useStyles from "./IconTag.style";
-import { IconTagComponent, IconTagProps } from "./IconTag.type";
+import { IconTagProps, ReturnType } from "./IconTag.type";
 
 export interface Props {
   type: TagItemType;
   label?: React.ReactNode;
 }
 
-export const IconTag: IconTagComponent & {
-  displayName?: string;
-} = forwardRef(
+export const IconTag = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type,
@@ -38,6 +36,6 @@ export const IconTag: IconTagComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 IconTag.displayName = "IconTag";

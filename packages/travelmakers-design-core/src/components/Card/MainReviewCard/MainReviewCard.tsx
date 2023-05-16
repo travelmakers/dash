@@ -1,13 +1,10 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
-import { View } from "../../View";
-import useStyles from "./MainReviewCard.style";
-import {
-  MainReviewCardProps,
-  MainReviewCardComponent,
-} from "./MainReviewCard.type";
 import { Image } from "../../Image";
 import { Typography } from "../../Typography";
+import { View } from "../../View";
+import useStyles from "./MainReviewCard.style";
+import { MainReviewCardProps, ReturnType } from "./MainReviewCard.type";
 
 export interface Props {
   src: string;
@@ -16,9 +13,7 @@ export interface Props {
   content: string;
 }
 
-export const MainReviewCard: MainReviewCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const MainReviewCard = forwardRef(
   <C extends React.ElementType = "div">(
     { src, title, job, content, className, ...props }: MainReviewCardProps<C>,
     ref: PolymorphicRef<C>
@@ -61,6 +56,6 @@ export const MainReviewCard: MainReviewCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 MainReviewCard.displayName = "MainReviewCard";

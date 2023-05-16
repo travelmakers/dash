@@ -15,6 +15,10 @@ export type InputProps<C extends React.ElementType> = PolymorphicComponentProps<
   SharedInputProps
 >;
 
-export type InputComponent = <C extends React.ElementType = "input">(
+type InputComponent = <C extends React.ElementType = "input">(
   props: InputProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = InputComponent & {
+  displayName?: string;
+};

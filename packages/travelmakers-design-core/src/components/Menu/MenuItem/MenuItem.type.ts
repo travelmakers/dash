@@ -16,6 +16,10 @@ interface SharedMenuItemProps
 export type MenuItemProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedMenuItemProps>;
 
-export type MenuItemComponent = <C extends React.ElementType = typeof Link>(
+type MenuItemComponent = <C extends React.ElementType = typeof Link>(
   props: MenuItemProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = MenuItemComponent & {
+  displayName?: string;
+};

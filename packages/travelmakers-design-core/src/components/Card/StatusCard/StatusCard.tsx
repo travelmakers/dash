@@ -1,11 +1,11 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, PropsWithChildren } from "react";
-import { View } from "../../View";
-import useStyles from "./StatusCard.style";
-import { StatusCardProps, StatusCardComponent } from "./StatusCard.type";
-import { Typography } from "../../Typography";
 import { Icon } from "../../Icon";
 import { Image } from "../../Image";
+import { Typography } from "../../Typography";
+import { View } from "../../View";
+import useStyles from "./StatusCard.style";
+import { ReturnType, StatusCardProps } from "./StatusCard.type";
 
 export interface Props {
   /** Title 텍스트를 지정한다. */
@@ -37,9 +37,7 @@ export interface Props {
   isLabel?: boolean;
 }
 
-export const StatusCard: StatusCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const StatusCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       hotelImage,
@@ -152,6 +150,6 @@ export const StatusCard: StatusCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 StatusCard.displayName = "StatusCard";

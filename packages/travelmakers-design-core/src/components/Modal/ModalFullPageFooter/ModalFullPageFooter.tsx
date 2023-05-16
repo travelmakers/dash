@@ -4,8 +4,8 @@ import { Button, ButtonProps } from "../../Button";
 import { View } from "../../View";
 import useStyles from "./ModalFullPageFooter.style";
 import {
-  ModalFullPageFooterComponent,
   ModalFullPageFooterProps,
+  ReturnType,
 } from "./ModalFullPageFooter.type";
 
 export interface Props
@@ -13,9 +13,7 @@ export interface Props
   label: string;
 }
 
-export const ModalFullPageFooter: ModalFullPageFooterComponent & {
-  displayName?: string;
-} = forwardRef(
+export const ModalFullPageFooter = forwardRef(
   <C extends React.ElementType = typeof Button>(
     { label, className, ...props }: ModalFullPageFooterProps<C>,
     ref: PolymorphicRef<C>
@@ -36,6 +34,6 @@ export const ModalFullPageFooter: ModalFullPageFooterComponent & {
       </div>
     );
   }
-);
+) as unknown as ReturnType;
 
 ModalFullPageFooter.displayName = "ModalFullPageFooter";

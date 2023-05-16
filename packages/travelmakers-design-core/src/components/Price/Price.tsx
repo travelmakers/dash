@@ -3,7 +3,7 @@ import React, { forwardRef } from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
 import useStyles from "./Price.style";
-import { PriceComponent, PriceProps } from "./Price.type";
+import { PriceProps, ReturnType } from "./Price.type";
 
 export interface Props {
   /** Price 컴포넌트의 타입을 정합니다. */
@@ -28,9 +28,7 @@ export interface Props {
   isCoupon?: boolean;
 }
 
-export const Price: PriceComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Price = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type = "primary",
@@ -117,6 +115,6 @@ export const Price: PriceComponent & {
 
     return type === "primary" ? <Primary /> : <Secondary />;
   }
-);
+) as unknown as ReturnType;
 
 Price.displayName = "Price";

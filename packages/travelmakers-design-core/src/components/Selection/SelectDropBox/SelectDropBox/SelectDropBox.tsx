@@ -7,17 +7,10 @@ import { SelectDropBoxItems } from "../SelectDropBoxItems";
 import { SelectDropBoxTrigger } from "../SelectDropBoxTrigger";
 import useStyles from "./SelectDropBox.style";
 import {
-  SelectDropBoxComponent,
+  ReturnType,
   SelectDropBoxContextType,
   SelectDropBoxProps,
 } from "./SelectDropBox.type";
-
-type ReturnProps = SelectDropBoxComponent & {
-  displayName?: string;
-  Trigger: typeof SelectDropBoxTrigger;
-  Items: typeof SelectDropBoxItems;
-  Item: typeof SelectDropBoxItem;
-};
 
 export interface Props {
   type?: "option" | "filter";
@@ -78,7 +71,7 @@ export const SelectDropBox = forwardRef(
       </View>
     );
   }
-) as unknown as ReturnProps;
+) as unknown as ReturnType;
 
 SelectDropBox.displayName = "SelectDropBox";
 SelectDropBox.Trigger = SelectDropBoxTrigger;

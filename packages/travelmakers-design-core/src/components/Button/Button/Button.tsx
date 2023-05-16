@@ -4,7 +4,7 @@ import { Typography } from "../../Typography/Typography";
 import { TypographyProps } from "../../Typography/Typography.type";
 import { View } from "../../View";
 import useStyles from "./Button.style";
-import { ButtonComponent, ButtonProps } from "./Button.type";
+import { ButtonProps, ReturnType } from "./Button.type";
 
 export interface Props {
   // 컴포넌트 내에서 사용할 props 타입 정의
@@ -35,9 +35,7 @@ export interface Props {
   typoProps?: TypographyProps<typeof Typography>;
 }
 
-export const Button: ButtonComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Button = forwardRef(
   <C extends React.ElementType = "button">(
     {
       size = "small",
@@ -87,6 +85,6 @@ export const Button: ButtonComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 Button.displayName = "Button";

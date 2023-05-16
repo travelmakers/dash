@@ -4,9 +4,9 @@ import { View } from "../../View";
 import { ProcessItem } from "../ProcessItem";
 import useStyles from "./Process.style";
 import {
-  ProcessComponent,
   ProcessProps,
   ProcessStatus,
+  ReturnType,
   SequenceType,
 } from "./Process.type";
 
@@ -48,9 +48,7 @@ const sequence = (status: ProcessStatus): SequenceType[] => {
   ];
 };
 
-export const Process: ProcessComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Process = forwardRef(
   <C extends React.ElementType = "ol">(
     { status, className, ...props }: ProcessProps<C>,
     ref: PolymorphicRef<C>
@@ -73,6 +71,6 @@ export const Process: ProcessComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 Process.displayName = "Process";

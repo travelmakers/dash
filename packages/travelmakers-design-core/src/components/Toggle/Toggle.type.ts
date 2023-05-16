@@ -15,6 +15,10 @@ interface SharedToggleProps
 export type ToggleProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedToggleProps>;
 
-export type ToggleComponent = <C extends React.ElementType = "input">(
+type ToggleComponent = <C extends React.ElementType = "input">(
   props: ToggleProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = ToggleComponent & {
+  displayName?: string;
+};

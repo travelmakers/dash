@@ -15,6 +15,10 @@ interface SharedSelectRadioItemProps
 export type SelectRadioItemProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedSelectRadioItemProps>;
 
-export type SelectRadioItemComponent = <C extends React.ElementType = "input">(
+type SelectRadioItemComponent = <C extends React.ElementType = "input">(
   props: SelectRadioItemProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SelectRadioItemComponent & {
+  displayName?: string;
+};

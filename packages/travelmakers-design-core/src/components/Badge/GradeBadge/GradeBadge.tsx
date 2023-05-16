@@ -4,11 +4,7 @@ import { Icon } from "../..//Icon";
 import { Divider } from "../../Divider";
 import { View } from "../../View";
 import useStyles from "./GradeBadge.style";
-import {
-  GradeBadgeComponent,
-  GradeBadgeProps,
-  GradeBadgeType,
-} from "./GradeBadge.type";
+import { GradeBadgeProps, GradeBadgeType, ReturnType } from "./GradeBadge.type";
 
 export interface Props {
   type: GradeBadgeType;
@@ -16,9 +12,7 @@ export interface Props {
   hotelType?: string;
 }
 
-export const GradeBadge: GradeBadgeComponent & {
-  displayName?: string;
-} = forwardRef(
+export const GradeBadge = forwardRef(
   <C extends React.ElementType = "div">(
     { type, grade, hotelType, className, ...props }: GradeBadgeProps<C>,
     ref: PolymorphicRef<C>
@@ -69,6 +63,6 @@ export const GradeBadge: GradeBadgeComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 GradeBadge.displayName = "GradeBadge";

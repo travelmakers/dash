@@ -1,7 +1,7 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, useState } from "react";
 import useStyles from "./Image.style";
-import { ImageComponent, ImageProps } from "./Image.type";
+import { ImageProps, ReturnType } from "./Image.type";
 
 export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   /** true일 경우 lazy load가 적용됩니다. */
@@ -14,9 +14,7 @@ export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   alt: string;
 }
 
-export const Image: ImageComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Image = forwardRef(
   <C extends React.ElementType = "img">(
     { lazy = true, src, alt, className, ...props }: ImageProps<C>,
     ref: PolymorphicRef<C>
@@ -70,6 +68,6 @@ export const Image: ImageComponent & {
       </>
     );
   }
-);
+) as unknown as ReturnType;
 
 Image.displayName = "Image";

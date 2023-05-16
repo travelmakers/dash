@@ -15,8 +15,10 @@ interface SharedSkeletonTimeLineBannerProps
 export type SkeletonTimeLineBannerProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedSkeletonTimeLineBannerProps>;
 
-export type SkeletonTimeLineBannerComponent = <
-  C extends React.ElementType = "div"
->(
+type SkeletonTimeLineBannerComponent = <C extends React.ElementType = "div">(
   props: SkeletonTimeLineBannerProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SkeletonTimeLineBannerComponent & {
+  displayName?: string;
+};

@@ -4,8 +4,9 @@ import {
   TmComponentProps,
 } from "@travelmakers/styles";
 import { Props } from "./Calendar";
-import { DateCellDay } from "./_components/DateCell/DateCell.type";
 import useStyles from "./Calendar.style";
+import { DateCellDay } from "./_components/DateCell/DateCell.type";
+import OptionBox from "./_components/OptionBox";
 
 type CalendarStylesNames = ClassNames<typeof useStyles>;
 
@@ -36,6 +37,11 @@ interface SharedCalendarProps
 export type CalendarProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedCalendarProps>;
 
-export type CalendarComponent = <C extends React.ElementType = "div">(
+type CalendarComponent = <C extends React.ElementType = "div">(
   props: CalendarProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = CalendarComponent & {
+  displayName?: string;
+  OptionBox: typeof OptionBox;
+};

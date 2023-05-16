@@ -16,8 +16,12 @@ interface SharedSelectDropBoxItemProps
 export type SelectDropBoxItemProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedSelectDropBoxItemProps>;
 
-export type SelectDropBoxItemComponent = <
+type SelectDropBoxItemComponent = <
   C extends React.ElementType = typeof Dropdown.Item
 >(
   props: SelectDropBoxItemProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SelectDropBoxItemComponent & {
+  displayName?: string;
+};

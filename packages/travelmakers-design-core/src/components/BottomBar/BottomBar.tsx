@@ -7,12 +7,11 @@ import {
 import React, { forwardRef, useState } from "react";
 
 import Link from "next/link";
-import { IconHome, IconMypage, IconSearch } from "../../assets/icon";
+import { Icon } from "../Icon";
 import { Typography } from "../Typography";
 import { View } from "../View";
 import useStyles from "./BottomBar.style";
-import { BottomBarComponent, BottomBarProps } from "./BottomBar.type";
-import { Icon } from "../Icon";
+import { BottomBarProps, ReturnType } from "./BottomBar.type";
 
 export type BottomBarStylesNames = ClassNames<typeof useStyles>;
 
@@ -30,125 +29,124 @@ export type Props = {
   onClick?: (menuId: number) => void;
 };
 
-export const BottomBar: BottomBarComponent & { displayName?: string } =
-  forwardRef(
-    <C extends React.ElementType = "div">(
+export const BottomBar = forwardRef(
+  <C extends React.ElementType = "div">(
+    {
+      onClick,
+      initSelectedId = 0,
+      component,
+      className,
+      overrideStyles,
+      links = [
+        {
+          name: "둘러보기",
+          url: "/",
+        },
+        {
+          name: "탐색",
+          url: "/",
+        },
+        {
+          name: "마이페이지",
+          url: "/",
+        },
+      ],
+      ...props
+    }: BottomBarProps<C>,
+    ref: PolymorphicRef<C>
+  ) => {
+    const theme = useTmTheme();
+    const [selected, setSelected] = useState(initSelectedId);
+    const [color1, setColor1] = useState<TmColor>("neutral70");
+    const [color2, setColor2] = useState<TmColor>("neutral70");
+    const [color3, setColor3] = useState<TmColor>("neutral70");
+    const color = [color1, color2, color3];
+    const setColor = [setColor1, setColor2, setColor3];
+    const { classes, cx } = useStyles(
+      {},
+      { overrideStyles, name: "BottomBar" }
+    );
+    const menus = [
       {
-        onClick,
-        initSelectedId = 0,
-        component,
-        className,
-        overrideStyles,
-        links = [
-          {
-            name: "둘러보기",
-            url: "/",
-          },
-          {
-            name: "탐색",
-            url: "/",
-          },
-          {
-            name: "마이페이지",
-            url: "/",
-          },
-        ],
-        ...props
-      }: BottomBarProps<C>,
-      ref: PolymorphicRef<C>
-    ) => {
-      const theme = useTmTheme();
-      const [selected, setSelected] = useState(initSelectedId);
-      const [color1, setColor1] = useState<TmColor>("neutral70");
-      const [color2, setColor2] = useState<TmColor>("neutral70");
-      const [color3, setColor3] = useState<TmColor>("neutral70");
-      const color = [color1, color2, color3];
-      const setColor = [setColor1, setColor2, setColor3];
-      const { classes, cx } = useStyles(
-        {},
-        { overrideStyles, name: "BottomBar" }
-      );
-      const menus = [
-        {
-          icon: (
-            <Icon
-              src="IcHome"
-              width={24}
-              height={24}
-              color={
-                selected === 0 ? theme.colors.secondary : theme.colors[color1]
-              }
-            />
-          ),
-        },
-        {
-          icon: (
-            <Icon
-              src="IcSearch"
-              width={24}
-              height={24}
-              color={
-                selected === 1 ? theme.colors.secondary : theme.colors[color2]
-              }
-            />
-          ),
-        },
-        {
-          icon: (
-            <Icon
-              src="IcUser"
-              width={24}
-              height={24}
-              color={
-                selected === 2 ? theme.colors.secondary : theme.colors[color3]
-              }
-            />
-          ),
-        },
-      ];
-      /**
-       * ANCHOR: 메뉴 색상 변경
-       * @param value
-       * @param index
-       */
-      const changeColor = (value: TmColor, index: number) => {
-        if (index !== selected) {
-          setColor[index](value);
-        }
-      };
+        icon: (
+          <Icon
+            src="IcHome"
+            width={24}
+            height={24}
+            color={
+              selected === 0 ? theme.colors.secondary : theme.colors[color1]
+            }
+          />
+        ),
+      },
+      {
+        icon: (
+          <Icon
+            src="IcSearch"
+            width={24}
+            height={24}
+            color={
+              selected === 1 ? theme.colors.secondary : theme.colors[color2]
+            }
+          />
+        ),
+      },
+      {
+        icon: (
+          <Icon
+            src="IcUser"
+            width={24}
+            height={24}
+            color={
+              selected === 2 ? theme.colors.secondary : theme.colors[color3]
+            }
+          />
+        ),
+      },
+    ];
+    /**
+     * ANCHOR: 메뉴 색상 변경
+     * @param value
+     * @param index
+     */
+    const changeColor = (value: TmColor, index: number) => {
+      if (index !== selected) {
+        setColor[index](value);
+      }
+    };
 
-      return (
-        <View<React.ElementType>
-          component={component || "div"}
-          ref={ref}
-          className={cx(classes.root, className)}
-          {...props}
-        >
-          {menus?.map((menu, index) => (
-            <Link
-              onClick={() => {
-                setSelected(index);
-                onClick?.(index);
-              }}
-              href={links[index].url}
-              className={cx(classes.item)}
-              onMouseOver={() => changeColor("primary", index)}
-              onMouseLeave={() => changeColor("neutral70", index)}
-              onMouseDown={() => changeColor("primaryInteract", index)}
-              onMouseUp={() => changeColor("neutral70", index)}
+    return (
+      <View<React.ElementType>
+        component={component || "div"}
+        ref={ref}
+        className={cx(classes.root, className)}
+        {...props}
+      >
+        {menus?.map((menu, index) => (
+          <Link
+            onClick={() => {
+              setSelected(index);
+              onClick?.(index);
+            }}
+            href={links[index].url}
+            className={cx(classes.item)}
+            onMouseOver={() => changeColor("primary", index)}
+            onMouseLeave={() => changeColor("neutral70", index)}
+            onMouseDown={() => changeColor("primaryInteract", index)}
+            onMouseUp={() => changeColor("neutral70", index)}
+          >
+            {menu.icon}
+            <Typography
+              level="caption"
+              color={selected === index ? "secondary" : color[index]}
             >
-              {menu.icon}
-              <Typography
-                level="caption"
-                color={selected === index ? "secondary" : color[index]}
-              >
-                {links[index].name}
-              </Typography>
-            </Link>
-          ))}
-        </View>
-      );
-    }
-  );
+              {links[index].name}
+            </Typography>
+          </Link>
+        ))}
+      </View>
+    );
+  }
+) as unknown as ReturnType;
 
 BottomBar.displayName = "BottomBar";

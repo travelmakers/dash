@@ -5,19 +5,14 @@ import { Dropdown, DropdownItemProps } from "../../../Dropdown";
 import { View } from "../../../View";
 import { SelectDropBoxContext } from "../SelectDropBox/SelectDropBox";
 import useStyles from "./SelectDropBoxItem.style";
-import {
-  SelectDropBoxItemComponent,
-  SelectDropBoxItemProps,
-} from "./SelectDropBoxItem.type";
+import { ReturnType, SelectDropBoxItemProps } from "./SelectDropBoxItem.type";
 
 export interface Props
   extends Omit<DropdownItemProps<typeof Dropdown.Item>, "ariaSelected"> {
   value: string;
 }
 
-export const SelectDropBoxItem: SelectDropBoxItemComponent & {
-  displayName?: string;
-} = forwardRef(
+export const SelectDropBoxItem = forwardRef(
   <C extends React.ElementType = typeof Dropdown.Item>(
     { value, className, onClick, ...props }: SelectDropBoxItemProps<C>,
     ref: PolymorphicRef<C>
@@ -46,6 +41,6 @@ export const SelectDropBoxItem: SelectDropBoxItemComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 SelectDropBoxItem.displayName = "SelectDropBoxItem";

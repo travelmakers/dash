@@ -66,6 +66,10 @@ export type IconProps<C extends React.ElementType> = PolymorphicComponentProps<
   SharedIconProps
 >;
 
-export type IconComponent = <C extends React.ElementType = "svg">(
+type IconComponent = <C extends React.ElementType = "svg">(
   props: IconProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = IconComponent & {
+  displayName?: string;
+};

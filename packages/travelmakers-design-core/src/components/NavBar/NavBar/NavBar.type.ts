@@ -3,6 +3,8 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers/styles";
+import { NavButton } from "../NavButton";
+import { NavLink } from "../NavLink";
 import { Props } from "./NavBar";
 import useStyles from "./NavBar.style";
 
@@ -18,3 +20,9 @@ export type NavBarProps<C extends React.ElementType> =
 export type NavBarComponent = <C extends React.ElementType = "header">(
   props: NavBarProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = NavBarComponent & {
+  displayName?: string;
+  NavLink: typeof NavLink;
+  NavButton: typeof NavButton;
+};

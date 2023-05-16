@@ -15,6 +15,10 @@ interface SharedMainReviewCardProps
 export type MainReviewCardProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedMainReviewCardProps>;
 
-export type MainReviewCardComponent = <C extends React.ElementType = "div">(
+type MainReviewCardComponent = <C extends React.ElementType = "div">(
   props: MainReviewCardProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = MainReviewCardComponent & {
+  displayName?: string;
+};

@@ -17,6 +17,10 @@ interface SharedNewBadgeProps
 export type NewBadgeProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedNewBadgeProps>;
 
-export type NewBadgeComponent = <C extends React.ElementType = "div">(
+type NewBadgeComponent = <C extends React.ElementType = "div">(
   props: NewBadgeProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = NewBadgeComponent & {
+  displayName?: string;
+};

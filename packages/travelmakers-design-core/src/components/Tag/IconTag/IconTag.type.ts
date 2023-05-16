@@ -15,6 +15,10 @@ interface SharedIconTagProps
 export type IconTagProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedIconTagProps>;
 
-export type IconTagComponent = <C extends React.ElementType = "div">(
+type IconTagComponent = <C extends React.ElementType = "div">(
   props: IconTagProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = IconTagComponent & {
+  displayName?: string;
+};

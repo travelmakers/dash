@@ -15,6 +15,10 @@ interface SharedHotelReviewCardProps
 export type HotelReviewCardProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedHotelReviewCardProps>;
 
-export type HotelReviewCardComponent = <C extends React.ElementType = "div">(
+type HotelReviewCardComponent = <C extends React.ElementType = "div">(
   props: HotelReviewCardProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = HotelReviewCardComponent & {
+  displayName?: string;
+};

@@ -3,16 +3,13 @@ import React, { forwardRef } from "react";
 import { View } from "../../View";
 import { SelectRadioItem } from "../SelectRadioItem";
 import useStyles from "./SelectRadio.style";
-import { SelectRadioComponent, SelectRadioProps } from "./SelectRadio.type";
+import { ReturnType, SelectRadioProps } from "./SelectRadio.type";
 
 export interface Props extends React.HTMLAttributes<HTMLFieldSetElement> {
   items: React.ReactNode[];
 }
 
-export const SelectRadio: SelectRadioComponent & {
-  displayName?: string;
-  Item?: typeof SelectRadioItem;
-} = forwardRef(
+export const SelectRadio = forwardRef(
   <C extends React.ElementType = "fieldset">(
     { className, items, ...props }: SelectRadioProps<C>,
     ref: PolymorphicRef<C>
@@ -30,7 +27,7 @@ export const SelectRadio: SelectRadioComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 SelectRadio.displayName = "SelectRadio";
 SelectRadio.Item = SelectRadioItem;

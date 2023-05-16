@@ -3,10 +3,10 @@ import React, { forwardRef, useEffect } from "react";
 import { View } from "../../View";
 import useStyles from "./DotBadge.style";
 import {
-  DotBadgeComponent,
   DotBadgeProps,
   DotBadgeSize,
   DotBadgeType,
+  ReturnType,
 } from "./DotBadge.type";
 
 export type DotBadgeStylesNames = ClassNames<typeof useStyles>;
@@ -17,9 +17,7 @@ export interface Props<T extends DotBadgeType> {
   label?: string | number;
 }
 
-export const DotBadge: DotBadgeComponent & {
-  displayName?: string;
-} = forwardRef(
+export const DotBadge = forwardRef(
   <C extends React.ElementType = "div">(
     { type, size, className, component, label, ...props }: DotBadgeProps<C>,
     ref: PolymorphicRef<C>
@@ -50,6 +48,6 @@ export const DotBadge: DotBadgeComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 DotBadge.displayName = "DotBadge";

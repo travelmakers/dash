@@ -1,10 +1,10 @@
 import { PolymorphicRef, useTmTheme } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
+import { Icon } from "../../Icon";
+import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./CouponCard.style";
-import { CouponCardProps, CouponCardComponent } from "./CouponCard.type";
-import { Typography } from "../../Typography";
-import { Icon } from "../../Icon";
+import { CouponCardProps, ReturnType } from "./CouponCard.type";
 
 export interface Props {
   /** CouponCard의 Type을 설정합니다. */
@@ -32,9 +32,7 @@ export interface Props {
   content: string;
 }
 
-export const CouponCard: CouponCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const CouponCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type,
@@ -138,6 +136,6 @@ export const CouponCard: CouponCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 CouponCard.displayName = "CouponCard";

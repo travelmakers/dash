@@ -6,7 +6,7 @@ import { View } from "../../View";
 import { NavButton } from "../NavButton";
 import { NavLink } from "../NavLink/NavLink";
 import useStyles from "./NavBar.style";
-import { NavBarComponent, NavBarProps } from "./NavBar.type";
+import { NavBarProps, ReturnType } from "./NavBar.type";
 
 export interface Props {
   title: string;
@@ -15,11 +15,7 @@ export interface Props {
   actionEl?: React.ReactNode;
 }
 
-export const NavBar: NavBarComponent & {
-  displayName?: string;
-  NavLink?: typeof NavLink;
-  NavButton?: typeof NavButton;
-} = forwardRef(
+export const NavBar = forwardRef(
   <C extends React.ElementType = "header">(
     {
       hasBack = false,
@@ -63,7 +59,7 @@ export const NavBar: NavBarComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 NavBar.displayName = "NavBar";
 NavBar.NavLink = NavLink;

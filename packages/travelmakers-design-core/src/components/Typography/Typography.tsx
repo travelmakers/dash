@@ -8,7 +8,7 @@ import React, { forwardRef } from "react";
 import { View } from "../View";
 import useStyles from "./Typography.style";
 import {
-  TypographyComponent,
+  ReturnType,
   TypographyProps,
   TypographyTextAlign,
 } from "./Typography.type";
@@ -47,60 +47,59 @@ export type Props = {
   wideLevel?: TmFontSize;
 };
 
-export const Typography: TypographyComponent & { displayName?: string } =
-  forwardRef(
-    <C extends React.ElementType = "span">(
+export const Typography = forwardRef(
+  <C extends React.ElementType = "span">(
+    {
+      id,
+      children,
+      component,
+      family = "Pretendard",
+      level = "body1",
+      mobileLevel,
+      wideLevel,
+      textAlign = "left",
+      disabled = false,
+      strong = false,
+      italic = false,
+      underline = false,
+      color,
+      className,
+      co,
+      overrideStyles,
+      ...props
+    }: TypographyProps<C>,
+    ref: PolymorphicRef<C>
+  ) => {
+    const { classes, cx } = useStyles(
       {
-        id,
-        children,
-        component,
-        family = "Pretendard",
-        level = "body1",
-        mobileLevel,
-        wideLevel,
-        textAlign = "left",
-        disabled = false,
-        strong = false,
-        italic = false,
-        underline = false,
+        family,
+        level,
+        disabled,
+        strong,
+        italic,
+        underline,
+        textAlign,
         color,
-        className,
-        co,
-        overrideStyles,
-        ...props
-      }: TypographyProps<C>,
-      ref: PolymorphicRef<C>
-    ) => {
-      const { classes, cx } = useStyles(
-        {
-          family,
-          level,
-          disabled,
-          strong,
-          italic,
-          underline,
-          textAlign,
-          color,
-          mobile: mobileLevel,
-          wide: wideLevel,
-        },
-        { overrideStyles, name: "typography" }
-      );
+        mobile: mobileLevel,
+        wide: wideLevel,
+      },
+      { overrideStyles, name: "typography" }
+    );
 
-      return (
-        <View<React.ElementType>
-          component={component || "span"}
-          ref={ref}
-          disabled={disabled}
-          className={cx(classes.root, classes.solid, className)}
-          co={co}
-          onTouchStart={() => {}}
-          {...props}
-        >
-          {children}
-        </View>
-      );
-    }
-  );
+    return (
+      <View<React.ElementType>
+        component={component || "span"}
+        ref={ref}
+        disabled={disabled}
+        className={cx(classes.root, classes.solid, className)}
+        co={co}
+        onTouchStart={() => {}}
+        {...props}
+      >
+        {children}
+      </View>
+    );
+  }
+) as unknown as ReturnType;
 
 Typography.displayName = "Typography";

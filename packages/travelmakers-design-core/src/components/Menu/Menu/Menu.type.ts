@@ -4,6 +4,7 @@ import {
   TmComponentProps,
 } from "@travelmakers/styles";
 
+import { MenuItem } from "../MenuItem";
 import { Props } from "./Menu";
 import useStyles from "./Menu.style";
 
@@ -16,6 +17,11 @@ export type MenuProps<C extends React.ElementType> = PolymorphicComponentProps<
   SharedMenuProps
 >;
 
-export type MenuComponent = <C extends React.ElementType = "ul">(
+type MenuComponent = <C extends React.ElementType = "ul">(
   props: MenuProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = MenuComponent & {
+  displayName?: string;
+  Item: typeof MenuItem;
+};

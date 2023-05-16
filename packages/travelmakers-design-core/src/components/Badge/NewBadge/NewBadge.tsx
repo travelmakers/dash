@@ -3,11 +3,7 @@ import React, { PropsWithChildren, forwardRef } from "react";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./NewBadge.style";
-import {
-  NewBadgeComponent,
-  NewBadgeProps,
-  NewBadgeType,
-} from "./NewBadge.type";
+import { NewBadgeProps, NewBadgeType, ReturnType } from "./NewBadge.type";
 
 export interface Props {
   type: NewBadgeType;
@@ -18,9 +14,7 @@ const fontMap: Record<NewBadgeType, TmFontSize> = {
   medium: "display4",
 };
 
-export const NewBadge: NewBadgeComponent & {
-  displayName?: string;
-} = forwardRef(
+export const NewBadge = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type,
@@ -50,6 +44,6 @@ export const NewBadge: NewBadgeComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 NewBadge.displayName = "NewBadge";

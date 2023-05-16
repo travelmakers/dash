@@ -1,20 +1,18 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, PropsWithChildren } from "react";
+import { Typography } from "../..//Typography";
 import { View } from "../../View";
 import useStyles from "./SkeletonTimeLineBanner.style";
 import {
+  ReturnType,
   SkeletonTimeLineBannerProps,
-  SkeletonTimeLineBannerComponent,
 } from "./SkeletonTimeLineBanner.type";
-import { Typography } from "../..//Typography";
 
 export interface Props {
   // 컴포넌트 내에서 사용할 props 타입 정의
 }
 
-export const SkeletonTimeLineBanner: SkeletonTimeLineBannerComponent & {
-  displayName?: string;
-} = forwardRef(
+export const SkeletonTimeLineBanner = forwardRef(
   <C extends React.ElementType = "div">(
     {
       onClick,
@@ -89,6 +87,6 @@ export const SkeletonTimeLineBanner: SkeletonTimeLineBannerComponent & {
       </>
     );
   }
-);
+) as unknown as ReturnType;
 
 SkeletonTimeLineBanner.displayName = "SkeletonTimeLineBanner";

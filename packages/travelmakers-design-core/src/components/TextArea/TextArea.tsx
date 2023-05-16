@@ -3,7 +3,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import { useId } from "../../../../travelmakers-design-hooks/src";
 import { View } from "../View";
 import useStyles from "./TextArea.style";
-import { TextAreaComponent, TextAreaProps } from "./TextArea.type";
+import { ReturnType, TextAreaProps } from "./TextArea.type";
 
 export interface Props extends React.HTMLAttributes<HTMLTextAreaElement> {
   name: string;
@@ -11,9 +11,7 @@ export interface Props extends React.HTMLAttributes<HTMLTextAreaElement> {
   feedback?: string;
 }
 
-export const TextArea: TextAreaComponent & {
-  displayName?: string;
-} = forwardRef(
+export const TextArea = forwardRef(
   <C extends React.ElementType = "textarea">(
     {
       name,
@@ -67,6 +65,6 @@ export const TextArea: TextAreaComponent & {
       </div>
     );
   }
-);
+) as unknown as ReturnType;
 
 TextArea.displayName = "TextArea";

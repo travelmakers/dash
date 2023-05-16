@@ -145,7 +145,6 @@ function getDays(date, { options, events, eventsIndex }) {
     start: startOfWeek(currentDate),
     end: endOfWeek(currentDate),
   }).map((day) => format(day, "EEE", { locale: options.locale }));
-  console.log("date", date);
 
   return {
     startDate: date,

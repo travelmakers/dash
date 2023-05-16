@@ -3,6 +3,7 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers/styles";
+import { ModalFullPageFooter } from "../ModalFullPageFooter";
 import { Props } from "./ModalFullPage";
 import useStyles from "./ModalFullPage.style";
 
@@ -18,3 +19,8 @@ export type ModalFullPageProps<C extends React.ElementType> =
 export type ModalFullPageComponent = <C extends React.ElementType = "dialog">(
   props: ModalFullPageProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = ModalFullPageComponent & {
+  displayName?: string;
+  Footer: typeof ModalFullPageFooter;
+};

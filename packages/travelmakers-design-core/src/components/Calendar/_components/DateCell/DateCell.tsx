@@ -3,10 +3,10 @@ import React, { forwardRef } from "react";
 import { View } from "../../../View";
 import useStyles from "./DateCell.style";
 import {
-  DateCellProps,
-  DateCellComponent,
   DateCellDay,
+  DateCellProps,
   DateCellType,
+  ReturnType,
 } from "./DateCell.type";
 
 export interface Props {
@@ -16,9 +16,7 @@ export interface Props {
   onClick?: (day: DateCellDay) => void;
 }
 
-export const DateCell: DateCellComponent & {
-  displayName?: string;
-} = forwardRef(
+export const DateCell = forwardRef(
   <C extends React.ElementType = "td">(
     { day, type, visible, onClick, className, ...props }: DateCellProps<C>,
     ref: PolymorphicRef<C>
@@ -73,6 +71,6 @@ export const DateCell: DateCellComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 DateCell.displayName = "DateCell";

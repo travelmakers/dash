@@ -15,6 +15,10 @@ export type PriceProps<C extends React.ElementType> = PolymorphicComponentProps<
   SharedPriceProps
 >;
 
-export type PriceComponent = <C extends React.ElementType = "div">(
+type PriceComponent = <C extends React.ElementType = "div">(
   props: PriceProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = PriceComponent & {
+  displayName?: string;
+};

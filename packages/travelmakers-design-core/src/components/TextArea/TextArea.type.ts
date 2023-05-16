@@ -15,6 +15,10 @@ interface SharedTextAreaProps
 export type TextAreaProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedTextAreaProps>;
 
-export type TextAreaComponent = <C extends React.ElementType = "textarea">(
+type TextAreaComponent = <C extends React.ElementType = "textarea">(
   props: TextAreaProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = TextAreaComponent & {
+  displayName?: string;
+};

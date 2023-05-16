@@ -17,6 +17,10 @@ interface SharedSearchProps
 export type SearchProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedSearchProps>;
 
-export type SearchComponent = <C extends React.ElementType = "input">(
+type SearchComponent = <C extends React.ElementType = "input">(
   props: SearchProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SearchComponent & {
+  displayName?: string;
+};

@@ -8,7 +8,7 @@ import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./OptionCard.style";
-import { OptionCardComponent, OptionCardProps } from "./OptionCard.type";
+import { OptionCardProps, ReturnType } from "./OptionCard.type";
 
 export interface Props {
   isMore?: boolean;
@@ -51,9 +51,7 @@ export interface Props {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const OptionCard: OptionCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const OptionCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       isMore = true,
@@ -168,6 +166,6 @@ export const OptionCard: OptionCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 OptionCard.displayName = "OptionCard";

@@ -5,7 +5,7 @@ import { Icon } from "../../Icon";
 import { View } from "../../View";
 import useStyles from "./SelectCheck.style";
 import {
-  SelectCheckComponent,
+  ReturnType,
   SelectCheckProps,
   SelectCheckType,
 } from "./SelectCheck.type";
@@ -22,9 +22,7 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name?: string;
 }
 
-export const SelectCheck: SelectCheckComponent & {
-  displayName?: string;
-} = forwardRef(
+export const SelectCheck = forwardRef(
   <C extends React.ElementType = "input">(
     {
       type = "small",
@@ -77,6 +75,6 @@ export const SelectCheck: SelectCheckComponent & {
       </label>
     );
   }
-);
+) as unknown as ReturnType;
 
 SelectCheck.displayName = "SelectCheck";

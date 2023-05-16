@@ -11,9 +11,9 @@ import { DropdownItem } from "../DropdownItem";
 import { DropdownItems } from "../DropdownItems";
 import { DropdownTrigger } from "../DropdownTrigger";
 import {
-  DropdownComponent,
   DropdownContextValue,
   DropdownProps,
+  ReturnType,
 } from "./Dropdown.type";
 
 export interface Props {
@@ -25,12 +25,7 @@ export const DropdownContext =
   createContext<DropdownContextValue | undefined>(undefined);
 DropdownContext.displayName = "DropdownContext";
 
-export const Dropdown: DropdownComponent & {
-  displayName?: string;
-  Trigger?: typeof DropdownTrigger;
-  Items?: typeof DropdownItems;
-  Item?: typeof DropdownItem;
-} = forwardRef(
+export const Dropdown = forwardRef(
   <C extends React.ElementType = "div">(
     { trigger, content, className, ...props }: DropdownProps<C>,
     ref: PolymorphicRef<C>
@@ -65,7 +60,7 @@ export const Dropdown: DropdownComponent & {
       </DropdownContext.Provider>
     );
   }
-);
+) as unknown as ReturnType;
 
 Dropdown.displayName = "Dropdown";
 Dropdown.Trigger = DropdownTrigger;

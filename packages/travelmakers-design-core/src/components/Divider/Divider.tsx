@@ -2,7 +2,7 @@ import { PolymorphicRef, TmColor } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { View } from "../View";
 import useStyles from "./Divider.style";
-import { DividerComponent, DividerProps, DividerType } from "./Divider.type";
+import { DividerProps, DividerType, ReturnType } from "./Divider.type";
 
 export interface Props {
   type: DividerType;
@@ -11,9 +11,7 @@ export interface Props {
   color?: TmColor;
 }
 
-export const Divider: DividerComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Divider = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type,
@@ -36,6 +34,6 @@ export const Divider: DividerComponent & {
       />
     );
   }
-);
+) as unknown as ReturnType;
 
 Divider.displayName = "Divider";

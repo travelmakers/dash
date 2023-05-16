@@ -15,6 +15,10 @@ interface SharedTimeLineBannerProps
 export type TimeLineBannerProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedTimeLineBannerProps>;
 
-export type TimeLineBannerComponent = <C extends React.ElementType = "div">(
+type TimeLineBannerComponent = <C extends React.ElementType = "div">(
   props: TimeLineBannerProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = TimeLineBannerComponent & {
+  displayName?: string;
+};

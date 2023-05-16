@@ -14,8 +14,12 @@ interface SharedSelectDropBoxTriggerProps
 export type SelectDropBoxTriggerProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedSelectDropBoxTriggerProps>;
 
-export type SelectDropBoxTriggerComponent = <
+type SelectDropBoxTriggerComponent = <
   C extends React.ElementType = typeof Dropdown.Trigger
 >(
   props: SelectDropBoxTriggerProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = SelectDropBoxTriggerComponent & {
+  displayName?: string;
+};

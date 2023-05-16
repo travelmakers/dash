@@ -11,8 +11,8 @@ import { View } from "../../View";
 import useStyles from "./HotelFeaturedCard.style";
 import {
   HotelFeatureType,
-  HotelFeaturedCardComponent,
   HotelFeaturedCardProps,
+  ReturnType,
 } from "./HotelFeaturedCard.type";
 
 export interface Props {
@@ -39,9 +39,7 @@ export interface Props {
   price: PriceProps<"div">;
 }
 
-export const HotelFeaturedCard: HotelFeaturedCardComponent & {
-  displayName?: string;
-} = forwardRef(
+export const HotelFeaturedCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       href = "",
@@ -116,6 +114,6 @@ export const HotelFeaturedCard: HotelFeaturedCardComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 HotelFeaturedCard.displayName = "HotelFeaturedCard";

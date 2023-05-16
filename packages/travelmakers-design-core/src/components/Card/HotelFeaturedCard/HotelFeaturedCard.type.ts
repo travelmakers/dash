@@ -3,9 +3,9 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers/styles";
+import { HotelType } from "../../../types/hotelType.type";
 import { Props } from "./HotelFeaturedCard";
 import useStyles from "./HotelFeaturedCard.style";
-import { HotelType } from "../../../types/hotelType.type";
 
 type HotelFeaturedCardStylesNames = ClassNames<typeof useStyles>;
 
@@ -16,7 +16,7 @@ interface SharedHotelFeaturedCardProps
 export type HotelFeaturedCardProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedHotelFeaturedCardProps>;
 
-export type HotelFeaturedCardComponent = <C extends React.ElementType = "div">(
+type HotelFeaturedCardComponent = <C extends React.ElementType = "div">(
   props: HotelFeaturedCardProps<C>
 ) => React.ReactElement;
 
@@ -30,3 +30,7 @@ export interface HotelFeatureType2 {
 }
 
 export type HotelFeatureType = HotelFeatureType1 | HotelFeatureType2;
+
+export type ReturnType = HotelFeaturedCardComponent & {
+  displayName?: string;
+};

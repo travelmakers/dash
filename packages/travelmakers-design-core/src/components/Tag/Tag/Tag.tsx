@@ -4,7 +4,7 @@ import { View } from "../../View";
 import { TagItem } from "../TagItem";
 import useStyles from "./Tag.style";
 import {
-  TagComponent,
+  ReturnType,
   TagItemColorType,
   TagItemType,
   TagProps,
@@ -28,10 +28,7 @@ export const TagContext = createContext<Omit<Props, "gap" | "items">>({
 });
 TagContext.displayName = "TagContext";
 
-export const Tag: TagComponent & {
-  displayName?: string;
-  Item?: typeof TagItem;
-} = forwardRef(
+export const Tag = forwardRef(
   <C extends React.ElementType = "ul">(
     {
       type,
@@ -60,7 +57,7 @@ export const Tag: TagComponent & {
       </TagContext.Provider>
     );
   }
-);
+) as unknown as ReturnType;
 
 Tag.displayName = "Tag";
 Tag.Item = TagItem;

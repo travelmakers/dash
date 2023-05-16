@@ -18,3 +18,7 @@ export type TertiaryTabItemProps<C extends React.ElementType> =
 export type TertiaryTabItemComponent = <C extends React.ElementType = "input">(
   props: TertiaryTabItemProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = TertiaryTabItemComponent & {
+  displayName?: string;
+};

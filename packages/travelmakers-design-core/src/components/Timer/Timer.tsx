@@ -1,12 +1,11 @@
-import React from "react";
 import { useRemainingTimer } from "@travelmakers/hooks";
 import { PolymorphicRef, TmColor, useTmTheme } from "@travelmakers/styles";
 import dayjs from "dayjs";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
 import useStyles from "./Timer.style";
-import { TimerComponent, TimerProps, TimerSize, TimerType } from "./Timer.type";
+import { ReturnType, TimerProps, TimerSize, TimerType } from "./Timer.type";
 
 export interface Props {
   type: TimerType;
@@ -26,9 +25,7 @@ export const TIMER_COLOR: Record<TimerType, TmColor> = {
   white: "white",
 };
 
-export const Timer: TimerComponent & {
-  displayName?: string;
-} = forwardRef(
+export const Timer = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type,
@@ -68,6 +65,6 @@ export const Timer: TimerComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 Timer.displayName = "Timer";

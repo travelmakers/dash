@@ -12,11 +12,7 @@ import { toast } from "react-hot-toast";
 import { Toast } from "../Toast";
 import { View } from "../View";
 import useStyles from "./Calendar.style";
-import {
-  CalendarComponent,
-  CalendarProps,
-  SelectedDays,
-} from "./Calendar.type";
+import { CalendarProps, ReturnType, SelectedDays } from "./Calendar.type";
 import { DateCell } from "./_components/DateCell";
 import {
   DateCellDay,
@@ -63,10 +59,7 @@ export interface Props {
  * - maxNight로 최대 선택가능 범위를 작성해주어야한다.
  * - onChange함수를 통해 선택한 일자에 대해서 확인할 수 있다.
  */
-export const Calendar: CalendarComponent & {
-  displayName?: string;
-  OptionBox?: typeof OptionBox;
-} = forwardRef(
+export const Calendar = forwardRef(
   <C extends React.ElementType = "div">(
     {
       hotelName = "",
@@ -225,8 +218,6 @@ export const Calendar: CalendarComponent & {
       state && handleCalendar();
     }, []);
 
-    console.log(state, state.month);
-
     return (
       <View<React.ElementType> component={"div"} className={cx(classes.root)}>
         <View<React.ElementType>
@@ -286,7 +277,7 @@ export const Calendar: CalendarComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnType;
 
 Calendar.displayName = "Calendar";
 Calendar.OptionBox = OptionBox;

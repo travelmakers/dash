@@ -16,8 +16,12 @@ interface SharedModalFullPageFooterProps
 export type ModalFullPageFooterProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedModalFullPageFooterProps>;
 
-export type ModalFullPageFooterComponent = <
+type ModalFullPageFooterComponent = <
   C extends React.ElementType = typeof Button
 >(
   props: ModalFullPageFooterProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = ModalFullPageFooterComponent & {
+  displayName?: string;
+};

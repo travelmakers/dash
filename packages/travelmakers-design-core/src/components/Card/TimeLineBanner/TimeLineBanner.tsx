@@ -1,13 +1,10 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, PropsWithChildren } from "react";
+import { Icon } from "../../Icon";
+import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./TimeLineBanner.style";
-import {
-  TimeLineBannerProps,
-  TimeLineBannerComponent,
-} from "./TimeLineBanner.type";
-import { Typography } from "../../Typography";
-import { Icon } from "../../Icon";
+import { ReturnType, TimeLineBannerProps } from "./TimeLineBanner.type";
 
 export interface Props {
   /** 해당 호텔에 대한 구매 상태를 의미합니다.
@@ -30,9 +27,7 @@ export interface Props {
   onClick?: () => void;
 }
 
-export const TimeLineBanner: TimeLineBannerComponent & {
-  displayName?: string;
-} = forwardRef(
+export const TimeLineBanner = forwardRef(
   <C extends React.ElementType = "div">(
     {
       status,
@@ -107,6 +102,6 @@ export const TimeLineBanner: TimeLineBannerComponent & {
       </>
     );
   }
-);
+) as unknown as ReturnType;
 
 TimeLineBanner.displayName = "TimeLineBanner";

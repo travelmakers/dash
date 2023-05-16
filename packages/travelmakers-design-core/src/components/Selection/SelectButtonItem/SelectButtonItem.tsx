@@ -3,19 +3,14 @@ import React, { forwardRef } from "react";
 import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { View } from "../../View";
 import useStyles from "./SelectButtonItem.style";
-import {
-  SelectButtonItemComponent,
-  SelectButtonItemProps,
-} from "./SelectButtonItem.type";
+import { ReturnType, SelectButtonItemProps } from "./SelectButtonItem.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name?: string;
   content: string | number;
 }
 
-export const SelectButtonItem: SelectButtonItemComponent & {
-  displayName?: string;
-} = forwardRef(
+export const SelectButtonItem = forwardRef(
   <C extends React.ElementType = "input">(
     {
       name = "select-button-item",
@@ -43,6 +38,6 @@ export const SelectButtonItem: SelectButtonItemComponent & {
       </label>
     );
   }
-);
+) as unknown as ReturnType;
 
 SelectButtonItem.displayName = "SelectButtonItem";

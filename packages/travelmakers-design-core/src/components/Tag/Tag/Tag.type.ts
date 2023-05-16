@@ -3,6 +3,7 @@ import {
   PolymorphicComponentProps,
   TmComponentProps,
 } from "@travelmakers/styles";
+import { TagItem } from "../TagItem";
 import { Props } from "./Tag";
 import useStyles from "./Tag.style";
 
@@ -21,6 +22,11 @@ export type TagProps<C extends React.ElementType> = PolymorphicComponentProps<
   SharedTagProps
 >;
 
-export type TagComponent = <C extends React.ElementType = "ul">(
+type TagComponent = <C extends React.ElementType = "ul">(
   props: TagProps<C>
 ) => React.ReactElement;
+
+export type ReturnType = TagComponent & {
+  displayName?: string;
+  Item: typeof TagItem;
+};
