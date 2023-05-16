@@ -8,7 +8,7 @@ export default createStyles((theme) => {
       display: "flex",
       flexDirection: "column",
       rowGap: "1px",
-      minWidth: "328px",
+      maxWidth: "328px",
       margin: 0,
       padding: 0,
       backgroundColor: colors.outline,

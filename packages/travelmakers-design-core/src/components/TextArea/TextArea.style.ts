@@ -8,11 +8,11 @@ export default createStyles((theme, { isFilled }: { isFilled: string }) => {
       display: "flex",
       flexDirection: "column",
       rowGap: spacing.spacing5,
+      maxWidth: "328px",
     },
     label: { ...typography.body2, color: colors.primary },
     textArea: {
       ...typography.body2,
-      minWidth: "328px",
       minHeight: "76px",
       padding: `${spacing.spacing10} ${spacing.spacing30}`,
       color: colors.primary2,

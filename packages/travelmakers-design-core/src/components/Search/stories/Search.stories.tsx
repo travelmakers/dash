@@ -34,9 +34,5 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return (
-    <div style={{ maxWidth: "328px" }}>
-      <Search {...props} />
-    </div>
-  );
+  return <Search {...props} />;
 };

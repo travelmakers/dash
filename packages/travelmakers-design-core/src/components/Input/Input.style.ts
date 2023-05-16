@@ -30,6 +30,7 @@ export default createStyles(
         flexDirection: "column",
         alignItems: "flex-start",
         rowGap: spacing.spacing5,
+        maxWidth: "328px",
       },
       focus: {
         border: `1px solid ${getBorderColor(colors, isError, colors.primary)}`,
@@ -42,7 +43,7 @@ export default createStyles(
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        minWidth: "328px",
+        width: "100%",
         minHeight: "44px",
         padding: `0 ${spacing.spacing30}`,
         border: `1px solid ${getBorderColor(colors, isError, colors.outline)}`,

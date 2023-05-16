@@ -1,7 +1,7 @@
 import { TmTheme, createStyles } from "@travelmakers/styles";
 import { Props } from "./SelectDropBox";
 
-const SELECT_DROP_BOX_MIN_WIDTH: Record<Props["type"], string> = {
+const SELECT_DROP_BOX_MAX_WIDTH: Record<Props["type"], string> = {
   option: "328px",
   filter: "98px",
 };
@@ -25,7 +25,7 @@ export default createStyles(
         display: "flex",
         flexDirection: "column",
         rowGap: spacing.spacing5,
-        minWidth: SELECT_DROP_BOX_MIN_WIDTH[type],
+        maxWidth: SELECT_DROP_BOX_MAX_WIDTH[type],
       },
       label: {
         ...typography.body2,

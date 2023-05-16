@@ -85,13 +85,11 @@ export const Default = (props) => {
   const _items = data.map((item) => <SelectDropBox.Item value={item} />);
 
   return (
-    <div style={{ width: props.type === "option" ? "328px" : "98px" }}>
-      <SelectDropBox
-        {...props}
-        trigger={<SelectDropBox.Trigger />}
-        content={<SelectDropBox.Items items={_items} />}
-        label={props.label || "레이블"}
-      />
-    </div>
+    <SelectDropBox
+      {...props}
+      trigger={<SelectDropBox.Trigger />}
+      content={<SelectDropBox.Items items={_items} />}
+      label={props.label || "레이블"}
+    />
   );
 };
