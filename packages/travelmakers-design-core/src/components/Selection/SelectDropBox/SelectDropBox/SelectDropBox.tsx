@@ -3,8 +3,11 @@ import React, { createContext, forwardRef, useState } from "react";
 import { Dropdown } from "../../../Dropdown";
 import { View } from "../../../View";
 import { SelectDropBoxItem } from "../SelectDropBoxItem";
+import { SelectDropBoxItemComponent } from "../SelectDropBoxItem/SelectDropBoxItem.type";
 import { SelectDropBoxItems } from "../SelectDropBoxItems";
+import { SelectDropBoxItemsComponent } from "../SelectDropBoxItems/SelectDropBoxItems.type";
 import { SelectDropBoxTrigger } from "../SelectDropBoxTrigger";
+import { SelectDropBoxTriggerComponent } from "../SelectDropBoxTrigger/SelectDropBoxTrigger.type";
 import useStyles from "./SelectDropBox.style";
 import {
   SelectDropBoxComponent,
@@ -29,9 +32,9 @@ SelectDropBoxContext.displayName = "SelectDropBoxContext";
 
 export const SelectDropBox: SelectDropBoxComponent & {
   displayName?: string;
-  Trigger?: typeof SelectDropBoxTrigger;
-  Items?: typeof SelectDropBoxItems;
-  Item?: typeof SelectDropBoxItem;
+  Trigger?: SelectDropBoxTriggerComponent;
+  Items?: SelectDropBoxItemsComponent;
+  Item?: SelectDropBoxItemComponent;
 } = forwardRef(
   <C extends React.ElementType = "div">(
     {
