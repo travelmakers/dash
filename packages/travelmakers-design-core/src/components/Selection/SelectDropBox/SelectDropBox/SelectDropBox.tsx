@@ -3,17 +3,21 @@ import React, { createContext, forwardRef, useState } from "react";
 import { Dropdown } from "../../../Dropdown";
 import { View } from "../../../View";
 import { SelectDropBoxItem } from "../SelectDropBoxItem";
-import { SelectDropBoxItemComponent } from "../SelectDropBoxItem/SelectDropBoxItem.type";
 import { SelectDropBoxItems } from "../SelectDropBoxItems";
-import { SelectDropBoxItemsComponent } from "../SelectDropBoxItems/SelectDropBoxItems.type";
 import { SelectDropBoxTrigger } from "../SelectDropBoxTrigger";
-import { SelectDropBoxTriggerComponent } from "../SelectDropBoxTrigger/SelectDropBoxTrigger.type";
 import useStyles from "./SelectDropBox.style";
 import {
   SelectDropBoxComponent,
   SelectDropBoxContextType,
   SelectDropBoxProps,
 } from "./SelectDropBox.type";
+
+type ReturnProps = SelectDropBoxComponent & {
+  displayName?: string;
+  Trigger: typeof SelectDropBoxTrigger;
+  Items: typeof SelectDropBoxItems;
+  Item: typeof SelectDropBoxItem;
+};
 
 export interface Props {
   type?: "option" | "filter";
@@ -30,12 +34,7 @@ export const SelectDropBoxContext =
   createContext<SelectDropBoxContextType | undefined>(undefined);
 SelectDropBoxContext.displayName = "SelectDropBoxContext";
 
-export const SelectDropBox: SelectDropBoxComponent & {
-  displayName?: string;
-  Trigger?: SelectDropBoxTriggerComponent;
-  Items?: SelectDropBoxItemsComponent;
-  Item?: SelectDropBoxItemComponent;
-} = forwardRef(
+export const SelectDropBox = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type = "option",
@@ -79,7 +78,7 @@ export const SelectDropBox: SelectDropBoxComponent & {
       </View>
     );
   }
-);
+) as unknown as ReturnProps;
 
 SelectDropBox.displayName = "SelectDropBox";
 SelectDropBox.Trigger = SelectDropBoxTrigger;
