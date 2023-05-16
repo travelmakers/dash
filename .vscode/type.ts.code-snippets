@@ -19,9 +19,13 @@
       "export type ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Props<C extends React.ElementType> =",
       "\tPolymorphicComponentProps<C, Shared${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Props>;",
       "",
-      "export type ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Component = <C extends React.ElementType = \"div\">(",
+      "type ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Component = <C extends React.ElementType = \"div\">(",
       "\tprops: ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Props<C>",
-      ") => React.ReactElement;"
+      ") => React.ReactElement;",
+      "",
+      "export type ReturnType = ${TM_FILENAME/^(\\w+?)\\.type\\.ts/$1/}Component & {",
+      "\tdisplayName?: string;",
+      "};"
     ],
     "description": "Travelmakers Design System Type 📝"
   }
