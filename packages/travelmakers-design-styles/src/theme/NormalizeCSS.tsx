@@ -25,6 +25,8 @@ const styles = css`
 
   .tm-block-scrolling {
     overflow: hidden;
+    width: 100%;
+    position: fixed;
   }
 `;
 

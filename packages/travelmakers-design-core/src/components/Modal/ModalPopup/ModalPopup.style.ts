@@ -5,7 +5,7 @@ export default createStyles((theme) => {
 
   return {
     root: {
-      position: "absolute",
+      position: "fixed",
       top: "50%",
       left: "50%",
       display: "flex",
