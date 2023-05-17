@@ -32,8 +32,8 @@ export const getRemainingTime = (
 
   // NOTE: 당일이라면 일자는 표시x
   if (days === 0) {
-    return dayjs(diff).format("HH:mm:ss");
+    return dayjs.duration(diff).format("HH:mm:ss");
   }
 
-  return dayjs(diff).format(format);
+  return dayjs.duration(diff).format(format);
 };
