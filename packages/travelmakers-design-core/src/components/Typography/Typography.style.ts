@@ -82,7 +82,7 @@ export default createStyles(
           ...theme.typography[mobile],
         },
 
-        [`${theme.media.wide}`]: {
+        [`${theme.media.tablet}`]: {
           ...theme.typography[wide],
         },
       },
