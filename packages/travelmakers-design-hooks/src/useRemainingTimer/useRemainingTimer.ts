@@ -20,7 +20,7 @@ export const useRemainingTimer = (
     return () => {
       timer && clearInterval(timer);
     };
-  }, []);
+  }, [targetDate]);
 
   return { remainingTime };
 };
