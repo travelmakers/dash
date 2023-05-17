@@ -10,3 +10,8 @@ export { default as IcCompanyNaverPay } from "./IcCompanyNaverPay";
 export { default as IcCompanyNaver } from "./IcCompanyNaver";
 export { default as IcCompanySamsungPay } from "./IcCompanySamsungPay";
 export { default as IcCompanyYoutube } from "./IcCompanyYoutube";
+export { default as IcCompanyOutlineYoutube } from "./IcCompanyOutlineYoutube";
+export { default as IcCompanyOutlineKakaotalk } from "./IcCompanyOutlineKakaotalk";
+export { default as IcCompanyOutlineInstagram } from "./IcCompanyOutlineInstagram";
+export { default as IcCompanyOutlineFacebook } from "./IcCompanyOutlineFacebook";
+export { default as IcCompanyOutlineNaver } from "./IcCompanyOutlineNaver";

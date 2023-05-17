@@ -23,6 +23,11 @@ export default {
           "IcCompanyNaver",
           "IcCompanySamsungPay",
           "IcCompanyYoutube",
+          "IcCompanyOutlineYoutube",
+          "IcCompanyOutlineKakaotalk",
+          "IcCompanyOutlineInstagram",
+          "IcCompanyOutlineFacebook",
+          "IcCompanyOutlineNaver",
 
           "======control======",
           "IcAlert",

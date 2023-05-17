@@ -19,7 +19,12 @@ export type IconCompanySrc =
   | "IcCompanyNaverPay"
   | "IcCompanyNaver"
   | "IcCompanySamsungPay"
-  | "IcCompanyYoutube";
+  | "IcCompanyYoutube"
+  | "IcCompanyOutlineYoutube"
+  | "IcCompanyOutlineKakaotalk"
+  | "IcCompanyOutlineInstagram"
+  | "IcCompanyOutlineFacebook"
+  | "IcCompanyOutlineNaver";
 export type IconControlSrc =
   | "IcAlert"
   | "IcAngleDown"
