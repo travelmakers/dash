@@ -6,6 +6,7 @@ export default createStyles((theme) => {
   return {
     root: {
       position: "fixed",
+      zIndex: 100,
       top: "50%",
       left: "50%",
       display: "flex",

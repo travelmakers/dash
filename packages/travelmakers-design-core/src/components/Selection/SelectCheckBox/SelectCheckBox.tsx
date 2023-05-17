@@ -9,12 +9,14 @@ import {
   SelectCheckBoxProps,
   SelectCheckBoxType,
 } from "./SelectCheckBox.type";
+import { SelectCheckProps } from "../SelectCheck/SelectCheck.type";
 
 export interface Props {
   label: string;
   type?: SelectCheckBoxType;
   hasAction?: boolean;
   hasBackgroundColor?: boolean;
+  checkProps?: SelectCheckProps<typeof SelectCheck>;
 }
 
 const ACTION_ICON_SIZE: Record<
@@ -33,6 +35,7 @@ export const SelectCheckBox = forwardRef(
       hasAction = false,
       hasBackgroundColor = true,
       className,
+      checkProps,
       ...props
     }: SelectCheckBoxProps<C>,
     ref: PolymorphicRef<C>
@@ -59,6 +62,7 @@ export const SelectCheckBox = forwardRef(
           fontWeight={700}
           isVisibleLabel
           hasParent
+          {...checkProps}
         />
         {hasAction && <Icon src={"IcAngleRight"} {...ACTION_ICON_SIZE[type]} />}
       </View>
