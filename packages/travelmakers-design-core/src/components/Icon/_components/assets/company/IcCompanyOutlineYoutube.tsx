@@ -10,7 +10,7 @@ const SvgIcCompanyOutlineYoutube = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g clip-path="url(#clip0_270_1841)">
+    <g clipPath="url(#clip0_270_1841)">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
