@@ -16,7 +16,6 @@ export const Default = (props) => {
 
   return (
     <>
-      <div onClick={arrowLeftClickHandler}>⬅</div>
       <div
         style={{
           display: "flex",
@@ -25,14 +24,15 @@ export const Default = (props) => {
           gap: "20px",
         }}
       >
+        <div onClick={arrowLeftClickHandler}>⬅</div>
         {divElement.map((element, index) => (
           <div ref={(el) => (contentRef.current[index] = el)}>
             element{element}
           </div>
         ))}
+        <div onClick={arrowRightClickHandler}>➡</div>
       </div>
       page:{page}
-      <div onClick={arrowRightClickHandler}>➡</div>
     </>
   );
 };
