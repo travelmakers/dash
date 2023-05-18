@@ -1,4 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
+import { useArrowMove } from "@travelmakers/hooks";
 import Link, { LinkProps } from "next/link";
 import React, { forwardRef, useRef, useState } from "react";
 import { GradeBadge } from "../../Badge";
@@ -57,63 +58,22 @@ export const HotelCard = forwardRef(
     }: HotelCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const INIT_PAGE = 0;
     const MAX_COUNT = (price?.length ?? 1) - 1;
-    const [page, setPage] = useState<number>(INIT_PAGE);
-    const [leftArrowHover, setLeftArrowHover] = useState(false);
-    const [rightArrowHover, setRightArrowHover] = useState(false);
-    const arrowLeftRef = useRef(null);
-    const arrowRightRef = useRef(null);
     const contentRef = useRef([]);
+    const {
+      arrowLeftClickHandler,
+      arrowRightClickHandler,
+      setLeftArrowHover,
+      setRightArrowHover,
+      leftArrowHover,
+      rightArrowHover,
+      page,
+    } = useArrowMove(contentRef, MAX_COUNT);
     const { classes, cx } = useStyles({
       leftArrowHover,
       rightArrowHover,
     });
 
-    function arrowClickHandler(arrow: "left" | "right") {
-      const isLeftArrow = arrow === "left";
-      const pageMove = calculatePageMove(isLeftArrow);
-      const newPage = isLeftArrow ? page - pageMove : page + pageMove;
-
-      if (pageMove !== 0) {
-        arrowHover(isLeftArrow, newPage);
-        setPage(newPage);
-        moveScroll(newPage);
-      }
-    }
-
-    function arrowHover(isLeftArrow: boolean, newPage: number) {
-      if (isLeftArrow) {
-        setLeftArrowHover(newPage > INIT_PAGE);
-        setRightArrowHover(true);
-      } else {
-        setLeftArrowHover(true);
-        setRightArrowHover(newPage < MAX_COUNT);
-      }
-    }
-
-    function calculatePageMove(isLeftArrow: boolean) {
-      const defaultPageMove = 2;
-
-      if (isLeftArrow) {
-        if (page <= INIT_PAGE) return 0;
-
-        const currentContent = contentRef.current?.[page - 1];
-        return !currentContent || page - 1 === 0 ? 1 : defaultPageMove;
-      } else {
-        if (page >= MAX_COUNT) return 0;
-
-        const currentContent = contentRef.current?.[page + defaultPageMove];
-        return !currentContent ? 1 : page === 0 ? 3 : defaultPageMove;
-      }
-    }
-
-    function moveScroll(newPage: number) {
-      contentRef.current?.[newPage].scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
     return (
       <View<React.ElementType>
         component={"div"}
@@ -182,24 +142,22 @@ export const HotelCard = forwardRef(
               <div className={cx(classes.contentDimmer)} />
               {/* NOTE: 화살표(arrow) */}
               <div
-                ref={arrowLeftRef}
                 className={cx(classes.contentScroll, classes.contentScrollLeft)}
                 onClick={(e) => {
                   e.preventDefault();
-                  arrowClickHandler("left");
+                  arrowLeftClickHandler();
                 }}
               >
                 <Icon src="IcAngleLeft" width={16} height={16} />
               </div>
               <div
-                ref={arrowRightRef}
                 className={cx(
                   classes.contentScroll,
                   classes.contentScrollRight
                 )}
                 onClick={(e) => {
                   e.preventDefault();
-                  arrowClickHandler("right");
+                  arrowRightClickHandler();
                 }}
               >
                 <Icon src="IcAngleRight" width={16} height={16} />

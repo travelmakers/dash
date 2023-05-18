@@ -12,3 +12,4 @@ export * from "./useRemainingTimer";
 export * from "./useResize";
 export * from "./useTimeoutFn";
 export * from "./useUpdateEffect";
+export * from "./useArrowMove";
