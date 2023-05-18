@@ -23,9 +23,7 @@ const getFontFamily = (family: TmFontFamily) => {
   if (family !== "Pretendard") {
     return {
       font: {
-        fontFamily: `${family}, var(${
-          family === "Noto Serif KR" && "--font-noto-serif"
-        })`,
+        fontFamily: `${family}`,
       },
     };
   } else {
