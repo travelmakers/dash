@@ -8,7 +8,7 @@ import { AccordionProps, AccordionType, ReturnType } from "./Accordion.type";
 export type Props = {
   gap?: number;
   type?: AccordionType;
-  items: React.ReactDOM[];
+  items: React.ReactNode[];
 };
 
 export const AccordionContext = createContext<Omit<Props, "items">>({
