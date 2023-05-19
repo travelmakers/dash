@@ -1,49 +1,8 @@
 import { Global, css } from "@emotion/react";
 
 const styles = css`
-  @font-face {
-    font-family: "Noto Serif KR";
-    font-style: normal;
-    font-weight: 400;
-    src: local("Noto Serif CJK KR"), local("Source Han Serif K"),
-      local("Source Han Serif"), local("Noto Serif CJK"), local("Noto Serif"),
-      url(https://cdn.rawgit.com/kattergil/NotoSerifKR-Katter/7392ea08/fonts/NotoSerifCJKkr-Bold-subset.woff)
-        format("woff"),
-      url(https://cdn.rawgit.com/kattergil/NotoSerifKR-Katter/7392ea08/fonts/NotoSerifCJKkr-Bold-subset.woff2)
-        format("woff2"),
-      url(https://cdn.rawgit.com/kattergil/NotoSerifKR-Katter/7392ea08/fonts/NotoSerifCJKkr-Bold-subset.otf)
-        format("otf");
-  }
-
-  @font-face {
-    font-family: "Noto Serif KR";
-    font-style: normal;
-    font-weight: 700;
-    src: local("Noto Serif CJK KR"), local("Source Han Serif K"),
-      local("Source Han Serif"), local("Noto Serif CJK"), local("Noto Serif"),
-      url(https://cdn.rawgit.com/kattergil/NotoSerifKR-Katter/7392ea08/fonts/NotoSerifCJKkr-Bold-subset.woff)
-        format("woff"),
-      url(https://cdn.rawgit.com/kattergil/NotoSerifKR-Katter/7392ea08/fonts/NotoSerifCJKkr-Bold-subset.woff2)
-        format("woff2"),
-      url(https://cdn.rawgit.com/kattergil/NotoSerifKR-Katter/7392ea08/fonts/NotoSerifCJKkr-Bold-subset.otf)
-        format("otf");
-  }
-
-  @font-face {
-    font-family: "Pretendard";
-    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
-      format("woff");
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "Pretendard";
-    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
-      format("woff");
-    font-weight: 700;
-    font-style: normal;
-  }
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap");
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard-dynamic-subset.css");
 
   html: {
     fontfamily: "sans-serif";
@@ -51,8 +10,9 @@ const styles = css`
     text-size-adjust: "100%";
   }
 
-  body: {
+  body {
     margin: 0;
+    font-family: Pretendard, Noto Serif KR, serif, sans-serif !important;
   }
 
   .sr-only {
