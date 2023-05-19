@@ -34,7 +34,7 @@ export default {
         "Accordion에 표시될 리스트 입니다. Accordion.Item를 사용합니다.",
       table: {
         type: {
-          summary: "AccordionItem[]",
+          summary: "React.ReactNode[]",
         },
       },
     },

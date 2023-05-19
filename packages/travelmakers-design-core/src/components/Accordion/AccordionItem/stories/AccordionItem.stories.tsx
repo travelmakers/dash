@@ -10,7 +10,7 @@ export default {
       description: "AccordionItem의 header를 기입합니다.",
       table: {
         type: {
-          summary: "React.ReactNode",
+          summary: "string",
         },
       },
     },
@@ -19,7 +19,7 @@ export default {
       description: "AccordionItem의 content을 기입합니다.",
       table: {
         type: {
-          summary: "React.ReactNode",
+          summary: "string",
         },
       },
     },

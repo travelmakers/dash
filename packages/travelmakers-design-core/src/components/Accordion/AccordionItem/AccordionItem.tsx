@@ -10,8 +10,8 @@ const ACCORDION_ICON_SIZE = {
 };
 
 export interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  header: React.ReactNode;
-  content: React.ReactNode;
+  header: string;
+  content: string;
   handleHeader?: () => void;
 }
 
@@ -47,7 +47,10 @@ export const AccordionItem = ({
           color={"outline"}
           width="auto"
         />
-        <p className={classes.content}>{content}</p>
+        <p
+          className={classes.content}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </dd>
     </div>
   );
