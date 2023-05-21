@@ -1,9 +1,11 @@
 import {
   CoRadius,
-  CoShadows,
-  CoSpacing,
+  FontSizes,
+  LineHeights,
+  Radius,
+  Shadows,
+  Spacings,
   TmColor,
-  TmFontSizes,
   TmMedia,
 } from "../tokens";
 import { TmSize } from "./TmSize";
@@ -43,11 +45,11 @@ export interface TmTheme {
 
   colors: Record<TmColor, string>;
   palettes: Record<TmPalette, Tuple<string, 6>>;
-  fontSizes: Record<TmFontSizes, string>;
-  lineHeights: Record<TmFontSizes, string>;
-  radius: Record<CoRadius, number | string>;
-  spacing: Record<CoSpacing, string>;
-  shadows: Record<CoShadows, string>;
+  fontSizes: FontSizes;
+  lineHeights: LineHeights;
+  radius: Radius;
+  spacing: Spacings;
+  shadows: Shadows;
   media: TmMedia;
   breakpoints: Record<CoBreakpoints, number>;
   typography: CoTypography;
