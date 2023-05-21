@@ -15,6 +15,7 @@ import {
 import { TmTheme, TmThemeBase } from "./types";
 
 import { attachFunctions } from "./functions/attachFunctions";
+import { DEFAULT_TRANSITION_TIMING } from "./tokens/transtionTiming";
 
 export const TM_PALETTES = Object.keys(DEFAULT_PALETTES);
 export const TM_COLORS = Object.keys(DEFAULT_COLORS);
@@ -70,6 +71,8 @@ export const _DEFAULT_THEME: TmThemeBase = {
   media: DEFAULT_MEDIA,
 
   deviceSizes: DEFAULT_DEVICE_SIZES,
+
+  transitionTiming: DEFAULT_TRANSITION_TIMING,
 };
 
 export const _DARK_THEME: TmThemeBase = {

@@ -15,6 +15,7 @@ import type { DeepPartial } from "./DeepPartial";
 import { Tuple } from "./Tuple";
 import { TmDeviceSizes } from "../tokens/deviceSizes";
 import { CoBreakpoints } from "../tokens/breakpoints";
+import { CoTransitionTiming } from "../tokens/transtionTiming";
 
 export interface HeadingStyle {
   fontSize: CSSProperties["fontSize"];
@@ -51,6 +52,7 @@ export interface TmTheme {
   breakpoints: Record<CoBreakpoints, number>;
   typography: CoTypography;
   deviceSizes: TmDeviceSizes;
+  transitionTiming: CoTransitionTiming;
 
   fn: TmThemeFunctions;
 }
