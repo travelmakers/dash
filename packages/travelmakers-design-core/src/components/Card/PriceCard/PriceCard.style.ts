@@ -5,6 +5,7 @@ export default createStyles((theme, { status }: Pick<Props, "status">) => {
   return {
     container: {
       width: "120px",
+      flexShrink: 0,
       display: "inline-block",
       border: `1px solid ${theme.colors.outline}`,
       borderRadius: theme.spacing.spacing5,
