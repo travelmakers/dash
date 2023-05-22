@@ -5,7 +5,7 @@ export default {
   title: "@travelmakers/core/General/Selection/SelectRadio/SelectRadioItem",
   component: SelectRadioItem,
   argTypes: {
-    content: {
+    label: {
       control: { type: "text" },
       description: "SelectRadioItem의 label",
       table: {
