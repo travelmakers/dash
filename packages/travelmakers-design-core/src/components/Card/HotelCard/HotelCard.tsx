@@ -1,7 +1,7 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import { useArrowMove } from "@travelmakers/hooks";
 import Link, { LinkProps } from "next/link";
-import React, { forwardRef, useRef, useState } from "react";
+import React, { PropsWithChildren, forwardRef, useRef, useState } from "react";
 import { GradeBadge } from "../../Badge";
 import { Icon } from "../../Icon";
 import { Image } from "../../Image";
@@ -77,6 +77,9 @@ export const HotelCard = forwardRef(
       rightArrowHover,
     });
 
+    const CustomLink = ({ children }: PropsWithChildren<unknown>) =>
+      disabled ? <div>{children}</div> : <Link href={href}>{children}</Link>;
+
     return (
       <View<React.ElementType>
         component={"div"}
@@ -84,7 +87,7 @@ export const HotelCard = forwardRef(
         className={cx(className, classes.container)}
         {...props}
       >
-        <Link href={href}>
+        <CustomLink>
           {/* SECTION: Image */}
           <div className={cx(classes.imageBox)}>
             <Image src={src} alt="hotelCard" width={"100%"} height={"100%"} />
@@ -179,7 +182,7 @@ export const HotelCard = forwardRef(
               </div>
             </div>
           </div>
-        </Link>
+        </CustomLink>
       </View>
     );
   }
