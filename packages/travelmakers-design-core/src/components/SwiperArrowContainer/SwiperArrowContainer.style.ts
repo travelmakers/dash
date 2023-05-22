@@ -27,6 +27,7 @@ export default createStyles(
         boxShadow: "0px 2px 10px rgba(48, 55, 63, 0.2)",
         borderRadius: theme.radius.radius100,
         padding: "6px",
+        zIndex: 1,
       },
       contentScrollLeft: {
         left: theme.spacing.spacing30,
@@ -35,6 +36,14 @@ export default createStyles(
       contentScrollRight: {
         right: theme.spacing.spacing5,
         visibility: rightArrowHover ? "visible" : "hidden",
+      },
+      contentDimmer: {
+        position: "absolute",
+        right: 0,
+        width: "40px",
+        height: "100%",
+        background:
+          "linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.75) 51.04%, rgba(255, 255, 255, 0) 100%)",
       },
       contentScrollContainer: {
         display: "flex",

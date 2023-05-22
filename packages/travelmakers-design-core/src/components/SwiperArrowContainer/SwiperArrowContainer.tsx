@@ -8,9 +8,11 @@ import {
   SwiperArrowContainerProps,
   ReturnType,
 } from "./SwiperArrowContainer.type";
+import React from "react";
 
 export interface Props {
-  contentClassName: string;
+  contentClassName?: string;
+  hasDimmer?: boolean;
   disabled?: boolean;
 }
 
@@ -19,6 +21,7 @@ export const SwiperArrowContainer = forwardRef(
     {
       className,
       contentClassName,
+      hasDimmer = false,
       disabled = false,
       children,
       ...props
@@ -37,6 +40,13 @@ export const SwiperArrowContainer = forwardRef(
       rightArrowHover,
     } = useArrowMove(contentRef, MAX_COUNT - 1);
     const { classes, cx } = useStyles({ leftArrowHover, rightArrowHover });
+
+    const cloneArr = Children.map(children, (child, idx) =>
+      // @ts-ignore
+      React.cloneElement(child, {
+        ref: (el) => (contentRef.current[idx] = el),
+      })
+    );
 
     return (
       <View<React.ElementType>
@@ -79,8 +89,9 @@ export const SwiperArrowContainer = forwardRef(
         >
           <Icon src="IcAngleRight" width={16} height={16} />
         </div>
+        {hasDimmer && <div className={cx(classes.contentDimmer)} />}
         <div className={cx(classes.contentScrollContainer, contentClassName)}>
-          {children}
+          {cloneArr}
         </div>
       </View>
     );

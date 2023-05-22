@@ -14,6 +14,7 @@ import {
 } from "../PriceCard/PriceCard";
 import useStyles from "./HotelCard.style";
 import { HotelCardProps, HotelCardType, ReturnType } from "./HotelCard.type";
+import { SwiperArrowContainer } from "../../SwiperArrowContainer";
 
 export interface Props {
   /** HotelCard 컴포넌트의 호텔명을 표시합니다. */
@@ -61,22 +62,7 @@ export const HotelCard = forwardRef(
     }: HotelCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const MAX_COUNT = (price?.length ?? 1) - 1;
-    const contentRef = useRef([]);
-    const {
-      arrowLeftClickHandler,
-      arrowRightClickHandler,
-      setLeftArrowHover,
-      setRightArrowHover,
-      leftArrowHover,
-      rightArrowHover,
-      page,
-    } = useArrowMove(contentRef, MAX_COUNT);
-    const { classes, cx } = useStyles({
-      leftArrowHover,
-      rightArrowHover,
-    });
-
+    const { classes, cx } = useStyles();
     const CustomLink = ({ children }: PropsWithChildren<unknown>) =>
       disabled ? <div>{children}</div> : <Link href={href}>{children}</Link>;
 
@@ -123,64 +109,16 @@ export const HotelCard = forwardRef(
                 {description}
               </Typography>
             </div>
-            <div
-              className={cx(classes.contentTag)}
-              onMouseEnter={() => {
-                page !== 0 && setLeftArrowHover(true);
-                page < MAX_COUNT && setRightArrowHover(true);
-              }}
-              onMouseMove={() => {
-                if (!disabled) {
-                  page !== 0
-                    ? setLeftArrowHover(true)
-                    : setLeftArrowHover(false);
-                  page < MAX_COUNT
-                    ? setRightArrowHover(true)
-                    : setRightArrowHover(false);
-                }
-              }}
-              onMouseLeave={() => {
-                setLeftArrowHover(false);
-                setRightArrowHover(false);
-              }}
-            >
-              {/* NOTE: 안개표시 */}
-              <div className={cx(classes.contentDimmer)} />
-              {/* NOTE: 화살표(arrow) */}
-              <div
-                className={cx(classes.contentScroll, classes.contentScrollLeft)}
-                onClick={(e) => {
-                  e.preventDefault();
-                  arrowLeftClickHandler();
-                }}
-              >
-                <Icon src="IcAngleLeft" width={16} height={16} />
-              </div>
-              <div
-                className={cx(
-                  classes.contentScroll,
-                  classes.contentScrollRight
-                )}
-                onClick={(e) => {
-                  e.preventDefault();
-                  arrowRightClickHandler();
-                }}
-              >
-                <Icon src="IcAngleRight" width={16} height={16} />
-              </div>
-              {/* NOTE: tag */}
-              <div className={cx(classes.contentScrollContainer)}>
-                {price?.map((item, index) => (
-                  <PriceCard
-                    key={`price-card-${item.name}`}
-                    ref={(el) => (contentRef.current[index] = el)}
-                    name={item.name}
-                    status={disabled ? "disabled" : item.status}
-                    description={item.description}
-                  />
-                ))}
-              </div>
-            </div>
+            <SwiperArrowContainer hasDimmer>
+              {price?.map((item) => (
+                <PriceCard
+                  key={`price-card-${item.name}`}
+                  name={item.name}
+                  status={disabled ? "disabled" : item.status}
+                  description={item.description}
+                />
+              ))}
+            </SwiperArrowContainer>
           </div>
         </CustomLink>
       </View>
