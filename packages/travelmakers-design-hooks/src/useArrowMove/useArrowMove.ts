@@ -11,7 +11,6 @@ export const useArrowMove = (
   maxPage: number
 ) => {
   const INIT_PAGE = 0;
-  console.log("contentRef", contentRef.current);
   const MAX_COUNT = maxPage - 1;
   const [page, setPage] = useState<number>(INIT_PAGE);
   const [leftArrowHover, setLeftArrowHover] = useState(false);
