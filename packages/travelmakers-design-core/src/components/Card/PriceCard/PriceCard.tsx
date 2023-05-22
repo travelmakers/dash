@@ -46,12 +46,12 @@ export const PriceCard = forwardRef(
           {description}
         </Typography>
         <br />
-        {status === "active" && (
+        {status === "active" && tag && (
           <Tag
             type="fill"
             color="gray"
             roundness="half"
-            items={[<Tag.Item label={description} />]}
+            items={[<Tag.Item label={tag} />]}
           />
         )}
       </View>
