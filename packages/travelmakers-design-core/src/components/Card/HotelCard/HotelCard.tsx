@@ -8,7 +8,10 @@ import { Image } from "../../Image";
 import { IconTag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
-import { PriceCard, PriceCardProps } from "../PriceCard";
+import {
+  PriceCard,
+  Props as PriceCardInsideProps,
+} from "../PriceCard/PriceCard";
 import useStyles from "./HotelCard.style";
 import { HotelCardProps, HotelCardType, ReturnType } from "./HotelCard.type";
 
@@ -32,7 +35,7 @@ export interface Props {
   href: LinkProps["href"];
 
   /** HotelCard 컴포넌트의 레이블을 표시합니다. */
-  price?: PriceCardProps<"div">[];
+  price?: PriceCardInsideProps[];
 
   /** HotelCard 컴포넌트의 쿠폰 표시여부를 결정합니다. */
   isCoupon?: boolean;

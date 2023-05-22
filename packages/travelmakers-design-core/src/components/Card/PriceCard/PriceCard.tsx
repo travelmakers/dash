@@ -17,7 +17,7 @@ export interface Props {
   description: string;
 
   /** PriceCard 컴포넌트의 레이블을 표시합니다. */
-  tag?: string;
+  tag?: string | null;
 }
 
 export const PriceCard = forwardRef(
