@@ -7,7 +7,12 @@ export default createStyles(
     {
       leftArrowHover,
       rightArrowHover,
-    }: { leftArrowHover: boolean; rightArrowHover: boolean }
+      dimmerHidden,
+    }: {
+      leftArrowHover: boolean;
+      rightArrowHover: boolean;
+      dimmerHidden: boolean;
+    }
   ) => {
     return {
       container: {
@@ -44,6 +49,7 @@ export default createStyles(
         height: "100%",
         background:
           "linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.75) 51.04%, rgba(255, 255, 255, 0) 100%)",
+        visibility: dimmerHidden ? "hidden" : "visible",
       },
       contentScrollContainer: {
         display: "flex",

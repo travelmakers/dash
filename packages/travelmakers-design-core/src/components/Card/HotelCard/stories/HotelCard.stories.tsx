@@ -88,6 +88,24 @@ export default {
           description: "description",
           tag: ["레이블", "레이블", "레이블"],
         },
+        {
+          status: "active",
+          name: "name",
+          description: "description",
+          tag: ["레이블", "레이블", "레이블"],
+        },
+        {
+          status: "active",
+          name: "name",
+          description: "description",
+          tag: ["레이블", "레이블", "레이블"],
+        },
+        {
+          status: "active",
+          name: "name",
+          description: "description",
+          tag: ["레이블", "레이블", "레이블"],
+        },
       ],
       description: "HotelCard 컴포넌트의 레이블을 표시합니다.",
       table: {

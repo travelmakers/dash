@@ -29,7 +29,7 @@ export const SwiperArrowContainer = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const contentRef = useRef([]);
-    const MAX_COUNT = Children.count(children);
+    const MAX_COUNT = Children.count(children) - 1;
     const {
       page,
       arrowLeftClickHandler,
@@ -38,8 +38,13 @@ export const SwiperArrowContainer = forwardRef(
       setRightArrowHover,
       leftArrowHover,
       rightArrowHover,
-    } = useArrowMove(contentRef, MAX_COUNT - 1);
-    const { classes, cx } = useStyles({ leftArrowHover, rightArrowHover });
+    } = useArrowMove(contentRef, MAX_COUNT);
+    const dimmerHidden = page === MAX_COUNT;
+    const { classes, cx } = useStyles({
+      leftArrowHover,
+      rightArrowHover,
+      dimmerHidden,
+    });
 
     const cloneArr = Children.map(children, (child, idx) =>
       // @ts-ignore
