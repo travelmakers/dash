@@ -13,11 +13,13 @@ export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
 
   /** 이미지 설명을 추가합니다. */
   alt: string;
+
+  fill?: boolean;
 }
 
 export const Image = forwardRef(
   <C extends React.ElementType = "img">(
-    { lazy = true, src, alt, className, ...props }: ImageProps<C>,
+    { lazy = true, src, alt, fill, className, ...props }: ImageProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const [load, setLoad] = useState(false);
@@ -30,7 +32,7 @@ export const Image = forwardRef(
           ref={ref}
           src={src}
           alt={alt}
-          fill
+          fill={fill}
           loading={lazy ? "lazy" : "eager"}
           decoding={lazy ? "async" : "auto"}
           className={cx(className, classes.image)}
