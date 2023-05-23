@@ -5,3 +5,5 @@ export * from "./SelectCheckBox";
 export * from "./SelectDropBox";
 export * from "./SelectRadio";
 export * from "./SelectRadioItem";
+export * from "./SelectTag";
+export * from "./SelectTagItem";
