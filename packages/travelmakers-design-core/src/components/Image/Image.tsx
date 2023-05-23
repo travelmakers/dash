@@ -30,6 +30,7 @@ export const Image = forwardRef(
           ref={ref}
           src={src}
           alt={alt}
+          fill
           loading={lazy ? "lazy" : "eager"}
           decoding={lazy ? "async" : "auto"}
           className={cx(className, classes.image)}
