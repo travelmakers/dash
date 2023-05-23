@@ -34,6 +34,7 @@ export const Image = forwardRef(
           className={cx(className, classes.image)}
           onLoad={() => setLoad(true)}
           onError={(e) => {
+            console.log("image-onError", e);
             setLoad(true);
             setError(true);
           }}
