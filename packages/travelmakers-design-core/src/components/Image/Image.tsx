@@ -2,7 +2,6 @@ import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, useState } from "react";
 import useStyles from "./Image.style";
 import { ImageProps, ReturnType } from "./Image.type";
-import NextImage from "next/image";
 
 export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   /** true일 경우 lazy load가 적용됩니다. */
@@ -13,30 +12,26 @@ export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
 
   /** 이미지 설명을 추가합니다. */
   alt: string;
-
-  fill?: boolean;
 }
 
 export const Image = forwardRef(
   <C extends React.ElementType = "img">(
-    { lazy = true, src, alt, fill, className, ...props }: ImageProps<C>,
+    { lazy = true, src, alt, className, ...props }: ImageProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const [load, setLoad] = useState(false);
+    const [load, setLoad] = useState(true);
     const [error, setError] = useState(false);
     const { classes, cx } = useStyles({ load, error });
 
     return (
       <>
-        <NextImage
+        <img
           ref={ref}
           src={src}
           alt={alt}
-          fill={fill}
           loading={lazy ? "lazy" : "eager"}
           decoding={lazy ? "async" : "auto"}
           className={cx(className, classes.image)}
-          onLoad={() => setLoad(true)}
           onError={(e) => {
             setLoad(true);
             setError(true);
