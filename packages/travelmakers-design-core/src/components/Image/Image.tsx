@@ -32,6 +32,7 @@ export const Image = forwardRef(
           loading={lazy ? "lazy" : "eager"}
           decoding={lazy ? "async" : "auto"}
           className={cx(className, classes.image)}
+          onLoad={() => setLoad(true)}
           onError={(e) => {
             setLoad(true);
             setError(true);
