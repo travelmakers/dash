@@ -2,6 +2,7 @@ import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, useState } from "react";
 import useStyles from "./Image.style";
 import { ImageProps, ReturnType } from "./Image.type";
+import NextImage from "next/image";
 
 export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   /** true일 경우 lazy load가 적용됩니다. */
@@ -12,6 +13,8 @@ export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
 
   /** 이미지 설명을 추가합니다. */
   alt: string;
+
+  fill?: boolean;
 }
 
 export const Image = forwardRef(
@@ -19,22 +22,21 @@ export const Image = forwardRef(
     { lazy = true, src, alt, className, ...props }: ImageProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const [load, setLoad] = useState(true);
+    const [load, setLoad] = useState(false);
     const [error, setError] = useState(false);
     const { classes, cx } = useStyles({ load, error });
 
     return (
       <>
-        <img
+        <NextImage
           ref={ref}
           src={src}
           alt={alt}
           loading={lazy ? "lazy" : "eager"}
           decoding={lazy ? "async" : "auto"}
           className={cx(className, classes.image)}
-          onLoad={() => setLoad(true)}
-          onError={(e) => {
-            console.log("image-onError", e);
+          onLoadingComplete={() => setLoad(true)}
+          onError={() => {
             setLoad(true);
             setError(true);
           }}
@@ -43,7 +45,8 @@ export const Image = forwardRef(
 
         {/* NOTE: 로딩중... */}
         {!load && (
-          <img
+          <NextImage
+            alt={alt}
             className={cx(className, classes.loading)}
             src={
               "https://hotel-01.s3.ap-northeast-2.amazonaws.com/dash/Image/img/loading.png"
@@ -54,7 +57,8 @@ export const Image = forwardRef(
 
         {/* NOTE: 에러이미지... */}
         {error && (
-          <img
+          <NextImage
+            alt={alt}
             className={cx(className, classes.loading)}
             src={
               "https://hotel-01.s3.ap-northeast-2.amazonaws.com/dash/Image/img/error.png"
