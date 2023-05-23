@@ -1,5 +1,5 @@
 import { CSSObject, PolymorphicRef } from "@travelmakers/styles";
-import { PropsWithChildren, forwardRef } from "react";
+import React, { PropsWithChildren, forwardRef } from "react";
 import { View } from "../../View";
 import { SelectTagItem } from "../SelectTagItem/SelectTagItem";
 import useStyles from "./SelectTag.style";

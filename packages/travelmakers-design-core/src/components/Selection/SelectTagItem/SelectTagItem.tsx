@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { useId } from "../../../../../travelmakers-design-hooks/src";
 import { View } from "../../View";
 import useStyles from "./SelectTagItem.style";
