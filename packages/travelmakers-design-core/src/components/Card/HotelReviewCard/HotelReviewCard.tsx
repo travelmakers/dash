@@ -59,6 +59,7 @@ export const HotelReviewCard = forwardRef(
                 type="fill"
                 roundness="half"
                 color="gray"
+                size="medium"
                 gap={4}
                 items={labels?.map((label, idx) => (
                   <Tag.Item key={idx} label={label} />
