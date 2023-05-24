@@ -69,7 +69,12 @@ export const HotelFeaturedCard = forwardRef(
           <div className={cx(classes.cardBox)}>
             {/* SECTION: Image Section */}
             <div className={cx(classes.imageBox)}>
-              <Image src={src} alt={`featureCard-${name}`} fill sizes="100vw" />
+              <Image
+                src={src}
+                alt={`featureCard-${name}`}
+                height={180}
+                width={296}
+              />
               <div className={cx(classes.imageLabel)}>
                 <Tag
                   type="fill"

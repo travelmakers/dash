@@ -28,7 +28,7 @@ export const MainReviewCard = forwardRef(
         {...props}
       >
         <div className={cx(classes.imageContainer)}>
-          <Image src={src} alt="" fill sizes="100vw" />
+          <Image src={src} alt="" width={92} height={122} />
         </div>
 
         <div className={cx(classes.content)}>

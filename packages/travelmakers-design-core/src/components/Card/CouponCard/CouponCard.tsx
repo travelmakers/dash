@@ -128,10 +128,8 @@ export const CouponCard = forwardRef(
           <Typography
             level="caption"
             color="primary3"
-            style={{ whiteSpace: "pre-line" }}
-          >
-            {content}
-          </Typography>
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></Typography>
         </div>
       </View>
     );
