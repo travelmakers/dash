@@ -21,9 +21,8 @@ export const Image = forwardRef(
     { lazy = true, src, alt, className, ...props }: ImageProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const [load, setLoad] = useState(false);
     const [error, setError] = useState(false);
-    const { classes, cx } = useStyles({ load, error });
+    const { classes, cx } = useStyles({ error });
 
     return (
       <>
@@ -34,25 +33,13 @@ export const Image = forwardRef(
           loading={lazy ? "lazy" : "eager"}
           decoding={lazy ? "async" : "auto"}
           className={cx(className, classes.image)}
-          onLoadingComplete={() => setLoad(true)}
+          placeholder="blur"
+          blurDataURL={base64Loading}
           onError={() => {
-            setLoad(true);
             setError(true);
           }}
           {...props}
         />
-
-        {/* NOTE: 로딩중... */}
-        {!load && (
-          <NextImage
-            alt={alt}
-            className={cx(className, classes.loading)}
-            src={
-              "https://hotel-01.s3.ap-northeast-2.amazonaws.com/dash/Image/img/loading.png"
-            }
-            {...props}
-          />
-        )}
 
         {/* NOTE: 에러이미지... */}
         {error && (

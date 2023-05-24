@@ -76,7 +76,7 @@ export const HotelCard = forwardRef(
         <CustomLink>
           {/* SECTION: Image */}
           <div className={cx(classes.imageBox)}>
-            <Image src={src} alt="hotelCard" fill />
+            <Image src={src} alt="hotelCard" fill sizes="100vw" />
             {disabled ? (
               <div className={cx(classes.soldOutBox)}>
                 <Typography color="white" level="display4" strong>
