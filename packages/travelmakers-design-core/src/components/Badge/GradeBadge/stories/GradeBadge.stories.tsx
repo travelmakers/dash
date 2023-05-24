@@ -6,8 +6,8 @@ export default {
   component: GradeBadge,
   argTypes: {
     type: {
-      control: { type: "radio", options: ["grade", "minihotel", "residence"] },
-      defaultValue: "grade",
+      control: { type: "radio", options: ["hotel", "minihotel", "residence"] },
+      defaultValue: "hotel",
       description: "GradeBadge의 type을 지정합니다.",
       table: {
         type: {
@@ -38,5 +38,5 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <GradeBadge type={"grade"} {...props} />;
+  return <GradeBadge type={"hotel"} {...props} />;
 };

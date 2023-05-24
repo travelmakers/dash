@@ -6,7 +6,7 @@ import {
 import { Props } from "./GradeBadge";
 import useStyles from "./GradeBadge.style";
 
-export type GradeBadgeType = "grade" | "minihotel" | "residence";
+export type GradeBadgeType = "hotel" | "minihotel" | "residence";
 
 type GradeBadgeStylesNames = ClassNames<typeof useStyles>;
 

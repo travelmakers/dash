@@ -21,7 +21,7 @@ type HotelTitleCardComponent = <C extends React.ElementType = "div">(
 ) => React.ReactElement;
 
 export interface HotelTitleCardType1 {
-  type: "grade";
+  type: "hotel";
   star: number;
 }
 export interface HotelTitleCardType2 {

@@ -43,7 +43,7 @@ export const HotelFeaturedCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       href = "",
-      type = "grade",
+      type = "hotel",
       star,
       src,
       labels = [],

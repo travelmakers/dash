@@ -20,7 +20,7 @@ export const GradeBadge = forwardRef(
     const { classes, cx } = useStyles();
 
     const content = () => {
-      if (type === "grade") {
+      if (type === "hotel") {
         return (
           <>
             <Icon src={"IcStar"} width={16} height={16} />
