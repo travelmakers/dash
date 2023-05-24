@@ -60,8 +60,8 @@ export const HotelReviewCard = forwardRef(
                 roundness="half"
                 color="gray"
                 gap={4}
-                items={labels?.map((label) => (
-                  <Tag.Item label={label} />
+                items={labels?.map((label, idx) => (
+                  <Tag.Item key={idx} label={label} />
                 ))}
               />
             )}

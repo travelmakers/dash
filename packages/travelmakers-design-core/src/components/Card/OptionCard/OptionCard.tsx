@@ -87,8 +87,8 @@ export const OptionCard = forwardRef(
               <Tag
                 type="fill"
                 style={{ marginBottom: 4 }}
-                items={labels?.map((label, index) => (
-                  <Tag.Item label={label} colorIdx={index} />
+                items={labels?.map((label, idx) => (
+                  <Tag.Item key={idx} label={label} colorIdx={idx} />
                 ))}
               />
             )}

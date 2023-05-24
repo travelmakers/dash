@@ -73,8 +73,8 @@ export const HotelTitleCard = forwardRef(
                 color="gray"
                 roundness="half"
                 gap={4}
-                items={groupTags.map((groupTag) => (
-                  <Tag.Item label={groupTag} />
+                items={groupTags.map((groupTag, idx) => (
+                  <Tag.Item key={idx} label={groupTag} />
                 ))}
               />
             </div>
@@ -101,8 +101,8 @@ export const HotelTitleCard = forwardRef(
           color="gray"
           roundness="half"
           gap={4}
-          items={tags.map((tag) => (
-            <Tag.Item label={tag} />
+          items={tags.map((tag, idx) => (
+            <Tag.Item key={idx} label={tag} />
           ))}
         />
       </View>

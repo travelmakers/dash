@@ -51,7 +51,7 @@ export const PriceCard = forwardRef(
             type="fill"
             color="gray"
             roundness="half"
-            items={[<Tag.Item label={tag} />]}
+            items={[<Tag.Item key={tag} label={tag} />]}
           />
         )}
       </View>

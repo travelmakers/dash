@@ -73,8 +73,8 @@ export const HotelFeaturedCard = forwardRef(
               <div className={cx(classes.imageLabel)}>
                 <Tag
                   type="fill"
-                  items={labels?.map((label, index) => (
-                    <Tag.Item label={label} colorIdx={index} />
+                  items={labels?.map((label, idx) => (
+                    <Tag.Item key={idx} label={label} colorIdx={idx} />
                   ))}
                 />
               </div>
@@ -86,8 +86,8 @@ export const HotelFeaturedCard = forwardRef(
                 type="line"
                 color="gray"
                 roundness="half"
-                items={timelineTags.map((timelineTag) => (
-                  <Tag.Item label={timelineTag} />
+                items={timelineTags.map((timelineTag, idx) => (
+                  <Tag.Item key={idx} label={timelineTag} />
                 ))}
               />
               <div>
