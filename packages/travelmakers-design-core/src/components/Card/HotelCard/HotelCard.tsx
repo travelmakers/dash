@@ -77,7 +77,7 @@ export const HotelCard = forwardRef(
           {/* SECTION: Image */}
           <div className={cx(classes.imageBox)}>
             <Image src={src} alt="hotelCard" fill sizes="100vw" />
-            {disabled && (
+            {disabled ? (
               <div className={cx(classes.soldOutBox)}>
                 <Typography color="white" level="display4" strong>
                   Sold Out
@@ -86,6 +86,8 @@ export const HotelCard = forwardRef(
                   다음에 만나요
                 </Typography>
               </div>
+            ) : (
+              <></>
             )}
           </div>
 

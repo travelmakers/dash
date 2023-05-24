@@ -37,6 +37,7 @@ export const Image = forwardRef(
           className={cx(className, classes.image)}
           placeholder="blur"
           blurDataURL={base64Loading}
+          onError={() => setError(true)}
           {...props}
         />
 
