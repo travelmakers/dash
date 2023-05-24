@@ -23,8 +23,7 @@ export default createStyles((theme) => {
         position: "absolute",
         transition: "all 0.2s cubic-bezier(0, 0, 0.5, 1)",
         ["&:hover"]: {
-          width: "110%",
-          height: "110%",
+          transform: "scale(1.1)",
         },
       },
     },
