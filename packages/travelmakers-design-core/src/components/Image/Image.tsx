@@ -3,6 +3,7 @@ import React, { forwardRef, useState } from "react";
 import useStyles from "./Image.style";
 import { ImageProps, ReturnType } from "./Image.type";
 import NextImage from "next/image";
+import { base64Loading } from "./loading.base64";
 
 export interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   /** true일 경우 lazy load가 적용됩니다. */
@@ -22,9 +23,8 @@ export const Image = forwardRef(
     { lazy = true, src, alt, className, ...props }: ImageProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const [load, setLoad] = useState(false);
     const [error, setError] = useState(false);
-    const { classes, cx } = useStyles({ load, error });
+    const { classes, cx } = useStyles({ error });
 
     return (
       <>
@@ -35,25 +35,10 @@ export const Image = forwardRef(
           loading={lazy ? "lazy" : "eager"}
           decoding={lazy ? "async" : "auto"}
           className={cx(className, classes.image)}
-          onLoadingComplete={() => setLoad(true)}
-          onError={() => {
-            setLoad(true);
-            setError(true);
-          }}
+          placeholder="blur"
+          blurDataURL={base64Loading}
           {...props}
         />
-
-        {/* NOTE: 로딩중... */}
-        {!load && (
-          <NextImage
-            alt={alt}
-            className={cx(className, classes.loading)}
-            src={
-              "https://hotel-01.s3.ap-northeast-2.amazonaws.com/dash/Image/img/loading.png"
-            }
-            {...props}
-          />
-        )}
 
         {/* NOTE: 에러이미지... */}
         {error && (
