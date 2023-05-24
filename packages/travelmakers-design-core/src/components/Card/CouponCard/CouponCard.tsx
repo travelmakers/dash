@@ -103,11 +103,16 @@ export const CouponCard = forwardRef(
         {...props}
       >
         <div className={classes.leftBox}>
-          <Typography level="display2" color={"white"}>
-            {day}
+          <Typography
+            family="Noto Serif KR"
+            level="display2"
+            color={"white"}
+            strong
+          >
+            {type === "all" ? "All" : day}
           </Typography>
           <Typography family="Noto Serif KR" level="body1" color={"white"}>
-            {DAY_TYPE[type]}
+            {type !== "all" && DAY_TYPE[type]}
           </Typography>
         </div>
         <div className={classes.rightBox}>
