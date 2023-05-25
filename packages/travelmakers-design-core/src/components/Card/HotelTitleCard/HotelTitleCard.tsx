@@ -32,6 +32,8 @@ export interface Props {
 
   /** HotelTitleCard 컴포넌트의 가격을 표시합니다. */
   price?: PriceProps<"div">[];
+
+  isPrice?: boolean;
 }
 
 export const HotelTitleCard = forwardRef(
@@ -43,6 +45,7 @@ export const HotelTitleCard = forwardRef(
       tags = [],
       isCoupon = false,
       price,
+      isPrice = true,
       className,
       ...props
     }: HotelTitleCardProps<C>,
@@ -82,21 +85,18 @@ export const HotelTitleCard = forwardRef(
           )}
         </div>
         <Divider type={"horizontal"} color={"outline"} />
-        <div className={classes.currencyContainer}>
-          <div className={classes.currencyBox}>
-            <Typography level="body3" color="primary1">
-              정가
+
+        {isPrice ? (
+          <div className={classes.currencyContainer}>
+            <Price {...price} type="secondary" label="정가" nightText={null} />
+            <Price {...price} type="primary" />
+            <Typography level="caption" color="primary3">
+              세금 및 봉사료 포함
             </Typography>
-            <Typography level="body3" color="primary1">
-              {getCurrencyNumber(1000000)}원
-            </Typography>
-            {isCoupon && <IconTag label="쿠폰 적용가" type="fill" />}
           </div>
-          <Price {...price} type="primary" />
-          <Typography level="caption" color="primary3">
-            세금 및 봉사료 포함
-          </Typography>
-        </div>
+        ) : (
+          <div className={classes.PriceNonBox}>상세페이지에서 가격 확인</div>
+        )}
         <Tag
           type="fill"
           color="gray"

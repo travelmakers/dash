@@ -144,7 +144,7 @@ export default {
 
 export const Default = (props) => {
   return (
-    <div style={{ margin: 40 }}>
+    <div style={{ margin: 40, display: "flex" }}>
       <OptionCard {...props} />
     </div>
   );

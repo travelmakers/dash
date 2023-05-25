@@ -43,5 +43,12 @@ export default createStyles((theme) => {
     submitButton: {
       borderRadius: `0 0 ${theme.radius.radius20} ${theme.radius.radius20}`,
     },
+    PriceNonBox: {
+      ...theme.typography.subhead2,
+      color: theme.colors.primary2,
+      minHeight: "52px",
+      display: "flex",
+      alignItems: " flex-end",
+    },
   };
 });

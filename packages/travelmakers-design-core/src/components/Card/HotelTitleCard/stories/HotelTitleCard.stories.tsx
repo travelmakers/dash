@@ -76,5 +76,10 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <HotelTitleCard {...props} />;
+  return (
+    <div style={{ display: "flex" }}>
+      <HotelTitleCard {...props} />
+      <HotelTitleCard {...props} isPrice={false} />
+    </div>
+  );
 };

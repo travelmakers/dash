@@ -49,6 +49,8 @@ export interface Props {
   buttonName?: string;
 
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+
+  isPrice?: boolean;
 }
 
 export const OptionCard = forwardRef(
@@ -65,6 +67,7 @@ export const OptionCard = forwardRef(
       roomType,
       benefitList = [],
       price,
+      isPrice = true,
       buttonName = "예약하기",
       onClick,
       className,
@@ -148,10 +151,16 @@ export const OptionCard = forwardRef(
           {price && (
             <>
               <Divider type={"horizontal"} color={"primary"} />
-              <div className={classes.priceBox}>
-                <Price {...price} type="secondary" label="정가" />
-                <Price {...price} type="primary" />
-              </div>
+              {isPrice ? (
+                <div className={classes.priceBox}>
+                  <Price {...price} type="secondary" label="정가" />
+                  <Price {...price} type="primary" />
+                </div>
+              ) : (
+                <div className={classes.PriceNonBox}>
+                  상세페이지에서 가격 확인
+                </div>
+              )}
             </>
           )}
         </div>

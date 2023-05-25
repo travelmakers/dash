@@ -59,5 +59,13 @@ export default createStyles((theme) => {
       alignItems: "center",
       gap: theme.spacing.spacing5,
     },
+
+    PriceNonBox: {
+      ...theme.typography.subhead2,
+      color: theme.colors.primary2,
+      minHeight: "52px",
+      display: "flex",
+      alignItems: " flex-end",
+    },
   };
 });
