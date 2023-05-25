@@ -38,7 +38,7 @@ export const Price = forwardRef(
       nightText,
       priceText,
       priceStartText,
-      couponType = "tag",
+      couponType,
       className,
       ...props
     }: PriceProps<C>,
