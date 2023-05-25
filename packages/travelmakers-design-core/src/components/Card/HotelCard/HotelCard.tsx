@@ -104,7 +104,7 @@ export const HotelCard = forwardRef(
               <div className={cx(classes.flexBox)}>
                 <GradeBadge grade={star} type={type} />
                 {isCoupon && !disabled && (
-                  <IconTag label="쿠폰 적용가" type="line" />
+                  <IconTag label="Coupon" type="line" />
                 )}
               </div>
               <Typography level="caption" color={"primary3"}>

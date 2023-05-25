@@ -1,6 +1,8 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { Icon } from "../Icon";
+import { IconTag } from "../Tag";
+import { Typography } from "../Typography";
 import { View } from "../View";
 import useStyles from "./Price.style";
 import { PriceProps, ReturnType } from "./Price.type";
@@ -24,8 +26,7 @@ export interface Props {
   /** Price 컴포넌트의 시작가격을 표시합니다. */
   priceStartText?: string;
 
-  /** (secondary type 한정) Price 컴포넌트의 쿠폰 표시여부를 결정합니다. */
-  isCoupon?: boolean;
+  couponType?: "tag" | "text";
 }
 
 export const Price = forwardRef(
@@ -37,7 +38,7 @@ export const Price = forwardRef(
       nightText,
       priceText,
       priceStartText,
-      isCoupon = true,
+      couponType = "tag",
       className,
       ...props
     }: PriceProps<C>,
@@ -98,16 +99,11 @@ export const Price = forwardRef(
               <span className={cx(classes.priceBeforeSecondaryText)}>원</span>
             </>
           )}
-          {isCoupon && (
-            <div className={cx(classes.couponWrap)}>
-              <Icon
-                src="IcDiscount"
-                width={16}
-                height={16}
-                style={{ margin: "0 4px" }}
-              />
-              <span className={cx(classes.couponWord)}>쿠폰 적용가</span>
-            </div>
+          {couponType === "tag" && <IconTag label="쿠폰 적용가" type="fill" />}
+          {couponType === "text" && (
+            <Typography color="secondary1" level="caption" strong>
+              적용 가능한 쿠폰이 있어요!
+            </Typography>
           )}
         </View>
       );
