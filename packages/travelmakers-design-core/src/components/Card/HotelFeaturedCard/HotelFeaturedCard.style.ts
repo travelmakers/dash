@@ -41,7 +41,7 @@ export default createStyles((theme) => {
     imageLabel: {
       position: "absolute",
       left: theme.spacing.spacing30,
-      top: -4,
+      top: 0,
     },
 
     contentBox: {
@@ -51,6 +51,12 @@ export default createStyles((theme) => {
 
       "& > ul": {
         gap: theme.spacing.spacing5,
+        flexWrap: "nowrap",
+        overflow: "hidden",
+        textOverflow: "hidden",
+        ["& > li"]: {
+          flexShrink: 0,
+        },
       },
     },
 

@@ -65,7 +65,11 @@ export default {
       control: { type: "text" },
     },
     timelineTags: {
-      defaultValue: ["레이블", "레이블", "레이블"],
+      defaultValue: [
+        "레이블레이블레이블레이블레이블",
+        "레이블레이블레이블레이블레이블",
+        "레이블레이블레이블레이블레이블",
+      ],
       description:
         "HotelFeaturedCard 컴포넌트의 이미지 하단 레이블을 표시합니다.",
       table: {
