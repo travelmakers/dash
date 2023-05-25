@@ -20,7 +20,7 @@ export interface Props {
   buttonTheme?: "light" | "dark";
 }
 
-const ARIA_LABLE = {
+const ARIA_LABEL = {
   prev: "이전",
   next: "다음",
 };
@@ -76,7 +76,7 @@ export const ButtonIcon = forwardRef(
         type="button"
         disabled={disabled}
         className={cx(className, classes.button)}
-        aria-label={ARIA_LABLE[type]}
+        aria-label={ARIA_LABEL[type]}
         {...props}
       >
         {type === "prev" ? (

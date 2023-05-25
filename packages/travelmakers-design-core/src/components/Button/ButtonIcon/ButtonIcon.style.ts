@@ -85,15 +85,16 @@ export default createStyles(
       button: {
         ...sizes[size],
         borderRadius: theme.spacing.spacing100,
+        boxShadow: theme.shadows.elevation1,
         ...getBackgroundColor("default"),
         cursor: "pointer",
 
         [":not(:disabled)"]: {
           "&:hover": {
-            boxShadow: theme.shadows.elevation1,
+            boxShadow: theme.shadows.elevation5,
           },
           "&:focus-visible": {
-            boxShadow: theme.shadows.elevation1,
+            boxShadow: theme.shadows.elevation5,
           },
           "&:active": {
             ...getBackgroundColor("active"),
