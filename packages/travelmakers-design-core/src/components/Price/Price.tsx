@@ -94,11 +94,11 @@ export const Price = forwardRef(
           {priceText && (
             <>
               <span className={cx(classes.priceSecondaryText)}>
-                {priceText?.toLocaleString("ko")}
+                {priceText?.toLocaleString("ko")}원
               </span>
-              <span className={cx(classes.priceBeforeSecondaryText)}>원</span>
             </>
           )}
+          <IconTag label="쿠폰 적용가" type="fill" />
           {couponType === "tag" && <IconTag label="쿠폰 적용가" type="fill" />}
           {couponType === "text" && (
             <Typography color="secondary1" level="caption" strong>

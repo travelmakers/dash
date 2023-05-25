@@ -7,6 +7,7 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       display: "flex",
       flexDirection: "row",
       alignItems: "center",
+      gap: theme.spacing.spacing5,
       width: "100%",
     },
 
@@ -27,7 +28,6 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       ...theme.typography.display4,
       fontWeight: "700",
       color: theme.colors.primary1,
-      marginLeft: theme.spacing.spacing5,
     },
     priceBeforeText: {
       ...theme.typography.body2,
@@ -38,7 +38,6 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       ...theme.typography.body3,
       fontWeight: "400",
       color: theme.colors.primary2,
-      marginLeft: theme.spacing.spacing5,
     },
 
     // NOTE: Type is 'secondary'
@@ -46,21 +45,14 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       ...theme.typography.body3,
       fontWeight: "400",
       color: theme.colors.primary1,
-      marginRight: theme.spacing.spacing5,
     },
     nightSecondaryText: {
       ...theme.typography.body3,
       fontWeight: "700",
       color: theme.colors.primary1,
       textAlign: "right",
-      marginRight: theme.spacing.spacing5,
     },
     priceSecondaryText: {
-      ...theme.typography.body3,
-      fontWeight: "400",
-      color: theme.colors.primary2,
-    },
-    priceBeforeSecondaryText: {
       ...theme.typography.body3,
       fontWeight: "400",
       color: theme.colors.primary2,
@@ -71,7 +63,6 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       width: "74px",
       background: theme.colors.secondaryContainer,
       borderRadius: theme.spacing.spacing5,
-      marginLeft: theme.spacing.spacing5,
     },
     couponWord: {
       ...theme.typography.caption,
