@@ -98,7 +98,6 @@ export const Price = forwardRef(
               </span>
             </>
           )}
-          <IconTag label="쿠폰 적용가" type="fill" />
           {couponType === "tag" && <IconTag label="쿠폰 적용가" type="fill" />}
           {couponType === "text" && (
             <Typography color="secondary1" level="caption" strong>
