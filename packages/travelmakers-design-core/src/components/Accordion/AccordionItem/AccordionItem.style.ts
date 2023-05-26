@@ -38,11 +38,11 @@ export default createStyles(
 
     return {
       item: {
-        maxHeight: `${isCollapse ? ACCORDION_HEIGHT[type] : "auto"}`,
         marginBottom: `${gap}px`,
         color: `${colors.primary1}`,
         borderRadius: radius.radius20,
         backgroundColor: colors.white,
+        whiteSpace: "pre-wrap",
         overflow: "hidden",
 
         ["&:last-child"]: {
@@ -53,7 +53,7 @@ export default createStyles(
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        height: ACCORDION_HEIGHT[type],
+        minHeight: ACCORDION_HEIGHT[type],
         ...getSpacing(theme, type),
         ...typography[ACCORDION_FONT[type]],
         fontWeight: 700,
@@ -63,7 +63,9 @@ export default createStyles(
         transform: `${!isCollapse && "rotate(180deg)"}`,
       },
       detail: {
+        maxHeight: `${isCollapse ? 0 : "auto"}`,
         margin: 0,
+        overflow: "hidden",
       },
       divider: {
         margin: `0 ${spacing.spacing30}`,
