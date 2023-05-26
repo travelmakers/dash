@@ -18,7 +18,8 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
 
   return {
     container: {
-      width: "296px",
+      maxWidth: "348px",
+      width: "100%",
       height: "142px",
       backgroundColor: theme.colors.primary99,
       borderRadius: theme.radius.radius20,
