@@ -10,6 +10,7 @@ import {
 
 import { Meta } from "@storybook/react";
 import { Button } from "../Button";
+import { Icon } from "../../../Icon";
 
 export default {
   title: "@travelmakers/core/General/Button",
@@ -111,6 +112,12 @@ export const Default = (props) => {
   return (
     <div style={{ margin: "0 auto" }}>
       <Button {...props}>Button</Button>
+      <Button
+        {...props}
+        leftIcon={<Icon src="IcDiscount" width={20} height={20} />}
+      >
+        Button
+      </Button>
     </div>
   );
 };

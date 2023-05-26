@@ -70,7 +70,7 @@ export const Button = forwardRef(
         {...props}
       >
         <div className={classes.inner}>
-          {leftIcon && <span className={cx(classes.icon)}>{leftIcon}</span>}
+          {leftIcon && <div className={cx(classes.icon)}>{leftIcon}</div>}
           <Typography
             level={
               size === "small" ? "body3" : size === "medium" ? "body2" : "body1"
@@ -80,7 +80,7 @@ export const Button = forwardRef(
           >
             {children}
           </Typography>
-          {rightIcon && <span className={cx(classes.icon)}>{rightIcon}</span>}
+          {rightIcon && <div className={cx(classes.icon)}>{rightIcon}</div>}
         </div>
       </View>
     );
