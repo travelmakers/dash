@@ -7,7 +7,7 @@ import { ReturnType, SelectButtonItemProps } from "./SelectButtonItem.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name?: string;
-  content: string | number;
+  content: string;
 }
 
 export const SelectButtonItem = forwardRef(

@@ -8,7 +8,7 @@ import { ReturnType, SelectButtonProps } from "./SelectButton.type";
 
 export interface Props extends React.HTMLAttributes<HTMLFieldSetElement> {
   label: string;
-  items: typeof SelectButtonItem[];
+  items: React.ReactNode[];
   feedback?: string;
   callout?: typeof Callout;
   isVisibleLabel?: boolean;
