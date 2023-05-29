@@ -1,10 +1,9 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { useArrowMove } from "@travelmakers/hooks";
 import Link, { LinkProps } from "next/link";
-import React, { PropsWithChildren, forwardRef, useRef, useState } from "react";
+import React, { PropsWithChildren, forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
-import { Icon } from "../../Icon";
 import { Image } from "../../Image";
+import { SwiperArrowContainer } from "../../SwiperArrowContainer";
 import { IconTag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
@@ -14,7 +13,6 @@ import {
 } from "../PriceCard/PriceCard";
 import useStyles from "./HotelCard.style";
 import { HotelCardProps, HotelCardType, ReturnType } from "./HotelCard.type";
-import { SwiperArrowContainer } from "../../SwiperArrowContainer";
 
 export interface Props {
   /** HotelCard 컴포넌트의 호텔명을 표시합니다. */

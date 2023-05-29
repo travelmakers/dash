@@ -25,7 +25,7 @@ export const PriceCard = forwardRef(
     { status, name, description, tag, className, ...props }: PriceCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const { classes, cx } = useStyles({ status });
+    const { classes, cx } = useStyles();
     const STATUS_COLOR: {
       active: TmColor;
       disabled: TmColor;
