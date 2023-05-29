@@ -38,6 +38,7 @@ export interface Props {
 export const Button = forwardRef(
   <C extends React.ElementType = "button">(
     {
+      component,
       size = "small",
       variant = "primary",
       roundness = false,
@@ -53,6 +54,8 @@ export const Button = forwardRef(
     }: PropsWithChildren<ButtonProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
+    const _component = component || "button";
+    const isButton = _component === "button";
     const { classes, cx } = useStyles({
       size,
       variant,
@@ -62,9 +65,9 @@ export const Button = forwardRef(
 
     return (
       <View<React.ElementType>
-        component={"button"}
+        component={_component}
         ref={ref}
-        type={type}
+        type={isButton && type}
         disabled={disabled}
         className={cx(classes.root, classes.solid, className)}
         {...props}
