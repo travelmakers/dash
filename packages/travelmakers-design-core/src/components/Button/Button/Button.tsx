@@ -56,6 +56,7 @@ export const Button = forwardRef(
   ) => {
     const _component = component || "button";
     const isButton = _component === "button";
+    const _type = isButton ? type : undefined;
     const { classes, cx } = useStyles({
       size,
       variant,
@@ -67,7 +68,7 @@ export const Button = forwardRef(
       <View<React.ElementType>
         component={_component}
         ref={ref}
-        type={isButton && type}
+        type={_type}
         disabled={disabled}
         className={cx(classes.root, classes.solid, className)}
         {...props}
