@@ -15,6 +15,8 @@ import {
 } from "./HotelTitleCard.type";
 
 export interface Props {
+  name: string;
+
   /** HotelTitleCard 컴포넌트의 호텔타입을 정합니다. */
   type: HotelTitleCardType["type"];
 
@@ -31,7 +33,7 @@ export interface Props {
   tags?: string[];
 
   /** HotelTitleCard 컴포넌트의 가격을 표시합니다. */
-  price?: PriceProps<"div">[];
+  price?: PriceProps<"div">;
 
   isPrice?: boolean;
 }
@@ -39,6 +41,7 @@ export interface Props {
 export const HotelTitleCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
+      name,
       type,
       star,
       groupTags = [],
@@ -60,10 +63,10 @@ export const HotelTitleCard = forwardRef(
         className={cx(className, classes.container)}
         {...props}
       >
-        <div>
+        <div className={classes.cardHeader}>
           <div>
             <Typography level="display6" color="primary1" strong>
-              서울드래곤시티
+              {name}
             </Typography>
           </div>
           <div>

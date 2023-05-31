@@ -5,10 +5,20 @@ export default {
   title: "@travelmakers/core/General/Card/HotelTitleCard",
   component: HotelTitleCard,
   argTypes: {
+    name: {
+      defaultValue: "호텔이름",
+      description: "HotelTitleCard 컴포넌트에서 호텔 이름을 표시합니다.",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "text" },
+    },
     type: {
-      defaultValue: "grade",
+      defaultValue: "hotel",
       description: "Hotel 타입을 정합니다.",
-      options: ["grade", "minihotel", "residence"],
+      options: ["hotel", "minihotel", "residence"],
       control: { type: "inline-radio" },
     },
     star: {
@@ -79,7 +89,6 @@ export const Default = (props) => {
   return (
     <div style={{ display: "flex" }}>
       <HotelTitleCard {...props} />
-      <HotelTitleCard {...props} isPrice={false} />
     </div>
   );
 };
