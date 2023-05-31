@@ -15,16 +15,6 @@ export default {
         },
       },
     },
-    hasBack: {
-      type: "boolean",
-      defaultValue: "false",
-      description: "뒤로가기 버튼의 유무",
-      table: {
-        type: {
-          summary: "boolean",
-        },
-      },
-    },
     actionEl: {
       description:
         "NavBar에 닫기 버튼 혹은 링크를 제공합니다. NavBar.NavLink 혹은 NavBar.NavButton를 사용합니다.",
