@@ -13,6 +13,7 @@ import React from "react";
 export interface Props {
   contentClassName?: string;
   hasDimmer?: boolean;
+  dimmerColor?: string;
   disabled?: boolean;
 }
 
@@ -23,6 +24,7 @@ export const SwiperArrowContainer = forwardRef(
       contentClassName,
       hasDimmer = false,
       disabled = false,
+      dimmerColor,
       children,
       ...props
     }: PropsWithChildren<SwiperArrowContainerProps<C>>,
@@ -44,6 +46,7 @@ export const SwiperArrowContainer = forwardRef(
       leftArrowHover,
       rightArrowHover,
       dimmerHidden,
+      dimmerColor,
     });
 
     const cloneArr = Children.map(children, (child, idx) =>
