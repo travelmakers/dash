@@ -1,5 +1,4 @@
 import { createStyles } from "@travelmakers/styles";
-import { Props } from "./SwiperArrowContainer";
 
 export default createStyles(
   (
@@ -8,10 +7,12 @@ export default createStyles(
       leftArrowHover,
       rightArrowHover,
       dimmerHidden,
+      dimmerColor,
     }: {
       leftArrowHover: boolean;
       rightArrowHover: boolean;
       dimmerHidden: boolean;
+      dimmerColor?: string;
     }
   ) => {
     return {
@@ -47,8 +48,9 @@ export default createStyles(
         right: 0,
         width: "40px",
         height: "100%",
-        background:
-          "linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.75) 51.04%, rgba(255, 255, 255, 0) 100%)",
+        background: `linear-gradient(270deg, ${
+          dimmerColor ?? "#FFFFFF"
+        } 0%, rgba(255, 255, 255, 0.75) 51.04%, rgba(255, 255, 255, 0) 100%)`,
         visibility: dimmerHidden ? "hidden" : "visible",
       },
       contentScrollContainer: {
