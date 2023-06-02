@@ -3,7 +3,6 @@ import { createStyles } from "@travelmakers/styles";
 export default createStyles((theme) => {
   return {
     container: {
-      width: "328px",
       backgroundColor: theme.colors.white,
       borderRadius: theme.radius.radius20,
       ["& > a"]: {
