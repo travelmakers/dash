@@ -28,7 +28,6 @@ export default createStyles(
         display: "flex",
         alignItems: "center",
         columnGap: spacing.spacing10,
-        maxWidth: "328px",
         height: "48px",
         padding: `0 ${spacing.spacing30} 0 ${spacing.spacing50}`,
         borderRadius: radius.radius100,
