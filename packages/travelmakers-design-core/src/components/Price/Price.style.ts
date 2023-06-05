@@ -57,6 +57,9 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       fontWeight: "400",
       color: theme.colors.primary2,
     },
+    priceSecondaryLineThrough: {
+      textDecoration: "line-through",
+    },
     couponWrap: {
       display: "flex",
       alignItems: "center",

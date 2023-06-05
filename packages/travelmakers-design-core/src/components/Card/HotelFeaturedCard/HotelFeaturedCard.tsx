@@ -115,6 +115,7 @@ export const HotelFeaturedCard = forwardRef(
                   <Price
                     {...price}
                     priceText={price.secondaryPriceText ?? price.priceText}
+                    disabled={price.secondaryDisabled}
                     type="secondary"
                   />
                   <Price {...price} type="primary" />

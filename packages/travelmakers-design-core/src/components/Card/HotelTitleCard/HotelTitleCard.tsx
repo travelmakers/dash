@@ -94,6 +94,7 @@ export const HotelTitleCard = forwardRef(
             <Price
               {...price}
               priceText={price.secondaryPriceText ?? price.priceText}
+              disabled={price.secondaryDisabled}
               type="secondary"
               label="정가"
               nightText={null}

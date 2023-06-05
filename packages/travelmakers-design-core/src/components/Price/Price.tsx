@@ -27,6 +27,8 @@ export interface Props {
   priceStartText?: string;
 
   couponType?: "tag" | "text";
+
+  disabled?: boolean;
 }
 
 export const Price = forwardRef(
@@ -39,6 +41,7 @@ export const Price = forwardRef(
       priceText,
       priceStartText,
       couponType,
+      disabled = false,
       className,
       ...props
     }: PriceProps<C>,
@@ -93,7 +96,12 @@ export const Price = forwardRef(
           )}
           {priceText && (
             <>
-              <span className={cx(classes.priceSecondaryText)}>
+              <span
+                className={cx(
+                  classes.priceSecondaryText,
+                  disabled && classes.priceSecondaryLineThrough
+                )}
+              >
                 {priceText?.toLocaleString("ko")}원
               </span>
             </>

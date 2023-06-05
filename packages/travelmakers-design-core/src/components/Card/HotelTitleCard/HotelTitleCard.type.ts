@@ -34,6 +34,7 @@ export type HotelTitleCardType = HotelTitleCardType1 | HotelTitleCardType2;
 
 export interface HotelTitlePrice extends PriceProps<"div"> {
   secondaryPriceText?: number;
+  secondaryDisabled?: boolean;
 }
 
 export type ReturnType = HotelTitleCardComponent & {
