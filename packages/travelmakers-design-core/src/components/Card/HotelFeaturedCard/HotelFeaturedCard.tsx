@@ -4,12 +4,13 @@ import React, { forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
 import { Divider } from "../../Divider";
 import { Image } from "../../Image";
-import { Price, PriceProps } from "../../Price";
+import { Price } from "../../Price";
 import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./HotelFeaturedCard.style";
 import {
+  HotelFeaturePrice,
   HotelFeatureType,
   HotelFeaturedCardProps,
   ReturnType,
@@ -36,7 +37,7 @@ export interface Props {
   /** HotelFeatureCard 컴포넌트의 몇주살기에 대한 레이블을 표시합니다. */
   timelineTags?: string[];
 
-  price: PriceProps<"div">;
+  price: HotelFeaturePrice;
 
   isPrice?: boolean;
 }
@@ -111,7 +112,11 @@ export const HotelFeaturedCard = forwardRef(
               <Divider type={"horizontal"} color="outline" />
               {isPrice ? (
                 <div>
-                  <Price {...price} type="secondary" />
+                  <Price
+                    {...price}
+                    priceText={price.secondaryPriceText ?? price.priceText}
+                    type="secondary"
+                  />
                   <Price {...price} type="primary" />
                 </div>
               ) : (
