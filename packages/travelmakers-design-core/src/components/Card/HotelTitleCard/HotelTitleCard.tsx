@@ -89,7 +89,7 @@ export const HotelTitleCard = forwardRef(
         </div>
         <Divider type={"horizontal"} color={"outline"} />
 
-        {isPrice ? (
+        {isPrice && (
           <div className={classes.currencyContainer}>
             <Price
               {...price}
@@ -104,8 +104,6 @@ export const HotelTitleCard = forwardRef(
               세금 및 봉사료 포함
             </Typography>
           </div>
-        ) : (
-          <div className={classes.PriceNonBox}>상세페이지에서 가격 확인</div>
         )}
         <Tag
           type="fill"
