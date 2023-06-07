@@ -3,12 +3,16 @@ import React, { forwardRef } from "react";
 import { Button } from "../../Button";
 import { Divider } from "../../Divider";
 import { Icon } from "../../Icon";
-import { Price, PriceProps } from "../../Price";
+import { Price } from "../../Price";
 import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./OptionCard.style";
-import { OptionCardProps, ReturnType } from "./OptionCard.type";
+import {
+  OptionCardPrice,
+  OptionCardProps,
+  ReturnType,
+} from "./OptionCard.type";
 
 export interface Props {
   isMore?: boolean;
@@ -45,7 +49,7 @@ export interface Props {
     order: number;
   }[];
 
-  price?: PriceProps<"div">;
+  price?: OptionCardPrice;
 
   /** OptionCard 컴포넌트의 buttonName을 표시합니다. */
   buttonName?: string;
@@ -170,7 +174,12 @@ export const OptionCard = forwardRef(
               <Divider type={"horizontal"} color={"primary"} />
               {isPrice ? (
                 <div className={classes.priceBox}>
-                  <Price {...price} type="secondary" label="정가" />
+                  <Price
+                    {...price}
+                    priceText={price.secondaryPriceText ?? price.priceText}
+                    disabled={price.secondaryDisabled}
+                    type="secondary"
+                  />
                   <Price {...price} type="primary" />
                 </div>
               ) : (
