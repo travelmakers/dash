@@ -113,21 +113,29 @@ export const OptionCard = forwardRef(
           </div>
 
           <div className={classes.groupBox}>
-            <Typography level="subhead2" color="primary1">
-              {headTitle}
-            </Typography>
+            <Typography
+              level="subhead2"
+              color="primary1"
+              strong
+              dangerouslySetInnerHTML={{ __html: headTitle }}
+            />
             <Divider type={"horizontal"} color={"primary"} />
-            <Typography level="body2" color="primary3">
-              {roomType}
-            </Typography>
+            <Typography
+              level="body2"
+              color="primary3"
+              dangerouslySetInnerHTML={{ __html: roomType }}
+            />
           </div>
 
           {benefitList.length > 0 && (
             <div className={classes.groupBox}>
               <div className={classes.titleBox}>
-                <Typography level="subhead2" color="primary1">
-                  {footerTitle}
-                </Typography>
+                <Typography
+                  level="subhead2"
+                  color="primary1"
+                  strong
+                  dangerouslySetInnerHTML={{ __html: footerTitle }}
+                />
                 {isMore && (
                   <Button
                     variant="text"
@@ -144,9 +152,12 @@ export const OptionCard = forwardRef(
               <ul>
                 {benefitList.map(({ content }) => {
                   return (
-                    <Typography level="body2" color="primary1" component="li">
-                      {content}
-                    </Typography>
+                    <Typography
+                      level="body2"
+                      color="primary1"
+                      component="li"
+                      dangerouslySetInnerHTML={{ __html: content }}
+                    />
                   );
                 })}
               </ul>
