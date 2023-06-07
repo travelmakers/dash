@@ -4,6 +4,7 @@ export default createStyles((theme) => {
   return {
     card: {
       width: "281px",
+      height: "fit-content",
       backgroundColor: theme.colors.white,
       boxShadow: theme.shadows.elevation3,
       borderRadius: theme.radius.radius20,
