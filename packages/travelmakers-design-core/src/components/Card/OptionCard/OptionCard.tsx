@@ -156,7 +156,9 @@ export const OptionCard = forwardRef(
                       level="body2"
                       color="primary1"
                       component="li"
-                      dangerouslySetInnerHTML={{ __html: content }}
+                      dangerouslySetInnerHTML={{
+                        __html: content?.replaceAll("\r\n", "<br/>"),
+                      }}
                     />
                   );
                 })}
