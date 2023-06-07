@@ -13,6 +13,8 @@ import { OptionCardProps, ReturnType } from "./OptionCard.type";
 export interface Props {
   isMore?: boolean;
 
+  onMoreClick?: React.MouseEventHandler<HTMLButtonElement>;
+
   labels?: string[];
 
   /** OptionCard 컴포넌트의 상단 Title Name을 표시합니다. */
@@ -70,6 +72,7 @@ export const OptionCard = forwardRef(
       isPrice = true,
       buttonName = "예약하기",
       onClick,
+      onMoreClick,
       className,
       ...props
     }: OptionCardProps<C>,
@@ -131,6 +134,7 @@ export const OptionCard = forwardRef(
                     rightIcon={
                       <Icon src="IcAngleRight" width={16} height={16} />
                     }
+                    onClick={onMoreClick}
                   >
                     더보기
                   </Button>
