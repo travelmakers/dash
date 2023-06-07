@@ -1,6 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
-import { Button } from "../../Button";
+import { Button, ButtonProps } from "../../Button";
 import { Divider } from "../../Divider";
 import { Icon } from "../../Icon";
 import { Price } from "../../Price";
@@ -57,6 +57,8 @@ export interface Props {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 
   isPrice?: boolean;
+
+  buttonProps: ButtonProps<typeof Button>;
 }
 
 export const OptionCard = forwardRef(
@@ -78,6 +80,7 @@ export const OptionCard = forwardRef(
       onClick,
       onMoreClick,
       className,
+      buttonProps,
       ...props
     }: OptionCardProps<C>,
     ref: PolymorphicRef<C>
@@ -196,6 +199,7 @@ export const OptionCard = forwardRef(
           size={"medium"}
           fullWidth
           onClick={onClick}
+          {...buttonProps}
         >
           {buttonName}
         </Button>
