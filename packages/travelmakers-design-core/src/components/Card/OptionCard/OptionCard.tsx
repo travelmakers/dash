@@ -45,7 +45,7 @@ export interface Props {
     order: number;
   }[];
 
-  price: PriceProps<"div">;
+  price?: PriceProps<"div">;
 
   /** OptionCard 컴포넌트의 buttonName을 표시합니다. */
   buttonName?: string;
