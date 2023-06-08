@@ -49,7 +49,7 @@ export default createStyles(
         width: "40px",
         height: "100%",
         background: `linear-gradient(270deg, ${
-          dimmerColor ?? "#FFFFFF"
+          dimmerColor ? theme.colors[dimmerColor] : "#FFFFFF"
         } 0%, rgba(255, 255, 255, 0.75) 51.04%, rgba(255, 255, 255, 0) 100%)`,
         visibility: dimmerHidden ? "hidden" : "visible",
       },

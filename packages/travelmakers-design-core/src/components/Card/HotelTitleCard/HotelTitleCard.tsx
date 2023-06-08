@@ -2,7 +2,7 @@ import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
 import { Divider } from "../../Divider";
-import { Price, PriceProps } from "../../Price";
+import { Price } from "../../Price";
 import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
@@ -10,6 +10,7 @@ import useStyles from "./HotelTitleCard.style";
 import {
   HotelTitleCardProps,
   HotelTitleCardType,
+  HotelTitlePrice,
   ReturnType,
 } from "./HotelTitleCard.type";
 
@@ -32,10 +33,7 @@ export interface Props {
   tags?: string[];
 
   /** HotelTitleCard 컴포넌트의 가격을 표시합니다. */
-  price: PriceProps<typeof Price> & {
-    secondaryPriceText?: number;
-    secondaryDisabled?: boolean;
-  };
+  price: HotelTitlePrice;
 
   isPrice?: boolean;
 }

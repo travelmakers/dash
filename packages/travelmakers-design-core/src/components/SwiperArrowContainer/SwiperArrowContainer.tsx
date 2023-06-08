@@ -1,4 +1,4 @@
-import { PolymorphicRef } from "@travelmakers/styles";
+import { PolymorphicRef, TmColor } from "@travelmakers/styles";
 import { useArrowMove } from "@travelmakers/hooks";
 import { Children, forwardRef, PropsWithChildren, useRef } from "react";
 import { Icon } from "../Icon";
@@ -13,7 +13,7 @@ import React from "react";
 export interface Props {
   contentClassName?: string;
   hasDimmer?: boolean;
-  dimmerColor?: string;
+  dimmerColor?: TmColor;
   disabled?: boolean;
 }
 
