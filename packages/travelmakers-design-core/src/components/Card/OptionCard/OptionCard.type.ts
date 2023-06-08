@@ -5,7 +5,7 @@ import {
 } from "@travelmakers/styles";
 import { Props } from "./OptionCard";
 import useStyles from "./OptionCard.style";
-import { PriceProps } from "../../Price";
+import { Price, PriceProps } from "../../Price";
 
 type OptionCardStylesNames = ClassNames<typeof useStyles>;
 
@@ -20,7 +20,7 @@ type OptionCardComponent = <C extends React.ElementType = "div">(
   props: OptionCardProps<C>
 ) => React.ReactElement;
 
-export interface OptionCardPrice extends PriceProps<"div"> {
+export interface OptionCardPrice extends PriceProps<typeof Price> {
   secondaryPriceText?: number;
   secondaryDisabled?: boolean;
 }

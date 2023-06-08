@@ -6,7 +6,7 @@ import {
 import { HotelType } from "../../../types/hotelType.type";
 import { Props } from "./HotelFeaturedCard";
 import useStyles from "./HotelFeaturedCard.style";
-import { PriceProps } from "src/components/Price";
+import { Price, PriceProps } from "../../Price";
 
 type HotelFeaturedCardStylesNames = ClassNames<typeof useStyles>;
 
@@ -32,7 +32,7 @@ export interface HotelFeatureType2 {
 
 export type HotelFeatureType = HotelFeatureType1 | HotelFeatureType2;
 
-export interface HotelFeaturePrice extends PriceProps<"div"> {
+export interface HotelFeaturePrice extends PriceProps<typeof Price> {
   secondaryPriceText?: number;
   secondaryDisabled?: boolean;
 }
