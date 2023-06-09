@@ -9,7 +9,6 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   type?: SearchType;
   formSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   formReset?: (e: React.FormEvent<HTMLFormElement>) => void;
-  isFocused?: boolean;
 }
 
 export const Search = forwardRef(
@@ -22,9 +21,9 @@ export const Search = forwardRef(
       onClick,
       onChange,
       onBlur,
+      onFocus,
       formSubmit,
       formReset,
-      isFocused = false,
       className,
       ...props
     }: SearchProps<C>,
@@ -33,9 +32,9 @@ export const Search = forwardRef(
     const formRef = useRef<HTMLFormElement | null>(null);
     const [inputValue, setInputValue] = useState(value ?? "");
     const isFilled = inputValue;
-    const [internalIsFocus, setInternalIsFocus] = useState(isFocused);
+    const [isFocused, setIsFocused] = useState(false);
     const isVisibleResetBtn = !props.disabled && isFilled;
-    const { classes, cx } = useStyles({ type, internalIsFocus });
+    const { classes, cx } = useStyles({ type, isFocused });
 
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -50,18 +49,23 @@ export const Search = forwardRef(
     };
 
     const onClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
-      setInternalIsFocus(true);
+      setIsFocused(true);
       onClick?.(e);
     };
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-      setInternalIsFocus(false);
+      setIsFocused(false);
       onBlur?.(e);
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
       onChange?.(e);
+    };
+
+    const onFocusHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(true);
+      onFocus?.(e);
     };
 
     return (
@@ -87,6 +91,7 @@ export const Search = forwardRef(
           onClick={onClickHandler}
           onBlur={onBlurHandler}
           onChange={onChangeHandler}
+          onFocus={onFocusHandler}
           value={inputValue}
           autoComplete={autoComplete ?? "off"}
           aria-readonly={props.disabled}

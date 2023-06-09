@@ -18,18 +18,6 @@ export default {
         },
       },
     },
-    isFocused: {
-      control: {
-        type: "boolean",
-      },
-      defaultValue: false,
-      description: "외부에서 Focus를 주기 위함",
-      table: {
-        type: {
-          summary: "boolean",
-        },
-      },
-    },
     disabled: {
       control: {
         type: "boolean",
