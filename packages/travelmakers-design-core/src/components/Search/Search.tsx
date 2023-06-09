@@ -9,6 +9,7 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   type?: SearchType;
   formSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   formReset?: (e: React.FormEvent<HTMLFormElement>) => void;
+  isFocued?: boolean;
 }
 
 export const Search = forwardRef(
@@ -23,6 +24,7 @@ export const Search = forwardRef(
       onBlur,
       formSubmit,
       formReset,
+      isFocued = false,
       className,
       ...props
     }: SearchProps<C>,
@@ -31,9 +33,9 @@ export const Search = forwardRef(
     const formRef = useRef<HTMLFormElement | null>(null);
     const [inputValue, setInputValue] = useState(value ?? "");
     const isFilled = inputValue;
-    const [isFocus, setIsFocus] = useState(false);
+    const [internalIsFocus, setInternalIsFocus] = useState(isFocued);
     const isVisibleResetBtn = !props.disabled && isFilled;
-    const { classes, cx } = useStyles({ type, isFocus });
+    const { classes, cx } = useStyles({ type, internalIsFocus });
 
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -48,12 +50,12 @@ export const Search = forwardRef(
     };
 
     const onClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
-      setIsFocus(true);
+      setInternalIsFocus(true);
       onClick?.(e);
     };
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-      setIsFocus(false);
+      setInternalIsFocus(false);
       onBlur?.(e);
     };
 

@@ -12,15 +12,18 @@ const getFormBackgroundColor = (
 const getFormBorderColor = (
   colors: Record<TmColor, string>,
   type: SearchType,
-  isFocus: boolean
+  internalIsFocus: boolean
 ) => {
-  if (type === "fill" && !isFocus) return colors.surface;
+  if (type === "fill" && !internalIsFocus) return colors.surface;
 
-  return isFocus ? colors.primary : colors.outline;
+  return internalIsFocus ? colors.primary : colors.outline;
 };
 
 export default createStyles(
-  (theme, { type, isFocus }: { type: SearchType; isFocus: boolean }) => {
+  (
+    theme,
+    { type, internalIsFocus }: { type: SearchType; internalIsFocus: boolean }
+  ) => {
     const { typography, colors, spacing, radius } = theme;
 
     return {
@@ -31,7 +34,11 @@ export default createStyles(
         height: "48px",
         padding: `0 ${spacing.spacing30} 0 ${spacing.spacing50}`,
         borderRadius: radius.radius100,
-        border: `1px solid ${getFormBorderColor(colors, type, isFocus)}`,
+        border: `1px solid ${getFormBorderColor(
+          colors,
+          type,
+          internalIsFocus
+        )}`,
         overflow: "hidden",
         backgroundColor: getFormBackgroundColor(colors, type),
       },
