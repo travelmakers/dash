@@ -18,7 +18,7 @@ export default {
         },
       },
     },
-    isFocued: {
+    isFocused: {
       control: {
         type: "boolean",
       },
