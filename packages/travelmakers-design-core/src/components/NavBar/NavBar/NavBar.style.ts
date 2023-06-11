@@ -15,6 +15,7 @@ export default createStyles((theme) => {
       whiteSpace: "nowrap",
       overflow: "hidden",
       textOverflow: "ellipsis",
+      textAlign: "center",
     },
   };
 });
