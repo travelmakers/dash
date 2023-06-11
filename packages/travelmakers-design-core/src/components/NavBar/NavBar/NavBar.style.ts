@@ -5,7 +5,7 @@ export default createStyles((theme) => {
     root: {
       display: "grid",
       alignItems: "center",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: "1fr 4fr 1fr",
       minHeight: "48px",
     },
     title: {
