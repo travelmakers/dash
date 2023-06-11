@@ -9,8 +9,12 @@ export default createStyles((theme) => {
       minHeight: "48px",
     },
     title: {
+      width: "100%",
       margin: "0 auto",
       gridColumn: 2,
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
     },
   };
 });
