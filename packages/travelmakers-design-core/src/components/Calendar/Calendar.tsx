@@ -231,7 +231,7 @@ export const Calendar = forwardRef(
             {state.month.map((month, index) => {
               const title = `${state.year[index]}년 ${month}`;
               return (
-                <>
+                <React.Fragment key={title}>
                   <div className={classes.tableHead}>
                     <HeadMonthly title={title} onClear={onClear} />
                   </div>
@@ -268,7 +268,7 @@ export const Calendar = forwardRef(
                         })}
                     </tbody>
                   </table>
-                </>
+                </React.Fragment>
               );
             })}
           </div>
