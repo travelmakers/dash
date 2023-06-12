@@ -141,10 +141,18 @@ function getWeeks(date, currentDate, { options, events, eventsIndex }) {
 function getDays(date, { options, events, eventsIndex }) {
   let currentDate = startOfWeek(new Date(getYear(date), getMonth(date)));
   const weeks = getWeeks(date, currentDate, { options, events, eventsIndex });
-  const days = eachDayOfInterval({
-    start: startOfWeek(currentDate),
-    end: endOfWeek(currentDate),
-  }).map((day) => format(day, "EEE", { locale: options.locale }));
+  let days: string[];
+
+  try {
+    days = eachDayOfInterval({
+      start: startOfWeek(currentDate),
+      end: endOfWeek(currentDate),
+    }).map((day) => format(day, "EEE", { locale: options.locale }));
+  } catch (error) {
+    days = [currentDate].map((day) =>
+      format(day, "EEE", { locale: options.locale })
+    );
+  }
 
   return {
     startDate: date,
