@@ -13,6 +13,7 @@ import {
   OptionCardProps,
   ReturnType,
 } from "./OptionCard.type";
+import Link from "next/link";
 
 export interface Props {
   isMore?: boolean;
@@ -54,11 +55,11 @@ export interface Props {
   /** OptionCard 컴포넌트의 buttonName을 표시합니다. */
   buttonName?: string;
 
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-
   isPrice?: boolean;
 
   buttonProps: ButtonProps<typeof Button>;
+
+  href?: string;
 }
 
 export const OptionCard = forwardRef(
@@ -77,9 +78,9 @@ export const OptionCard = forwardRef(
       price,
       isPrice = true,
       buttonName = "예약하기",
-      onClick,
       onMoreClick,
       className,
+      href = "",
       buttonProps,
       ...props
     }: OptionCardProps<C>,
@@ -195,10 +196,11 @@ export const OptionCard = forwardRef(
         </div>
 
         <Button
+          component={Link}
+          href={href}
           className={classes.submitButton}
           size={"medium"}
           fullWidth
-          onClick={onClick}
           {...buttonProps}
         >
           {buttonName}

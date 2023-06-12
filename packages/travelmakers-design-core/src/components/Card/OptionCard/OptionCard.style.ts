@@ -42,6 +42,8 @@ export default createStyles((theme) => {
       },
     },
     submitButton: {
+      display: "flex",
+      justifyContent: "center",
       borderRadius: `0 0 ${theme.radius.radius20} ${theme.radius.radius20}`,
     },
     PriceNonBox: {
