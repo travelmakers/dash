@@ -54,7 +54,10 @@ function reducer(state, action): CalendarState {
       };
     case actionTypes.GET_INFINITE_NEXT_MONTH:
       const nextMonths = getDays(addMonths(state.startDate, 1), state);
-      if (nextMonths.year !== null) {
+      if (
+        nextMonths.year !== null &&
+        state.month[state.month.length - 1] !== nextMonths.month
+      ) {
         state.weeks.push(...nextMonths.weeks);
         return {
           ...state,
@@ -69,6 +72,12 @@ function reducer(state, action): CalendarState {
         weeks: state.weeks,
         month: [...state.month],
         year: [...state.year],
+      };
+    case actionTypes.CLEAR:
+      return {
+        days: [],
+        month: [],
+        year: [],
       };
     case actionTypes.GET_NEXT_MONTH:
       return {
@@ -157,6 +166,7 @@ export function useCalendar(
     {
       setDate: (date) => dispatch({ date, type: actionTypes.SET_DATE }),
       getNextMonth: () => dispatch({ type: actionTypes.GET_NEXT_MONTH }),
+      clear: () => dispatch({ type: actionTypes.CLEAR }),
       getInfiniteNextMonth: () =>
         dispatch({ type: actionTypes.GET_INFINITE_NEXT_MONTH }),
       getPrevMonth: () => dispatch({ type: actionTypes.GET_PREV_MONTH }),

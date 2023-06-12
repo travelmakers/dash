@@ -7,8 +7,8 @@ export interface CalendarState {
   days: string[];
   month: string[];
   year: number[];
-  events: { dates: string[]; startDate: Date; endDate: Date; note: string }[];
-  weeks: {
+  events?: { dates: string[]; startDate: Date; endDate: Date; note: string }[];
+  weeks?: {
     date: Date;
     dayOfWeek: string;
     dayOfYear: number;
@@ -33,6 +33,7 @@ const SET_DATE = "SET_DATE";
 const SET_OPTIONS = "SET_OPTIONS";
 const ADD_EVENT = "ADD_EVENT";
 const REMOVE_EVENT = "REMOVE_EVENT";
+const CLEAR = "CLEAR";
 
 export {
   GET_NEXT_MONTH,
@@ -42,4 +43,5 @@ export {
   ADD_EVENT,
   REMOVE_EVENT,
   SET_OPTIONS,
+  CLEAR,
 };
