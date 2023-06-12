@@ -246,13 +246,14 @@ export const Calendar = forwardRef(
                       {state.weeks
                         .filter((week) => _.first(week).month === month)
                         .map((week, index) => {
+                          const weeklyKey = `${state.year[index]}year-${month}month-${index}week`;
                           return (
-                            <React.Fragment key={`week-${index}`}>
+                            <React.Fragment key={weeklyKey}>
                               <tr>
                                 {week.map((day) => {
                                   return (
                                     <DateCell
-                                      key={`${index}week-day-${day}`}
+                                      key={`${weeklyKey}-${day}day`}
                                       day={day}
                                       type={onType(day)}
                                       onClick={onClick}
