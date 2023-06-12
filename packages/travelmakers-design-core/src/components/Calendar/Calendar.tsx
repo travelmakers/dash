@@ -49,6 +49,9 @@ export interface Props {
 
   /** 허용하지 않는 날짜를 클릭하였을 경우 출력할 메시지 */
   notAllowedMessage?: string;
+
+  /** 표출할 개월수 */
+  displayMonth: number;
 }
 
 /**
@@ -59,6 +62,7 @@ export interface Props {
  * - minNight로 최소 선택가능 범위를 작성해주어야한다.
  * - maxNight로 최대 선택가능 범위를 작성해주어야한다.
  * - onChange함수를 통해 선택한 일자에 대해서 확인할 수 있다.
+ * - displayMonth: 표출할 개월수에 대해서 확인한다.
  */
 export const Calendar = forwardRef(
   <C extends React.ElementType = "div">(
@@ -71,6 +75,7 @@ export const Calendar = forwardRef(
       notAllowedMessage = "해당 일자는 예약이 불가합니다. \n다른 일자를 선택해주세요.",
       minNight = 30,
       maxNight = 59,
+      displayMonth,
       onChange,
       children,
       className,
@@ -209,8 +214,7 @@ export const Calendar = forwardRef(
     };
 
     const handleCalendar = () => {
-      const months = Math.ceil(maxNight / 30);
-      Array.from({ length: months }).map(() => {
+      Array.from({ length: displayMonth }).map(() => {
         actions.getInfiniteNextMonth();
       });
     };

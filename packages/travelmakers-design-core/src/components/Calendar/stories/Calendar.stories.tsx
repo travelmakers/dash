@@ -84,6 +84,16 @@ export default {
       },
       control: { type: "number" },
     },
+    displayMonth: {
+      defaultValue: 3,
+      description: "표출할 개월수에 대해서 확인한다.",
+      table: {
+        type: {
+          summary: "number",
+        },
+      },
+      control: { type: "number" },
+    },
     selected: {
       defaultValue: {
         from: {
