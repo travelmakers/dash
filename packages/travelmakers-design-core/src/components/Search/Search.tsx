@@ -1,4 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
+import { isFilteredReg, sanitizeInput } from "@travelmakers/utils";
 import React, { forwardRef, useRef, useState } from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
@@ -31,6 +32,7 @@ export const Search = forwardRef(
   ) => {
     const formRef = useRef<HTMLFormElement | null>(null);
     const [isFocused, setIsFocused] = useState(false);
+    const [inputValue, setInputValue] = useState<string>(value);
     const isFilled = value;
     const isVisibleResetBtn = !props.disabled && isFilled;
     const { classes, cx } = useStyles({ type, isFocused });
@@ -57,6 +59,10 @@ export const Search = forwardRef(
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (isFilteredReg(e.target.value)) {
+        e.target.value = sanitizeInput(e.target.value);
+      }
+      setInputValue(sanitizeInput(e.target.value));
       onChange?.(e);
     };
 
@@ -89,7 +95,7 @@ export const Search = forwardRef(
           onBlur={onBlurHandler}
           onChange={onChangeHandler}
           onFocus={onFocusHandler}
-          value={value}
+          value={inputValue}
           autoComplete={autoComplete ?? "off"}
           aria-readonly={props.disabled}
           {...props}
