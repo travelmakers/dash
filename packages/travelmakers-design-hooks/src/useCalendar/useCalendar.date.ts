@@ -11,6 +11,7 @@ import {
   isEqual,
   isSameDay,
   isSameMonth,
+  isValid,
   isWeekend,
   lastDayOfMonth,
   startOfWeek,
@@ -143,15 +144,19 @@ function getDays(date, { options, events, eventsIndex }) {
   let currentDate = startOfWeek(new Date(getYear(date), getMonth(date)));
   const weeks = getWeeks(date, currentDate, { options, events, eventsIndex });
   let days: string[];
-  if (!isEqual(startOfWeek(currentDate), endOfWeek(currentDate))) {
-    days = eachDayOfInterval({
-      start: startOfWeek(currentDate),
-      end: endOfWeek(currentDate),
-    }).map((day) => format(day, "EEE", { locale: options.locale }));
+  if (isValid(startOfWeek(currentDate)) && isValid(endOfWeek(currentDate))) {
+    if (!isEqual(startOfWeek(currentDate), endOfWeek(currentDate))) {
+      days = eachDayOfInterval({
+        start: startOfWeek(currentDate),
+        end: endOfWeek(currentDate),
+      }).map((day) => format(day, "EEE", { locale: options.locale }));
+    } else {
+      days = [startOfWeek(currentDate)].map((day) =>
+        format(day, "EEE", { locale: options.locale })
+      );
+    }
   } else {
-    days = [startOfWeek(currentDate)].map((day) =>
-      format(day, "EEE", { locale: options.locale })
-    );
+    days = [];
   }
 
   return {
