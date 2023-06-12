@@ -234,7 +234,7 @@ export const Calendar = forwardRef(
           <Indicator checked={checked} onClear={onClear} />
           <div className={classes.calendar}>
             {state.month.map((month, index) => {
-              if (!state.year) return null;
+              if (!state.year[index]) return null;
               const title = `${state.year[index]}년 ${month}`;
               return (
                 <React.Fragment key={title}>
