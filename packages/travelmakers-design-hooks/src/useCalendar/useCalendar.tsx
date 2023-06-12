@@ -118,11 +118,18 @@ function initialize(date, options) {
     options: { ...initialState.options, ...options },
   };
   const days = getDays(date, events);
+  if (days.year !== null) {
+    return {
+      ...events,
+      ...days,
+      month: [...initialState.month, days.month],
+      year: [...initialState.year, days.year],
+    };
+  }
   return {
     ...events,
-    ...days,
-    month: [...initialState.month, days.month],
-    year: [...initialState.year, days.year],
+    month: [...initialState.month],
+    year: [...initialState.year],
   };
 }
 
