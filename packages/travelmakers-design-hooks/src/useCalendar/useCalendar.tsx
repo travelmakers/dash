@@ -46,7 +46,7 @@ function reducer(state, action): CalendarState {
       };
     case actionTypes.GET_INFINITE_NEXT_MONTH:
       const nextMonths = getDays(addMonths(state.startDate, 1), state);
-      if (nextMonths !== null) {
+      if (nextMonths.year !== null) {
         state.weeks.push(...nextMonths.weeks);
       }
       return {

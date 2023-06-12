@@ -150,7 +150,13 @@ function getDays(date, { options, events, eventsIndex }) {
       end: endOfWeek(currentDate),
     }).map((day) => format(day, "EEE", { locale: options.locale }));
   } else {
-    return null;
+    return {
+      startDate: null,
+      month: null,
+      year: null,
+      weeks,
+      days,
+    };
   }
 
   return {
