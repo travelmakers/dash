@@ -247,11 +247,12 @@ export const Calendar = forwardRef(
                         .filter((week) => _.first(week).month === month)
                         .map((week, index) => {
                           return (
-                            <>
-                              <tr key={index}>
+                            <React.Fragment key={`week-${index}`}>
+                              <tr>
                                 {week.map((day) => {
                                   return (
                                     <DateCell
+                                      key={`${index}week-day-${day}`}
                                       day={day}
                                       type={onType(day)}
                                       onClick={onClick}
@@ -263,7 +264,7 @@ export const Calendar = forwardRef(
                                   );
                                 })}
                               </tr>
-                            </>
+                            </React.Fragment>
                           );
                         })}
                     </tbody>

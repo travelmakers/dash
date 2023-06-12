@@ -145,24 +145,12 @@ function getDays(date, { options, events, eventsIndex }) {
   const weeks = getWeeks(date, currentDate, { options, events, eventsIndex });
   let days: string[];
   if (isValid(startOfWeek(currentDate)) && isValid(endOfWeek(currentDate))) {
-    if (!isEqual(startOfWeek(currentDate), endOfWeek(currentDate))) {
-      days = eachDayOfInterval({
-        start: startOfWeek(currentDate),
-        end: endOfWeek(currentDate),
-      }).map((day) => format(day, "EEE", { locale: options.locale }));
-    } else {
-      days = [startOfWeek(currentDate)].map((day) =>
-        format(day, "EEE", { locale: options.locale })
-      );
-    }
+    days = eachDayOfInterval({
+      start: startOfWeek(currentDate),
+      end: endOfWeek(currentDate),
+    }).map((day) => format(day, "EEE", { locale: options.locale }));
   } else {
-    return {
-      startDate: null,
-      month: null,
-      year: null,
-      weeks: [],
-      days: [],
-    };
+    return null;
   }
 
   return {
