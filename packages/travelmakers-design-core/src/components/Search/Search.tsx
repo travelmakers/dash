@@ -30,9 +30,8 @@ export const Search = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const formRef = useRef<HTMLFormElement | null>(null);
-    const [inputValue, setInputValue] = useState(value ?? "");
-    const isFilled = inputValue;
     const [isFocused, setIsFocused] = useState(false);
+    const isFilled = value;
     const isVisibleResetBtn = !props.disabled && isFilled;
     const { classes, cx } = useStyles({ type, isFocused });
 
@@ -44,7 +43,6 @@ export const Search = forwardRef(
     };
 
     const onResetHandler = (e: React.FormEvent<HTMLFormElement>) => {
-      setInputValue("");
       formReset?.(e);
     };
 
@@ -59,7 +57,6 @@ export const Search = forwardRef(
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInputValue(e.target.value);
       onChange?.(e);
     };
 
@@ -92,7 +89,7 @@ export const Search = forwardRef(
           onBlur={onBlurHandler}
           onChange={onChangeHandler}
           onFocus={onFocusHandler}
-          value={inputValue}
+          value={value}
           autoComplete={autoComplete ?? "off"}
           aria-readonly={props.disabled}
           {...props}
