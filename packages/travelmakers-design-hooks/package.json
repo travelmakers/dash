@@ -1,6 +1,6 @@
 {
   "name": "@travelmakers/hooks",
-  "version": "0.0.10-alpha.5",
+  "version": "0.0.10-alpha.6",
   "main": "cjs/packages/travelmakers-design-hooks/src/index.js",
   "module": "esm/packages/travelmakers-design-hooks/src/index.js",
   "types": "lib/index.d.ts",
