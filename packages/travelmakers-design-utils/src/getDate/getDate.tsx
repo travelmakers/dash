@@ -25,7 +25,7 @@ function getDateValuate(date?: inputDate) {
  * Date객체를 YYYY/MM/DD 형태로 표출
  * @param date 날짜객체
  * @param separators 구분좌(/)
- * @returns format: string, date: dayjs.Dayjs
+ * @returns format: string, date: Date, dayjs: dayjs.Dayjs
  */
 export function getDate(date?: inputDate, format?: string) {
   const d = getDateValuate(date);
@@ -33,7 +33,8 @@ export function getDate(date?: inputDate, format?: string) {
 
   return {
     format: d.format(template),
-    date: d,
+    date: d.toDate(),
+    dayjs: d,
   };
 }
 

@@ -22,6 +22,7 @@ import HeadMonthly from "./_components/HeadMonthly";
 import HeadTitle from "./_components/HeadTitle";
 import Indicator from "./_components/Indicator";
 import OptionBox from "./_components/OptionBox";
+import { getDate } from "@travelmakers/utils";
 
 export interface Props {
   hotelName?: string;
@@ -30,7 +31,7 @@ export interface Props {
   type: "tour" | "move-in";
 
   /** 선택 가능한 일자 */
-  selectableDates: Date[];
+  selectableDates: string[];
 
   /** 선택가능한 최소 일자 */
   minNight: number;
@@ -44,7 +45,7 @@ export interface Props {
   selected?: SelectedDays;
 
   /** 선택 불가능한 일자 */
-  disabledDays?: Date[];
+  disabledDays?: string[];
 
   /** 허용하지 않는 날짜를 클릭하였을 경우 출력할 메시지 */
   notAllowedMessage?: string;
@@ -132,10 +133,10 @@ export const Calendar = forwardRef(
      */
     const isDisabledDay = (day: DateCellDay) => {
       const isDisable = disabledDays.some((disabledDay) =>
-        isEqual(disabledDay, day.date)
+        isEqual(getDate(disabledDay).date, day.date)
       );
       const isSelectable = !selectableDates.some((selectableDate) =>
-        isEqual(selectableDate, day.date)
+        isEqual(getDate(selectableDate).date, day.date)
       );
       return isDisable || isSelectable;
     };
