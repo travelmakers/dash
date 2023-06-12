@@ -7,9 +7,10 @@ import { DateCellDay } from "../DateCell/DateCell.type";
 
 interface Props {
   checked?: {
-    from: DateCellDay;
-    to: DateCellDay;
+    from?: DateCellDay;
+    to?: DateCellDay;
   };
+  initOpen?: boolean;
   children: React.ReactNode;
   title: string;
   buttonTitle: string;
@@ -21,12 +22,13 @@ const OptionBox: React.FC<Props> = ({
     from: null,
     to: null,
   },
+  initOpen = false,
   children,
   title,
   buttonTitle,
   onClick,
 }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(initOpen);
   const { classes, cx } = useStyles({ open });
 
   useEffect(() => {
