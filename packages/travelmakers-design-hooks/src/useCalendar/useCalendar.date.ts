@@ -156,7 +156,13 @@ function getDays(date, { options, events, eventsIndex }) {
       );
     }
   } else {
-    days = [];
+    return {
+      startDate: null,
+      month: null,
+      year: null,
+      weeks: [],
+      days: [],
+    };
   }
 
   return {
