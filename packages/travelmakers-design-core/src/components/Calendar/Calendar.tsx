@@ -234,8 +234,9 @@ export const Calendar = forwardRef(
           <Indicator checked={checked} onClear={onClear} />
           <div className={classes.calendar}>
             {state.month.map((month, index) => {
-              if (!state.year[index]) return null;
-              const title = `${state.year[index]}년 ${month}`;
+              const year = state.year[index];
+              if (!year) return null;
+              const title = `${year}년 ${month}`;
               return (
                 <React.Fragment key={title}>
                   <div className={classes.tableHead}>
@@ -252,11 +253,13 @@ export const Calendar = forwardRef(
                       {state.weeks
                         .filter((week) => _.first(week).month === month)
                         .map((week, index) => {
-                          const weeklyKey = `${state.year[index]}year-${month}month-${index}week`;
+                          if (!year) return null;
+                          const weeklyKey = `${year}year-${month}month-${index}week`;
                           return (
                             <React.Fragment key={weeklyKey}>
                               <tr>
                                 {week.map((day) => {
+                                  if (!year) return null;
                                   return (
                                     <DateCell
                                       key={`${weeklyKey}-${day}day`}
