@@ -38,23 +38,37 @@ function reducer(state, action): CalendarState {
         options: { ...state.options, ...action.options },
       };
     case actionTypes.SET_DATE:
+      const days = getDays(action.date, state);
+      if (days.year !== null) {
+        return {
+          ...state,
+          ...getDays(action.date, state),
+          month: [...state.month, getDays(action.date, state).month],
+          year: [...state.year, getDays(action.date, state).year],
+        };
+      }
       return {
         ...state,
-        ...getDays(action.date, state),
-        month: [...state.month, getDays(action.date, state).month],
-        year: [...state.year, getDays(action.date, state).year],
+        month: [...state.month],
+        year: [...state.year],
       };
     case actionTypes.GET_INFINITE_NEXT_MONTH:
       const nextMonths = getDays(addMonths(state.startDate, 1), state);
       if (nextMonths.year !== null) {
         state.weeks.push(...nextMonths.weeks);
+        return {
+          ...state,
+          ...nextMonths,
+          weeks: state.weeks,
+          month: [...state.month, nextMonths.month],
+          year: [...state.year, nextMonths.year],
+        };
       }
       return {
         ...state,
-        ...nextMonths,
         weeks: state.weeks,
-        month: [...state.month, nextMonths.month],
-        year: [...state.year, nextMonths.year],
+        month: [...state.month],
+        year: [...state.year],
       };
     case actionTypes.GET_NEXT_MONTH:
       return {
