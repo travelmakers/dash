@@ -143,7 +143,7 @@ function getDays(date, { options, events, eventsIndex }) {
   let currentDate = startOfWeek(new Date(getYear(date), getMonth(date)));
   const weeks = getWeeks(date, currentDate, { options, events, eventsIndex });
   let days: string[];
-  if (isEqual(startOfWeek(currentDate), endOfWeek(currentDate))) {
+  if (!isEqual(startOfWeek(currentDate), endOfWeek(currentDate))) {
     days = eachDayOfInterval({
       start: startOfWeek(currentDate),
       end: endOfWeek(currentDate),
