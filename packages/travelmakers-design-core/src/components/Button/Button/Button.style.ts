@@ -32,6 +32,13 @@ export default createStyles(
         display: "flex",
         alignItems: "center",
       },
+      disabled: {
+        pointerEvents: "none",
+        cursor: "default",
+        backgroundColor: palettes[variant][2],
+        border: isLineType ? `1px solid ${palettes[variant][3]}` : "none",
+        color: palettes[variant][3],
+      },
       solid: {
         color: palettes[variant][5],
         backgroundColor: palettes[variant][0],

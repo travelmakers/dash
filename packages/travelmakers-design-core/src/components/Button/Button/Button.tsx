@@ -70,7 +70,12 @@ export const Button = forwardRef(
         ref={ref}
         type={_type}
         disabled={disabled}
-        className={cx(classes.root, classes.solid, className)}
+        className={cx(
+          classes.root,
+          classes.solid,
+          disabled && classes.disabled,
+          className
+        )}
         {...props}
       >
         <div className={classes.inner}>

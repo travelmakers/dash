@@ -149,3 +149,11 @@ export const Default = (props) => {
     </div>
   );
 };
+
+export const Disabled = (props) => {
+  return (
+    <div style={{ margin: 40, display: "flex" }}>
+      <OptionCard {...props} href="dsfsdfs" buttonProps={{ disabled: true }} />
+    </div>
+  );
+};
