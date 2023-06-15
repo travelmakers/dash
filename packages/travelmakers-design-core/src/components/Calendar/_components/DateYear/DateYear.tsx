@@ -1,6 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import { forwardRef } from "react";
-import { View } from "../../../View";
 import useStyles from "./DateYear.style";
 import { DateYearProps, ReturnType } from "./DateYear.type";
 import React from "react";
@@ -8,7 +7,7 @@ import HeadMonthly from "../HeadMonthly";
 import HeadTitle from "../HeadTitle";
 import { CalendarState } from "@travelmakers/hooks/src/useCalendar/useCalendar.type";
 import { DateCell } from "../DateCell";
-import _ from "lodash-es";
+import _ from "lodash";
 import { getMonth } from "date-fns";
 import { DateCellDay, DateCellType } from "../DateCell/DateCell.type";
 

@@ -1,6 +1,6 @@
 import { useCalendar, useUpdateEffect } from "@travelmakers/hooks";
 import { PolymorphicRef } from "@travelmakers/styles";
-import _ from "lodash-es";
+import _ from "lodash";
 import React, {
   PropsWithChildren,
   forwardRef,

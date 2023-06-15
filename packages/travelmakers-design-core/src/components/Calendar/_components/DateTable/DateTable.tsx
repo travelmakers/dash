@@ -6,7 +6,7 @@ import { DateCellDay, DateCellType } from "../DateCell/DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
 import { addDays, differenceInDays, isEqual } from "date-fns";
 import { getDate } from "@travelmakers/utils";
-import _ from "lodash-es";
+import _ from "lodash";
 import { CalendarState } from "@travelmakers/hooks/src/useCalendar/useCalendar.type";
 import { DateYear } from "../DateYear/DateYear";
 import { View } from "../../../View";
