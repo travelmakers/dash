@@ -3,6 +3,7 @@ export { default as IcCompanyApple } from "./IcCompanyApple";
 export { default as IcCompanyBrunch } from "./IcCompanyBrunch";
 export { default as IcCompanyFacebook } from "./IcCompanyFacebook";
 export { default as IcCompanyGoogle } from "./IcCompanyGoogle";
+export { default as IcCompanyGoogleGray } from "./IcCompanyGoogleGray";
 export { default as IcCompanyKakaoPay } from "./IcCompanyKakaoPay";
 export { default as IcCompanyKakao } from "./IcCompanyKakao";
 export { default as IcCompanyLivinginhotel } from "./IcCompanyLivinginhotel";

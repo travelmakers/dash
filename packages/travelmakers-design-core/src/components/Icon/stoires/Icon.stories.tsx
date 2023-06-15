@@ -16,6 +16,7 @@ export default {
           "IcCompanyBrunch",
           "IcCompanyFacebook",
           "IcCompanyGoogle",
+          "IcCompanyGoogleGray",
           "IcCompanyKakaoPay",
           "IcCompanyKakao",
           "IcCompanyLivinginhotel",

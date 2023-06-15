@@ -4,12 +4,10 @@ import { Typography } from "../../../Typography";
 import { Icon } from "../../../Icon";
 import { Button } from "../../../Button";
 import { DateCellDay } from "../DateCell/DateCell.type";
+import { SelectedDays } from "../../Calendar.type";
 
 interface Props {
-  checked?: {
-    from?: DateCellDay;
-    to?: DateCellDay;
-  };
+  checked?: SelectedDays;
   initOpen?: boolean;
   children: React.ReactNode;
   title: string;
@@ -21,6 +19,7 @@ const OptionBox: React.FC<Props> = ({
   checked = {
     from: null,
     to: null,
+    time: { hour: null, minutes: null },
   },
   initOpen = false,
   children,
@@ -29,7 +28,7 @@ const OptionBox: React.FC<Props> = ({
   onClick,
 }) => {
   const [open, setOpen] = useState(initOpen);
-  const { classes, cx } = useStyles({ open });
+  const { classes } = useStyles({ open });
 
   useEffect(() => {
     setOpen(initOpen);
