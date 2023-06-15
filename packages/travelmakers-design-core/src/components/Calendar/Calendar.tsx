@@ -1,28 +1,19 @@
 import { useCalendar, useUpdateEffect } from "@travelmakers/hooks";
 import { PolymorphicRef } from "@travelmakers/styles";
-import { addDays, differenceInDays, getMonth, isEqual } from "date-fns";
-import _ from "lodash";
+import _ from "lodash-es";
 import React, {
   PropsWithChildren,
   forwardRef,
   useEffect,
+  useMemo,
   useState,
 } from "react";
-import { toast } from "react-hot-toast";
-import { Toast } from "../Toast";
 import { View } from "../View";
 import useStyles from "./Calendar.style";
 import { CalendarProps, ReturnType, SelectedDays } from "./Calendar.type";
-import { DateCell } from "./_components/DateCell";
-import {
-  DateCellDay,
-  DateCellType,
-} from "./_components/DateCell/DateCell.type";
-import HeadMonthly from "./_components/HeadMonthly";
-import HeadTitle from "./_components/HeadTitle";
 import Indicator from "./_components/Indicator";
 import OptionBox from "./_components/OptionBox";
-import { getDate } from "@travelmakers/utils";
+import { DateTable } from "./_components/DateTable/DateTable";
 
 export interface Props {
   hotelName?: string;
@@ -85,7 +76,6 @@ export const Calendar = forwardRef(
   ) => {
     const { classes, cx } = useStyles();
     const [state, actions] = useCalendar(null);
-    const [enabledDays, setEnabledDays] = useState<Date>();
     const [checked, setChecked] = useState<SelectedDays>({
       from: selected?.from,
       to: selected?.to,
@@ -96,133 +86,14 @@ export const Calendar = forwardRef(
       onChange?.(checked);
     }, [checked]);
 
-    /**
-     * ANCHOR: 선택하지 않은 날짜 사이에 대해서 체크
-     * @param day
-     * @returns
-     */
-    const isBetweenNotSelectedDays = (day: DateCellDay) => {
-      return (
-        checked.from &&
-        !checked.to &&
-        differenceInDays(day.date, checked.from.date) > 0 &&
-        differenceInDays(enabledDays, day.date) >= 0
-      );
-    };
-
-    const isMinNightDays = (day: DateCellDay) => {
-      if (checked.from) {
-        const resultDay = differenceInDays(day.date, checked.from.date);
-        return resultDay > minNight;
-      }
-      return false;
-    };
-
-    /**
-     * ANCHOR: From Date, To Date 날짜 사이에 대해서 체크
-     * @param day
-     * @returns
-     */
-    const isBetweenFromAndToDays = (day: DateCellDay) => {
-      return (
-        checked.from &&
-        checked.to &&
-        differenceInDays(day.date, checked.from.date) > 0 &&
-        differenceInDays(checked.to.date, day.date) > 0
-      );
-    };
-
-    /**
-     * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
-     * @param day
-     * @returns
-     */
-    const isDisabledDay = (day: DateCellDay) => {
-      const isDisable = disabledDays.some((disabledDay) =>
-        isEqual(getDate(disabledDay).date, day.date)
-      );
-      const isSelectable = !selectableDates.some((selectableDate) =>
-        isEqual(getDate(selectableDate).date, day.date)
-      );
-      return isDisable || isSelectable;
-    };
-
-    const onClear = () => {
-      setChecked({ to: null, from: null, time: { hour: null, minutes: null } });
-    };
-
-    const onClick = (day: DateCellDay) => {
-      if (isDisabledDay(day)) {
-        notAllowedMessage;
-      } else if (type === "tour") {
-        setChecked((prev) => {
-          return { ...prev, from: day, to: day };
+    const handleCalendar = useMemo(
+      () => () => {
+        Array.from({ length: displayMonth }).map(() => {
+          actions.getInfiniteNextMonth();
         });
-      } else if (!checked.from) {
-        setChecked((prev) => {
-          return { ...prev, from: day };
-        });
-        setEnabledDays(addDays(day.date, maxNight));
-      } else if (
-        isBetweenNotSelectedDays(day) &&
-        (isDisabledDay(day) || !isMinNightDays(day))
-      ) {
-        notAllowedMessage;
-      } else if (isBetweenNotSelectedDays(day)) {
-        setChecked((prev) => {
-          return { ...prev, to: day };
-        });
-        setEnabledDays(addDays(day.date, maxNight));
-      } else {
-        setChecked({
-          to: null,
-          from: null,
-          time: { hour: null, minutes: null },
-        });
-      }
-    };
-
-    const onType = (day: DateCellDay): DateCellType => {
-      if (isDisabledDay(day)) {
-        if (checked.from && isEqual(checked.to?.date, day.date)) {
-          return "disabled-to-between";
-        } else if (
-          checked.from &&
-          differenceInDays(day.date, checked.from.date) > 0 &&
-          differenceInDays(enabledDays, day.date) >= 0 &&
-          (!checked.to || differenceInDays(checked.to?.date, day.date) >= 0)
-        ) {
-          return differenceInDays(enabledDays, day.date) > 0
-            ? "disabled-between"
-            : "disabled-to-between";
-        } else {
-          return "disabled";
-        }
-      }
-
-      if (isBetweenNotSelectedDays(day)) {
-        const isMinNight = isMinNightDays(day);
-        if (differenceInDays(enabledDays, day.date) > 0) {
-          return isMinNight ? "default-between" : "disabled-between";
-        } else {
-          return isMinNight ? "to-between" : "disabled-to-between";
-        }
-      } else if (isEqual(day.date, checked.from?.date)) {
-        return type === "move-in" ? "from" : "focus";
-      } else if (isEqual(day.date, checked.to?.date)) {
-        return "to";
-      } else if (isBetweenFromAndToDays(day)) {
-        return "default-between";
-      }
-
-      return "default";
-    };
-
-    const handleCalendar = () => {
-      Array.from({ length: displayMonth }).map(() => {
-        actions.getInfiniteNextMonth();
-      });
-    };
+      },
+      []
+    );
 
     useEffect(() => {
       state && handleCalendar();
@@ -238,55 +109,22 @@ export const Calendar = forwardRef(
         >
           <Indicator selected={selected} type={type} />
           <div className={classes.calendar}>
-            {state.month.map((month, index) => {
-              const year = state.year[index];
-              if (!year) return null;
-              const title = `${year}년 ${month}`;
-              return (
-                <React.Fragment key={title}>
-                  <div className={classes.tableHead}>
-                    <HeadMonthly title={title} onClear={onClear} />
-                  </div>
-                  <table>
-                    <caption className={"sr-only"}>
-                      {hotelName && `${hotelName} :`} {title} 달력
-                    </caption>
-                    <thead className={classes.mt10}>
-                      <HeadTitle />
-                    </thead>
-                    <tbody>
-                      {state.weeks
-                        .filter((week) => _.first(week).month === month)
-                        .map((week, index) => {
-                          if (!year) return null;
-                          const weeklyKey = `${year}year-${month}month-${index}week`;
-                          return (
-                            <React.Fragment key={weeklyKey}>
-                              <tr>
-                                {week.map((day) => {
-                                  if (!day.year) return null;
-                                  return (
-                                    <DateCell
-                                      key={`${weeklyKey}-${day.dayOfMonth}day`}
-                                      day={day}
-                                      type={onType(day)}
-                                      onClick={onClick}
-                                      visible={
-                                        _.first(week).month ===
-                                        `${getMonth(day.date) + 1}월`
-                                      }
-                                    />
-                                  );
-                                })}
-                              </tr>
-                            </React.Fragment>
-                          );
-                        })}
-                    </tbody>
-                  </table>
-                </React.Fragment>
-              );
-            })}
+            {state && (
+              <DateTable
+                checked={checked}
+                setChecked={setChecked}
+                type={type}
+                selectableDates={selectableDates}
+                disabledDays={disabledDays}
+                minNight={minNight}
+                maxNight={maxNight}
+                hotelName={hotelName}
+                notAllowedMessage={notAllowedMessage}
+                months={state.month}
+                years={state.year}
+                weeks={state.weeks}
+              />
+            )}
           </div>
           {children}
         </View>
