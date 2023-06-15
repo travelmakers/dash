@@ -72,7 +72,7 @@ export const Calendar = forwardRef(
       selected,
       disabledDays = [],
       selectableDates = [],
-      notAllowedMessage = "해당 일자는 예약이 불가합니다. \n다른 일자를 선택해주세요.",
+      notAllowedMessage,
       minNight = 30,
       maxNight = 59,
       displayMonth,
@@ -152,7 +152,7 @@ export const Calendar = forwardRef(
 
     const onClick = (day: DateCellDay) => {
       if (isDisabledDay(day)) {
-        toast(<Toast text={notAllowedMessage} />);
+        notAllowedMessage;
       } else if (type === "tour") {
         setChecked((prev) => {
           return { ...prev, from: day, to: day };
@@ -166,7 +166,7 @@ export const Calendar = forwardRef(
         isBetweenNotSelectedDays(day) &&
         (isDisabledDay(day) || !isMinNightDays(day))
       ) {
-        toast(<Toast text={notAllowedMessage} />);
+        notAllowedMessage;
       } else if (isBetweenNotSelectedDays(day)) {
         setChecked((prev) => {
           return { ...prev, to: day };
@@ -231,7 +231,7 @@ export const Calendar = forwardRef(
           className={cx(className, classes.container)}
           {...props}
         >
-          <Indicator checked={checked} onClear={onClear} />
+          <Indicator checked={checked} type={type} />
           <div className={classes.calendar}>
             {state.month.map((month, index) => {
               const year = state.year[index];

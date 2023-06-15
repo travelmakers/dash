@@ -4,8 +4,17 @@ import { getDate, getDay } from "@travelmakers/utils";
 import { Typography } from "../../../Typography";
 import { Divider } from "../../../Divider";
 import { differenceInDays } from "date-fns";
+import { DateCellDay } from "../DateCell/DateCell.type";
 
-const Indicator = ({ checked, onClear }) => {
+interface Props {
+  checked: {
+    from: DateCellDay;
+    to: DateCellDay;
+  };
+  type: "tour" | "move-in";
+}
+
+const Indicator = ({ checked, type }) => {
   const { classes, cx } = useStyles();
   return (
     <div className={classes.indicatorBox}>
@@ -59,16 +68,6 @@ const Indicator = ({ checked, onClear }) => {
             <Typography level="subhead2" color="primary1">
               {differenceInDays(checked.to.date, checked.from.date)}박
             </Typography>
-            {/* <br />
-            <Typography
-              level="caption"
-              color="primary1"
-              style={{ cursor: "pointer" }}
-              onClick={() => onClear()}
-              underline
-            >
-              일정변경
-            </Typography> */}
           </div>
         </div>
       )}

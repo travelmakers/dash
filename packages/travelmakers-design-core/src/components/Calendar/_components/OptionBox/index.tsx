@@ -32,6 +32,10 @@ const OptionBox: React.FC<Props> = ({
   const { classes, cx } = useStyles({ open });
 
   useEffect(() => {
+    setOpen(initOpen);
+  }, [initOpen]);
+
+  useEffect(() => {
     if (!checked.from || !checked.to) {
       setOpen(false);
     }
