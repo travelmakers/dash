@@ -3,6 +3,7 @@ import useStyles from "./OptionBox.style";
 import { Typography } from "../../../Typography";
 import { Icon } from "../../../Icon";
 import { Button, ButtonProps } from "../../../Button";
+import { DateCellDay } from "../DateCell/DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
 import Link from "next/link";
 
@@ -13,7 +14,7 @@ interface Props {
   title: string;
   buttonTitle: string;
   buttonProps: ButtonProps<typeof Button>;
-  href?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const OptionBox: React.FC<Props> = ({
@@ -26,8 +27,8 @@ const OptionBox: React.FC<Props> = ({
   children,
   title,
   buttonTitle,
-  href = "",
   buttonProps,
+  onClick,
 }) => {
   const [open, setOpen] = useState(initOpen);
   const { classes } = useStyles({ open });
@@ -56,13 +57,7 @@ const OptionBox: React.FC<Props> = ({
         />
       </div>
       <div className={classes.contentBox}>{children}</div>
-      <Button
-        component={Link}
-        href={href}
-        size="medium"
-        className={classes.submitButton}
-        {...buttonProps}
-      >
+      <Button size="medium" onClick={onClick} {...buttonProps}>
         {buttonTitle}
       </Button>
     </div>
