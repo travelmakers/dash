@@ -28,6 +28,10 @@ export type week = {
 export interface SelectedDays {
   from?: DateCellDay;
   to?: DateCellDay;
+  time?: {
+    hour?: string;
+    minutes?: string;
+  };
 }
 
 interface SharedCalendarProps

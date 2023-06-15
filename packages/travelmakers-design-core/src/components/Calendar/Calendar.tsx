@@ -86,10 +86,15 @@ export const Calendar = forwardRef(
     const { classes, cx } = useStyles();
     const [state, actions] = useCalendar(null);
     const [enabledDays, setEnabledDays] = useState<Date>();
-    const [checked, setChecked] = useState({
+    const [checked, setChecked] = useState<SelectedDays>({
       from: selected?.from,
       to: selected?.to,
+      time: selected.time,
     });
+
+    useUpdateEffect(() => {
+      setChecked(selected);
+    }, [selected]);
 
     useUpdateEffect(() => {
       onChange?.(checked);
@@ -147,7 +152,7 @@ export const Calendar = forwardRef(
     };
 
     const onClear = () => {
-      setChecked({ to: null, from: null });
+      setChecked({ to: null, from: null, time: { hour: null, minutes: null } });
     };
 
     const onClick = (day: DateCellDay) => {
@@ -173,7 +178,11 @@ export const Calendar = forwardRef(
         });
         setEnabledDays(addDays(day.date, maxNight));
       } else {
-        setChecked({ to: null, from: null });
+        setChecked({
+          to: null,
+          from: null,
+          time: { hour: null, minutes: null },
+        });
       }
     };
 
