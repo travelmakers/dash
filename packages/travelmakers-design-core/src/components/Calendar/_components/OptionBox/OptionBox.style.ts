@@ -24,5 +24,9 @@ export default createStyles((theme, { open }: { open: boolean }) => {
     contentBox: {
       display: open ? "block" : "none",
     },
+    submitButton: {
+      display: "flex",
+      justifyContent: "center",
+    },
   };
 });
