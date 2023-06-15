@@ -7,12 +7,12 @@ import { differenceInDays } from "date-fns";
 import { SelectedDays } from "../../Calendar.type";
 
 interface Props {
-  checked: SelectedDays;
+  selected: SelectedDays;
   type: "tour" | "move-in";
 }
 
-const Indicator: React.FC<Props> = ({ checked, type }) => {
-  const { classes, cx } = useStyles();
+const Indicator: React.FC<Props> = ({ selected, type }) => {
+  const { classes } = useStyles();
   const isTour = type === "tour";
   const headlineText = {
     from: !isTour ? "체크인" : "투어 예정일",
@@ -24,7 +24,7 @@ const Indicator: React.FC<Props> = ({ checked, type }) => {
 
   const generateToHeadlineText = () => {
     if (isTour) {
-      if (!checked.time?.hour && !checked.time?.minutes) {
+      if (!selected.time?.hour && !selected.time?.minutes) {
         return (
           <Typography
             level="caption"
@@ -36,12 +36,12 @@ const Indicator: React.FC<Props> = ({ checked, type }) => {
       return (
         <div className={classes.indicatorSelectedDay}>
           <Typography level="subhead1" color="primary1" strong>
-            {`${checked.time.hour}:${checked.time.minutes}`}
+            {`${selected.time.hour}:${selected.time.minutes}`}
           </Typography>
         </div>
       );
     } else {
-      if (!checked.to) {
+      if (!selected.to) {
         return (
           <Typography
             level="caption"
@@ -53,10 +53,10 @@ const Indicator: React.FC<Props> = ({ checked, type }) => {
       return (
         <div className={classes.indicatorSelectedDay}>
           <Typography level="subhead1" color="primary1" strong>
-            {getDate(checked.to.date).format}
+            {getDate(selected.to.date).format}
           </Typography>
           <Typography level="caption" color="primary1">
-            {getDay(checked.to.date)}
+            {getDay(selected.to.date)}
           </Typography>
         </div>
       );
@@ -71,17 +71,17 @@ const Indicator: React.FC<Props> = ({ checked, type }) => {
             {headlineText.from}
           </Typography>
 
-          {!checked.from ? (
+          {!selected.from ? (
             <Typography level="caption" color="primary3">
               일정을 <br /> 선택해주세요.
             </Typography>
           ) : (
             <div className={classes.indicatorSelectedDay}>
               <Typography level="subhead1" color="primary1" strong>
-                {getDate(checked.from.date).format}
+                {getDate(selected.from.date).format}
               </Typography>
               <Typography level="caption" color="primary1">
-                {getDay(checked.from.date)}
+                {getDay(selected.from.date)}
               </Typography>
             </div>
           )}
@@ -95,11 +95,11 @@ const Indicator: React.FC<Props> = ({ checked, type }) => {
           {generateToHeadlineText()}
         </div>
       </div>
-      {checked.from && checked.to && !isTour && (
+      {selected.from && selected.to && !isTour && (
         <div className={classes.indicatorDateCountBox}>
           <div>
             <Typography level="subhead2" color="primary1">
-              {differenceInDays(checked.to.date, checked.from.date)}박
+              {differenceInDays(selected.to.date, selected.from.date)}박
             </Typography>
           </div>
         </div>

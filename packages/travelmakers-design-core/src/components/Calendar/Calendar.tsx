@@ -93,10 +93,6 @@ export const Calendar = forwardRef(
     });
 
     useUpdateEffect(() => {
-      setChecked(selected);
-    }, [selected]);
-
-    useUpdateEffect(() => {
       onChange?.(checked);
     }, [checked]);
 
@@ -240,7 +236,7 @@ export const Calendar = forwardRef(
           className={cx(className, classes.container)}
           {...props}
         >
-          <Indicator checked={checked} type={type} />
+          <Indicator selected={selected} type={type} />
           <div className={classes.calendar}>
             {state.month.map((month, index) => {
               const year = state.year[index];
