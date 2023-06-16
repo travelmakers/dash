@@ -3,6 +3,7 @@ import {
   ToastBar,
   ToasterProps,
 } from "react-hot-toast";
+import React from "react";
 import useStyles from "./Toaster.style";
 
 export interface Props extends ToasterProps {}
