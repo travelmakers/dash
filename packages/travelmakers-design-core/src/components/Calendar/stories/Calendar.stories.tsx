@@ -172,6 +172,7 @@ export const ToastTest = (props) => {
       <Toaster />
       <Calendar
         {...props}
+        topIndicatorPosition="0px"
         notAllowedMessage={() => toast(<Toast text="허용할 수 없는" />)}
       >
         <Calendar.OptionBox

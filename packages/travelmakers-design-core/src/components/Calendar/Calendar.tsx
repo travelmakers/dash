@@ -11,7 +11,7 @@ import React, {
 import { View } from "../View";
 import useStyles from "./Calendar.style";
 import { CalendarProps, ReturnType, SelectedDays } from "./Calendar.type";
-import Indicator from "./_components/Indicator";
+import { Indicator } from "./_components/Indicator";
 import OptionBox from "./_components/OptionBox";
 import { DateTable } from "./_components/DateTable/DateTable";
 
@@ -43,6 +43,8 @@ export interface Props {
 
   /** 표출할 개월수 */
   displayMonth: number;
+
+  topIndicatorPosition?: string;
 }
 
 /**
@@ -66,6 +68,7 @@ export const Calendar = forwardRef(
       notAllowedMessage,
       minNight = 30,
       maxNight = 59,
+      topIndicatorPosition = "48px",
       displayMonth,
       onChange,
       children,
@@ -107,7 +110,11 @@ export const Calendar = forwardRef(
           className={cx(className, classes.container)}
           {...props}
         >
-          <Indicator selected={selected} type={type} />
+          <Indicator
+            selected={selected}
+            type={type}
+            topIndicatorPosition={topIndicatorPosition}
+          />
           <div className={classes.calendar}>
             {state && (
               <DateTable

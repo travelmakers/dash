@@ -4,9 +4,8 @@ export default createStyles((theme, { open }: { open: boolean }) => {
   return {
     optionBox: {
       width: "100%",
-      position: "fixed",
+      position: "sticky",
       bottom: 0,
-      maxWidth: theme.deviceSizes.mobile,
       display: "flex",
       flexDirection: "column",
       padding: `${theme.spacing.spacing50} ${theme.spacing.spacing50} ${theme.spacing.spacing30}`,
