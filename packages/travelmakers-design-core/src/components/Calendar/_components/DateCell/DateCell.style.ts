@@ -7,7 +7,7 @@ export default createStyles(
       return {
         borderRadius: "100px 0px 0px 100px",
         transform: "matrix(-1, 0, 0, 1, 0, 0)",
-        width: "50px",
+        width: "45px",
         left: 0,
         ["& > div > span"]: {
           transform: "matrix(-1, 0, 0, 1, 0, 0)",
