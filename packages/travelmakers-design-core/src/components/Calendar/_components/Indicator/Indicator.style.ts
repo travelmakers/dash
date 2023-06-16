@@ -5,7 +5,8 @@ export default createStyles(
   (theme, { topIndicatorPosition }: Pick<Props, "topIndicatorPosition">) => {
     return {
       indicatorBox: {
-        width: "100%",
+        width: theme.deviceSizes.mobile,
+        margin: "auto",
         height: "64px",
         position: "sticky",
         top: topIndicatorPosition,

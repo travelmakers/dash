@@ -150,7 +150,7 @@ export default {
 
 export const Default = (props) => {
   return (
-    <>
+    <div>
       <Calendar {...props}>
         <Calendar.OptionBox
           title={"시간 선택하기"}
@@ -162,7 +162,7 @@ export const Default = (props) => {
           1234
         </Calendar.OptionBox>
       </Calendar>
-    </>
+    </div>
   );
 };
 

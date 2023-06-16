@@ -8,18 +8,17 @@ export default createStyles((theme) => {
     },
     container: {
       backgroundColor: theme.colors.white,
-      // maxWidth: theme.deviceSizes.mobile,
+      width: theme.deviceSizes.mobile,
       height: "100%",
       position: "relative",
     },
     calendar: {
-      maxWidth: theme.deviceSizes.mobile,
+      width: theme.deviceSizes.mobile,
       height: "100%",
       margin: "auto",
       padding: theme.spacing.spacing30,
       backgroundColor: theme.colors.white,
       overflowY: "scroll",
-      width: "100%",
       ["& > table"]: {
         width: "100%",
         borderCollapse: "collapse",
