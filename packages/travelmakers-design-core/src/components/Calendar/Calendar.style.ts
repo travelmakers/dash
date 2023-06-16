@@ -10,6 +10,7 @@ export default createStyles((theme) => {
       backgroundColor: theme.colors.white,
       width: theme.deviceSizes.mobile,
       height: "100%",
+      margin: "auto",
       position: "relative",
     },
     calendar: {
