@@ -54,149 +54,126 @@ export const DateTable = React.memo(
        * @param day
        * @returns
        */
-      const isBetweenNotSelectedDays = useMemo(
-        () => (day: DateCellDay) => {
-          return (
-            checked.from &&
-            !checked.to &&
-            differenceInDays(day.date, checked.from.date) > 0 &&
-            differenceInDays(enabledDays, day.date) >= 0
-          );
-        },
-        [checked, enabledDays]
-      );
+      const isBetweenNotSelectedDays = (day: DateCellDay) => {
+        return (
+          checked.from &&
+          !checked.to &&
+          differenceInDays(day.date, checked.from.date) > 0 &&
+          differenceInDays(enabledDays, day.date) >= 0
+        );
+      };
 
-      const isMinNightDays = useMemo(
-        () => (day: DateCellDay) => {
-          if (checked.from) {
-            const resultDay = differenceInDays(day.date, checked.from.date);
-            return resultDay > minNight;
-          }
-          return false;
-        },
-        [checked, minNight]
-      );
+      const isMinNightDays = (day: DateCellDay) => {
+        if (checked.from) {
+          const resultDay = differenceInDays(day.date, checked.from.date);
+          return resultDay > minNight;
+        }
+        return false;
+      };
 
       /**
        * ANCHOR: From Date, To Date 날짜 사이에 대해서 체크
        * @param day
        * @returns
        */
-      const isBetweenFromAndToDays = useMemo(
-        () => (day: DateCellDay) => {
-          return (
-            checked.from &&
-            checked.to &&
-            differenceInDays(day.date, checked.from.date) > 0 &&
-            differenceInDays(checked.to.date, day.date) > 0
-          );
-        },
-        [checked]
-      );
+      const isBetweenFromAndToDays = (day: DateCellDay) => {
+        return (
+          checked.from &&
+          checked.to &&
+          differenceInDays(day.date, checked.from.date) > 0 &&
+          differenceInDays(checked.to.date, day.date) > 0
+        );
+      };
 
       /**
        * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
        * @param day
        * @returns
        */
-      const isDisabledDay = useMemo(
-        () => (day: DateCellDay) => {
-          const isDisable = disabledDays.some((disabledDay) =>
-            isEqual(getDate(disabledDay).date, day.date)
-          );
-          const isSelectable = !selectableDates.some((selectableDate) =>
-            isEqual(getDate(selectableDate).date, day.date)
-          );
-          return isDisable || isSelectable;
-        },
-        [disabledDays, selectableDates]
-      );
+      const isDisabledDay = (day: DateCellDay) => {
+        const isDisable = disabledDays.some((disabledDay) =>
+          isEqual(getDate(disabledDay).date, day.date)
+        );
+        const isSelectable = !selectableDates.some((selectableDate) =>
+          isEqual(getDate(selectableDate).date, day.date)
+        );
+        return isDisable || isSelectable;
+      };
 
-      const onClear = useMemo(
-        () => () => {
+      const onClear = () => {
+        setChecked({
+          to: null,
+          from: null,
+          time: { hour: null, minutes: null },
+        });
+      };
+
+      const onClick = (day: DateCellDay) => {
+        if (isDisabledDay(day)) {
+          notAllowedMessage();
+        } else if (type === "tour") {
+          setChecked((prev) => {
+            return { ...prev, from: day, to: day };
+          });
+        } else if (!checked.from) {
+          setChecked((prev) => {
+            return { ...prev, from: day };
+          });
+          setEnabledDays(addDays(day.date, maxNight));
+        } else if (
+          isBetweenNotSelectedDays(day) &&
+          (isDisabledDay(day) || !isMinNightDays(day))
+        ) {
+          notAllowedMessage();
+        } else if (isBetweenNotSelectedDays(day)) {
+          setChecked((prev) => {
+            return { ...prev, to: day };
+          });
+          setEnabledDays(addDays(day.date, maxNight));
+        } else {
           setChecked({
             to: null,
             from: null,
             time: { hour: null, minutes: null },
           });
-        },
-        []
-      );
+        }
+      };
 
-      const onClick = useMemo(
-        () => (day: DateCellDay) => {
-          if (isDisabledDay(day)) {
-            notAllowedMessage();
-          } else if (type === "tour") {
-            setChecked((prev) => {
-              return { ...prev, from: day, to: day };
-            });
-          } else if (!checked.from) {
-            setChecked((prev) => {
-              return { ...prev, from: day };
-            });
-            setEnabledDays(addDays(day.date, maxNight));
+      const onType = (day: DateCellDay): DateCellType => {
+        if (isDisabledDay(day)) {
+          if (checked.from && isEqual(checked.to?.date, day.date)) {
+            return "disabled-to-between";
           } else if (
-            isBetweenNotSelectedDays(day) &&
-            (isDisabledDay(day) || !isMinNightDays(day))
+            checked.from &&
+            differenceInDays(day.date, checked.from.date) > 0 &&
+            differenceInDays(enabledDays, day.date) >= 0 &&
+            (!checked.to || differenceInDays(checked.to?.date, day.date) >= 0)
           ) {
-            notAllowedMessage();
-          } else if (isBetweenNotSelectedDays(day)) {
-            setChecked((prev) => {
-              return { ...prev, to: day };
-            });
-            setEnabledDays(addDays(day.date, maxNight));
+            return differenceInDays(enabledDays, day.date) > 0
+              ? "disabled-between"
+              : "disabled-to-between";
           } else {
-            setChecked({
-              to: null,
-              from: null,
-              time: { hour: null, minutes: null },
-            });
+            return "disabled";
           }
-        },
-        [notAllowedMessage, type, checked]
-      );
+        }
 
-      const onType = useMemo(
-        () =>
-          (day: DateCellDay): DateCellType => {
-            if (isDisabledDay(day)) {
-              if (checked.from && isEqual(checked.to?.date, day.date)) {
-                return "disabled-to-between";
-              } else if (
-                checked.from &&
-                differenceInDays(day.date, checked.from.date) > 0 &&
-                differenceInDays(enabledDays, day.date) >= 0 &&
-                (!checked.to ||
-                  differenceInDays(checked.to?.date, day.date) >= 0)
-              ) {
-                return differenceInDays(enabledDays, day.date) > 0
-                  ? "disabled-between"
-                  : "disabled-to-between";
-              } else {
-                return "disabled";
-              }
-            }
+        if (isBetweenNotSelectedDays(day)) {
+          const isMinNight = isMinNightDays(day);
+          if (differenceInDays(enabledDays, day.date) > 0) {
+            return isMinNight ? "default-between" : "disabled-between";
+          } else {
+            return isMinNight ? "to-between" : "disabled-to-between";
+          }
+        } else if (isEqual(day.date, checked.from?.date)) {
+          return type === "move-in" ? "from" : "focus";
+        } else if (isEqual(day.date, checked.to?.date)) {
+          return "to";
+        } else if (isBetweenFromAndToDays(day)) {
+          return "default-between";
+        }
 
-            if (isBetweenNotSelectedDays(day)) {
-              const isMinNight = isMinNightDays(day);
-              if (differenceInDays(enabledDays, day.date) > 0) {
-                return isMinNight ? "default-between" : "disabled-between";
-              } else {
-                return isMinNight ? "to-between" : "disabled-to-between";
-              }
-            } else if (isEqual(day.date, checked.from?.date)) {
-              return type === "move-in" ? "from" : "focus";
-            } else if (isEqual(day.date, checked.to?.date)) {
-              return "to";
-            } else if (isBetweenFromAndToDays(day)) {
-              return "default-between";
-            }
-
-            return "default";
-          },
-        [enabledDays, checked]
-      );
+        return "default";
+      };
 
       return (
         <>

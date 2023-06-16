@@ -89,14 +89,11 @@ export const Calendar = forwardRef(
       onChange?.(checked);
     }, [checked]);
 
-    const handleCalendar = useMemo(
-      () => () => {
-        Array.from({ length: displayMonth }).map(() => {
-          actions.getInfiniteNextMonth();
-        });
-      },
-      []
-    );
+    const handleCalendar = () => {
+      Array.from({ length: displayMonth }).map(() => {
+        actions.getInfiniteNextMonth();
+      });
+    };
 
     useEffect(() => {
       state && handleCalendar();
@@ -127,9 +124,9 @@ export const Calendar = forwardRef(
                 maxNight={maxNight}
                 hotelName={hotelName}
                 notAllowedMessage={notAllowedMessage}
-                months={state.month}
-                years={state.year}
-                weeks={state.weeks}
+                months={[...state.month]}
+                years={[...state.year]}
+                weeks={[...state.weeks]}
               />
             )}
           </div>
