@@ -20,7 +20,7 @@ export interface Props {
   minNight: number;
   maxNight: number;
   hotelName?: string;
-  notAllowedMessage?: string;
+  notAllowedMessage?: () => string;
   months: string[];
   years: number[];
   weeks?: CalendarState["weeks"];
@@ -126,7 +126,7 @@ export const DateTable = React.memo(
       const onClick = useMemo(
         () => (day: DateCellDay) => {
           if (isDisabledDay(day)) {
-            notAllowedMessage;
+            notAllowedMessage();
           } else if (type === "tour") {
             setChecked((prev) => {
               return { ...prev, from: day, to: day };
@@ -140,7 +140,7 @@ export const DateTable = React.memo(
             isBetweenNotSelectedDays(day) &&
             (isDisabledDay(day) || !isMinNightDays(day))
           ) {
-            notAllowedMessage;
+            notAllowedMessage();
           } else if (isBetweenNotSelectedDays(day)) {
             setChecked((prev) => {
               return { ...prev, to: day };

@@ -39,7 +39,7 @@ export interface Props {
   disabledDays?: string[];
 
   /** 허용하지 않는 날짜를 클릭하였을 경우 출력할 메시지 */
-  notAllowedMessage?: string;
+  notAllowedMessage?: () => string;
 
   /** 표출할 개월수 */
   displayMonth: number;

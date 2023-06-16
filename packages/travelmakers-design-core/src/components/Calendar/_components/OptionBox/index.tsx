@@ -3,17 +3,16 @@ import useStyles from "./OptionBox.style";
 import { Typography } from "../../../Typography";
 import { Icon } from "../../../Icon";
 import { Button, ButtonProps } from "../../../Button";
-import { DateCellDay } from "../DateCell/DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
-import Link from "next/link";
 
 interface Props {
   checked?: SelectedDays;
   initOpen?: boolean;
   children: React.ReactNode;
+  warningExpandMessageToast?: () => string;
   title: string;
   buttonTitle: string;
-  buttonProps: ButtonProps<typeof Button>;
+  buttonProps?: ButtonProps<typeof Button>;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -24,6 +23,7 @@ const OptionBox: React.FC<Props> = ({
     time: { hour: null, minutes: null },
   },
   initOpen = false,
+  warningExpandMessageToast,
   children,
   title,
   buttonTitle,
@@ -53,7 +53,11 @@ const OptionBox: React.FC<Props> = ({
           src="IcAngleUp"
           width={24}
           height={24}
-          onClick={() => checked.from && checked.to && setOpen((prev) => !prev)}
+          onClick={() =>
+            checked.from && checked.to
+              ? setOpen((prev) => !prev)
+              : warningExpandMessageToast()
+          }
         />
       </div>
       <div className={classes.contentBox}>{children}</div>

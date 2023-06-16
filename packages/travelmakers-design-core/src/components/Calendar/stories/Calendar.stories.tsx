@@ -1,6 +1,7 @@
 import { Meta } from "@storybook/react";
-import { Toaster } from "../../Toast";
+import { Toast, Toaster } from "../../Toast";
 import { Calendar } from "../Calendar";
+import toast from "react-hot-toast";
 
 export default {
   title: "@travelmakers/core/General/Calendar",
@@ -150,11 +151,35 @@ export default {
 export const Default = (props) => {
   return (
     <>
-      <Toaster />
       <Calendar {...props}>
         <Calendar.OptionBox
           title={"시간 선택하기"}
           buttonTitle={"예약하기"}
+          onClick={() => {
+            console.log("OptionBox-log");
+          }}
+        >
+          1234
+        </Calendar.OptionBox>
+      </Calendar>
+    </>
+  );
+};
+
+export const ToastTest = (props) => {
+  return (
+    <>
+      <Toaster />
+      <Calendar
+        {...props}
+        notAllowedMessage={() => toast(<Toast text="허용할 수 없는" />)}
+      >
+        <Calendar.OptionBox
+          title={"시간 선택하기"}
+          buttonTitle={"예약하기"}
+          warningExpandMessageToast={() =>
+            toast(<Toast text="warningExpandMessageToast" />)
+          }
           onClick={() => {
             console.log("OptionBox-log");
           }}
