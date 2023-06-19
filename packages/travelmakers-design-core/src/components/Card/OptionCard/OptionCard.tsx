@@ -59,7 +59,7 @@ export interface Props {
 
   buttonProps: ButtonProps<typeof Button>;
 
-  href?: string;
+  href?: URL;
 }
 
 export const OptionCard = forwardRef(
@@ -80,7 +80,7 @@ export const OptionCard = forwardRef(
       buttonName = "예약하기",
       onMoreClick,
       className,
-      href = "",
+      href,
       buttonProps,
       ...props
     }: OptionCardProps<C>,
