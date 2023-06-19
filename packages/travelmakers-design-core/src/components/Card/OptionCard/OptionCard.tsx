@@ -13,7 +13,7 @@ import {
   OptionCardProps,
   ReturnType,
 } from "./OptionCard.type";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 
 export interface Props {
   isMore?: boolean;
@@ -59,7 +59,7 @@ export interface Props {
 
   buttonProps: ButtonProps<typeof Button>;
 
-  href?: URL;
+  href: LinkProps["href"];
 }
 
 export const OptionCard = forwardRef(
