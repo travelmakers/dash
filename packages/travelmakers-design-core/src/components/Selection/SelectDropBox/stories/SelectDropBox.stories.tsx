@@ -2,6 +2,29 @@ import { Meta } from "@storybook/react";
 import { SelectDropBox } from "../SelectDropBox";
 
 const data = ["데이터1", "데이터2", "데이터3", "데이터4", "데이터5"];
+const countryData = [
+  {
+    iso: "GH",
+    iso3: "GHA",
+    name_english: "Ghana",
+    name_korean: "가나",
+    phonecode: 233,
+  },
+  {
+    iso: "GH",
+    iso3: "GHA",
+    name_english: "Ghana",
+    name_korean: "가나",
+    phonecode: 233,
+  },
+  {
+    iso: "GH",
+    iso3: "GHA",
+    name_english: "Ghana",
+    name_korean: "가나",
+    phonecode: 233,
+  },
+];
 
 export default {
   title: "@travelmakers/core/General/Selection/SelectDropBox",
@@ -83,6 +106,31 @@ export default {
 
 export const Default = (props) => {
   const _items = data.map((item) => <SelectDropBox.Item value={item} />);
+
+  return (
+    <SelectDropBox
+      {...props}
+      trigger={<SelectDropBox.Trigger />}
+      content={<SelectDropBox.Items items={_items} />}
+      label={props.label || "레이블"}
+    />
+  );
+};
+
+export const Country = (props) => {
+  const _items = countryData.map((item) => (
+    <SelectDropBox.Item
+      value={
+        <>
+          <div style={{ display: "flex", gap: "4px" }}>
+            <div>+{item.phonecode}</div>
+            <div>{item.name_korean}</div>
+          </div>
+          <div>{item.name_english}</div>
+        </>
+      }
+    />
+  ));
 
   return (
     <SelectDropBox
