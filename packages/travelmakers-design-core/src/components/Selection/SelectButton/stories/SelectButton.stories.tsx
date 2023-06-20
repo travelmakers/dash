@@ -105,7 +105,7 @@ export const SelectButtonWithCallout = (props) => {
   ));
 
   return (
-    <div style={{ display: "inline-flex" }}>
+    <div>
       <SelectButton
         {...props}
         label={props.label ?? "선택 그룹"}
