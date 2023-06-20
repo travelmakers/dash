@@ -6,6 +6,7 @@ export default createStyles((theme) => {
   return {
     root: {
       width: "100%",
+      marginLeft: "-1px",
 
       "&:first-child": {
         marginLeft: 0,
