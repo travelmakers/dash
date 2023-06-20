@@ -6,12 +6,12 @@ export default createStyles((theme) => {
   return {
     container: {
       display: "flex",
-      width: "100%",
       flexDirection: "column",
       rowGap: spacing.spacing5,
     },
     root: {
       display: "flex",
+      width: "100%",
       flexDirection: "column",
       rowGap: spacing.spacing5,
       margin: 0,
