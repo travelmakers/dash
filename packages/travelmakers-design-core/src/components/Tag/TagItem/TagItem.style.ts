@@ -14,7 +14,7 @@ import {
 
 const TAGITEM_ROUND: Record<TagRound, CoRadius | ""> = {
   default: "",
-  half: "radius20",
+  half: "radius10",
   full: "radius100",
 };
 
