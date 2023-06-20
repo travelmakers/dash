@@ -1,6 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
+import { useId, useUpdateEffect } from "@travelmakers/hooks";
 import React, { forwardRef, useEffect, useState } from "react";
-import { useId } from "../../../../travelmakers-design-hooks/src";
 import { View } from "../View";
 import useStyles from "./Input.style";
 import { InputProps, ReturnType } from "./Input.type";
@@ -36,6 +36,10 @@ export const Input = forwardRef(
     const [inputValue, setInputValue] = useState(value ?? "");
     const [isFocus, setIsFocus] = useState(false);
     const { classes, cx } = useStyles({ subfix, isError });
+
+    useUpdateEffect(() => {
+      setInputValue(value);
+    }, [value]);
 
     useEffect(() => {
       if (name) return;
