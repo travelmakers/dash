@@ -70,7 +70,7 @@ export default createStyles(
           borderColor: getBorderColor(colors, isError, colors.primary),
         },
 
-        ["&:disabled"]: {
+        ["&:disabled, &:read-only"]: {
           color: colors.primary3,
           backgroundColor: colors.surface,
 

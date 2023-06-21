@@ -69,9 +69,9 @@ export const Input = forwardRef(
             className={cx(
               classes.container,
               { [classes.focus]: isFocus },
-              { [classes.disabled]: props.disabled }
+              { [classes.disabled]: props.disabled || props.readOnly }
             )}
-            aria-readonly={props.disabled}
+            aria-readonly={props.disabled || props.readOnly}
           >
             <View<React.ElementType>
               component={"input"}
@@ -88,7 +88,10 @@ export const Input = forwardRef(
               name={name}
               {...props}
             />
-            <div className={classes.subfix} aria-readonly={props.disabled}>
+            <div
+              className={classes.subfix}
+              aria-readonly={props.disabled || props.readOnly}
+            >
               {subfix}
             </div>
           </div>
@@ -109,7 +112,7 @@ export const Input = forwardRef(
           onChange={onChangeHandler}
           value={inputValue}
           name={name}
-          aria-readonly={props.disabled}
+          aria-readonly={props.disabled || props.readOnly}
           {...props}
         />
       );
