@@ -57,6 +57,9 @@ export default createStyles(
         border: 0,
         outline: 0,
         width: subfix ? "100%" : "auto",
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
 
         ["&::placeholder"]: {
           color: colors.primary3,
