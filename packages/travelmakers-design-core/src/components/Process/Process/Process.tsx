@@ -11,7 +11,7 @@ import {
 } from "./Process.type";
 
 export interface Props {
-  status: ProcessStatus;
+  status?: ProcessStatus;
 }
 
 const processing = (status: ProcessStatus) => {
@@ -22,6 +22,8 @@ const processing = (status: ProcessStatus) => {
     case "extend_purchase_done":
     case "reservation_purchase_done":
       return "done";
+    default:
+      return "";
   }
 };
 
