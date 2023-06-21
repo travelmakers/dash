@@ -79,7 +79,7 @@ export default createStyles(
         borderRadius: showOptions
           ? `${radius.radius20} ${radius.radius20} 0 0`
           : radius.radius20,
-        backgroundColor: colors.white,
+        backgroundColor: !disabled ? colors.white : colors.surface,
         zIndex: 2,
       },
       content: {
