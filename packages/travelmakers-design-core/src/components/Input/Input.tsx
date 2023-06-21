@@ -36,6 +36,7 @@ export const Input = forwardRef(
     const [inputValue, setInputValue] = useState(value ?? "");
     const [isFocus, setIsFocus] = useState(false);
     const { classes, cx } = useStyles({ subfix, isError });
+    const disabled = props.disabled || props.readOnly;
 
     useUpdateEffect(() => {
       setInputValue(value);
@@ -48,16 +49,22 @@ export const Input = forwardRef(
     }, [name]);
 
     const onClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
+      if (disabled) return;
+
       setIsFocus(true);
       onClick?.(e);
     };
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+      if (disabled) return;
+
       setIsFocus(false);
       onBlur?.(e);
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (disabled) return;
+
       setInputValue(e.target.value);
       onChange?.(e);
     };
@@ -69,9 +76,9 @@ export const Input = forwardRef(
             className={cx(
               classes.container,
               { [classes.focus]: isFocus },
-              { [classes.disabled]: props.disabled || props.readOnly }
+              { [classes.disabled]: disabled }
             )}
-            aria-readonly={props.disabled || props.readOnly}
+            aria-readonly={disabled}
           >
             <View<React.ElementType>
               component={"input"}
@@ -88,10 +95,7 @@ export const Input = forwardRef(
               name={name}
               {...props}
             />
-            <div
-              className={classes.subfix}
-              aria-readonly={props.disabled || props.readOnly}
-            >
+            <div className={classes.subfix} aria-readonly={disabled}>
               {subfix}
             </div>
           </div>
@@ -112,7 +116,7 @@ export const Input = forwardRef(
           onChange={onChangeHandler}
           value={inputValue}
           name={name}
-          aria-readonly={props.disabled || props.readOnly}
+          aria-readonly={disabled}
           {...props}
         />
       );
