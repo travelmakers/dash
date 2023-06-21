@@ -10,7 +10,7 @@ import { ModalFullPageProps, ReturnType } from "./ModalFullPage.type";
 export interface Props {
   title: string;
   contentTitle: string;
-  content: string | JSX.Element;
+  content: React.ReactNode;
   closeBtnProps: React.HTMLAttributes<HTMLButtonElement> & { label?: string };
   isOpen: boolean;
   footer?: React.ReactNode;

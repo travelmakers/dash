@@ -6,7 +6,7 @@ import useStyles from "./SelectRadioItem.style";
 import { ReturnType, SelectRadioItemProps } from "./SelectRadioItem.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
-  label: string | JSX.Element;
+  label: React.ReactNode;
   name?: string;
   isVisibleLabel?: boolean;
 }

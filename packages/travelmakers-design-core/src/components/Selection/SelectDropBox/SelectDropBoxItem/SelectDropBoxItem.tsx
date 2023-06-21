@@ -9,7 +9,7 @@ import { ReturnType, SelectDropBoxItemProps } from "./SelectDropBoxItem.type";
 
 export interface Props
   extends Omit<DropdownItemProps<typeof Dropdown.Item>, "ariaSelected"> {
-  value: string | React.ReactNode;
+  value: React.ReactNode;
 }
 
 export const SelectDropBoxItem = forwardRef(
