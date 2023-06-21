@@ -10,7 +10,7 @@ import { ModalFullPageProps, ReturnType } from "./ModalFullPage.type";
 export interface Props {
   title: string;
   contentTitle: string;
-  content: string;
+  content: string | JSX.Element;
   closeBtnProps: React.HTMLAttributes<HTMLButtonElement> & { label?: string };
   isOpen: boolean;
   footer?: React.ReactNode;
@@ -57,10 +57,14 @@ export const ModalFullPage = forwardRef(
             </header>
             <div className={classes.body}>
               <strong className={classes.bodyTitle}>{contentTitle}</strong>
-              <p
-                className={classes.bodyText}
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
+              {typeof content === "object" ? (
+                content
+              ) : (
+                <p
+                  className={classes.bodyText}
+                  dangerouslySetInnerHTML={{ __html: content }}
+                />
+              )}
             </div>
             {footer}
           </View>
