@@ -37,6 +37,7 @@ export const Input = forwardRef(
     const [isFocus, setIsFocus] = useState(false);
     const { classes, cx } = useStyles({ subfix, isError });
     const disabled = props.disabled || props.readOnly;
+    const focused = isFocus && !disabled;
 
     useUpdateEffect(() => {
       setInputValue(value);
@@ -75,7 +76,7 @@ export const Input = forwardRef(
           <div
             className={cx(
               classes.container,
-              { [classes.focus]: isFocus },
+              { [classes.focus]: focused },
               { [classes.disabled]: disabled }
             )}
             aria-readonly={disabled}
