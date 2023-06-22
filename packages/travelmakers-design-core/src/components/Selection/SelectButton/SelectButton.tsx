@@ -7,7 +7,7 @@ import useStyles from "./SelectButton.style";
 import { ReturnType, SelectButtonProps } from "./SelectButton.type";
 
 export interface Props extends React.HTMLAttributes<HTMLFieldSetElement> {
-  label: string;
+  label: React.ReactNode;
   items: React.ReactNode[];
   feedback?: string;
   callout?: typeof Callout;

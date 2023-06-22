@@ -7,7 +7,7 @@ import { ReturnType, TextAreaProps } from "./TextArea.type";
 
 export interface Props extends React.HTMLAttributes<HTMLTextAreaElement> {
   name: string;
-  label?: string;
+  label?: React.ReactNode;
   feedback?: string;
 }
 

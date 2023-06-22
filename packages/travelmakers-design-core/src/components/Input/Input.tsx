@@ -7,7 +7,7 @@ import { InputProps, ReturnType } from "./Input.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name: string;
-  label?: string;
+  label?: React.ReactNode;
   subfix?: string | number;
   feedback?: string;
   isError?: boolean;

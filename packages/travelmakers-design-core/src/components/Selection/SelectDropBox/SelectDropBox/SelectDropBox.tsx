@@ -15,7 +15,7 @@ import { useUpdateEffect } from "@travelmakers/hooks";
 
 export interface Props {
   type?: "option" | "filter";
-  label: string;
+  label: React.ReactNode;
   initValue?: string;
   placeholder?: string;
   isVisibleLabel?: boolean;
