@@ -54,6 +54,7 @@ export default {
 
           "======logo======",
           "Logo",
+          "LogoVertical",
 
           "======pictogram======",
           "IcClock",
