@@ -10,6 +10,7 @@ export default {
         type: "radio",
         options: [
           "reservation_purchase_before",
+          "reservation_purchase",
           "extend_purchase_before",
           "reservation_purchase_done",
           "extend_purchase_done",

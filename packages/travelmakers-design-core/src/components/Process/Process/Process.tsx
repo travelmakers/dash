@@ -19,6 +19,8 @@ const processing = (status: ProcessStatus) => {
     case "extend_purchase_before":
     case "reservation_purchase_before":
       return "before";
+    case "reservation_purchase":
+      return "ing";
     case "extend_purchase_done":
     case "reservation_purchase_done":
       return "done";
@@ -35,7 +37,7 @@ const sequence = (status: ProcessStatus): SequenceType[] => {
     },
     {
       process: "결제 완료",
-      isProcessing: false,
+      isProcessing: processing(status) === "ing",
     },
     {
       processor: "호텔에삶",

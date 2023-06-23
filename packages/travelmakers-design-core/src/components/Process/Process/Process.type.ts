@@ -8,6 +8,7 @@ import useStyles from "./Process.style";
 
 export type ProcessStatus =
   | "reservation_purchase_before"
+  | "reservation_purchase"
   | "extend_purchase_before"
   | "extend_purchase_done"
   | "reservation_purchase_done";
