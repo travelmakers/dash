@@ -16,6 +16,10 @@ export default createStyles(
 
     return {
       root: {
+        position: "absolute",
+        top: "43px",
+        left: 0,
+        right: 0,
         padding: 0,
         maxHeight: SELECT_DROP_BOX_MAX_HEIGHT[type],
         border: `1px solid ${colors.primary}`,
