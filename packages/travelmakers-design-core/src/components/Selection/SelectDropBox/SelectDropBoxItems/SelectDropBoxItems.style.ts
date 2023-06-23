@@ -29,6 +29,7 @@ export default createStyles(
         boxShadow: shadows.elevation2,
         backgroundColor: getBackgroundColor(colors, disabled),
         overflowY: "scroll",
+        zIndex: 1,
       },
     };
   }
