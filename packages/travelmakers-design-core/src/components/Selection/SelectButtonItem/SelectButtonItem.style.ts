@@ -36,7 +36,6 @@ export default createStyles((theme) => {
         position: "relative",
         color: colors.primary,
         borderColor: colors.primary,
-        zIndex: 1,
       },
     },
   };

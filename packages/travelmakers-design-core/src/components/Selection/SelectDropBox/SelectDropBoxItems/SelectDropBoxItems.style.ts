@@ -16,18 +16,15 @@ export default createStyles(
 
     return {
       root: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
+        padding: 0,
         maxHeight: SELECT_DROP_BOX_MAX_HEIGHT[type],
-        paddingTop: `calc(${SELECT_DROP_BOX_HEIGHT[type]} - 2px)`,
         border: `1px solid ${colors.primary}`,
-        borderRadius: radius.radius20,
+        borderTop: 0,
+        borderBottomLeftRadius: radius.radius20,
+        borderBottomRightRadius: radius.radius20,
         boxShadow: shadows.elevation2,
         backgroundColor: getBackgroundColor(colors, disabled),
         overflowY: "scroll",
-        zIndex: 1,
       },
     };
   }

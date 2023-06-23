@@ -80,7 +80,6 @@ export default createStyles(
           ? `${radius.radius20} ${radius.radius20} 0 0`
           : radius.radius20,
         backgroundColor: !disabled ? colors.white : colors.surface,
-        zIndex: 2,
       },
       content: {
         whiteSpace: "nowrap",
