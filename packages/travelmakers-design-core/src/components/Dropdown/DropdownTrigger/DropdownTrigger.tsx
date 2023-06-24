@@ -36,6 +36,7 @@ export const DropdownTrigger = forwardRef(
         onClick={onClickHandler}
         aria-haspopup="listbox"
         aria-expanded={isToggle}
+        tabIndex={-1}
         {...props}
       >
         {_children}
