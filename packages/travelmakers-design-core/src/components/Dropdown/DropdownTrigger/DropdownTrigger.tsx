@@ -29,8 +29,9 @@ export const DropdownTrigger = forwardRef(
 
     return (
       <View<React.ElementType>
-        component={"button"}
         ref={ref}
+        component={"button"}
+        type="button"
         className={cx(classes.root, className)}
         onClick={onClickHandler}
         aria-haspopup="listbox"
