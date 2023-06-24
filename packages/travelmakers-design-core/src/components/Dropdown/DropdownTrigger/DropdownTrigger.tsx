@@ -19,7 +19,7 @@ export const DropdownTrigger = forwardRef(
     const { classes, cx } = useStyles();
     const { isToggle, setIsToggle } = useContext(DropdownContext);
 
-    const _children =
+    const content =
       typeof children === "function" ? children({ isToggle }) : children;
 
     const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -39,7 +39,7 @@ export const DropdownTrigger = forwardRef(
         tabIndex={-1}
         {...props}
       >
-        {_children}
+        {content}
       </View>
     );
   }
