@@ -138,7 +138,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `투어 확정`,
         secondLineText: (startDate) =>
-          `${getDate(startDate, "MM월 DD일 HH:SS").format} 방문`,
+          `${getDate(startDate, "MM월 DD일 HH:mm").format} 방문`,
         thirdLineText: (hotelName) => hotelName,
         titleDisable: () => false,
         messageDisable: () => false,
@@ -153,7 +153,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `투어 완료`,
         secondLineText: (startDate) =>
-          `${getDate(startDate, "MM월 DD일 HH:SS").format} 방문`,
+          `${getDate(startDate, "MM월 DD일 HH:mm").format} 방문`,
         thirdLineText: (hotelName) => hotelName,
         titleDisable: () => false,
         messageDisable: () => false,
@@ -236,7 +236,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
           return `체크인 D-${dDay}`;
         },
         secondLineText: (startDate) =>
-          `${getDate(startDate, "MM월 DD일 HH:SS").format} 체크인`,
+          `${getDate(startDate, "MM월 DD일 HH:mm").format} 체크인`,
         thirdLineText: (hotelName) => hotelName,
         titleDisable: () => false,
         messageDisable: () => false,
@@ -251,7 +251,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `호텔 이용 중`,
         secondLineText: (endDate) =>
-          `${getDate(endDate, "MM월 DD일 HH:SS").format} 체크아웃`,
+          `${getDate(endDate, "MM월 DD일 HH:mm").format} 체크아웃`,
         thirdLineText: (hotelName) => hotelName,
         titleDisable: () => false,
         messageDisable: () => false,
@@ -281,7 +281,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `연장 확정`,
         secondLineText: (startDate) =>
-          `${getDate(startDate, "MM월 DD일 HH:SS").format} 체크인`,
+          `${getDate(startDate, "MM월 DD일 HH:mm").format} 체크인`,
         thirdLineText: (hotelName) => hotelName,
         titleDisable: () => false,
         messageDisable: () => false,
@@ -316,7 +316,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
           return `체크아웃 D-${dDay}`;
         },
         secondLineText: (end_date) =>
-          `${getDate(end_date, "MM월 DD일 HH:SS").format} 체크아웃`,
+          `${getDate(end_date, "MM월 DD일 HH:mm").format} 체크아웃`,
         thirdLineText: (hotelName) => hotelName,
         titleDisable: () => false,
         messageDisable: () => false,
@@ -336,7 +336,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
           return `체크아웃 D-${dDay}`;
         },
         secondLineText: (end_date) =>
-          `${getDate(end_date, "MM월 DD일 HH:SS").format} 체크아웃`,
+          `${getDate(end_date, "MM월 DD일 HH:mm").format} 체크아웃`,
         thirdLineText: (hotelName) => hotelName,
         titleDisable: () => false,
         messageDisable: () => false,
@@ -369,7 +369,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
         messageDisable: () => true,
         messageUnderline: () => false,
         secondLineText: (cancelDate) =>
-          `${getDate(cancelDate, "MM월 DD일 HH:SS").format} 방문 취소`,
+          `${getDate(cancelDate, "MM월 DD일 HH:mm").format} 방문 취소`,
         thirdLineText: (hotelName) => hotelName,
         link: (url?: string) => {
           return { url, arrow: !!url };
@@ -384,7 +384,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
         messageDisable: () => true,
         messageUnderline: () => false,
         secondLineText: (cancelDate) =>
-          `${getDate(cancelDate, "MM월 DD일 HH:SS").format} 방문 취소`,
+          `${getDate(cancelDate, "MM월 DD일 HH:mm").format} 방문 취소`,
         thirdLineText: (hotelName) => hotelName,
         link: (url?: string) => {
           return { url, arrow: !!url };
