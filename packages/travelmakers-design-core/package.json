@@ -1,6 +1,6 @@
 {
   "name": "@travelmakers/core",
-  "version": "0.0.68-alpha.7",
+  "version": "0.0.69-alpha.0",
   "main": "cjs/packages/travelmakers-design-core/src/index.js",
   "module": "esm/packages/travelmakers-design-core/src/index.js",
   "types": "lib/index.d.ts",
@@ -26,6 +26,6 @@
   "dependencies": {
     "@travelmakers/hooks": "^0.0.10-alpha.9",
     "@travelmakers/styles": "^0.0.9",
-    "@travelmakers/utils": "^0.0.7"
+    "@travelmakers/utils": "^0.0.8-alpha.0"
   }
 }
