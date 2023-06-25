@@ -6,7 +6,7 @@ import useStyles from "./SelectTagItem.style";
 import { ReturnType, SelectTagItemProps } from "./SelectTagItem.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
-  label: string;
+  label: React.ReactNode;
   name?: string;
 }
 
