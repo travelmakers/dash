@@ -1,10 +1,24 @@
 import { createStyles } from "@travelmakers/styles";
+import { Props } from "./ModalPopup";
 
-export default createStyles((theme) => {
+export default createStyles((theme, { content }: Pick<Props, "content">) => {
   const { colors, shadows, spacing, typography } = theme;
 
   return {
     root: {
+      position: "fixed",
+      zIndex: 101,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      backdropFilter: "blur(8px)",
+    },
+    dialog: {
       position: "fixed",
       zIndex: 100,
       top: "50%",
@@ -30,7 +44,7 @@ export default createStyles((theme) => {
       justifyContent: "center",
       color: colors.onBackground,
       textAlign: "center",
-      flex: 1,
+      flex: content ? 0 : 1,
     },
     content: {
       ...typography.body2,

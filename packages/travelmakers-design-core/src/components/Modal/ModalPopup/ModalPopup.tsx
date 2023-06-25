@@ -27,7 +27,7 @@ export const ModalPopup = forwardRef(
     }: ModalPopupProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const { classes, cx } = useStyles();
+    const { classes, cx } = useStyles({ content });
 
     // NOTE: ModalPopup 오픈 시 페이지 스크롤 blocking
     useBlockScrolling(isOpen);
@@ -36,27 +36,29 @@ export const ModalPopup = forwardRef(
 
     return (
       <ModalPortal>
-        <View<React.ElementType>
-          component={"dialog"}
-          ref={ref}
-          className={cx(classes.root, className)}
-          open={isOpen}
-          {...props}
-        >
-          <strong className={classes.title}>{title}</strong>
-          {content && (
-            <p
-              className={classes.content}
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          )}
-          <ul className={classes.buttons}>
-            {secondaryButton && (
-              <li className={classes.button}>{secondaryButton}</li>
+        <div className={cx(classes.root, className)}>
+          <View<React.ElementType>
+            component={"dialog"}
+            ref={ref}
+            className={cx(classes.dialog)}
+            open={isOpen}
+            {...props}
+          >
+            <strong className={classes.title}>{title}</strong>
+            {content && (
+              <p
+                className={classes.content}
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
             )}
-            <li className={classes.button}>{primaryButton}</li>
-          </ul>
-        </View>
+            <ul className={classes.buttons}>
+              {secondaryButton && (
+                <li className={classes.button}>{secondaryButton}</li>
+              )}
+              <li className={classes.button}>{primaryButton}</li>
+            </ul>
+          </View>
+        </div>
       </ModalPortal>
     );
   }
