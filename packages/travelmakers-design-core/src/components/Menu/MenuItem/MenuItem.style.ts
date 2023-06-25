@@ -16,5 +16,10 @@ export default createStyles((theme) => {
       textDecoration: "none",
       backgroundColor: colors.white,
     },
+    button: {
+      textAlign: "left",
+      border: 0,
+      cursor: "pointer",
+    },
   };
 });

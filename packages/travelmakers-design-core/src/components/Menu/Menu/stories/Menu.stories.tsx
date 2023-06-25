@@ -1,12 +1,17 @@
 import { Meta } from "@storybook/react";
+import { MenuItemType } from "../../MenuItem/MenuItem.type";
 import { Menu } from "../Menu";
 
-const menus = [
+const menus: {
+  type?: MenuItemType;
+  name: string;
+  href?: string | undefined;
+}[] = [
   { href: "#", name: "예약 내역" },
   { href: "#", name: "회원 정보 변경" },
   { href: "#", name: "알림 설정" },
   { href: "#", name: "자주 묻는 질문" },
-  { href: "#", name: "고객센터" },
+  { type: "button", name: "고객센터" },
 ];
 
 export default {
@@ -27,10 +32,14 @@ export default {
 
 export const Default = () => {
   const _items = menus.map((menu, idx) => {
-    const { href, name } = menu;
+    const { type, href, name } = menu;
 
-    return <Menu.Item key={idx} href={href} menu={name} />;
+    return <Menu.Item key={idx} menu={name} href={href} type={type} />;
   });
 
-  return <Menu items={_items} />;
+  return (
+    <div style={{ maxWidth: "343px" }}>
+      <Menu items={_items} />
+    </div>
+  );
 };

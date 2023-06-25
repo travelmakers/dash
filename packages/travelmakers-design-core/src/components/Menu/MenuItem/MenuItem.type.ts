@@ -9,6 +9,8 @@ import useStyles from "./MenuItem.style";
 
 type MenuItemStylesNames = ClassNames<typeof useStyles>;
 
+export type MenuItemType = "button" | "link";
+
 interface SharedMenuItemProps
   extends Props,
     TmComponentProps<MenuItemStylesNames> {}

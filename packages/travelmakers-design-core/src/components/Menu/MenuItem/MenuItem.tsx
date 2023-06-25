@@ -3,15 +3,17 @@ import Link, { LinkProps } from "next/link";
 import React, { forwardRef } from "react";
 import { View } from "../../View";
 import useStyles from "./MenuItem.style";
-import { MenuItemProps, ReturnType } from "./MenuItem.type";
+import { MenuItemProps, MenuItemType, ReturnType } from "./MenuItem.type";
 
-export interface Props extends LinkProps {
+export interface Props extends Omit<LinkProps, "href"> {
+  type?: MenuItemType;
   menu: string;
+  href?: LinkProps["href"];
 }
 
 export const MenuItem = forwardRef(
   <C extends React.ElementType = typeof Link>(
-    { className, menu, ...props }: MenuItemProps<C>,
+    { type = "link", className, menu, href, ...props }: MenuItemProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
@@ -19,9 +21,12 @@ export const MenuItem = forwardRef(
     return (
       <li className={cx(classes.root, className)}>
         <View<React.ElementType>
-          component={Link}
+          component={type === "link" ? Link : "button"}
+          href={href}
           ref={ref}
-          className={classes.link}
+          className={cx(classes.link, {
+            [classes.button]: type === "button",
+          })}
           {...props}
         >
           {menu}
