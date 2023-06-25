@@ -9,11 +9,12 @@ import { ModalFullPageProps, ReturnType } from "./ModalFullPage.type";
 
 export interface Props {
   title: string;
-  contentTitle: string;
+  contentTitle?: string;
   content: React.ReactNode;
   closeBtnProps: React.HTMLAttributes<HTMLButtonElement> & { label?: string };
   isOpen: boolean;
   footer?: React.ReactNode;
+  hasIframe?: boolean;
 }
 
 export const ModalFullPage = forwardRef(
@@ -26,13 +27,14 @@ export const ModalFullPage = forwardRef(
       closeBtnProps,
       footer,
       isOpen,
+      hasIframe,
       ...props
     }: ModalFullPageProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { label: closeBtnLabel = "닫기", ...closeBtnPropsRest } =
       closeBtnProps;
-    const { classes, cx } = useStyles();
+    const { classes, cx } = useStyles({ hasIframe });
 
     // NOTE: ModalFullPage 오픈 시 페이지 스크롤 blocking
     useBlockScrolling(isOpen);
@@ -56,7 +58,9 @@ export const ModalFullPage = forwardRef(
               </button>
             </header>
             <div className={classes.body}>
-              <strong className={classes.bodyTitle}>{contentTitle}</strong>
+              {contentTitle && (
+                <strong className={classes.bodyTitle}>{contentTitle}</strong>
+              )}
               {typeof content === "object" ? (
                 content
               ) : (
