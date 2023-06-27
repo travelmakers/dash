@@ -28,7 +28,7 @@ export default createStyles((theme) => {
           borderRadius: radius.radius100,
           boxShadow: shadows.elevation1,
           transform: "translate(0, -50%)",
-          transition: "transform 0.2s cubic-bezier(0, 0, 0.5, 1)",
+          transition: `transform 0.2s ${theme.transitionTiming.easeInOut}`,
         },
       },
     },

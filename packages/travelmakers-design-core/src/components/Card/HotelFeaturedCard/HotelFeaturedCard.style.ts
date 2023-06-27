@@ -31,7 +31,7 @@ export default createStyles((theme) => {
 
       ["& > img"]: {
         position: "absolute",
-        transition: "all 0.2s cubic-bezier(0, 0, 0.5, 1)",
+        transition: `all 0.2s ${theme.transitionTiming.easeInOut}`,
         ["&:hover"]: {
           transform: "scale(1.1)",
         },
