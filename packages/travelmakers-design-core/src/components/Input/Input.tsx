@@ -38,7 +38,8 @@ export const Input = forwardRef(
     const { classes, cx } = useStyles({ subfix, isError });
     const disabled = props.disabled || props.readOnly;
     const focused = isFocus && !disabled;
-
+    console.log(isFocus);
+    console.log(focused);
     useUpdateEffect(() => {
       setInputValue(value);
     }, [value]);
