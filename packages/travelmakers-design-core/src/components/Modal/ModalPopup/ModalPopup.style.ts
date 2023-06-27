@@ -1,8 +1,25 @@
-import { createStyles } from "@travelmakers/styles";
+import { createStyles, keyframes } from "@travelmakers/styles";
 import { Props } from "./ModalPopup";
 
+const fadeIn = keyframes`
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}`;
+
+const popup = keyframes`
+  from {
+    transform: translateY(16px);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
+
 export default createStyles((theme, { content }: Pick<Props, "content">) => {
-  const { colors, shadows, spacing, typography } = theme;
+  const { colors, shadows, spacing, typography, transitionTiming } = theme;
 
   return {
     root: {
@@ -15,27 +32,29 @@ export default createStyles((theme, { content }: Pick<Props, "content">) => {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: "rgba(0, 0, 0, 0.6)",
-      backdropFilter: "blur(8px)",
+      backgroundColor: colors.black30,
+      backdropFilter: "blur(16px)",
+      animation: `${fadeIn} 0.2s ${transitionTiming.easeInOut}`,
     },
     dialog: {
-      position: "fixed",
-      zIndex: 100,
-      top: "50%",
-      left: "50%",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
       rowGap: spacing.spacing30,
       width: "328px",
       height: "174px",
-      margin: 0,
+      margin: "0 auto",
       padding: spacing.spacing30,
-      transform: "translate(-50%, -50%)",
       filter: `drop-shadow(${shadows.elevation5})`,
       border: 0,
       borderRadius: "12px",
       backgroundColor: colors.white,
+      transform: "translateY(16px)",
+
+      "&[open]": {
+        transform: "translateY(0)",
+        animation: `${popup} 0.2s ${transitionTiming.easeInOut}`,
+      },
     },
     title: {
       ...typography.subhead1,

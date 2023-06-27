@@ -1,9 +1,27 @@
-import { createStyles } from "@travelmakers/styles";
+import { createStyles, keyframes } from "@travelmakers/styles";
 import { Props } from "./ModalFullPage";
+
+const fadeIn = keyframes`
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}`;
+
+const popup = keyframes`
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
 
 export default createStyles(
   (theme, { hasIframe }: Pick<Props, "hasIframe">) => {
-    const { colors, spacing, typography, shadows, radius } = theme;
+    const { colors, spacing, typography, shadows, radius, transitionTiming } =
+      theme;
 
     return {
       root: {
@@ -16,8 +34,9 @@ export default createStyles(
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
-        backdropFilter: "blur(8px)",
+        backgroundColor: colors.black30,
+        backdropFilter: "blur(16px)",
+        animation: `${fadeIn} 0.2s ${transitionTiming.easeInOut})`,
       },
       dialog: {
         display: "flex",
@@ -32,6 +51,12 @@ export default createStyles(
         border: 0,
         borderRadius: radius.radius20,
         overflow: "hidden",
+        transform: "translateY(16px)",
+
+        "&[open]": {
+          transform: "translateY(0)",
+          animation: `${popup} 0.2s ${transitionTiming.easeInOut}`,
+        },
       },
       header: {
         display: "grid",
