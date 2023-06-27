@@ -95,7 +95,7 @@ export const HotelFeaturedCard = forwardRef(
               <Tag
                 type="line"
                 color="gray"
-                roundness="half"
+                roundness="full"
                 size="medium"
                 items={timelineTags.map((timelineTag, idx) => (
                   <Tag.Item key={idx} label={timelineTag} />
