@@ -74,6 +74,18 @@ export default createStyles(
       },
 
       // NOTE: cell-type
+      "disabled-between": {
+        color: theme.colors.primary4,
+      },
+      "disabled-to-between": {
+        color: theme.colors.primary4,
+      },
+      "not-allowed-between": {
+        color: theme.colors.primary3,
+      },
+      "not-allowed-to-between": {
+        color: theme.colors.primary3,
+      },
       disabled: {
         color: theme.colors.primary4,
       },
