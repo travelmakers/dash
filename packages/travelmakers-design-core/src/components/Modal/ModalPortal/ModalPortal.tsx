@@ -21,7 +21,7 @@ interface Props {
 export const ModalPortal = ({
   target = "modal",
   children,
-}: PropsWithChildren<Props>) => {
+}: PropsWithChildren<Props>): React.ReactPortal => {
   const container = document.getElementById(target);
   return container ? createPortal(children, container) : null;
 };

@@ -5,6 +5,7 @@ import { DropdownContext } from "../Dropdown/Dropdown";
 import useStyles from "./DropdownTrigger.style";
 import { DropdownTriggerProps, ReturnType } from "./DropdownTrigger.type";
 
+// @ts-ignore
 export interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   children:
     | ((props: { isToggle: boolean }) => React.ReactNode)

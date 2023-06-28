@@ -46,8 +46,10 @@ export const SelectButton = forwardRef(
 
     if (callout) {
       <div className={cx(classes.container, className)}>
-        {content}
-        {callout}
+        <>
+          {content}
+          {callout}
+        </>
       </div>;
     }
 
