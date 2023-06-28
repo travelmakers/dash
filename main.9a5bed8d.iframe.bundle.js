@@ -7735,7 +7735,7 @@ to {
   opacity: 1;
 }`]))),n=Object(r.c)(l||(l=c([`
   from {
-    transform: translateY(20px);
+    transform: translateY(12px);
   }
   to {
     transform: translateY(0);
@@ -8173,7 +8173,7 @@ to {
   opacity: 1;
 }`]))),n=Object(r.c)(l||(l=c([`
   from {
-    transform: translateY(16px);
+    transform: translateY(12px);
   }
   to {
     transform: translateY(0);
