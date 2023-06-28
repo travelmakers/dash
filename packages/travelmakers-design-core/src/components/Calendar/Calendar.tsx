@@ -106,8 +106,6 @@ export const Calendar = forwardRef(
       }
     }, []);
 
-    console.log("sgdsgdsgd", state);
-
     return (
       <View<React.ElementType> component={"div"} className={cx(classes.root)}>
         <View<React.ElementType>

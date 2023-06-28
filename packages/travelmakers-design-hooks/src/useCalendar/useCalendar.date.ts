@@ -111,6 +111,8 @@ function createEvents({ events }: { events?: CalendarEvent[] }, prevEvents) {
 /**
  * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
  * @param day
+ * @param selectableDates
+ * @param disabledDays
  * @returns
  */
 const isDisabledDay = (
@@ -118,11 +120,17 @@ const isDisabledDay = (
   selectableDates: string[],
   disabledDays: string[]
 ) => {
-  const isDisable = disabledDays.some((disabledDay) =>
-    isEqual(new Date(disabledDay), day.date)
+  const isDisable = disabledDays.some(
+    (disabledDay) =>
+      new Date(disabledDay).toLocaleDateString() ===
+      day.date.toLocaleDateString()
+    // isEqual(new Date(disabledDay), day.date)
   );
-  const isSelectable = !selectableDates.some((selectableDate) =>
-    isEqual(new Date(selectableDate), day.date)
+  const isSelectable = !selectableDates.some(
+    (selectableDate) =>
+      new Date(selectableDate).toLocaleDateString() ===
+      day.date.toLocaleDateString()
+    // isEqual(new Date(selectableDate), day.date)
   );
   return isDisable || isSelectable;
 };

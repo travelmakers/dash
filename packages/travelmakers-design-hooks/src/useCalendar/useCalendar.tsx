@@ -142,7 +142,7 @@ function initialize(
     options: { ...initialState.options, ...options },
   };
   const days = getDays(date, events, selectableDates, disabledDays);
-  console.log("nextMonths-init", days, selectableDates);
+
   if (days.year !== null) {
     return {
       ...events,
