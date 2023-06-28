@@ -8,7 +8,7 @@ export default createStyles((theme) => {
     },
     container: {
       backgroundColor: theme.colors.white,
-      width: theme.deviceSizes.mobile,
+      maxWidth: theme.deviceSizes.mobile,
       height: "100%",
       margin: "auto",
       position: "relative",
