@@ -137,11 +137,9 @@ export const Calendar = forwardRef(
               />
             )}
             {isPending && (
-              <div style={{ textAlign: "center" }}>
+              <div style={{ textAlign: "center", marginTop: "12px" }}>
                 <img
-                  src={
-                    "https://hotel-01.s3.ap-northeast-2.amazonaws.com/next/common/loading.png"
-                  }
+                  src={require("./assets/loading.png")}
                   width={"28"}
                   height={"28"}
                   alt={"loading"}

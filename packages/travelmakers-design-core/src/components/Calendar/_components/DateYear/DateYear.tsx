@@ -21,7 +21,6 @@ export interface Props {
   year: number;
   month: string;
   weeks?: CalendarState["weeks"];
-  onType: (day: DateCellDay) => DateCellType;
   onClick: (day: DateCellDay) => void;
   onClear: () => void;
   enabledDays: Date;
@@ -41,7 +40,6 @@ export const DateYear = React.memo(
         year,
         month,
         weeks,
-        onType,
         onClick,
         onClear,
         enabledDays,
