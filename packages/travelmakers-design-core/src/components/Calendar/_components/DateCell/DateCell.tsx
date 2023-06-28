@@ -84,7 +84,7 @@ export const DateCell = React.memo(
                   className={cx(
                     classes.boxText,
                     ...DAY_CLASSES[deferredDay.dayIndex],
-                    // classes[isDisabledDay(day) && "disabled"]
+                    classes[deferredDay.disabled && "disabled"],
                     classes[checked.from?.date === day.date && "focusDay"],
                     classes[checked.to?.date === day.date && "focusDay"]
                   )}

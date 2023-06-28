@@ -108,11 +108,36 @@ function createEvents({ events }: { events?: CalendarEvent[] }, prevEvents) {
   return { events: newEvents, eventsIndex: newEventsIndex };
 }
 
-function getWeeks(date, currentDate, { options, events, eventsIndex }) {
+/**
+ * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
+ * @param day
+ * @returns
+ */
+const isDisabledDay = (
+  day,
+  selectableDates: string[],
+  disabledDays: string[]
+) => {
+  const isDisable = disabledDays.some((disabledDay) =>
+    isEqual(new Date(disabledDay), day.date)
+  );
+  const isSelectable = !selectableDates.some((selectableDate) =>
+    isEqual(new Date(selectableDate), day.date)
+  );
+  return isDisable || isSelectable;
+};
+
+function getWeeks(
+  date,
+  currentDate,
+  { options, events, eventsIndex },
+  selectableDates?: string[],
+  disabledDays?: string[]
+) {
   const firstDay = toDate(new Date(currentDate));
   const lastDay = startOfWeek(lastDayOfMonth(date));
   const diff = differenceInCalendarWeeks(lastDay, firstDay) + 1;
-  const weeks = Array.from({ length: diff }).map((_, weekIndex) => {
+  return Array.from({ length: diff }).map((_, weekIndex) => {
     const days = Array.from({ length: options.numOfDays }).map(
       (_, dayIndex) => {
         const day = transformDate(date, currentDate, options.locale);
@@ -120,19 +145,24 @@ function getWeeks(date, currentDate, { options, events, eventsIndex }) {
         const month = format(date, "LLLL", { locale: options.locale });
         const year = getYear(date);
         currentDate = addDays(currentDate, 1);
+        const disabled = isDisabledDay(
+          day,
+          selectableDates ?? [],
+          disabledDays ?? []
+        );
         return {
           year,
           month,
           dayIndex,
           weekIndex,
           events: dayEvents,
+          disabled,
           ...day,
         };
       }
     );
     return options.rtl ? days.reverse() : days;
   });
-  return weeks;
 }
 
 /**
@@ -140,9 +170,20 @@ function getWeeks(date, currentDate, { options, events, eventsIndex }) {
  * @param date
  * @returns
  */
-function getDays(date, { options, events, eventsIndex }) {
+function getDays(
+  date,
+  { options, events, eventsIndex },
+  selectableDates?: string[],
+  disabledDays?: string[]
+) {
   let currentDate = startOfWeek(new Date(getYear(date), getMonth(date)));
-  const weeks = getWeeks(date, currentDate, { options, events, eventsIndex });
+  const weeks = getWeeks(
+    date,
+    currentDate,
+    { options, events, eventsIndex },
+    selectableDates,
+    disabledDays
+  );
   let days: string[];
   if (isValid(startOfWeek(currentDate)) && isValid(endOfWeek(currentDate))) {
     days = eachDayOfInterval({

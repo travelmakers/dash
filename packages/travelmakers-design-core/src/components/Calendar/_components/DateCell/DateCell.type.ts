@@ -47,6 +47,7 @@ export type DateCellDay = {
   events: any;
   month: string;
   year: number;
+  disabled: boolean;
 };
 
 export type ReturnType = DateCellComponent & {

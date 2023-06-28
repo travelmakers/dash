@@ -31,6 +31,7 @@ export type Week = {
 
   month: string;
   year: number;
+  disabled: boolean;
 };
 
 // ===========

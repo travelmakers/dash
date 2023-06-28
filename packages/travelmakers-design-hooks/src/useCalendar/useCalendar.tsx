@@ -53,7 +53,13 @@ function reducer(state, action): CalendarState {
         year: [...state.year],
       };
     case actionTypes.GET_INFINITE_NEXT_MONTH:
-      const nextMonths = getDays(addMonths(state.startDate, 1), state);
+      const nextMonths = getDays(
+        addMonths(state.startDate, 1),
+        state,
+        action.selectableDates,
+        action.disabledDays
+      );
+
       if (
         nextMonths.year !== null &&
         state.month[state.month.length - 1] !== nextMonths.month
@@ -76,7 +82,12 @@ function reducer(state, action): CalendarState {
     case actionTypes.CLEAR:
       return {
         ...state,
-        ...initialize(new Date(), {}),
+        ...initialize(
+          new Date(),
+          {},
+          action.selectableDates,
+          action.disabledDays
+        ),
       };
     case actionTypes.GET_NEXT_MONTH:
       return {
@@ -119,13 +130,19 @@ function reducer(state, action): CalendarState {
   }
 }
 
-function initialize(date, options) {
+function initialize(
+  date,
+  options,
+  selectableDates?: string[],
+  disabledDays?: string[]
+) {
   const events = {
     ...initialState,
     ...createEvents(options, initialState),
     options: { ...initialState.options, ...options },
   };
-  const days = getDays(date, events);
+  const days = getDays(date, events, selectableDates, disabledDays);
+  console.log("nextMonths-init", days, selectableDates);
   if (days.year !== null) {
     return {
       ...events,
@@ -165,9 +182,14 @@ export function useCalendar(
     {
       setDate: (date) => dispatch({ date, type: actionTypes.SET_DATE }),
       getNextMonth: () => dispatch({ type: actionTypes.GET_NEXT_MONTH }),
-      clear: () => dispatch({ type: actionTypes.CLEAR }),
-      getInfiniteNextMonth: () =>
-        dispatch({ type: actionTypes.GET_INFINITE_NEXT_MONTH }),
+      clear: (selectableDates, disabledDays) =>
+        dispatch({ type: actionTypes.CLEAR, selectableDates, disabledDays }),
+      getInfiniteNextMonth: (selectableDates, disabledDays) =>
+        dispatch({
+          type: actionTypes.GET_INFINITE_NEXT_MONTH,
+          selectableDates,
+          disabledDays,
+        }),
       getPrevMonth: () => dispatch({ type: actionTypes.GET_PREV_MONTH }),
       addEvent: (event) => dispatch({ event, type: actionTypes.ADD_EVENT }),
       removeEvent: (id) => dispatch({ id, type: actionTypes.REMOVE_EVENT }),

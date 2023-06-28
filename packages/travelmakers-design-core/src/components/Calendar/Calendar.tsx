@@ -94,17 +94,19 @@ export const Calendar = forwardRef(
     const handleCalendar = () => {
       startTransition(() => {
         Array.from({ length: displayMonth }).map(() => {
-          actions.getInfiniteNextMonth();
+          actions.getInfiniteNextMonth(selectableDates, disabledDays);
         });
       });
     };
 
     useEffect(() => {
       if (state) {
-        actions.clear();
+        actions.clear(selectableDates, disabledDays);
         handleCalendar();
       }
     }, []);
+
+    console.log("sgdsgdsgd", state);
 
     return (
       <View<React.ElementType> component={"div"} className={cx(classes.root)}>
