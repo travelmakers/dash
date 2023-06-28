@@ -4,8 +4,7 @@ import { View } from "../../../View";
 import useStyles from "./DateCell.style";
 import { DateCellDay, DateCellProps, ReturnType } from "./DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
-import { isEqual } from "date-fns";
-import { getDate } from "@travelmakers/utils";
+import { differenceInDays } from "date-fns";
 
 export interface Props {
   selectableDates: string[];
@@ -50,23 +49,19 @@ export const DateCell = React.memo(
         6: [classes.saturday],
       };
 
-      // =========
       /**
-       * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
+       * ANCHOR: From Date, To Date 날짜 사이에 대해서 체크
        * @param day
        * @returns
        */
-      const isDisabledDay = (day: DateCellDay) => {
-        const isDisable = disabledDays.some((disabledDay) =>
-          isEqual(getDate(disabledDay).date, day.date)
+      const isBetweenFromAndToDays = (day: DateCellDay) => {
+        return (
+          checked.from &&
+          checked.to &&
+          differenceInDays(day.date, checked.from.date) > 0 &&
+          differenceInDays(checked.to.date, day.date) > 0
         );
-        const isSelectable = !selectableDates.some((selectableDate) =>
-          isEqual(getDate(selectableDate).date, day.date)
-        );
-        return isDisable || isSelectable;
       };
-
-      // =========
 
       return (
         <View<React.ElementType>
@@ -78,7 +73,14 @@ export const DateCell = React.memo(
         >
           {visible && (
             <div className={cx(classes.calendar)}>
-              <div className={cx(classes.background)} />
+              <div
+                className={cx(
+                  classes.background,
+                  classes[isBetweenFromAndToDays(day) && "betweenDays"],
+                  classes[checked.from?.date === day.date && "background-from"],
+                  classes[checked.to?.date === day.date && "background-to"]
+                )}
+              />
               <div className={classes.box}>
                 <span
                   className={cx(

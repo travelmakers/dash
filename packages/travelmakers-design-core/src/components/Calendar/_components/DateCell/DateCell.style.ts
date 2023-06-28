@@ -102,6 +102,13 @@ export default createStyles(
         width: "37px",
         right: -1,
       },
+      "background-to": {
+        ...getBackgroundColor(),
+        ...getToBackgroundCssObject(),
+      },
+      betweenDays: {
+        ...getBackgroundColor(),
+      },
     };
   }
 );

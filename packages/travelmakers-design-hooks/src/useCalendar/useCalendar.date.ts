@@ -124,13 +124,11 @@ const isDisabledDay = (
     (disabledDay) =>
       new Date(disabledDay).toLocaleDateString() ===
       day.date.toLocaleDateString()
-    // isEqual(new Date(disabledDay), day.date)
   );
   const isSelectable = !selectableDates.some(
     (selectableDate) =>
       new Date(selectableDate).toLocaleDateString() ===
       day.date.toLocaleDateString()
-    // isEqual(new Date(selectableDate), day.date)
   );
   return isDisable || isSelectable;
 };
