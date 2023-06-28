@@ -44,16 +44,12 @@ export const SelectButton = forwardRef(
       </View>
     );
 
-    if (callout) {
-      return (
-        <div className={cx(classes.container, className)}>
-          {content}
-          {callout}
-        </div>
-      );
-    }
-
-    return content;
+    return (
+      <div className={cx(classes.container, className)}>
+        {content}
+        {callout && callout}
+      </div>
+    );
   }
 ) as unknown as ReturnType;
 

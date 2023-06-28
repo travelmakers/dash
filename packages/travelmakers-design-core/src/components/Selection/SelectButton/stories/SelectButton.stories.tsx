@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { useState } from "react";
 import { SelectButton } from "../SelectButton";
 
-const data = ["선택1"];
+const data = ["선택1", "선택2"];
 
 export default {
   title: "@travelmakers/core/General/Selection/SelectButton/SelectButton",
