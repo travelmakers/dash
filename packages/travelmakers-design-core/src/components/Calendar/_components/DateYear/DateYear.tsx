@@ -10,10 +10,14 @@ import { DateCell } from "../DateCell";
 import _ from "lodash";
 import { getMonth } from "date-fns";
 import { DateCellDay, DateCellType } from "../DateCell/DateCell.type";
+import { SelectedDays } from "../../Calendar.type";
 
 export interface Props {
   title: string;
   hotelName: string;
+  checked: SelectedDays;
+  disabledDays?: string[];
+  selectableDates: string[];
   year: number;
   month: string;
   weeks?: CalendarState["weeks"];
@@ -28,6 +32,9 @@ export const DateYear = React.memo(
       {
         title,
         hotelName,
+        checked,
+        disabledDays,
+        selectableDates,
         year,
         month,
         weeks,
@@ -69,7 +76,9 @@ export const DateYear = React.memo(
                             <DateCell
                               key={`${weeklyKey}-${day.dayOfMonth}day`}
                               day={day}
-                              type={onType(day)}
+                              checked={checked}
+                              disabledDays={disabledDays}
+                              selectableDates={selectableDates}
                               onClick={onClick}
                               visible={
                                 _.first(week).month ===

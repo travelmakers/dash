@@ -2,7 +2,10 @@ import { createStyles } from "@travelmakers/styles";
 import { Props } from "./DateCell";
 
 export default createStyles(
-  (theme, { type, visible }: Pick<Props, "type" | "visible">) => {
+  (
+    theme,
+    { day, checked, visible }: Pick<Props, "day" | "checked" | "visible">
+  ) => {
     const getToBackgroundCssObject = () => {
       return {
         borderRadius: "100px 0px 0px 100px",
@@ -18,17 +21,6 @@ export default createStyles(
       return {
         backgroundColor: theme.colors.surface,
       };
-    };
-
-    const getIsNotAllowed = () => {
-      if (
-        type === "not-allowed" ||
-        type === "not-allowed-to-between" ||
-        type === "not-allowed-between"
-      ) {
-        return true;
-      }
-      return false;
     };
 
     return {
@@ -61,7 +53,7 @@ export default createStyles(
 
       // NOTE: day에 대한 css
       strikeBox: {
-        display: getIsNotAllowed() ? "flex" : "none",
+        display: "none",
         position: "absolute",
         alignItems: "center",
         top: "50%",
@@ -82,35 +74,17 @@ export default createStyles(
       },
 
       // NOTE: cell-type
-      "disabled-between": {
-        color: theme.colors.primary4,
-      },
-      "disabled-to-between": {
-        color: theme.colors.primary4,
-      },
-      "not-allowed-between": {
-        color: theme.colors.primary3,
-      },
-      "not-allowed-to-between": {
-        color: theme.colors.primary3,
-      },
-      focus: {
-        color: theme.colors.white,
-        backgroundColor: theme.colors.secondary,
-      },
-      from: {
-        color: theme.colors.white,
-        backgroundColor: theme.colors.secondary,
-      },
-      to: {
-        color: theme.colors.white,
-        backgroundColor: theme.colors.secondary,
-      },
       disabled: {
         color: theme.colors.primary4,
       },
-      "not-allowed": {
-        color: theme.colors.primary3,
+
+      startDay: {
+        color: theme.colors.white,
+        backgroundColor: theme.colors.secondary,
+      },
+
+      betweenDaysBackground: {
+        ...getBackgroundColor(),
       },
 
       // NOTE: cell-background-type
@@ -122,36 +96,11 @@ export default createStyles(
         width: "100%",
         height: "26px",
       },
-      "background-default-between": {
-        ...getBackgroundColor(),
-      },
-      "background-disabled-between": {
-        ...getBackgroundColor(),
-      },
-      "background-disabled-to-between": {
-        ...getBackgroundColor(),
-        ...getToBackgroundCssObject(),
-      },
-      "background-not-allowed-between": {
-        ...getBackgroundColor(),
-      },
-      "background-not-allowed-to-between": {
-        ...getBackgroundColor(),
-        ...getToBackgroundCssObject(),
-      },
-      "background-to-between": {
-        ...getBackgroundColor(),
-        ...getToBackgroundCssObject(),
-      },
       "background-from": {
         ...getBackgroundColor(),
         borderRadius: "100px 0px 0px 100px",
         width: "37px",
         right: -1,
-      },
-      "background-to": {
-        ...getBackgroundColor(),
-        ...getToBackgroundCssObject(),
       },
     };
   }

@@ -2,16 +2,16 @@ import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, useDeferredValue } from "react";
 import { View } from "../../../View";
 import useStyles from "./DateCell.style";
-import {
-  DateCellDay,
-  DateCellProps,
-  DateCellType,
-  ReturnType,
-} from "./DateCell.type";
+import { DateCellDay, DateCellProps, ReturnType } from "./DateCell.type";
+import { SelectedDays } from "../../Calendar.type";
+import { isEqual } from "date-fns";
+import { getDate } from "@travelmakers/utils";
 
 export interface Props {
+  selectableDates: string[];
+  disabledDays?: string[];
   day: DateCellDay;
-  type: DateCellType;
+  checked: SelectedDays;
   visible: boolean;
   onClick?: (day: DateCellDay) => void;
 }
@@ -19,12 +19,20 @@ export interface Props {
 export const DateCell = React.memo(
   forwardRef(
     <C extends React.ElementType = "td">(
-      { day, type, visible, onClick, className, ...props }: DateCellProps<C>,
+      {
+        day,
+        visible,
+        checked,
+        selectableDates,
+        disabledDays,
+        onClick,
+        className,
+        ...props
+      }: DateCellProps<C>,
       ref: PolymorphicRef<C>
     ) => {
-      const { classes, cx } = useStyles({ type, visible });
+      const { classes, cx } = useStyles({ day, checked, visible });
       const deferredDay = useDeferredValue(day);
-      const deferredType = useDeferredValue(type);
       const DAY_CLASSES = {
         /** 일요일 */
         0: [classes.sunday],
@@ -42,6 +50,24 @@ export const DateCell = React.memo(
         6: [classes.saturday],
       };
 
+      // =========
+      /**
+       * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
+       * @param day
+       * @returns
+       */
+      const isDisabledDay = (day: DateCellDay) => {
+        const isDisable = disabledDays.some((disabledDay) =>
+          isEqual(getDate(disabledDay).date, day.date)
+        );
+        const isSelectable = !selectableDates.some((selectableDate) =>
+          isEqual(getDate(selectableDate).date, day.date)
+        );
+        return isDisable || isSelectable;
+      };
+
+      // =========
+
       return (
         <View<React.ElementType>
           component={"td"}
@@ -52,18 +78,13 @@ export const DateCell = React.memo(
         >
           {visible && (
             <div className={cx(classes.calendar)}>
-              <div
-                className={cx(
-                  classes.background,
-                  classes[`background-${deferredType}`]
-                )}
-              />
+              <div className={cx(classes.background)} />
               <div className={classes.box}>
                 <span
                   className={cx(
                     classes.boxText,
                     ...DAY_CLASSES[deferredDay.dayIndex],
-                    classes[deferredType]
+                    classes[isDisabledDay(day) && "disabled"]
                   )}
                 >
                   {deferredDay.dayOfMonth}
