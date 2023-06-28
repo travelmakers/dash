@@ -38,10 +38,16 @@ export default createStyles(
       contentScrollLeft: {
         left: theme.spacing.spacing30,
         visibility: leftArrowHover ? "visible" : "hidden",
+        [`${theme.media.mobile}`]: {
+          display: "none",
+        },
       },
       contentScrollRight: {
         right: theme.spacing.spacing5,
         visibility: rightArrowHover ? "visible" : "hidden",
+        [`${theme.media.mobile}`]: {
+          display: "none",
+        },
       },
       contentDimmer: {
         position: "absolute",
