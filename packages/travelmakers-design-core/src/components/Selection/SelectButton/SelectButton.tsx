@@ -31,25 +31,27 @@ export const SelectButton = forwardRef(
 
     const content = (
       <View<React.ElementType>
-        component={"fieldset"}
+        component={"div"}
         ref={ref}
         className={classes.root}
         {...props}
       >
-        <legend className={isVisibleLabel ? classes.legend : "sr-only"}>
+        <strong className={isVisibleLabel ? classes.legend : "sr-only"}>
           {label}
-        </legend>
+        </strong>
         <div className={classes.wrapper}>{items}</div>
         {feedback && <strong className={classes.feedback}>{feedback}</strong>}
       </View>
     );
 
-    return (
+    if (callout) {
       <div className={cx(classes.container, className)}>
         {content}
-        {callout && callout}
-      </div>
-    );
+        {callout}
+      </div>;
+    }
+
+    return content;
   }
 ) as unknown as ReturnType;
 

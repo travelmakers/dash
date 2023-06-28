@@ -21,6 +21,7 @@ export default createStyles((theme) => {
     legend: {
       ...typography.body2,
       color: colors.primary1,
+      fontWeight: 400,
     },
     wrapper: { display: "flex" },
     feedback: { ...typography.body3, color: colors.primary3, fontWeight: 400 },
