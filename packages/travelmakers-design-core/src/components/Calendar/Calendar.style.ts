@@ -14,7 +14,7 @@ export default createStyles((theme) => {
       position: "relative",
     },
     calendar: {
-      width: theme.deviceSizes.mobile,
+      maxWidth: theme.deviceSizes.mobile,
       height: "100%",
       margin: "auto",
       padding: theme.spacing.spacing30,

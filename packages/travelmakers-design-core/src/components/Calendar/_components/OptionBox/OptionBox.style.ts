@@ -3,7 +3,7 @@ import { createStyles } from "@travelmakers/styles";
 export default createStyles((theme, { open }: { open: boolean }) => {
   return {
     optionBox: {
-      width: theme.deviceSizes.mobile,
+      maxWidth: theme.deviceSizes.mobile,
       margin: "auto",
       position: "sticky",
       bottom: 0,
