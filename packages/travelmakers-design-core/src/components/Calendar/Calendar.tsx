@@ -100,7 +100,10 @@ export const Calendar = forwardRef(
     };
 
     useEffect(() => {
-      state && handleCalendar();
+      if (state) {
+        actions.clear();
+        handleCalendar();
+      }
     }, []);
 
     return (

@@ -7,23 +7,31 @@ export interface CalendarState {
   days: string[];
   month: string[];
   year: number[];
+  weeks?: Week[][];
   events?: { dates: string[]; startDate: Date; endDate: Date; note: string }[];
-  weeks?: {
-    date: Date;
-    dayOfWeek: string;
-    dayOfYear: number;
-    dayOfMonth: number;
-    isToday: boolean;
-    isSameMonth: boolean;
-    isWeekend: boolean;
-    dayIndex: number;
-    weekIndex: number;
-    events: any;
-
-    month: string;
-    year: number;
-  }[][];
+  init?: {
+    days: string[];
+    month: string[];
+    year: number[];
+    weeks?: Week[][];
+  };
 }
+
+export type Week = {
+  date: Date;
+  dayOfWeek: string;
+  dayOfYear: number;
+  dayOfMonth: number;
+  isToday: boolean;
+  isSameMonth: boolean;
+  isWeekend: boolean;
+  dayIndex: number;
+  weekIndex: number;
+  events: any;
+
+  month: string;
+  year: number;
+};
 
 // ===========
 const GET_NEXT_MONTH = "GET_NEXT_MONTH";

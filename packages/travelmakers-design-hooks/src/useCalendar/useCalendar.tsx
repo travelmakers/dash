@@ -75,9 +75,8 @@ function reducer(state, action): CalendarState {
       };
     case actionTypes.CLEAR:
       return {
-        days: [],
-        month: [],
-        year: [],
+        ...state,
+        ...initialize(new Date(), {}),
       };
     case actionTypes.GET_NEXT_MONTH:
       return {
