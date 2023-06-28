@@ -183,6 +183,7 @@ export const DateTable = React.memo(
               <DateYear
                 key={title}
                 checked={checked}
+                type={type}
                 disabledDays={disabledDays}
                 selectableDates={selectableDates}
                 title={title}
@@ -193,6 +194,8 @@ export const DateTable = React.memo(
                 onType={onType}
                 onClick={onClick}
                 onClear={onClear}
+                enabledDays={enabledDays}
+                minNight={minNight}
               />
             );
           })}

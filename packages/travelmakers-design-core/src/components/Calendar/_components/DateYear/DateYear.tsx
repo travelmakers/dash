@@ -24,6 +24,9 @@ export interface Props {
   onType: (day: DateCellDay) => DateCellType;
   onClick: (day: DateCellDay) => void;
   onClear: () => void;
+  enabledDays: Date;
+  minNight: number;
+  type: "tour" | "move-in";
 }
 
 export const DateYear = React.memo(
@@ -41,6 +44,9 @@ export const DateYear = React.memo(
         onType,
         onClick,
         onClear,
+        enabledDays,
+        minNight,
+        type,
         className,
         children,
         ...props
@@ -76,6 +82,9 @@ export const DateYear = React.memo(
                             <DateCell
                               key={`${weeklyKey}-${day.dayOfMonth}day`}
                               day={day}
+                              type={type}
+                              enabledDays={enabledDays}
+                              minNight={minNight}
                               checked={checked}
                               disabledDays={disabledDays}
                               selectableDates={selectableDates}

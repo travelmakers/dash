@@ -109,6 +109,28 @@ export default createStyles(
       betweenDays: {
         ...getBackgroundColor(),
       },
+
+      "background-default-between": {
+        ...getBackgroundColor(),
+      },
+      "background-disabled-between": {
+        ...getBackgroundColor(),
+      },
+      "background-disabled-to-between": {
+        ...getBackgroundColor(),
+        ...getToBackgroundCssObject(),
+      },
+      "background-not-allowed-between": {
+        ...getBackgroundColor(),
+      },
+      "background-not-allowed-to-between": {
+        ...getBackgroundColor(),
+        ...getToBackgroundCssObject(),
+      },
+      "background-to-between": {
+        ...getBackgroundColor(),
+        ...getToBackgroundCssObject(),
+      },
     };
   }
 );
