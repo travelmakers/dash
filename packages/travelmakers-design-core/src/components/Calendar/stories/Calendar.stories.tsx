@@ -2,6 +2,7 @@ import { Meta } from "@storybook/react";
 import { Toast, Toaster } from "../../Toast";
 import { Calendar } from "../Calendar";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 export default {
   title: "@travelmakers/core/General/Calendar",
@@ -149,9 +150,20 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
+  const [selected, setSelected] = useState({
+    from: undefined,
+    to: undefined,
+    time: { hour: undefined, minutes: undefined },
+  });
   return (
     <div>
-      <Calendar {...props} topIndicatorPosition='0px'>
+      <Calendar
+        {...props}
+        topIndicatorPosition="0px"
+        selected={selected}
+        // @ts-ignore
+        onChange={(data) => setSelected(data)}
+      >
         <Calendar.OptionBox
           title={"시간 선택하기"}
           buttonTitle={"예약하기"}

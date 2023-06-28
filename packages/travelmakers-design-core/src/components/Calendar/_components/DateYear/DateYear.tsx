@@ -69,7 +69,6 @@ export const DateYear = React.memo(
                             <DateCell
                               key={`${weeklyKey}-${day.dayOfMonth}day`}
                               day={day}
-                              // type={"default"}
                               type={onType(day)}
                               onClick={onClick}
                               visible={

@@ -139,37 +139,37 @@ export const DateTable = React.memo(
       };
 
       const onType = (day: DateCellDay): DateCellType => {
-        if (isDisabledDay(day)) {
-          if (checked.from && isEqual(checked.to?.date, day.date)) {
-            return "disabled-to-between";
-          } else if (
-            checked.from &&
-            differenceInDays(day.date, checked.from.date) > 0 &&
-            differenceInDays(enabledDays, day.date) >= 0 &&
-            (!checked.to || differenceInDays(checked.to?.date, day.date) >= 0)
-          ) {
-            return differenceInDays(enabledDays, day.date) > 0
-              ? "disabled-between"
-              : "disabled-to-between";
-          } else {
-            return "disabled";
-          }
-        }
-
-        if (isBetweenNotSelectedDays(day)) {
-          const isMinNight = isMinNightDays(day);
-          if (differenceInDays(enabledDays, day.date) > 0) {
-            return isMinNight ? "default-between" : "disabled-between";
-          } else {
-            return isMinNight ? "to-between" : "disabled-to-between";
-          }
-        } else if (isEqual(day.date, checked.from?.date)) {
-          return type === "move-in" ? "from" : "focus";
-        } else if (isEqual(day.date, checked.to?.date)) {
-          return "to";
-        } else if (isBetweenFromAndToDays(day)) {
-          return "default-between";
-        }
+        // if (isDisabledDay(day)) {
+        //   if (checked.from && isEqual(checked.to?.date, day.date)) {
+        //     return "disabled-to-between";
+        //   } else if (
+        //     checked.from &&
+        //     differenceInDays(day.date, checked.from.date) > 0 &&
+        //     differenceInDays(enabledDays, day.date) >= 0 &&
+        //     (!checked.to || differenceInDays(checked.to?.date, day.date) >= 0)
+        //   ) {
+        //     return differenceInDays(enabledDays, day.date) > 0
+        //       ? "disabled-between"
+        //       : "disabled-to-between";
+        //   } else {
+        //     return "disabled";
+        //   }
+        // }
+        //
+        // if (isBetweenNotSelectedDays(day)) {
+        //   const isMinNight = isMinNightDays(day);
+        //   if (differenceInDays(enabledDays, day.date) > 0) {
+        //     return isMinNight ? "default-between" : "disabled-between";
+        //   } else {
+        //     return isMinNight ? "to-between" : "disabled-to-between";
+        //   }
+        // } else if (isEqual(day.date, checked.from?.date)) {
+        //   return type === "move-in" ? "from" : "focus";
+        // } else if (isEqual(day.date, checked.to?.date)) {
+        //   return "to";
+        // } else if (isBetweenFromAndToDays(day)) {
+        //   return "default-between";
+        // }
 
         return "default";
       };
