@@ -78,7 +78,7 @@ export default createStyles(
         color: theme.colors.primary4,
       },
 
-      startDay: {
+      focusDay: {
         color: theme.colors.white,
         backgroundColor: theme.colors.secondary,
       },
