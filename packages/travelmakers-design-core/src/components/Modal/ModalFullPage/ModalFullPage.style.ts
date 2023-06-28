@@ -11,7 +11,7 @@ to {
 
 const popup = keyframes`
   from {
-    transform: translateY(20px);
+    transform: translateY(12px);
   }
   to {
     transform: translateY(0);
