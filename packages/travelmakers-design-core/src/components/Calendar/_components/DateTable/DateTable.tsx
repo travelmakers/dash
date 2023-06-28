@@ -1,15 +1,14 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef, useMemo, useState } from "react";
+import { forwardRef, useState } from "react";
 import { DateTableProps, ReturnType } from "./DateTable.type";
 import React from "react";
 import { DateCellDay, DateCellType } from "../DateCell/DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
 import { addDays, differenceInDays, isEqual } from "date-fns";
 import { getDate } from "@travelmakers/utils";
-import _ from "lodash";
+
 import { CalendarState } from "@travelmakers/hooks/src/useCalendar/useCalendar.type";
 import { DateYear } from "../DateYear/DateYear";
-import { View } from "../../../View";
 
 export interface Props {
   checked: SelectedDays;

@@ -1,12 +1,12 @@
 import { useCalendar, useUpdateEffect } from "@travelmakers/hooks";
 import { PolymorphicRef } from "@travelmakers/styles";
-import _ from "lodash";
 import React, {
   PropsWithChildren,
   forwardRef,
   useEffect,
-  useMemo,
+  useTransition,
   useState,
+  useDeferredValue,
 } from "react";
 import { View } from "../View";
 import useStyles from "./Calendar.style";
@@ -79,6 +79,8 @@ export const Calendar = forwardRef(
   ) => {
     const { classes, cx } = useStyles();
     const [state, actions] = useCalendar(null);
+    const deferredState = useDeferredValue(state);
+    const [isPending, startTransition] = useTransition();
     const [checked, setChecked] = useState<SelectedDays>({
       from: selected?.from,
       to: selected?.to,
@@ -90,8 +92,10 @@ export const Calendar = forwardRef(
     }, [checked]);
 
     const handleCalendar = () => {
-      Array.from({ length: displayMonth }).map(() => {
-        actions.getInfiniteNextMonth();
+      startTransition(() => {
+        Array.from({ length: displayMonth }).map(() => {
+          actions.getInfiniteNextMonth();
+        });
       });
     };
 
@@ -113,7 +117,7 @@ export const Calendar = forwardRef(
             topIndicatorPosition={topIndicatorPosition}
           />
           <div className={classes.calendar}>
-            {state && (
+            {deferredState && (
               <DateTable
                 checked={checked}
                 setChecked={setChecked}
@@ -124,10 +128,22 @@ export const Calendar = forwardRef(
                 maxNight={maxNight}
                 hotelName={hotelName}
                 notAllowedMessage={notAllowedMessage}
-                months={[...state.month]}
-                years={[...state.year]}
-                weeks={[...state.weeks]}
+                months={[...deferredState.month]}
+                years={[...deferredState.year]}
+                weeks={[...deferredState.weeks]}
               />
+            )}
+            {isPending && (
+              <div style={{ textAlign: "center" }}>
+                <img
+                  src={
+                    "https://hotel-01.s3.ap-northeast-2.amazonaws.com/next/common/loading.png"
+                  }
+                  width={"28"}
+                  height={"28"}
+                  alt={"loading"}
+                />
+              </div>
             )}
           </div>
           {children}

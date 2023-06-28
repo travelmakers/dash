@@ -151,7 +151,7 @@ export default {
 export const Default = (props) => {
   return (
     <div>
-      <Calendar {...props}>
+      <Calendar {...props} topIndicatorPosition='0px'>
         <Calendar.OptionBox
           title={"시간 선택하기"}
           buttonTitle={"예약하기"}

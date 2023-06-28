@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useDeferredValue } from "react";
 import { View } from "../../../View";
 import useStyles from "./DateCell.style";
 import {
@@ -23,6 +23,8 @@ export const DateCell = React.memo(
       ref: PolymorphicRef<C>
     ) => {
       const { classes, cx } = useStyles({ type, visible });
+      const deferredDay = useDeferredValue(day);
+      const deferredType = useDeferredValue(type);
       const DAY_CLASSES = {
         /** 일요일 */
         0: [classes.sunday],
@@ -45,7 +47,7 @@ export const DateCell = React.memo(
           component={"td"}
           ref={ref}
           className={cx(className, classes.container)}
-          onClick={() => visible && onClick?.(day)}
+          onClick={() => visible && onClick?.(deferredDay)}
           {...props}
         >
           {visible && (
@@ -53,18 +55,18 @@ export const DateCell = React.memo(
               <div
                 className={cx(
                   classes.background,
-                  classes[`background-${type}`]
+                  classes[`background-${deferredType}`]
                 )}
               />
               <div className={classes.box}>
                 <span
                   className={cx(
                     classes.boxText,
-                    ...DAY_CLASSES[day.dayIndex],
-                    classes[type]
+                    ...DAY_CLASSES[deferredDay.dayIndex],
+                    classes[deferredType]
                   )}
                 >
-                  {day.dayOfMonth}
+                  {deferredDay.dayOfMonth}
                 </span>
               </div>
               <div className={classes.strikeBox}>
