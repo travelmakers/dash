@@ -45,6 +45,8 @@ export interface Props {
   displayMonth: number;
 
   topIndicatorPosition?: string;
+
+  loadingImageSrc?: string;
 }
 
 /**
@@ -71,6 +73,7 @@ export const Calendar = forwardRef(
       topIndicatorPosition = "48px",
       displayMonth,
       onChange,
+      loadingImageSrc,
       children,
       className,
       ...props
@@ -136,10 +139,10 @@ export const Calendar = forwardRef(
                 weeks={[...deferredState.weeks]}
               />
             )}
-            {isPending && (
+            {isPending && loadingImageSrc && (
               <div style={{ textAlign: "center", marginTop: "12px" }}>
                 <img
-                  src={require("./assets/loading.png")}
+                  src={loadingImageSrc}
                   width={"28"}
                   height={"28"}
                   alt={"loading"}
