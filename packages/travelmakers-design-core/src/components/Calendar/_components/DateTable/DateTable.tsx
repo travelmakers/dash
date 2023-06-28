@@ -170,7 +170,6 @@ export const DateTable = React.memo(
         // } else if (isBetweenFromAndToDays(day)) {
         //   return "default-between";
         // }
-
         return "default";
       };
 
