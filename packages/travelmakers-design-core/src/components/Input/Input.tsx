@@ -11,6 +11,7 @@ export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   subfix?: string | number;
   feedback?: string;
   isError?: boolean;
+  regCallback?: (v: string) => string;
 }
 
 export const Input = forwardRef(
@@ -28,6 +29,7 @@ export const Input = forwardRef(
       onBlur,
       onChange,
       className,
+      regCallback,
       ...props
     }: InputProps<C>,
     ref: PolymorphicRef<C>
@@ -38,8 +40,7 @@ export const Input = forwardRef(
     const { classes, cx } = useStyles({ subfix, isError });
     const disabled = props.disabled || props.readOnly;
     const focused = isFocus && !disabled;
-    console.log(isFocus);
-    console.log(focused);
+
     useUpdateEffect(() => {
       setInputValue(value);
     }, [value]);
@@ -67,6 +68,9 @@ export const Input = forwardRef(
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (disabled) return;
 
+      e.target.value = regCallback
+        ? regCallback(e.target.value)
+        : e.target.value;
       setInputValue(e.target.value);
       onChange?.(e);
     };
