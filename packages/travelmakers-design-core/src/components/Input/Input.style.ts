@@ -73,7 +73,7 @@ export default createStyles(
         ["&:disabled, &:read-only"]: {
           color: colors.primary3,
           backgroundColor: colors.surface,
-          border: `1px solid ${colors.outline}`,
+          border: !subfix && `1px solid ${colors.outline}`,
           cursor: "default",
 
           ["&::placeholder"]: {
