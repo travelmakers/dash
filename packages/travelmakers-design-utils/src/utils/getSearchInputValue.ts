@@ -12,7 +12,3 @@ export const regExp = /[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9- ]/g;
 export const sanitizeInput = (str: string) => {
   return str.replace(regExp, "");
 };
-
-export const isFilteredReg = (str: string) => {
-  return regExp.test(str);
-};

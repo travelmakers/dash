@@ -1,5 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { isFilteredReg, sanitizeInput } from "@travelmakers/utils";
+import { sanitizeInput } from "@travelmakers/utils";
 import React, { forwardRef, useRef, useState } from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
@@ -59,9 +59,7 @@ export const Search = forwardRef(
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (isFilteredReg(e.target.value)) {
-        e.target.value = sanitizeInput(e.target.value);
-      }
+      e.target.value = sanitizeInput(e.target.value);
       setInputValue(sanitizeInput(e.target.value));
       onChange?.(e);
     };
