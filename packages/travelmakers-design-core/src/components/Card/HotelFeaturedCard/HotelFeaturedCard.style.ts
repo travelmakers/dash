@@ -28,7 +28,7 @@ export default createStyles((theme) => {
       borderRadius: theme.radius.radius20,
       width: "296px",
       height: "180px",
-
+      maskImage: "-webkit-radial-gradient(white, black)",
       ["& > img"]: {
         borderRadius: theme.radius.radius20,
         position: "absolute",
