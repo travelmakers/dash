@@ -6,7 +6,11 @@ import {
   createStyles,
 } from "@travelmakers/styles";
 import { Props } from "../SelectDropBox/SelectDropBox";
-import { SELECT_DROP_BOX_HEIGHT } from "../SelectDropBox/SelectDropBox.style";
+
+export const SELECT_DROP_BOX_HEIGHT: Record<Props["type"], string> = {
+  option: "44px",
+  filter: "38px",
+};
 
 const SELECT_DROP_BOX_TRIGGER_COLOR: Record<Props["type"], TmColor> = {
   option: "primary2",
@@ -75,7 +79,12 @@ export default createStyles(
         borderWidth: "1px",
         borderBottomWidth: showOptions ? 0 : "1px",
         borderStyle: "solid",
-        borderColor: showOptions ? colors.primary : colors.outline,
+        borderColor:
+          type === "filter"
+            ? colors.transparent
+            : showOptions
+            ? colors.primary
+            : colors.outline,
         borderRadius: showOptions
           ? `${radius.radius20} ${radius.radius20} 0 0`
           : radius.radius20,
@@ -88,6 +97,7 @@ export default createStyles(
       },
       icon: {
         transform: `rotate(${showOptions ? "180deg" : "0"})`,
+        flexShrink: 0,
       },
     };
   }

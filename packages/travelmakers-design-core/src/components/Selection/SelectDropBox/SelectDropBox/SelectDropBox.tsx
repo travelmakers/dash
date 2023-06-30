@@ -1,3 +1,4 @@
+import { useUpdateEffect } from "@travelmakers/hooks";
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { createContext, forwardRef, useState } from "react";
 import { Dropdown } from "../../../Dropdown";
@@ -11,7 +12,6 @@ import {
   SelectDropBoxContextType,
   SelectDropBoxProps,
 } from "./SelectDropBox.type";
-import { useUpdateEffect } from "@travelmakers/hooks";
 
 export interface Props {
   type?: "option" | "filter";
@@ -51,7 +51,6 @@ export const SelectDropBox = forwardRef(
     }, [initValue]);
 
     const { classes, cx } = useStyles({
-      type,
       disabled,
     });
 
