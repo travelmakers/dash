@@ -1,9 +1,6 @@
 import { createStyles } from "@travelmakers/styles";
 import { Props } from "../SelectDropBox/SelectDropBox";
-import {
-  SELECT_DROP_BOX_HEIGHT,
-  getBackgroundColor,
-} from "../SelectDropBox/SelectDropBox.style";
+import { getBackgroundColor } from "../SelectDropBox/SelectDropBox.style";
 
 const SELECT_DROP_BOX_MAX_HEIGHT: Record<Props["type"], string> = {
   option: "232px",
