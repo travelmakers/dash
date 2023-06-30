@@ -21,6 +21,8 @@ export interface Props {
   writer: string;
 
   product: string;
+
+  notLink?: boolean;
 }
 
 export const HotelReviewCard = forwardRef(
@@ -32,12 +34,55 @@ export const HotelReviewCard = forwardRef(
       contents,
       writer,
       product,
+      notLink = false,
       className,
       ...props
     }: HotelReviewCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
+
+    const Component = () => {
+      return (
+        <div className={classes.contentContainer}>
+          <div className={classes.headerBox}>
+            <Typography level="body3" color="primary3">
+              이런 점이 좋았어요.
+            </Typography>
+            <Icon src="IcAngleRight" width={16} height={16} />
+          </div>
+          {labels.length > 0 && (
+            <Tag
+              type="fill"
+              roundness="half"
+              color="gray"
+              size="medium"
+              gap={4}
+              items={labels?.map((label, idx) => (
+                <Tag.Item key={idx} label={label} />
+              ))}
+            />
+          )}
+          <div className={classes.contentBox}>
+            <Typography level="body2" color="primary1">
+              {contents}
+            </Typography>
+            {src && (
+              <Image src={src} alt="hotel-review-card" width={40} height={40} />
+            )}
+          </div>
+          <Divider type={"horizontal"} color={"outline"} />
+          <div className={classes.footerBox}>
+            <Typography level="body3" color="primary1">
+              {writer}
+            </Typography>
+            <Typography level="body3" color="primary3">
+              {product}
+            </Typography>
+          </div>
+        </div>
+      );
+    };
 
     return (
       <View<React.ElementType>
@@ -46,50 +91,13 @@ export const HotelReviewCard = forwardRef(
         className={cx(className, classes.container)}
         {...props}
       >
-        <Link href={href}>
-          <div className={classes.contentContainer}>
-            <div className={classes.headerBox}>
-              <Typography level="body3" color="primary3">
-                이런 점이 좋았어요.
-              </Typography>
-              <Icon src="IcAngleRight" width={16} height={16} />
-            </div>
-            {labels.length > 0 && (
-              <Tag
-                type="fill"
-                roundness="half"
-                color="gray"
-                size="medium"
-                gap={4}
-                items={labels?.map((label, idx) => (
-                  <Tag.Item key={idx} label={label} />
-                ))}
-              />
-            )}
-            <div className={classes.contentBox}>
-              <Typography level="body2" color="primary1">
-                {contents}
-              </Typography>
-              {src && (
-                <Image
-                  src={src}
-                  alt="hotel-review-card"
-                  width={40}
-                  height={40}
-                />
-              )}
-            </div>
-            <Divider type={"horizontal"} color={"outline"} />
-            <div className={classes.footerBox}>
-              <Typography level="body3" color="primary1">
-                {writer}
-              </Typography>
-              <Typography level="body3" color="primary3">
-                {product}
-              </Typography>
-            </div>
-          </div>
-        </Link>
+        {notLink ? (
+          <Component />
+        ) : (
+          <Link href={href}>
+            <Component />
+          </Link>
+        )}
       </View>
     );
   }
