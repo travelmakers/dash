@@ -30,6 +30,7 @@ export default createStyles((theme) => {
       height: "180px",
 
       ["& > img"]: {
+        borderRadius: theme.radius.radius20,
         position: "absolute",
         transition: `all 0.2s ${theme.transitionTiming.easeInOut}`,
         ["&:hover"]: {
