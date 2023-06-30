@@ -158,9 +158,10 @@ export const OptionCard = forwardRef(
               </div>
               <Divider type={"horizontal"} color={"primary"} />
               <ul>
-                {benefitList.map(({ content }) => {
+                {benefitList.map(({ content }, idx) => {
                   return (
                     <Typography
+                      key={`benefit-${idx}`}
                       level="body2"
                       color="primary1"
                       component="li"
