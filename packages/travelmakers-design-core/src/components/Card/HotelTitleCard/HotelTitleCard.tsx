@@ -77,7 +77,7 @@ export const HotelTitleCard = forwardRef(
               <Tag
                 type="line"
                 color="gray"
-                roundness="half"
+                roundness="full"
                 size="medium"
                 gap={4}
                 items={groupTags.map((groupTag, idx) => (
