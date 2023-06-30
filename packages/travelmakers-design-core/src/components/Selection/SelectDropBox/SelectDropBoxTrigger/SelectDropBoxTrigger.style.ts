@@ -30,6 +30,23 @@ const SELECT_DROP_BOX_TRIGGER_FONT_WEIGHT: Record<
   filter: "700",
 };
 
+const getBorderColor = (
+  colors: TmTheme["colors"],
+  showOptions: boolean,
+  type: Props["type"]
+) => {
+  if (type === "filter") {
+    console.log("@@", type);
+    if (showOptions) {
+      return colors.primary;
+    } else {
+      return colors.transparent;
+    }
+  }
+
+  return showOptions ? colors.primary : colors.outline;
+};
+
 const getTriggerColor = (
   colors: TmTheme["colors"],
   disabled: Props["disabled"],
@@ -79,12 +96,7 @@ export default createStyles(
         borderWidth: "1px",
         borderBottomWidth: showOptions ? 0 : "1px",
         borderStyle: "solid",
-        borderColor:
-          type === "filter"
-            ? colors.transparent
-            : showOptions
-            ? colors.primary
-            : colors.outline,
+        borderColor: getBorderColor(colors, showOptions, type),
         borderRadius: showOptions
           ? `${radius.radius20} ${radius.radius20} 0 0`
           : radius.radius20,

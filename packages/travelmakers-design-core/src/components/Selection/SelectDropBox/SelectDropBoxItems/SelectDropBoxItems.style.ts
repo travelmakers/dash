@@ -4,7 +4,7 @@ import { getBackgroundColor } from "../SelectDropBox/SelectDropBox.style";
 
 const SELECT_DROP_BOX_MAX_HEIGHT: Record<Props["type"], string> = {
   option: "232px",
-  filter: "158px",
+  filter: "192px",
 };
 
 export default createStyles(
@@ -14,7 +14,7 @@ export default createStyles(
     return {
       root: {
         position: "absolute",
-        top: "43px",
+        top: type === "option" ? "43px" : "37px",
         left: 0,
         right: 0,
         padding: 0,

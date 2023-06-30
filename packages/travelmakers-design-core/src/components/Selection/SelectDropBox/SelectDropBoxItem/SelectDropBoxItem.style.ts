@@ -3,7 +3,7 @@ import { Props } from "../SelectDropBox/SelectDropBox";
 
 const SELECT_DROP_BOX_SPACING: Record<Props["type"], CoSpacing> = {
   option: "spacing20",
-  filter: "spacing5",
+  filter: "spacing10",
 };
 
 const SELECT_DROP_BOX_ITEM_COLOR: Record<Props["type"], TmColor> = {
@@ -23,6 +23,7 @@ export default createStyles(
         ...typography.body2,
         display: "flex",
         flexDirection: "column",
+        justifyContent: "space-between",
         rowGap: spacing[SELECT_DROP_BOX_SPACING[type]],
         color: !isSelected
           ? colors.primary
@@ -32,6 +33,7 @@ export default createStyles(
         }`,
         paddingTop: 0,
         cursor: "pointer",
+        height: type === "option" ? "44px" : "38px",
 
         "&:hover": {
           color: colors[SELECT_DROP_BOX_ITEM_COLOR[type]],
