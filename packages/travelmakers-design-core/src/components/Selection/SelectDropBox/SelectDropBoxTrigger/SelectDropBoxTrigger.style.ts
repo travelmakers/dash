@@ -36,7 +36,6 @@ const getBorderColor = (
   type: Props["type"]
 ) => {
   if (type === "filter") {
-    console.log("@@", type);
     if (showOptions) {
       return colors.primary;
     } else {
