@@ -28,6 +28,11 @@ export default createStyles((theme) => {
         borderColor: colors.primary1,
         backgroundColor: colors.primary1,
       },
+
+      ["&:disabled ~ .tm-select-tag__item"]: {
+        color: colors.primary3,
+        cursor: "default",
+      },
     },
   };
 });
