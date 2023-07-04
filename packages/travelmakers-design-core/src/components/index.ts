@@ -9,7 +9,6 @@ export * from "./Divider";
 export * from "./Dropdown";
 export * from "./HeaderSection";
 export * from "./Icon";
-export * from "./Image";
 export * from "./Input";
 export * from "./Menu";
 export * from "./Modal";

@@ -3,7 +3,6 @@ import Link, { LinkProps } from "next/link";
 import React, { forwardRef } from "react";
 import { Divider } from "../../Divider";
 import { Icon } from "../../Icon";
-import { Image } from "../../Image";
 import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
@@ -68,7 +67,7 @@ export const HotelReviewCard = forwardRef(
               {contents}
             </Typography>
             {src && (
-              <Image src={src} alt="hotel-review-card" width={40} height={40} />
+              <img src={src} alt="hotel-review-card" width={40} height={40} />
             )}
           </div>
           <Divider type={"horizontal"} color={"outline"} />

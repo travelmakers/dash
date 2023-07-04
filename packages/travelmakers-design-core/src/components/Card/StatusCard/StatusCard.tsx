@@ -1,7 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef, PropsWithChildren } from "react";
 import { Icon } from "../../Icon";
-import { Image } from "../../Image";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./StatusCard.style";
@@ -71,7 +70,7 @@ export const StatusCard = forwardRef(
         {...props}
       >
         <div className={cx(classes.container)} onClick={onClick}>
-          <Image
+          <img
             src={hotelImage}
             className={cx(classes.image)}
             alt={`${title} | ${roomType}`}
