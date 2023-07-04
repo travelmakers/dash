@@ -64,8 +64,9 @@ export const useArrowMove = (
   }
 
   function moveScroll(newPage: number) {
-    console.log("moveScroll", contentRef, newPage);
-    contentRef.current?.[newPage]?.scrollIntoView?.({
+    const maximPage =
+      contentRef.current.length > newPage ? newPage : contentRef.current.length;
+    contentRef.current?.[maximPage]?.scrollIntoView?.({
       behavior: "smooth",
       block: "center",
     });
