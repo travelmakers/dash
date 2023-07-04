@@ -2,7 +2,6 @@ import { PolymorphicRef } from "@travelmakers/styles";
 import Link, { LinkProps } from "next/link";
 import React, { PropsWithChildren, forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
-import { Image } from "../../Image";
 import { SwiperArrowContainer } from "../../SwiperArrowContainer";
 import { IconTag } from "../../Tag";
 import { Typography } from "../../Typography";
@@ -74,7 +73,7 @@ export const HotelCard = forwardRef(
         <CustomLink>
           {/* SECTION: Image */}
           <div className={cx(classes.imageBox)}>
-            <Image src={src} alt="hotelCard" width={328} height={183} />
+            <img src={src} alt="hotelCard" width={328} height={183} />
             {disabled ? (
               <div className={cx(classes.soldOutBox)}>
                 <Typography color="white" level="display4" strong>

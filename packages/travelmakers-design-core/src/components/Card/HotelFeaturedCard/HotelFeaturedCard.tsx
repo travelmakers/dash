@@ -3,7 +3,6 @@ import Link, { LinkProps } from "next/link";
 import React, { forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
 import { Divider } from "../../Divider";
-import { Image } from "../../Image";
 import { Price } from "../../Price";
 import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
@@ -73,7 +72,7 @@ export const HotelFeaturedCard = forwardRef(
           <div className={cx(classes.cardBox)}>
             {/* SECTION: Image Section */}
             <div className={cx(classes.imageBox)}>
-              <Image
+              <img
                 src={src}
                 alt={`featureCard-${name}`}
                 height={180}
