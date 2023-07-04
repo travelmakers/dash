@@ -29,11 +29,15 @@ export const useArrowMove = (
   function arrowRightClickHandler() {
     const pageMove = calculatePageMove(false);
     const newPage = page + pageMove;
+    const maximPage =
+      contentRef.current.length - 1 > newPage
+        ? newPage
+        : contentRef.current.length - 1;
 
     if (pageMove !== 0) {
-      arrowHover(false, newPage);
-      setPage(newPage);
-      moveScroll(newPage);
+      arrowHover(false, maximPage);
+      setPage(maximPage);
+      moveScroll(maximPage);
     }
   }
 
@@ -64,11 +68,7 @@ export const useArrowMove = (
   }
 
   function moveScroll(newPage: number) {
-    const maximPage =
-      contentRef.current.length - 1 > newPage
-        ? newPage
-        : contentRef.current.length - 1;
-    contentRef.current?.[maximPage]?.scrollIntoView?.({
+    contentRef.current?.[newPage]?.scrollIntoView?.({
       behavior: "smooth",
       block: "center",
     });
