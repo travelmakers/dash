@@ -5,8 +5,6 @@ export default createStyles((theme) => {
 
   return {
     root: {
-      whiteSpace: "nowrap",
-
       ".tm-select-tag__item": {
         ...typography.body2,
         display: "inline-flex",
@@ -19,6 +17,7 @@ export default createStyles((theme) => {
         borderStyle: "solid",
         borderColor: colors.outline,
         borderRadius: radius.radius100,
+        whiteSpace: "nowrap",
         cursor: "pointer",
       },
     },
