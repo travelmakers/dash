@@ -64,7 +64,8 @@ export const useArrowMove = (
   }
 
   function moveScroll(newPage: number) {
-    contentRef.current?.[newPage].scrollIntoView({
+    console.log("moveScroll", contentRef, newPage);
+    contentRef.current?.[newPage]?.scrollIntoView?.({
       behavior: "smooth",
       block: "center",
     });
