@@ -139,6 +139,16 @@ export default {
       },
       control: { type: "text" },
     },
+    href: {
+      defaultValue: "href",
+      description: "",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+      control: { type: "text" },
+    },
   },
 } as Meta;
 

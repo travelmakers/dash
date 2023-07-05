@@ -1,19 +1,27 @@
-import { TmTheme, createStyles } from "@travelmakers/styles";
+import { TmTheme, createStyles, TmSize } from "@travelmakers/styles";
 import { TM_HEIGHTS } from "../../../constants";
 import { Props } from "./Button";
 import { ButtonType } from "./Button.type";
 
 const getButtonPadding = (
   spacing: TmTheme["spacing"],
-  buttonType: ButtonType
+  buttonType: ButtonType,
+  size: TmSize
 ) => {
+  const topBottomPadding =
+    size === "small"
+      ? 0
+      : size === "medium"
+      ? spacing.spacing10
+      : spacing.spacing20;
+
   switch (buttonType) {
     case "leftIcon":
-      return `0 ${spacing.spacing50} 0 ${spacing.spacing30}`;
+      return `${topBottomPadding} ${spacing.spacing50} ${topBottomPadding} ${spacing.spacing30}`;
     case "rightIcon":
-      return `0 ${spacing.spacing30} 0 ${spacing.spacing50}`;
+      return `${topBottomPadding} ${spacing.spacing30} ${topBottomPadding} ${spacing.spacing50}`;
     default:
-      return `0 ${spacing.spacing40}`;
+      return `${topBottomPadding} ${spacing.spacing50}`;
   }
 };
 
@@ -36,7 +44,9 @@ export default createStyles(
       root: {
         width: fullWidth && "100%",
         height: TM_HEIGHTS[size],
-        padding: isNonBoxShadow ? 0 : getButtonPadding(spacing, buttonType),
+        padding: isNonBoxShadow
+          ? 0
+          : getButtonPadding(spacing, buttonType, size),
         borderRadius: roundness ? radius.radius100 : radius.radius20,
         cursor: "pointer",
       },

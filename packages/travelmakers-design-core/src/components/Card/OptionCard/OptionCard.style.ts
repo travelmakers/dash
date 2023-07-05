@@ -13,7 +13,7 @@ export default createStyles((theme) => {
       padding: `${theme.spacing.spacing30} ${theme.spacing.spacing50}`,
       display: "flex",
       flexDirection: "column",
-      gap: theme.spacing.spacing20,
+      gap: theme.spacing.spacing30,
       minHeight: "395px",
     },
     headerGroup: {
