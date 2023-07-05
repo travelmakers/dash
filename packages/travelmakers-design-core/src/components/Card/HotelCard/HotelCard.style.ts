@@ -4,7 +4,6 @@ export default createStyles((theme) => {
   return {
     container: {
       width: "328px",
-      display: "inline-block",
       boxShadow: theme.shadows.elevation2,
       borderRadius: theme.radius.radius20,
       overflow: "hidden",
