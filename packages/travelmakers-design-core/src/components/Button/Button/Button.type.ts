@@ -8,6 +8,8 @@ import useStyles from "./Button.style";
 
 type ButtonStylesNames = ClassNames<typeof useStyles>;
 
+export type ButtonType = "leftIcon" | "rightIcon" | "default";
+
 interface SharedButtonProps
   extends Props,
     TmComponentProps<ButtonStylesNames> {}

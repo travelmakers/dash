@@ -45,8 +45,8 @@ export const Button = forwardRef(
       fullWidth = false,
       type = "button",
       disabled = false,
-      leftIcon = "",
-      rightIcon = "",
+      leftIcon,
+      rightIcon,
       className,
       children,
       typoProps,
@@ -57,11 +57,17 @@ export const Button = forwardRef(
     const _component = component || "button";
     const isButton = _component === "button";
     const _type = isButton ? type : undefined;
+    const buttonType = () => {
+      if (leftIcon) return "leftIcon";
+      if (rightIcon) return "rightIcon";
+      return "default";
+    };
     const { classes, cx } = useStyles({
       size,
       variant,
       fullWidth,
       roundness,
+      buttonType: buttonType(),
     });
 
     return (
