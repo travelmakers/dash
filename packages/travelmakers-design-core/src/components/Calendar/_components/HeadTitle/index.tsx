@@ -11,7 +11,7 @@ const HeadTitle: React.FC = () => {
       {DAYS.map((day) => {
         return (
           <th key={day} className={classes.tableCell}>
-            <Typography level="body2" color="primary1" strong>
+            <Typography level="body2" color="primary1">
               {day}
             </Typography>
           </th>

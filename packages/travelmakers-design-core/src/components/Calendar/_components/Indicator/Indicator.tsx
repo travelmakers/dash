@@ -103,7 +103,11 @@ export const Indicator: React.FC<Props> = ({
       {selected.from && selected.to && !isTour && (
         <div className={classes.indicatorDateCountBox}>
           <div>
-            <Typography level="subhead2" color="primary1">
+            <Typography
+              className={classes.indicatorNight}
+              level="subhead2"
+              color="primary1"
+            >
               {differenceInDays(selected.to.date, selected.from.date)}박
             </Typography>
           </div>

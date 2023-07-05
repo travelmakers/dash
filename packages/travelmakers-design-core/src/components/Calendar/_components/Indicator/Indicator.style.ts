@@ -50,6 +50,11 @@ export default createStyles(
           textAlign: "center",
         },
       },
+      indicatorNight: {
+        display: "flex",
+        justifyContent: "center",
+        lineHeight: "28px",
+      },
     };
   }
 );
