@@ -118,7 +118,7 @@ export const CouponCard = forwardRef(
         <div className={classes.rightBox}>
           <div className={classes.discountBox}>
             <div>
-              <Typography level="display6" color="secondary">
+              <Typography level="display6" color="secondary" strong>
                 {title}
               </Typography>
             </div>

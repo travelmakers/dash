@@ -97,6 +97,7 @@ export const HotelTitleCard = forwardRef(
               disabled={price.secondaryDisabled}
               type="secondary"
               label="정가"
+              couponType="tag"
               nightText={null}
             />
             <Price {...price} type="primary" />
@@ -108,7 +109,7 @@ export const HotelTitleCard = forwardRef(
         <Tag
           type="fill"
           color="gray"
-          roundness="half"
+          roundness="full"
           gap={4}
           size="medium"
           items={tags.map((tag, idx) => (
