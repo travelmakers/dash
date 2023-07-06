@@ -1,7 +1,7 @@
 import { createStyles } from "@travelmakers/styles";
 
 export default createStyles((theme) => {
-  const { spacing, colors } = theme;
+  const { spacing, colors, radius } = theme;
 
   return {
     root: {
@@ -11,7 +11,7 @@ export default createStyles((theme) => {
       margin: 0,
       padding: spacing.spacing5,
       backgroundColor: colors.primary99,
-      borderRadius: "26px",
+      borderRadius: radius.radius100,
     },
   };
 });
