@@ -30,12 +30,23 @@ export default createStyles((theme) => {
       display: "flex",
       flexDirection: "column",
       gap: theme.spacing.spacing30,
-      padding: theme.spacing.spacing30,
     },
     contentHeader: {
+      height: "100%",
       display: "flex",
       flexDirection: "column",
       gap: theme.spacing.spacing5,
+      padding: `${theme.spacing.spacing30} ${theme.spacing.spacing30} 0 ${theme.spacing.spacing30}`,
+    },
+    contentFooter: {
+      height: "100%",
+      marginBottom: theme.spacing.spacing30,
+    },
+    contentFirstContent: {
+      paddingLeft: theme.spacing.spacing30,
+    },
+    contentLastContent: {
+      paddingRight: theme.spacing.spacing30,
     },
     flexBox: {
       display: "flex",

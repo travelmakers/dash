@@ -36,14 +36,14 @@ export default createStyles(
         zIndex: 1,
       },
       contentScrollLeft: {
-        left: theme.spacing.spacing30,
+        left: theme.spacing.spacing70,
         visibility: leftArrowHover ? "visible" : "hidden",
         [`${theme.media.mobile}`]: {
           display: "none",
         },
       },
       contentScrollRight: {
-        right: theme.spacing.spacing5,
+        right: 0,
         visibility: rightArrowHover ? "visible" : "hidden",
         [`${theme.media.mobile}`]: {
           display: "none",

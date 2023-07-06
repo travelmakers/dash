@@ -108,15 +108,27 @@ export const HotelCard = forwardRef(
                 {description}
               </Typography>
             </div>
-            <SwiperArrowContainer hasDimmer>
-              {price?.map((item) => (
-                <PriceCard
-                  key={`price-card-${item.name}`}
-                  name={item.name}
-                  status={disabled ? "disabled" : item.status}
-                  description={item.description}
-                  tag={item.tag}
-                />
+
+            <SwiperArrowContainer
+              className={cx(classes.contentFooter)}
+              hasDimmer
+            >
+              {price?.map((item, idx) => (
+                <div
+                  className={
+                    idx === 0
+                      ? classes.contentFirstContent
+                      : idx === price.length - 1 && classes.contentLastContent
+                  }
+                >
+                  <PriceCard
+                    key={`price-card-${item.name}`}
+                    name={item.name}
+                    status={disabled ? "disabled" : item.status}
+                    description={item.description}
+                    tag={item.tag}
+                  />
+                </div>
               ))}
             </SwiperArrowContainer>
           </div>

@@ -41,16 +41,16 @@ export const PriceCard = forwardRef(
         <Typography level="body2" color={STATUS_COLOR[status]} strong>
           {name}
         </Typography>
-        <br />
+
         <Typography level="body3" color={STATUS_COLOR[status]} strong>
           {description}
         </Typography>
-        <br />
+
         {status === "active" && tag && (
           <Tag
             type="fill"
             color="gray"
-            roundness="half"
+            roundness="full"
             items={[<Tag.Item key={tag} label={tag} />]}
           />
         )}

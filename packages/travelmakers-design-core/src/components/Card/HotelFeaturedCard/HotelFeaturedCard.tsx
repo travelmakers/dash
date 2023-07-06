@@ -101,7 +101,7 @@ export const HotelFeaturedCard = forwardRef(
                 ))}
               />
               <div>
-                <Typography level="body2" color={"black"}>
+                <Typography level="body2" color={"black"} strong>
                   {name}
                 </Typography>
                 <div className={cx(classes.hotelInfo)}>
