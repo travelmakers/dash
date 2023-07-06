@@ -46,6 +46,7 @@ export const Search = forwardRef(
 
     const onResetHandler = (e: React.FormEvent<HTMLFormElement>) => {
       formReset?.(e);
+      setInputValue("");
     };
 
     const onClickHandler = (e: React.MouseEvent<HTMLInputElement>) => {
