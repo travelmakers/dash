@@ -8,11 +8,13 @@ export default createStyles(
       rightArrowHover,
       dimmerHidden,
       dimmerColor,
+      hasDimmer,
     }: {
       leftArrowHover: boolean;
       rightArrowHover: boolean;
       dimmerHidden: boolean;
       dimmerColor?: string;
+      hasDimmer: boolean;
     }
   ) => {
     return {
@@ -58,12 +60,17 @@ export default createStyles(
           dimmerColor ? theme.colors[dimmerColor] : "#FFFFFF"
         } 0%, rgba(255, 255, 255, 0.75) 51.04%, rgba(255, 255, 255, 0) 100%)`,
         visibility: dimmerHidden ? "hidden" : "visible",
+        display: hasDimmer ? "block" : "none",
       },
       contentScrollContainer: {
         display: "flex",
         flexDirection: "row",
         overflowY: "hidden",
         gap: theme.spacing.spacing10,
+        overflow: "hidden",
+        [`${theme.media.mobile}`]: {
+          overflow: "auto",
+        },
       },
     };
   }

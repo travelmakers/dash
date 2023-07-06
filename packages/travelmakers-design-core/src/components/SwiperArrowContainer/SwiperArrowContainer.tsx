@@ -47,6 +47,7 @@ export const SwiperArrowContainer = forwardRef(
       rightArrowHover,
       dimmerHidden,
       dimmerColor,
+      hasDimmer,
     });
 
     const cloneArr = Children.map(children, (child, idx) =>
@@ -97,7 +98,7 @@ export const SwiperArrowContainer = forwardRef(
         >
           <Icon src="IcAngleRight" width={16} height={16} />
         </div>
-        {hasDimmer && <div className={cx(classes.contentDimmer)} />}
+        <div className={cx(classes.contentDimmer)} />
         <div className={cx(classes.contentScrollContainer, contentClassName)}>
           {cloneArr}
         </div>
