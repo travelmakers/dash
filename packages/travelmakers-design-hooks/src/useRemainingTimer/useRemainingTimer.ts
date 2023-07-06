@@ -1,6 +1,6 @@
-import { getRemainingTime } from "../utils/getRemainingTime";
 import dayjs from "dayjs";
 import { useLayoutEffect, useState } from "react";
+import { getRemainingTime } from "../utils/getRemainingTime";
 
 export const useRemainingTimer = (
   targetDate: dayjs.ConfigType,
