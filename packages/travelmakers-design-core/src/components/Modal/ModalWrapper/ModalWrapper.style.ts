@@ -23,6 +23,11 @@ export default createStyles((theme) => {
 
   return {
     root: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -32,6 +37,7 @@ export default createStyles((theme) => {
       border: 0,
       backgroundColor: colors.black30,
       backdropFilter: "blur(16px)",
+      zIndex: 9999,
 
       "&[open]": {
         animation: `${fadeIn} 0.2s ${transitionTiming.easeInOut}`,
