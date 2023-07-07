@@ -22,7 +22,6 @@ export const ModalWrapper = forwardRef(
   ) => {
     const { classes, cx } = useStyles();
 
-    // NOTE: ModalPopup 오픈 시 페이지 스크롤 blocking
     useBlockScrolling(isOpen);
 
     if (!isOpen) return null;
