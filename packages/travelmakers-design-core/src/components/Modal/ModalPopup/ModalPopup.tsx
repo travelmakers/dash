@@ -1,10 +1,7 @@
-import { useBlockScrolling } from "@travelmakers/hooks";
-import { PolymorphicRef } from "@travelmakers/styles";
-import React, { forwardRef } from "react";
-import { View } from "../../View";
-import { ModalPortal } from "../ModalPortal";
+import React from "react";
+import { ModalWrapper } from "../ModalWrapper";
 import useStyles from "./ModalPopup.style";
-import { ModalPopupProps, ReturnType } from "./ModalPopup.type";
+import { ModalPopupProps } from "./ModalPopup.type";
 
 export interface Props extends React.HTMLAttributes<HTMLDialogElement> {
   title: string;
@@ -14,54 +11,32 @@ export interface Props extends React.HTMLAttributes<HTMLDialogElement> {
   isOpen: boolean;
 }
 
-export const ModalPopup = forwardRef(
-  <C extends React.ElementType = "dialog">(
-    {
-      title,
-      content,
-      primaryButton,
-      secondaryButton,
-      isOpen,
-      className,
-      ...props
-    }: ModalPopupProps<C>,
-    ref: PolymorphicRef<C>
-  ) => {
-    const { classes, cx } = useStyles({ content });
+export const ModalPopup = <C extends React.ElementType = "dialog">({
+  title,
+  content,
+  primaryButton,
+  secondaryButton,
+  isOpen,
+}: ModalPopupProps<C>) => {
+  const { classes } = useStyles({ content });
 
-    // NOTE: ModalPopup 오픈 시 페이지 스크롤 blocking
-    useBlockScrolling(isOpen);
-
-    if (!isOpen) return null;
-
-    return (
-      <ModalPortal>
-        <div className={cx(classes.root, className)}>
-          <View<React.ElementType>
-            component={"dialog"}
-            ref={ref}
-            className={cx(classes.dialog)}
-            open={isOpen}
-            {...props}
-          >
-            <strong className={classes.title}>{title}</strong>
-            {content && (
-              <p
-                className={classes.content}
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
-            )}
-            <ul className={classes.buttons}>
-              {secondaryButton && (
-                <li className={classes.button}>{secondaryButton}</li>
-              )}
-              <li className={classes.button}>{primaryButton}</li>
-            </ul>
-          </View>
-        </div>
-      </ModalPortal>
-    );
-  }
-) as unknown as ReturnType;
+  return (
+    <ModalWrapper isOpen={isOpen} className={classes.modal}>
+      <strong className={classes.title}>{title}</strong>
+      {content && (
+        <p
+          className={classes.content}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      )}
+      <ul className={classes.buttons}>
+        {secondaryButton && (
+          <li className={classes.button}>{secondaryButton}</li>
+        )}
+        <li className={classes.button}>{primaryButton}</li>
+      </ul>
+    </ModalWrapper>
+  );
+};
 
 ModalPopup.displayName = "ModalPopup";

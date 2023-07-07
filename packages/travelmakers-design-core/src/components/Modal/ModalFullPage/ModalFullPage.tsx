@@ -1,11 +1,8 @@
-import { useBlockScrolling } from "@travelmakers/hooks";
-import { PolymorphicRef } from "@travelmakers/styles";
-import React, { forwardRef } from "react";
-import { View } from "../../View";
+import React from "react";
 import { ModalFullPageFooter } from "../ModalFullPageFooter";
-import { ModalPortal } from "../ModalPortal";
+import { ModalWrapper } from "../ModalWrapper";
 import useStyles from "./ModalFullPage.style";
-import { ModalFullPageProps, ReturnType } from "./ModalFullPage.type";
+import { ModalFullPageProps } from "./ModalFullPage.type";
 
 export interface Props {
   title: string;
@@ -17,66 +14,43 @@ export interface Props {
   hasIframe?: boolean;
 }
 
-export const ModalFullPage = forwardRef(
-  <C extends React.ElementType = "dialog">(
-    {
-      className,
-      title,
-      contentTitle,
-      content,
-      closeBtnProps,
-      footer,
-      isOpen,
-      hasIframe,
-      ...props
-    }: ModalFullPageProps<C>,
-    ref: PolymorphicRef<C>
-  ) => {
-    const { label: closeBtnLabel = "닫기", ...closeBtnPropsRest } =
-      closeBtnProps;
-    const { classes, cx } = useStyles({ hasIframe });
+export const ModalFullPage = <C extends React.ElementType = "dialog">({
+  title,
+  contentTitle,
+  content,
+  closeBtnProps,
+  footer,
+  isOpen,
+  hasIframe,
+}: ModalFullPageProps<C>) => {
+  const { label: closeBtnLabel = "닫기", ...closeBtnPropsRest } = closeBtnProps;
+  const { classes } = useStyles({ hasIframe });
 
-    // NOTE: ModalFullPage 오픈 시 페이지 스크롤 blocking
-    useBlockScrolling(isOpen);
-
-    if (!isOpen) return null;
-
-    return (
-      <ModalPortal>
-        <div className={cx(classes.root, className)}>
-          <View<React.ElementType>
-            component={"dialog"}
-            ref={ref}
-            className={classes.dialog}
-            open={isOpen}
-            {...props}
-          >
-            <header className={classes.header}>
-              <strong className={classes.title}>{title}</strong>
-              <button className={classes.button} {...closeBtnPropsRest}>
-                {closeBtnLabel}
-              </button>
-            </header>
-            <div className={classes.body}>
-              {contentTitle && (
-                <strong className={classes.bodyTitle}>{contentTitle}</strong>
-              )}
-              {typeof content === "object" ? (
-                content
-              ) : (
-                <p
-                  className={classes.bodyText}
-                  dangerouslySetInnerHTML={{ __html: content }}
-                />
-              )}
-            </div>
-            {footer}
-          </View>
-        </div>
-      </ModalPortal>
-    );
-  }
-) as unknown as ReturnType;
+  return (
+    <ModalWrapper isOpen={isOpen} className={classes.modal}>
+      <header className={classes.header}>
+        <strong className={classes.title}>{title}</strong>
+        <button className={classes.button} {...closeBtnPropsRest}>
+          {closeBtnLabel}
+        </button>
+      </header>
+      <div className={classes.body}>
+        {contentTitle && (
+          <strong className={classes.bodyTitle}>{contentTitle}</strong>
+        )}
+        {typeof content === "object" ? (
+          content
+        ) : (
+          <p
+            className={classes.bodyText}
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
+        )}
+      </div>
+      {footer}
+    </ModalWrapper>
+  );
+};
 
 ModalFullPage.displayName = "ModalFullPage";
 ModalFullPage.Footer = ModalFullPageFooter;

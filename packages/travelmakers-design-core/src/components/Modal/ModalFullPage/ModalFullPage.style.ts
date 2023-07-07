@@ -1,62 +1,17 @@
-import { createStyles, keyframes } from "@travelmakers/styles";
+import { createStyles } from "@travelmakers/styles";
 import { Props } from "./ModalFullPage";
-
-const fadeIn = keyframes`
-from {
-  opacity: 0;
-}
-to {
-  opacity: 1;
-}`;
-
-const popup = keyframes`
-  from {
-    transform: translateY(12px);
-  }
-  to {
-    transform: translateY(0);
-  }
-`;
 
 export default createStyles(
   (theme, { hasIframe }: Pick<Props, "hasIframe">) => {
-    const { colors, spacing, typography, shadows, radius, transitionTiming } =
-      theme;
+    const { colors, spacing, typography, radius } = theme;
 
     return {
-      root: {
-        position: "fixed",
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: colors.black30,
-        backdropFilter: "blur(16px)",
-        animation: `${fadeIn} 0.2s ${transitionTiming.easeInOut})`,
-      },
-      dialog: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
+      modal: {
         width: "100%",
         height: "100%",
         maxWidth: "480px",
         maxHeight: "720px",
-        padding: 0,
-        filter: `drop-shadow(${shadows.elevation5})`,
-        border: 0,
         borderRadius: radius.radius20,
-        overflow: "hidden",
-        transform: "translateY(16px)",
-
-        "&[open]": {
-          transform: "translateY(0)",
-          animation: `${popup} 0.2s ${transitionTiming.easeInOut}`,
-        },
       },
       header: {
         display: "grid",
