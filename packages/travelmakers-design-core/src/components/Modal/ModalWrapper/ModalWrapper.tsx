@@ -1,6 +1,6 @@
 import { useBlockScrolling } from "@travelmakers/hooks";
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef, PropsWithChildren } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { View } from "../../View";
 import { ModalPortal } from "../ModalPortal";
 import useStyles from "./ModalWrapper.style";
