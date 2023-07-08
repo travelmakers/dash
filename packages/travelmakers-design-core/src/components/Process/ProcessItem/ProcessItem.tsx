@@ -1,6 +1,7 @@
 import { SequenceType } from "../Process/Process.type";
 import { ProcessIcon } from "../ProcessIcon";
 import useStyles from "./ProcessItem.style";
+import React from "react";
 
 export interface Props {
   item: SequenceType;
