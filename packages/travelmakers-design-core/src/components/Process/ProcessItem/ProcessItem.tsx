@@ -1,4 +1,3 @@
-import React from "react";
 import { SequenceType } from "../Process/Process.type";
 import { ProcessIcon } from "../ProcessIcon";
 import useStyles from "./ProcessItem.style";
@@ -10,7 +9,7 @@ export interface Props {
 
 export const ProcessItem = ({ item, hasIcon }: Props) => {
   const { processor, process, isProcessing } = item;
-  const { classes, cx } = useStyles({ isProcessing });
+  const { classes, cx } = useStyles({ isProcessing, hasIcon });
 
   return (
     <li className={classes.root}>
