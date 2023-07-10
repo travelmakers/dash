@@ -14,6 +14,7 @@ import { CalendarProps, ReturnType, SelectedDays } from "./Calendar.type";
 import { Indicator } from "./_components/Indicator";
 import OptionBox from "./_components/OptionBox";
 import { DateTable } from "./_components/DateTable/DateTable";
+import { DateCellDay } from "./_components/DateCell/DateCell.type";
 
 export interface Props {
   hotelName?: string;
@@ -31,6 +32,8 @@ export interface Props {
   maxNight: number;
 
   onChange: (selected: SelectedDays) => void;
+
+  onClick?: (selected: SelectedDays) => boolean;
 
   /** initial Date */
   selected?: SelectedDays;
@@ -73,6 +76,7 @@ export const Calendar = forwardRef(
       topIndicatorPosition = "48px",
       displayMonth,
       onChange,
+      onClick,
       loadingImageSrc,
       children,
       className,
@@ -91,11 +95,18 @@ export const Calendar = forwardRef(
     });
 
     useUpdateEffect(() => {
-      setChecked(selected);
-    }, [selected]);
-
-    useUpdateEffect(() => {
-      onChange?.(checked);
+      function _() {
+        if (onClick?.(checked)) {
+          setChecked({
+            from: selected?.from,
+            to: selected?.to,
+            time: selected.time,
+          });
+          return false;
+        }
+        onChange?.(checked);
+      }
+      _();
     }, [checked]);
 
     const handleCalendar = () => {
