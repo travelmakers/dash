@@ -98,9 +98,9 @@ export const Calendar = forwardRef(
       function _() {
         if (onClick?.(checked)) {
           setChecked({
-            from: selected?.from,
-            to: selected?.to,
-            time: selected.time,
+            from: undefined,
+            to: undefined,
+            time: { hour: undefined, minutes: undefined },
           });
           return false;
         }
