@@ -91,6 +91,10 @@ export const Calendar = forwardRef(
     });
 
     useUpdateEffect(() => {
+      setChecked(selected);
+    }, [selected]);
+
+    useUpdateEffect(() => {
       onChange?.(checked);
     }, [checked]);
 
