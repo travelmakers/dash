@@ -121,7 +121,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: (userName) => `${userName}님`,
         secondLineText: (hotelName) => hotelName,
-        buttonText: () => `투어 확정 전이예요`,
+        buttonText: () => `투어 확정 전이에요`,
         link: (url?: string) => {
           return { url, arrow: !!url };
         },
@@ -171,7 +171,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         firstLineText: (userName) => `안녕하세요, ${userName}님`,
         secondLineText: (hotelName) => `${hotelName}`,
         buttonText: (expectedDate) =>
-          `${getDate(expectedDate, "MM월 DD일").format} 이내 확정 예정이예요`,
+          `${getDate(expectedDate, "MM월 DD일").format} 이내 확정 예정이에요`,
         link: (url?: string) => {
           return { url, arrow: !!url };
         },
@@ -183,7 +183,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: (userName) => `${userName}님`,
         secondLineText: (startDate) =>
-          `${getDate(startDate, "MM월D D일 HH시").format} 체크인 예정이예요`,
+          `${getDate(startDate, "MM월D D일 HH시").format} 체크인 예정이에요`,
         buttonText: () => `편안한 호텔에삶 되세요`,
         link: (url?: string) => {
           return { url, arrow: !!url };
@@ -200,7 +200,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: (userName) => `${userName}님`,
         secondLineText: (endDate) =>
-          `체크아웃은 ${getDate(endDate, "MM월D D일 HH시").format}예요`,
+          `체크아웃은 ${getDate(endDate, "MM월D D일 HH시").format}에요`,
         buttonText: () => `편안한 호텔에삶 되세요`,
         link: (url?: string) => {
           return { url, arrow: !!url };
