@@ -48,7 +48,7 @@ export const HotelReviewCard = forwardRef(
             <Typography level="body3" color="primary3">
               이런 점이 좋았어요.
             </Typography>
-            <Icon src="IcAngleRight" width={16} height={16} />
+            {/*<Icon src="IcAngleRight" width={16} height={16} />*/}
           </div>
           {labels.length > 0 && (
             <Tag
