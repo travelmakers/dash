@@ -29,7 +29,7 @@ export const Indicator: React.FC<Props> = ({
 
   const generateToHeadlineText = () => {
     if (isTour) {
-      if (!selected.time?.hour && !selected.time?.minutes) {
+      if (!selected.time?.hour || !selected.time?.minutes) {
         return (
           <Typography
             level="caption"
