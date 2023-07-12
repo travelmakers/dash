@@ -216,7 +216,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: () => `예약 확정 전`,
         secondLineText: (expectedDate) =>
-          `${getDate(expectedDate, "M월 D일").format} 이내 확정`,
+          `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정`,
         thirdLineText: (hotelName) => hotelName,
         titleDisable: () => false,
         messageDisable: () => false,
@@ -384,7 +384,7 @@ export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
         messageDisable: () => true,
         messageUnderline: () => false,
         secondLineText: (cancelDate) =>
-          `${getDate(cancelDate, "M월 D일 HH:mm").format} 방문 취소`,
+          `${getDate(cancelDate, "M월 D일 HH:mm").format} 취소 완료`,
         thirdLineText: (hotelName) => hotelName,
         link: (url?: string) => {
           return { url, arrow: !!url };
