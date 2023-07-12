@@ -3,15 +3,18 @@ import { Props } from "./ModalFullPage";
 
 export default createStyles(
   (theme, { hasIframe }: Pick<Props, "hasIframe">) => {
-    const { colors, spacing, typography, radius } = theme;
+    const { colors, spacing, typography, radius, media } = theme;
 
     return {
       modal: {
         width: "100%",
         height: "100%",
         maxWidth: "480px",
-        maxHeight: "720px",
         borderRadius: radius.radius20,
+
+        [`${media.tablet}`]: {
+          maxHeight: "720px",
+        },
       },
       header: {
         display: "grid",
