@@ -1,5 +1,5 @@
-import { getCountDown } from "../utils/getCountDown";
 import { getDate } from "../getDate";
+import { getCountDown } from "../utils/getCountDown";
 
 type ReservationState =
   | "default"
@@ -211,10 +211,10 @@ export function getTimeLineStateFunc(state: ReservationState): AllTypes {
         },
       };
     case "reservation_purchase_done":
-      // NOTE: 예악 확정 전
+      // NOTE: 예약 확정 전
       return {
         enum: state,
-        firstLineText: () => `예악 확정 전`,
+        firstLineText: () => `예약 확정 전`,
         secondLineText: (expectedDate) =>
           `${getDate(expectedDate, "MM월 DD일").format} 이내 확정`,
         thirdLineText: (hotelName) => hotelName,
