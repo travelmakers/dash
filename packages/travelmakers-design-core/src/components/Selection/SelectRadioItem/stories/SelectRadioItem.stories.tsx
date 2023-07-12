@@ -14,6 +14,15 @@ export default {
         },
       },
     },
+    isVisibleButton: {
+      control: { type: "boolean" },
+      description: "SelectRadioItem의 Button UI 노출 여부",
+      table: {
+        type: {
+          summary: "boolean",
+        },
+      },
+    },
     isVisibleLabel: {
       control: { type: "boolean" },
       description: "SelectRadioItem의 label prop 노출 여부",

@@ -8,6 +8,7 @@ import { ReturnType, SelectRadioItemProps } from "./SelectRadioItem.type";
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   label: React.ReactNode;
   name?: string;
+  isVisibleButton?: boolean;
   isVisibleLabel?: boolean;
 }
 
@@ -16,6 +17,7 @@ export const SelectRadioItem = forwardRef(
     {
       label,
       name = "select-radio-item",
+      isVisibleButton = true,
       isVisibleLabel = true,
       disabled,
       className,
@@ -38,7 +40,7 @@ export const SelectRadioItem = forwardRef(
           disabled={disabled}
           {...props}
         />
-        <div className={"tm-select-radio__item"} />
+        {isVisibleButton && <div className={"tm-select-radio__item"} />}
         <div
           className={
             isVisibleLabel ? "tm-select-radio__item__label" : "sr-only"
