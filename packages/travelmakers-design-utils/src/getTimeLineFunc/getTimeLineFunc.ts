@@ -133,7 +133,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: (userName) => `${userName}님`,
         secondLineText: (startDate) =>
-          `${getDate(startDate, "MM월 DD일").format} 투어가 확정됐어요`,
+          `${getDate(startDate, "M월 D일").format} 투어가 확정됐어요`,
         buttonText: () => `약속시간에 꼭 방문해주세요`,
         link: (url?: string) => {
           return { url, arrow: !!url };
@@ -171,7 +171,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         firstLineText: (userName) => `안녕하세요, ${userName}님`,
         secondLineText: (hotelName) => `${hotelName}`,
         buttonText: (expectedDate) =>
-          `${getDate(expectedDate, "MM월 DD일").format} 이내 확정 예정이에요`,
+          `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정이에요`,
         link: (url?: string) => {
           return { url, arrow: !!url };
         },
@@ -183,7 +183,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: (userName) => `${userName}님`,
         secondLineText: (startDate) =>
-          `${getDate(startDate, "MM월D D일 HH시").format} 체크인 예정이에요`,
+          `${getDate(startDate, "M월 D일 HH시").format} 체크인 예정이에요`,
         buttonText: () => `편안한 호텔에삶 되세요`,
         link: (url?: string) => {
           return { url, arrow: !!url };
@@ -200,7 +200,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         enum: state,
         firstLineText: (userName) => `${userName}님`,
         secondLineText: (endDate) =>
-          `체크아웃은 ${getDate(endDate, "MM월D D일 HH시").format}에요`,
+          `체크아웃은 ${getDate(endDate, "M월 D일 HH시").format}에요`,
         buttonText: () => `편안한 호텔에삶 되세요`,
         link: (url?: string) => {
           return { url, arrow: !!url };
@@ -226,7 +226,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
         firstLineText: (hotelName) => `${hotelName}`,
         secondLineText: (dDay) => `퇴실까지 ${dDay}일 남았어요`,
         buttonText: (endDate) =>
-          `${getDate(endDate, "MM월D D일 HH시").format} 체크아웃 입니다`,
+          `${getDate(endDate, "M월 D일 HH시").format} 체크아웃 입니다`,
         link: (url?: string) => {
           return { url, arrow: !!url };
         },
