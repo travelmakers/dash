@@ -1,5 +1,6 @@
 import { SequenceType } from "../Process/Process.type";
 import useStyles from "./ProcessIcon.style";
+import React from "react";
 
 type Props = {
   isProcessing: Pick<SequenceType, "isProcessing">["isProcessing"];
