@@ -43,6 +43,7 @@ export default createStyles((theme: TmTheme, { isProcessing }: StyleProp) => {
   return {
     root: {
       marginLeft: isProcessing && spacing.spacing5,
+      flexShrink: 0,
     },
     first: firstProcessing(theme, isProcessing),
     second: { ...pathAni(2), stroke: colors.primary70 },

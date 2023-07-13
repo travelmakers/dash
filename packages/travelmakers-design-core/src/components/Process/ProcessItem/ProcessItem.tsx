@@ -1,17 +1,15 @@
 import { SequenceType } from "../Process/Process.type";
 import { ProcessIcon } from "../ProcessIcon";
 import useStyles from "./ProcessItem.style";
-import React from "react";
 
 export interface Props {
   item: SequenceType;
   hasIcon: boolean;
-  isBank: boolean;
 }
 
-export const ProcessItem = ({ item, hasIcon, isBank }: Props) => {
+export const ProcessItem = ({ item, hasIcon }: Props) => {
   const { processor, process, isProcessing } = item;
-  const { classes, cx } = useStyles({ isProcessing, hasIcon, isBank });
+  const { classes, cx } = useStyles({ isProcessing });
 
   return (
     <li className={classes.root}>
@@ -21,11 +19,7 @@ export const ProcessItem = ({ item, hasIcon, isBank }: Props) => {
         {processor && <span className={classes.processor}>{processor}</span>}
         {process}
       </div>
-      {hasIcon && (
-        <div className={classes.iconBox}>
-          <ProcessIcon isProcessing={isProcessing} />
-        </div>
-      )}
+      {hasIcon && <ProcessIcon isProcessing={isProcessing} />}
     </li>
   );
 };

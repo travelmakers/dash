@@ -1,4 +1,3 @@
-import React from "react";
 import { SequenceType } from "../Process/Process.type";
 import useStyles from "./ProcessIcon.style";
 
@@ -37,7 +36,7 @@ export const ProcessIcon = ({ isProcessing }: Props) => {
   return (
     <svg
       className={classes.root}
-      width={isProcessing ? "20px" : "16px"}
+      width="16"
       height="16"
       viewBox="0 0 16 16"
       fill="none"

@@ -56,7 +56,7 @@ const sequence = (isBank: boolean, status: ProcessStatus): SequenceType[] => {
         },
         ...DEFAULT_SEQUENCE,
       ]
-    : [...DEFAULT_SEQUENCE];
+    : DEFAULT_SEQUENCE;
 };
 
 export const Process = forwardRef(
@@ -68,12 +68,7 @@ export const Process = forwardRef(
 
     const items = sequence(isBank, status);
     const renderer = items.map((item, idx) => (
-      <ProcessItem
-        isBank={isBank}
-        key={idx}
-        item={item}
-        hasIcon={idx + 1 !== items.length}
-      />
+      <ProcessItem key={idx} item={item} hasIcon={idx + 1 !== items.length} />
     ));
 
     return (
