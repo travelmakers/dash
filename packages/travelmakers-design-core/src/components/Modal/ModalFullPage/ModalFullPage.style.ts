@@ -10,10 +10,10 @@ export default createStyles(
         width: "100%",
         height: "100%",
         maxWidth: "480px",
-        borderRadius: radius.radius20,
 
         [`${media.tablet}`]: {
           maxHeight: "720px",
+          borderRadius: radius.radius20,
         },
       },
       header: {
