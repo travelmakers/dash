@@ -5,10 +5,11 @@ import { Props } from "./ProcessItem";
 type StyleProp = {
   isProcessing: Pick<SequenceType, "isProcessing">["isProcessing"];
   hasIcon: Props["hasIcon"];
+  isBank: Props["isBank"];
 };
 
 export default createStyles(
-  (theme: TmTheme, { isProcessing, hasIcon }: StyleProp) => {
+  (theme: TmTheme, { isProcessing, hasIcon, isBank }: StyleProp) => {
     const { colors, typography } = theme;
 
     return {
@@ -22,7 +23,7 @@ export default createStyles(
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        width: "100%",
+        width: isBank ? "100%" : "94.67px",
         height: "100%",
         padding: "0 11px",
         color: isProcessing ? colors.white : colors.primary3,
@@ -36,6 +37,10 @@ export default createStyles(
       },
       processor: {
         fontWeight: 700,
+      },
+      iconBox: {
+        width: "16px",
+        height: "16px",
       },
     };
   }

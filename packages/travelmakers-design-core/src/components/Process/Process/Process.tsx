@@ -11,6 +11,7 @@ import {
 } from "./Process.type";
 
 export interface Props {
+  isBank?: boolean;
   status?: ProcessStatus;
 }
 
@@ -29,12 +30,8 @@ const processing = (status: ProcessStatus) => {
   }
 };
 
-const sequence = (status: ProcessStatus): SequenceType[] => {
-  return [
-    {
-      process: "결제 대기",
-      isProcessing: processing(status) === "before",
-    },
+const sequence = (isBank: boolean, status: ProcessStatus): SequenceType[] => {
+  const DEFAULT_SEQUENCE = [
     {
       process: "결제 완료",
       isProcessing: processing(status) === "ing",
@@ -50,18 +47,33 @@ const sequence = (status: ProcessStatus): SequenceType[] => {
       isProcessing: false,
     },
   ];
+
+  return isBank
+    ? [
+        {
+          process: "결제 대기",
+          isProcessing: processing(status) === "before",
+        },
+        ...DEFAULT_SEQUENCE,
+      ]
+    : [...DEFAULT_SEQUENCE];
 };
 
 export const Process = forwardRef(
   <C extends React.ElementType = "ol">(
-    { status, className, ...props }: ProcessProps<C>,
+    { isBank = true, status, className, ...props }: ProcessProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
 
-    const items = sequence(status);
+    const items = sequence(isBank, status);
     const renderer = items.map((item, idx) => (
-      <ProcessItem key={idx} item={item} hasIcon={idx + 1 !== items.length} />
+      <ProcessItem
+        isBank={isBank}
+        key={idx}
+        item={item}
+        hasIcon={idx + 1 !== items.length}
+      />
     ));
 
     return (

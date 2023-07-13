@@ -6,11 +6,12 @@ import React from "react";
 export interface Props {
   item: SequenceType;
   hasIcon: boolean;
+  isBank: boolean;
 }
 
-export const ProcessItem = ({ item, hasIcon }: Props) => {
+export const ProcessItem = ({ item, hasIcon, isBank }: Props) => {
   const { processor, process, isProcessing } = item;
-  const { classes, cx } = useStyles({ isProcessing, hasIcon });
+  const { classes, cx } = useStyles({ isProcessing, hasIcon, isBank });
 
   return (
     <li className={classes.root}>
@@ -20,7 +21,11 @@ export const ProcessItem = ({ item, hasIcon }: Props) => {
         {processor && <span className={classes.processor}>{processor}</span>}
         {process}
       </div>
-      {hasIcon && <ProcessIcon isProcessing={isProcessing} />}
+      {hasIcon && (
+        <div className={classes.iconBox}>
+          <ProcessIcon isProcessing={isProcessing} />
+        </div>
+      )}
     </li>
   );
 };

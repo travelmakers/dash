@@ -37,7 +37,7 @@ export const ProcessIcon = ({ isProcessing }: Props) => {
   return (
     <svg
       className={classes.root}
-      width="16"
+      width={isProcessing ? "20px" : "16px"}
       height="16"
       viewBox="0 0 16 16"
       fill="none"
