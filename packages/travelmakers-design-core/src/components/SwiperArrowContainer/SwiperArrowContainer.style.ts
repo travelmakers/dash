@@ -65,12 +65,8 @@ export default createStyles(
       contentScrollContainer: {
         display: "flex",
         flexDirection: "row",
-        overflowY: "hidden",
-        gap: theme.spacing.spacing10,
         overflow: "hidden",
-        [`${theme.media.mobile}`]: {
-          overflow: "auto",
-        },
+        gap: theme.spacing.spacing10,
       },
     };
   }
