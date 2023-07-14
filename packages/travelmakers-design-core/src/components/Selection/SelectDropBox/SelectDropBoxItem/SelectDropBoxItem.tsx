@@ -17,10 +17,10 @@ export const SelectDropBoxItem = forwardRef(
     { value, className, onClick, ...props }: SelectDropBoxItemProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const { type, currentValue, setCurrentValue } =
+    const { type, currentValue, setCurrentValue, direction } =
       useContext(SelectDropBoxContext);
     const isSelected = currentValue === value;
-    const { classes, cx } = useStyles({ type, isSelected });
+    const { classes, cx } = useStyles({ type, isSelected, direction });
 
     const onClickHandler = (value) => {
       setCurrentValue(value);
@@ -36,8 +36,13 @@ export const SelectDropBoxItem = forwardRef(
         onClick={() => onClickHandler(value)}
         {...props}
       >
-        <Divider type={"horizontal"} color={"outline"} />
+        {direction === "forward" && (
+          <Divider type={"horizontal"} color={"outline"} />
+        )}
         <span className={classes.content}>{value}</span>
+        {direction === "reverse" && (
+          <Divider type={"horizontal"} color={"outline"} />
+        )}
       </View>
     );
   }

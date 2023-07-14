@@ -15,7 +15,9 @@ type SelectDropBoxStylesNames = ClassNames<typeof useStyles>;
 export type SelectDropBoxContextType = {
   setCurrentValue: Dispatch<SetStateAction<string>>;
   currentValue: Props["initValue"];
-} & Pick<Props, "type" | "disabled" | "placeholder">;
+} & Pick<Props, "type" | "disabled" | "placeholder" | "direction">;
+
+export type SelectDropBoxDirection = "forward" | "reverse";
 
 interface SharedSelectDropBoxProps
   extends Props,

@@ -67,9 +67,10 @@ export default createStyles(
       showOptions,
       showPlaceholder,
       disabled,
+      direction,
     }: { showOptions: boolean; showPlaceholder: boolean } & Pick<
       Props,
-      "type" | "disabled"
+      "type" | "disabled" | "direction"
     >
   ) => {
     const { colors, typography, spacing, radius } = theme;
@@ -93,11 +94,21 @@ export default createStyles(
           ? 400
           : SELECT_DROP_BOX_TRIGGER_FONT_WEIGHT[type],
         borderWidth: "1px",
-        borderBottomWidth: showOptions ? 0 : "1px",
+        borderBottomWidth:
+          direction === "forward" ? (showOptions ? 0 : "1px") : undefined,
+        borderTopWidth: direction === "reverse" ? "1px" : undefined,
         borderStyle: "solid",
         borderColor: getBorderColor(colors, showOptions, type),
+        borderTopColor:
+          direction === "reverse"
+            ? showOptions
+              ? colors.transparent
+              : colors.outline
+            : undefined,
         borderRadius: showOptions
-          ? `${radius.radius20} ${radius.radius20} 0 0`
+          ? direction === "forward"
+            ? `${radius.radius20} ${radius.radius20} 0 0`
+            : `0 0 ${radius.radius20} ${radius.radius20}`
           : radius.radius20,
         backgroundColor: !disabled ? colors.white : colors.surface,
       },

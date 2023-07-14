@@ -74,6 +74,15 @@ export default {
         },
       },
     },
+    direction: {
+      control: { type: "radio", options: ["forward", "reverse"] },
+      description: "SelectDropBox direction",
+      table: {
+        type: {
+          summary: "string",
+        },
+      },
+    },
     placeholder: {
       control: { type: "text" },
       description: "SelectDropBox placeholder",
@@ -114,6 +123,24 @@ export const Default = (props) => {
       content={<SelectDropBox.Items items={_items} />}
       label={props.label || "레이블"}
     />
+  );
+};
+
+export const Reverse = (props) => {
+  const _items = data
+    .splice(1, 2)
+    .map((item) => <SelectDropBox.Item value={item} />);
+
+  return (
+    <div style={{ paddingTop: "30vh" }}>
+      <SelectDropBox
+        {...props}
+        trigger={<SelectDropBox.Trigger />}
+        content={<SelectDropBox.Items items={_items} />}
+        label={props.label || "레이블"}
+        direction="reverse"
+      />
+    </div>
   );
 };
 

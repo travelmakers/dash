@@ -1,5 +1,6 @@
 import { CoSpacing, TmColor, createStyles } from "@travelmakers/styles";
 import { Props } from "../SelectDropBox/SelectDropBox";
+import { SELECT_DROP_BOX_HEIGHT } from "../SelectDropBoxTrigger/SelectDropBoxTrigger.style";
 
 const SELECT_DROP_BOX_SPACING: Record<Props["type"], CoSpacing> = {
   option: "spacing20",
@@ -14,7 +15,11 @@ const SELECT_DROP_BOX_ITEM_COLOR: Record<Props["type"], TmColor> = {
 export default createStyles(
   (
     theme,
-    { type, isSelected }: { isSelected: boolean } & Pick<Props, "type">
+    {
+      type,
+      isSelected,
+      direction,
+    }: { isSelected: boolean } & Pick<Props, "type" | "direction">
   ) => {
     const { typography, colors, spacing } = theme;
 
@@ -31,9 +36,10 @@ export default createStyles(
         padding: `${spacing[SELECT_DROP_BOX_SPACING[type]]} ${
           spacing.spacing30
         }`,
-        paddingTop: 0,
+        paddingTop: direction === "forward" ? 0 : undefined,
+        paddingBottom: direction === "reverse" ? "1px" : undefined,
         cursor: "pointer",
-        height: type === "option" ? "44px" : "38px",
+        height: SELECT_DROP_BOX_HEIGHT[type],
 
         "&:hover": {
           color: colors[SELECT_DROP_BOX_ITEM_COLOR[type]],

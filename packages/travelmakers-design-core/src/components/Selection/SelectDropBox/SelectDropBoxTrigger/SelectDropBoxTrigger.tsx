@@ -15,7 +15,7 @@ export const SelectDropBoxTrigger = forwardRef(
     { className, ...props }: SelectDropBoxTriggerProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const { type, currentValue, disabled, placeholder } =
+    const { type, currentValue, disabled, placeholder, direction } =
       useContext(SelectDropBoxContext);
     const [showOptions, setShowOptions] = useState(false);
     const showPlaceholder = currentValue === "";
@@ -23,6 +23,7 @@ export const SelectDropBoxTrigger = forwardRef(
       type,
       showOptions,
       showPlaceholder,
+      direction,
       disabled,
     });
 

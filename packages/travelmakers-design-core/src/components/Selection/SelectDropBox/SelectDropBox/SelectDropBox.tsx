@@ -10,6 +10,7 @@ import useStyles from "./SelectDropBox.style";
 import {
   ReturnType,
   SelectDropBoxContextType,
+  SelectDropBoxDirection,
   SelectDropBoxProps,
 } from "./SelectDropBox.type";
 
@@ -22,6 +23,7 @@ export interface Props {
   disabled?: boolean;
   trigger: React.ReactNode;
   content: React.ReactNode;
+  direction?: SelectDropBoxDirection;
 }
 
 export const SelectDropBoxContext =
@@ -39,6 +41,7 @@ export const SelectDropBox = forwardRef(
       disabled = false,
       trigger,
       content,
+      direction = "forward",
       className,
       ...props
     }: SelectDropBoxProps<C>,
@@ -65,7 +68,14 @@ export const SelectDropBox = forwardRef(
           {label}
         </strong>
         <SelectDropBoxContext.Provider
-          value={{ type, disabled, currentValue, setCurrentValue, placeholder }}
+          value={{
+            type,
+            disabled,
+            currentValue,
+            setCurrentValue,
+            placeholder,
+            direction,
+          }}
         >
           <Dropdown
             className={classes.dropdown}

@@ -13,8 +13,8 @@ export const SelectDropBoxItems = forwardRef(
     { className, ...props }: SelectDropBoxItemsProps<C>,
     ref: PolymorphicRef<C>
   ) => {
-    const { type, disabled } = useContext(SelectDropBoxContext);
-    const { classes, cx } = useStyles({ type, disabled });
+    const { type, disabled, direction } = useContext(SelectDropBoxContext);
+    const { classes, cx } = useStyles({ type, disabled, direction });
 
     return (
       <View<React.ElementType>
