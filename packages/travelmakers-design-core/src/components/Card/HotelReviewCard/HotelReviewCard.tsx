@@ -53,7 +53,7 @@ export const HotelReviewCard = forwardRef(
           {labels.length > 0 && (
             <Tag
               type="fill"
-              roundness="half"
+              roundness="full"
               color="gray"
               size="medium"
               gap={4}
