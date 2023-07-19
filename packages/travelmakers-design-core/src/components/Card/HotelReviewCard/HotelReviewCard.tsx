@@ -67,7 +67,13 @@ export const HotelReviewCard = forwardRef(
               {contents}
             </Typography>
             {src && (
-              <img src={src} alt="hotel-review-card" width={40} height={40} />
+              <img
+                className={classes.image}
+                src={src}
+                alt="hotel-review-card"
+                width={40}
+                height={40}
+              />
             )}
           </div>
           <Divider type={"horizontal"} color={"outline"} />

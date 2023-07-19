@@ -37,5 +37,8 @@ export default createStyles((theme) => {
       display: "flex",
       gap: theme.spacing.spacing10,
     },
+    image: {
+      flexShrink: 0,
+    },
   };
 });
