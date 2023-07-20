@@ -2,7 +2,10 @@ import { createStyles } from "@travelmakers/styles";
 import { Props } from "./ModalFullPage";
 
 export default createStyles(
-  (theme, { hasIframe }: Pick<Props, "hasIframe">) => {
+  (
+    theme,
+    { hasIframe, hasAutoWidth }: Pick<Props, "hasIframe" | "hasAutoWidth">
+  ) => {
     const { colors, spacing, typography, radius, media } = theme;
 
     return {
@@ -13,6 +16,7 @@ export default createStyles(
 
         [`${media.tablet}`]: {
           maxHeight: "720px",
+          width: hasAutoWidth ? "auto" : "100%",
           borderRadius: radius.radius20,
         },
       },

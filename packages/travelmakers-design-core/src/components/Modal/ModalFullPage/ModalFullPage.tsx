@@ -12,6 +12,7 @@ export interface Props {
   isOpen: boolean;
   footer?: React.ReactNode;
   hasIframe?: boolean;
+  hasAutoWidth?: boolean;
 }
 
 export const ModalFullPage = <C extends React.ElementType = "dialog">({
@@ -22,9 +23,10 @@ export const ModalFullPage = <C extends React.ElementType = "dialog">({
   footer,
   isOpen,
   hasIframe,
+  hasAutoWidth,
 }: ModalFullPageProps<C>) => {
   const { label: closeBtnLabel = "닫기", ...closeBtnPropsRest } = closeBtnProps;
-  const { classes } = useStyles({ hasIframe });
+  const { classes } = useStyles({ hasIframe, hasAutoWidth });
 
   return (
     <ModalWrapper isOpen={isOpen} className={classes.modal}>
