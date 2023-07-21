@@ -1,17 +1,26 @@
 import { PolymorphicRef, TmColor } from "@travelmakers/styles";
-import { useArrowMove } from "@travelmakers/hooks";
-import { Children, forwardRef, PropsWithChildren, useRef } from "react";
+import { Navigation } from "swiper";
+import {
+  Children,
+  forwardRef,
+  PropsWithChildren,
+  useRef,
+  useState,
+} from "react";
 import { Icon } from "../Icon";
-import { View } from "../View";
 import useStyles from "./SwiperArrowContainer.style";
+import { Swiper, SwiperProps } from "swiper/react";
+
 import {
   SwiperArrowContainerProps,
   ReturnType,
 } from "./SwiperArrowContainer.type";
 import React from "react";
+import { View } from "../View";
+import { useArrowMove } from "@travelmakers/hooks";
 
-export interface Props {
-  contentClassName?: string;
+export interface Props extends SwiperProps {
+  hasNavigation?: boolean;
   hasDimmer?: boolean;
   dimmerColor?: TmColor;
   disabled?: boolean;
@@ -21,7 +30,8 @@ export const SwiperArrowContainer = forwardRef(
   <C extends React.ElementType = "div">(
     {
       className,
-      contentClassName,
+      hasNavigation = false,
+      modules = [],
       hasDimmer = false,
       disabled = false,
       dimmerColor,
@@ -30,78 +40,92 @@ export const SwiperArrowContainer = forwardRef(
     }: PropsWithChildren<SwiperArrowContainerProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
-    const contentRef = useRef([]);
+    const defaultOption: Pick<SwiperProps, "slidesPerView" | "grabCursor"> = {
+      slidesPerView: "auto",
+      grabCursor: true,
+    };
     const MAX_COUNT = Children.count(children) - 1;
+    const contentRef = useRef();
     const {
-      page,
-      arrowLeftClickHandler,
-      arrowRightClickHandler,
       setLeftArrowHover,
       setRightArrowHover,
       leftArrowHover,
       rightArrowHover,
     } = useArrowMove(contentRef, MAX_COUNT);
-    const dimmerHidden = page === MAX_COUNT;
+    const [isEnd, setIsEnd] = useState(false);
+    const [isBeginning, setIsBeginning] = useState(true);
+
+    const option = { ...defaultOption, ...props };
+
+    if (!hasNavigation) {
+      return (
+        <Swiper modules={modules} {...option}>
+          {children}
+        </Swiper>
+      );
+    }
+
+    const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+    const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
+
     const { classes, cx } = useStyles({
       leftArrowHover,
       rightArrowHover,
-      dimmerHidden,
-      dimmerColor,
       hasDimmer,
+      dimmerColor,
+      isEnd,
     });
-
-    const cloneArr = Children.map(children, (child, idx) =>
-      // @ts-ignore
-      React.cloneElement(child, {
-        ref: (el) => (contentRef.current[idx] = el),
-      })
-    );
 
     return (
       <View<React.ElementType>
         component={"div"}
-        ref={ref}
-        className={cx(classes.container, className)}
+        ref={contentRef}
+        className={cx(className, classes.container)}
         onMouseEnter={() => {
-          page !== 0 && setLeftArrowHover(true);
-          page < MAX_COUNT && setRightArrowHover(true);
-        }}
-        onMouseMove={() => {
-          if (!disabled) {
-            page !== 0 ? setLeftArrowHover(true) : setLeftArrowHover(false);
-            page < MAX_COUNT
-              ? setRightArrowHover(true)
-              : setRightArrowHover(false);
-          }
+          setLeftArrowHover(!isBeginning);
+          setRightArrowHover(!isEnd);
         }}
         onMouseLeave={() => {
           setLeftArrowHover(false);
           setRightArrowHover(false);
         }}
-        {...props}
       >
-        <div
-          className={cx(classes.contentScroll, classes.contentScrollLeft)}
-          onClick={(e) => {
-            e.preventDefault();
-            arrowLeftClickHandler();
+        <Swiper
+          navigation={{ prevEl, nextEl }}
+          modules={[Navigation, ...modules]}
+          onSlideChange={(swiper) => {
+            if (swiper.isBeginning) {
+              setLeftArrowHover(false);
+              setIsEnd(false);
+              setIsBeginning(true);
+            } else if (swiper.isEnd) {
+              setRightArrowHover(false);
+              setIsEnd(true);
+              setIsBeginning(false);
+            } else {
+              setLeftArrowHover(true);
+              setRightArrowHover(true);
+              setIsEnd(false);
+              setIsBeginning(false);
+            }
           }}
+          {...option}
         >
-          <Icon src="IcAngleLeft" width={16} height={16} />
-        </div>
-        <div
-          className={cx(classes.contentScroll, classes.contentScrollRight)}
-          onClick={(e) => {
-            e.preventDefault();
-            arrowRightClickHandler();
-          }}
-        >
-          <Icon src="IcAngleRight" width={16} height={16} />
-        </div>
-        <div className={cx(classes.contentDimmer)} />
-        <div className={cx(classes.contentScrollContainer, contentClassName)}>
-          {cloneArr}
-        </div>
+          <div
+            className={cx(classes.contentScroll, classes.contentScrollLeft)}
+            ref={setPrevEl}
+          >
+            <Icon src="IcAngleLeft" width={16} height={16} />
+          </div>
+          <div
+            className={cx(classes.contentScroll, classes.contentScrollRight)}
+            ref={setNextEl}
+          >
+            <Icon src="IcAngleRight" width={16} height={16} />
+          </div>
+          <div className={cx(classes.contentDimmer)} />
+          {children}
+        </Swiper>
       </View>
     );
   }

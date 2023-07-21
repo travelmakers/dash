@@ -1,5 +1,6 @@
 import { Meta } from "@storybook/react";
 import { SwiperArrowContainer } from "../SwiperArrowContainer";
+import { SwiperSlide } from "swiper/react";
 
 export default {
   title: "@travelmakers/core/General/SwiperArrowContainer",
@@ -22,10 +23,16 @@ export default {
 
 export const Default = (props) => {
   return (
-    <SwiperArrowContainer {...props}>
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
+    <SwiperArrowContainer {...props} hasNavigation spaceBetween={8}>
+      <SwiperSlide>
+        <div>1</div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div>2</div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div>3</div>
+      </SwiperSlide>
     </SwiperArrowContainer>
   );
 };

@@ -12,6 +12,7 @@ import {
 } from "../PriceCard/PriceCard";
 import useStyles from "./HotelCard.style";
 import { HotelCardProps, HotelCardType, ReturnType } from "./HotelCard.type";
+import { SwiperSlide } from "swiper/react";
 
 export interface Props {
   /** HotelCard 컴포넌트의 호텔명을 표시합니다. */
@@ -111,24 +112,28 @@ export const HotelCard = forwardRef(
 
             <SwiperArrowContainer
               className={cx(classes.contentFooter)}
+              spaceBetween={8}
+              hasNavigation
               hasDimmer
             >
               {price?.map((item, idx) => (
-                <div
-                  className={
-                    idx === 0
-                      ? classes.contentFirstContent
-                      : idx === price.length - 1 && classes.contentLastContent
-                  }
-                >
-                  <PriceCard
-                    key={`price-card-${item.name}`}
-                    name={item.name}
-                    status={disabled ? "disabled" : item.status}
-                    description={item.description}
-                    tag={item.tag}
-                  />
-                </div>
+                <SwiperSlide style={{ width: "auto" }} key={idx}>
+                  <div
+                    className={
+                      idx === 0
+                        ? classes.contentFirstContent
+                        : idx === price.length - 1 && classes.contentLastContent
+                    }
+                  >
+                    <PriceCard
+                      key={`price-card-${item.name}`}
+                      name={item.name}
+                      status={disabled ? "disabled" : item.status}
+                      description={item.description}
+                      tag={item.tag}
+                    />
+                  </div>
+                </SwiperSlide>
               ))}
             </SwiperArrowContainer>
           </div>

@@ -3,6 +3,7 @@ import { Global, css } from "@emotion/react";
 const styles = css`
   @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap");
   @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard-dynamic-subset.css");
+  @import url("https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css");
 
   html: {
     fontfamily: "sans-serif";
