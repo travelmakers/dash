@@ -82,7 +82,7 @@ export const SwiperArrowContainer = forwardRef(
         ref={contentRef}
         className={cx(className, classes.container)}
         onMouseEnter={() => {
-          if (Children.count(children) >= 3) {
+          if (MAX_COUNT >= 2) {
             setLeftArrowHover(!isBeginning);
             setRightArrowHover(!isEnd);
           }
