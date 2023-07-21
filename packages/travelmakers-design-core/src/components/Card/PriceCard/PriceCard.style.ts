@@ -12,5 +12,10 @@ export default createStyles((theme) => {
       padding: `${theme.spacing.spacing10} ${theme.spacing.spacing20}`,
       flexShrink: 0,
     },
+    tagItem: {
+      padding: "2px 0px",
+      width: "100%",
+      textAlign: "center",
+    },
   };
 });
