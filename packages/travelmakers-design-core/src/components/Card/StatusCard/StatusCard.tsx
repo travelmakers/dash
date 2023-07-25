@@ -67,9 +67,8 @@ export const StatusCard = forwardRef(
         component={"div"}
         ref={ref}
         className={cx(className, classes.root)}
-        {...props}
       >
-        <div className={cx(classes.container)} onClick={onClick}>
+        <div className={cx(classes.container)} onClick={onClick} {...props}>
           <img
             src={hotelImage}
             className={cx(classes.image)}
