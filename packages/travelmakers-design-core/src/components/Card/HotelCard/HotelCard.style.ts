@@ -18,6 +18,8 @@ export default createStyles((theme) => {
       justifyContent: "center",
       alignItems: "end",
       height: "183px",
+      maskImage: "-webkit-radial-gradient(white, black)",
+
       ["& > img"]: {
         position: "absolute",
         transition: `all 0.2s ${theme.transitionTiming.easeInOut}`,
