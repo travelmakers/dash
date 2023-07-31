@@ -46,7 +46,6 @@ export const Default = (props) => {
       <br />
       getDay(YYYY-MM-DDTHH:mm:ssZ[Z]): {getDay("2022-12-22T01:37:27.391Z")}
       <br />
-      {getDate().date.unix()}
     </div>
   );
 };
