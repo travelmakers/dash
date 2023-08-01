@@ -32,6 +32,7 @@ export default createStyles((theme) => {
       display: "flex",
       flexDirection: "column",
       gap: theme.spacing.spacing30,
+      backgroundColor: theme.colors.white,
     },
     contentHeader: {
       height: "100%",
