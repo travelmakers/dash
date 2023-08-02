@@ -5,7 +5,7 @@ export default createStyles((theme) => {
 
   return {
     root: {
-      ["-webkit-tap-highlight-color"]: "transparent",
+      WebkitTapHighlightColor: "transparent",
 
       ".tm-select-tag__item": {
         ...typography.body2,

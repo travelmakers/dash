@@ -71,11 +71,8 @@ export default createStyles(
         overflow: "hidden",
         [`${theme.media.mobile}`]: {
           overflow: "auto",
-          ["-ms-overflow-style"]: "none",
-          ["scrollbar-width"]: "none",
-          ["::-webkit-scrollbar"]: {
-            display: "none",
-          },
+          msOverflowStyle: "none",
+          scrollbarWidth: "none",
         },
       },
     };
