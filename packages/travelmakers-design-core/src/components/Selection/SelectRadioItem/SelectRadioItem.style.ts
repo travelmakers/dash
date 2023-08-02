@@ -39,6 +39,7 @@ export default createStyles(
           backgroundColor: colors.white,
           border: `5px solid ${colors.primaryContainer}`,
           borderRadius: radius.radius20,
+          flexShrink: 0,
         },
 
         ".tm-select-radio__item__label": {
