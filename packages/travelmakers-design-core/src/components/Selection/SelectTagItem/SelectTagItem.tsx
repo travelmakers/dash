@@ -25,6 +25,7 @@ export const SelectTagItem = forwardRef(
     const { classes, cx } = useStyles();
 
     return (
+    <li>
       <label htmlFor={id} className={cx(classes.root, className)}>
         <View<React.ElementType>
           id={id}
@@ -38,6 +39,7 @@ export const SelectTagItem = forwardRef(
         />
         <div className={"tm-select-tag__item"}>{label}</div>
       </label>
+    </li>
     );
   }
 ) as unknown as ReturnType;

@@ -10,6 +10,7 @@ export default createStyles((theme, { gap }: Pick<Props, "gap">) => {
       margin: 0,
       padding: 0,
       border: 0,
+      listStyle: 'none'
     },
   };
 });

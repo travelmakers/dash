@@ -24,7 +24,7 @@ export const SelectTag = forwardRef(
 
     return (
       <View<React.ElementType>
-        component={"fieldset"}
+        component={"ul"}
         ref={ref}
         className={cx(classes.root, className)}
         {...props}
