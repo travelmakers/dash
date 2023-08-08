@@ -14,6 +14,10 @@ export default createStyles((theme, { gap }: Pick<Props, "gap">) => {
       listStyle: 'none',
       msOverflowStyle: "none",
       scrollbarWidth: "none",
+
+      '&::-webkit-scrollbar': {
+        display: "none",
+      }
     },
   };
 });
