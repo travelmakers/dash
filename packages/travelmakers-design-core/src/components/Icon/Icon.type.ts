@@ -58,6 +58,7 @@ export type IconPictogramSrc =
   | "IcMarker"
   | "IcMarkerFill"
   | "IcProfile"
+  | "IcPromotion"
   | "IcSearch"
   | "IcSettings"
   | "IcTalk"

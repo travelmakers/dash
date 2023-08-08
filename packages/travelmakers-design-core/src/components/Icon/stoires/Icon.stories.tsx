@@ -67,6 +67,7 @@ export default {
           "IcMarker",
           "IcMarkerFill",
           "IcProfile",
+          "IcPromotion",
           "IcSearch",
           "IcSettings",
           "IcTalk",
@@ -86,5 +87,5 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <Icon {...props} width={32} height={32} />;
+  return <Icon src={"IcPromotion"} {...props} width={32} height={32} />;
 };
