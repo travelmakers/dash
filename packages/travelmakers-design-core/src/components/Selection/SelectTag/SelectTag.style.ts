@@ -10,7 +10,10 @@ export default createStyles((theme, { gap }: Pick<Props, "gap">) => {
       margin: 0,
       padding: 0,
       border: 0,
-      listStyle: 'none'
+      overflowX: "scroll",
+      listStyle: 'none',
+      msOverflowStyle: "none",
+      scrollbarWidth: "none",
     },
   };
 });
