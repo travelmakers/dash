@@ -60,6 +60,12 @@ export const Search = forwardRef(
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.value.replaceAll(" ", "").length === 0) {
+        e.target.value = "";
+
+        return;
+      }
+
       e.target.value = sanitizeInput(e.target.value);
       setInputValue(sanitizeInput(e.target.value));
       onChange?.(e);
