@@ -102,7 +102,7 @@ export const SwiperArrowContainer = forwardRef(
               setIsBeginning(true);
             } else if (swiper.isEnd) {
               setRightArrowHover(false);
-              setIsEnd(!props.loop);
+              setIsEnd(true);
               setIsBeginning(false);
             } else {
               setLeftArrowHover(true);
