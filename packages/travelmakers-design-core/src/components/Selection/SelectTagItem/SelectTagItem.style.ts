@@ -19,6 +19,7 @@ export default createStyles((theme) => {
         borderStyle: "solid",
         borderColor: colors.outline,
         borderRadius: radius.radius100,
+        backgroundColor: colors.white,
         whiteSpace: "nowrap",
         cursor: "pointer",
       },
