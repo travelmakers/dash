@@ -108,7 +108,7 @@ export function getTimeLineFunc(state: ReservationState): AllTypes {
       return {
         enum: state,
         firstLineText: (userName) => `안녕하세요, ${userName}님`,
-        secondLineText: () => `여행같은 일상이 필요하지 않으세요?`,
+        secondLineText: () => `여행 같은 일상이 필요하지 않으세요?`,
         buttonText: () => `전체 호텔 보러가기`,
         link: (url?: string) => {
           return { url, arrow: !!url };
