@@ -6,7 +6,7 @@ export default {
   component: Icon,
   argTypes: {
     src: {
-      defaultValue: "IcCompanyApple",
+      defaultValue: "LogoVertical",
       control: {
         type: "radio",
         options: [
@@ -55,6 +55,7 @@ export default {
           "======logo======",
           "Logo",
           "LogoVertical",
+          "LogoVerticalWhite",
 
           "======pictogram======",
           "IcClock",

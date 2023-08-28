@@ -46,7 +46,7 @@ export type IconControlSrc =
   | "IcResultFail"
   | "IcResultSuccess"
   | "IcStar";
-export type IconLogoSrc = "Logo" | "LogoVertical";
+export type IconLogoSrc = "Logo" | "LogoVertical" | "LogoVerticalWhite";
 export type IconPictogramSrc =
   | "IcClock"
   | "IcDiscount"
