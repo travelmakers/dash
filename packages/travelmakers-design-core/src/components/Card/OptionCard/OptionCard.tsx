@@ -184,12 +184,13 @@ export const OptionCard = forwardRef(
                     priceText={price.secondaryPriceText ?? price.priceText}
                     disabled={price.secondaryDisabled}
                     type="secondary"
+                    couponType={undefined}
                   />
                   <Price {...price} type="primary" />
                 </div>
               ) : (
                 <div className={classes.PriceNonBox}>
-                  상세페이지에서 가격 확인
+                  상세페이지에서 가격 확인지
                 </div>
               )}
             </>
