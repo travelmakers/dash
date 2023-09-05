@@ -190,7 +190,7 @@ export const OptionCard = forwardRef(
                 </div>
               ) : (
                 <div className={classes.PriceNonBox}>
-                  상세페이지에서 가격 확인지
+                  상세페이지에서 가격 확인
                 </div>
               )}
             </>
