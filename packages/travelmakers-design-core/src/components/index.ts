@@ -3,6 +3,7 @@ export * from "./Badge";
 export * from "./BottomBar";
 export * from "./Button";
 export * from "./Calendar";
+export * from "./CalendarSecond";
 export * from "./Callout";
 export * from "./Card";
 export * from "./Divider";
