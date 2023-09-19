@@ -52,11 +52,13 @@ export const Indicator: React.FC<Props> = ({
     } else {
       if (!selected.from && !selected.to) {
         return subHeaderText;
+      } else if (!selected.to) {
+        return <>{visibleFromDateText} -</>;
       }
       return (
         <>
-          {visibleFromDateText} - {selected.to && visibleToDateText}
-          {percent && (
+          {visibleFromDateText} - {visibleToDateText}
+          {percent && percent !== 0 && (
             <Tag
               style={{ marginLeft: "8px" }}
               color="green"
