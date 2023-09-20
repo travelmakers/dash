@@ -47,7 +47,7 @@ export const Indicator: React.FC<Props> = ({
     } (${getInnerDay(selected.to?.date)})`;
 
     if (isTour) {
-      if (!selected.time?.hour || !selected.time?.minutes) {
+      if (!selected.from) {
         return subHeaderText;
       }
       return visibleFromDateText;
