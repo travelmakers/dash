@@ -134,7 +134,7 @@ export const CalendarSecond = forwardRef(
         actions.clear(selectableDates, disabledDays);
         handleCalendar();
       }
-    }, []);
+    }, [selectableDates, disabledDays]);
 
     return (
       <View<React.ElementType> component={"div"} className={cx(classes.root)}>
@@ -149,6 +149,7 @@ export const CalendarSecond = forwardRef(
             selected={selected}
             type={type}
             topIndicatorPosition={topIndicatorPosition}
+            setChecked={setChecked}
           />
           <div className={classes.calendar}>
             {deferredState && (

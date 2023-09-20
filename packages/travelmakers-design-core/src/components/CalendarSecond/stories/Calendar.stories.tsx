@@ -149,16 +149,68 @@ export default {
   },
 } as Meta;
 
+const moveInDates = [
+  "2023-9-25",
+  "2023-9-26",
+  "2023-9-27",
+  "2023-9-28",
+  "2023-9-29",
+  "2023-9-30",
+  "2023-10-1",
+  "2023-10-2",
+  "2023-10-3",
+  "2023-10-4",
+  "2023-10-5",
+  "2023-10-6",
+  "2023-10-7",
+  "2023-10-8",
+  "2023-10-9",
+  "2023-10-10",
+  "2023-10-11",
+  "2023-10-12",
+  "2023-10-13",
+  "2023-10-14",
+  "2023-10-15",
+  "2023-10-16",
+  "2023-10-17",
+  "2023-10-18",
+  "2023-10-19",
+  "2023-10-20",
+];
+
+const tourDates = [
+  "2023-9-24",
+  "2023-9-25",
+  "2023-9-26",
+  "2023-9-27",
+  "2023-9-28",
+  "2023-9-29",
+  "2023-9-30",
+];
+
 export const Default = (props) => {
   const [selected, setSelected] = useState({
     from: undefined,
     to: undefined,
     time: { hour: undefined, minutes: undefined },
   });
+  const [type, setType] = useState("move-in");
+
   return (
     <div>
       <Calendar
         {...props}
+        type={type}
+        selectableDates={type === "tour" ? tourDates : moveInDates}
+        indicator={{
+          percent: -10,
+          headerText: "체크인 날짜를 선택해주세요",
+          subHeaderText: "최소 7일 숙박 상품",
+          tourButtonText: "투어 신청",
+          onClick: () => {
+            setType(type === "tour" ? "move-in" : "tour");
+          },
+        }}
         topIndicatorPosition="0px"
         selected={selected}
         onChange={setSelected}

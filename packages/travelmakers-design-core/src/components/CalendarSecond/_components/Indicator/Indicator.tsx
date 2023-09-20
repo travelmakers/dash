@@ -15,6 +15,7 @@ export interface Props {
   selected: SelectedDays;
   type: "tour" | "move-in";
   topIndicatorPosition?: string;
+  setChecked: React.Dispatch<React.SetStateAction<SelectedDays>>;
 }
 
 const DATE_FORMAT = "MM.DD";
@@ -30,6 +31,7 @@ export const Indicator: React.FC<Props> = ({
   selected,
   type,
   topIndicatorPosition,
+  setChecked,
 }) => {
   const { headerText, subHeaderText, percent, tourButtonText, onClick } =
     indicator || {};
@@ -89,7 +91,16 @@ export const Indicator: React.FC<Props> = ({
         </div>
         <div style={{ justifyContent: "center" }}>
           <Button
-            onClick={onClick}
+            onClick={() => {
+              if (onClick) {
+                onClick();
+                setChecked({
+                  to: null,
+                  from: null,
+                  time: { hour: null, minutes: null },
+                });
+              }
+            }}
             variant="tonal"
             size="medium"
             leftIcon={
