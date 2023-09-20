@@ -33,8 +33,14 @@ export const Indicator: React.FC<Props> = ({
   topIndicatorPosition,
   setChecked,
 }) => {
-  const { headerText, subHeaderText, percent, tourButtonText, onClick } =
-    indicator || {};
+  const {
+    headerText,
+    subHeaderText,
+    percent,
+    tourButtonText,
+    tourSoldOut,
+    onClick,
+  } = indicator || {};
   const { classes, cx } = useStyles({ topIndicatorPosition });
   const isTour = type === "tour";
 
@@ -89,34 +95,36 @@ export const Indicator: React.FC<Props> = ({
             </Typography>
           </div>
         </div>
-        <div style={{ justifyContent: "center" }}>
-          <Button
-            onClick={() => {
-              if (onClick) {
-                onClick();
-                setChecked({
-                  to: null,
-                  from: null,
-                  time: { hour: null, minutes: null },
-                });
+        {!tourSoldOut && (
+          <div style={{ justifyContent: "center" }}>
+            <Button
+              onClick={() => {
+                if (onClick) {
+                  onClick();
+                  setChecked({
+                    to: null,
+                    from: null,
+                    time: { hour: null, minutes: null },
+                  });
+                }
+              }}
+              variant="tonal"
+              size="medium"
+              leftIcon={
+                <div
+                  className={cx(
+                    classes.iconGroup,
+                    type === "tour" && classes.iconCheck
+                  )}
+                >
+                  <Icon src="IcCheck" color={"white"} width={16} height={16} />
+                </div>
               }
-            }}
-            variant="tonal"
-            size="medium"
-            leftIcon={
-              <div
-                className={cx(
-                  classes.iconGroup,
-                  type === "tour" && classes.iconCheck
-                )}
-              >
-                <Icon src="IcCheck" color={"white"} width={16} height={16} />
-              </div>
-            }
-          >
-            {tourButtonText}
-          </Button>
-        </div>
+            >
+              {tourButtonText}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

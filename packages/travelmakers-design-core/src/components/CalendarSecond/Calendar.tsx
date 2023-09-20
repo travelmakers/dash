@@ -89,6 +89,7 @@ export const CalendarSecond = forwardRef(
         headerText: "체크인 날짜를 선택해주세요",
         subHeaderText: "최소 7일 숙박 상품",
         tourButtonText: "투어 신청",
+        tourSoldOut: false,
       },
       children,
       className,

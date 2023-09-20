@@ -210,6 +210,7 @@ export const Default = (props) => {
           onClick: () => {
             setType(type === "tour" ? "move-in" : "tour");
           },
+          tourSoldOut: false,
         }}
         topIndicatorPosition="0px"
         selected={selected}

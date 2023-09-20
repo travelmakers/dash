@@ -40,6 +40,7 @@ export interface CalendarIndicator {
   subHeaderText?: string;
   percent?: number;
   tourButtonText?: string;
+  tourSoldOut?: boolean;
 }
 
 interface SharedCalendarProps
