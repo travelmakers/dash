@@ -134,7 +134,7 @@ export const CalendarSecond = forwardRef(
         actions.clear(selectableDates, disabledDays);
         handleCalendar();
       }
-    }, [selectableDates, disabledDays]);
+    }, [type]);
 
     return (
       <View<React.ElementType> component={"div"} className={cx(classes.root)}>
