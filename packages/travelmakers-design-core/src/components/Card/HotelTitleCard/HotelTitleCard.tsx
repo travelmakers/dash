@@ -21,7 +21,9 @@ export interface Props {
   type: HotelTitleCardType["type"];
 
   /** HotelTitleCard 컴포넌트의 호텔타입이 default일 경우 몇성호텔인지를 표시합니다. */
-  star?: HotelTitleCardType["star"];
+  star?: string;
+
+  hotelType?: string;
 
   /** HotelTitleCard 컴포넌트의 이미지내 상단 레이블을 표시합니다. */
   groupTags?: string[];
@@ -44,6 +46,7 @@ export const HotelTitleCard = forwardRef(
       name,
       type,
       star,
+      hotelType,
       groupTags = [],
       tags = [],
       isCoupon = false,
@@ -70,7 +73,7 @@ export const HotelTitleCard = forwardRef(
             </Typography>
           </div>
           <div>
-            <GradeBadge grade={star} type={type} />
+            <GradeBadge grade={star} type={type} hotelType={hotelType} />
           </div>
           {groupTags.length > 0 && (
             <div>

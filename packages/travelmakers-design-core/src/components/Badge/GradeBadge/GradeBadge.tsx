@@ -1,6 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
-import { Icon } from "../..//Icon";
+import { Icon } from "../../Icon";
 import { Divider } from "../../Divider";
 import { View } from "../../View";
 import useStyles from "./GradeBadge.style";
@@ -8,7 +8,7 @@ import { GradeBadgeProps, GradeBadgeType, ReturnType } from "./GradeBadge.type";
 
 export interface Props {
   type: GradeBadgeType;
-  grade: number;
+  grade: string;
   hotelType?: string;
 }
 
@@ -24,7 +24,7 @@ export const GradeBadge = forwardRef(
         return (
           <>
             <Icon src={"IcStar"} width={16} height={16} />
-            {`${grade}성급`}
+            {`${grade}`}
             <Divider type="vertical" height="10px" />
             {hotelType ?? "호텔"}
           </>
