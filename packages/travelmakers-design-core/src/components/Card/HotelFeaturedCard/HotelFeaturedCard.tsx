@@ -41,6 +41,8 @@ export interface Props {
   price: HotelFeaturePrice;
 
   isPrice?: boolean;
+
+  noneText?: string;
 }
 
 export const HotelFeaturedCard = forwardRef(
@@ -57,6 +59,7 @@ export const HotelFeaturedCard = forwardRef(
       timelineTags,
       price,
       isPrice = true,
+      noneText = "상세페이지에서 가격 확인",
       className,
       ...props
     }: HotelFeaturedCardProps<C>,
@@ -123,9 +126,7 @@ export const HotelFeaturedCard = forwardRef(
                   <Price {...price} type="primary" />
                 </div>
               ) : (
-                <div className={classes.PriceNonBox}>
-                  상세페이지에서 가격 확인
-                </div>
+                <div className={classes.PriceNonBox}>{noneText}</div>
               )}
             </div>
           </div>
