@@ -60,6 +60,8 @@ export interface Props {
   buttonProps: ButtonProps<typeof Button>;
 
   href: LinkProps["href"];
+
+  noneText?: string;
 }
 
 export const OptionCard = forwardRef(
@@ -78,6 +80,7 @@ export const OptionCard = forwardRef(
       price,
       isPrice = true,
       buttonName = "예약하기",
+      noneText = "상세페이지에서 가격 확인",
       onMoreClick,
       className,
       href,
@@ -189,9 +192,7 @@ export const OptionCard = forwardRef(
                   <Price {...price} type="primary" />
                 </div>
               ) : (
-                <div className={classes.PriceNonBox}>
-                  상세페이지에서 가격 확인
-                </div>
+                <div className={classes.PriceNonBox}>{noneText}</div>
               )}
             </>
           )}
