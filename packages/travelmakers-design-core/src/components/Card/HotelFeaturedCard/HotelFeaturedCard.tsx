@@ -22,7 +22,9 @@ export interface Props {
   type: HotelFeatureType["type"];
 
   /** HotelFeatureCard 컴포넌트의 호텔타입이 default일 경우 몇성호텔인지를 표시합니다. */
-  star?: HotelFeatureType["star"];
+  star?: string;
+
+  hotelType?: string;
 
   /** HotelFeatureCard 컴포넌트의 이미지를 표시합니다. */
   src?: string;
@@ -39,6 +41,8 @@ export interface Props {
   price: HotelFeaturePrice;
 
   isPrice?: boolean;
+
+  noneText?: string;
 }
 
 export const HotelFeaturedCard = forwardRef(
@@ -46,6 +50,7 @@ export const HotelFeaturedCard = forwardRef(
     {
       href = "",
       type = "hotel",
+      hotelType,
       star,
       src,
       labels = [],
@@ -54,6 +59,7 @@ export const HotelFeaturedCard = forwardRef(
       timelineTags,
       price,
       isPrice = true,
+      noneText = "상세페이지에서 가격 확인",
       className,
       ...props
     }: HotelFeaturedCardProps<C>,
@@ -105,7 +111,7 @@ export const HotelFeaturedCard = forwardRef(
                   {name}
                 </Typography>
                 <div className={cx(classes.hotelInfo)}>
-                  <GradeBadge grade={star} type={type} />
+                  <GradeBadge grade={star} type={type} hotelType={hotelType} />
                 </div>
               </div>
               <Divider type={"horizontal"} color="outline" />
@@ -120,9 +126,7 @@ export const HotelFeaturedCard = forwardRef(
                   <Price {...price} type="primary" />
                 </div>
               ) : (
-                <div className={classes.PriceNonBox}>
-                  상세페이지에서 가격 확인
-                </div>
+                <div className={classes.PriceNonBox}>{noneText}</div>
               )}
             </div>
           </div>

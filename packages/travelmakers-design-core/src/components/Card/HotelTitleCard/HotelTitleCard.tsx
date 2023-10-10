@@ -21,7 +21,9 @@ export interface Props {
   type: HotelTitleCardType["type"];
 
   /** HotelTitleCard 컴포넌트의 호텔타입이 default일 경우 몇성호텔인지를 표시합니다. */
-  star?: HotelTitleCardType["star"];
+  star?: string;
+
+  hotelType?: string;
 
   /** HotelTitleCard 컴포넌트의 이미지내 상단 레이블을 표시합니다. */
   groupTags?: string[];
@@ -36,6 +38,8 @@ export interface Props {
   price: HotelTitlePrice;
 
   isPrice?: boolean;
+
+  subText?: string;
 }
 
 export const HotelTitleCard = forwardRef(
@@ -44,11 +48,13 @@ export const HotelTitleCard = forwardRef(
       name,
       type,
       star,
+      hotelType,
       groupTags = [],
       tags = [],
       isCoupon = false,
       price,
       isPrice = true,
+      subText = "세금 및 봉사료 포함",
       className,
       ...props
     }: HotelTitleCardProps<C>,
@@ -70,7 +76,7 @@ export const HotelTitleCard = forwardRef(
             </Typography>
           </div>
           <div>
-            <GradeBadge grade={star} type={type} />
+            <GradeBadge grade={star} type={type} hotelType={hotelType} />
           </div>
           {groupTags.length > 0 && (
             <div>
@@ -102,7 +108,7 @@ export const HotelTitleCard = forwardRef(
             />
             <Price {...price} type="primary" />
             <Typography level="caption" color="primary3">
-              세금 및 봉사료 포함
+              {subText}
             </Typography>
           </div>
         )}

@@ -25,7 +25,9 @@ export interface Props {
   type: HotelCardType["type"];
 
   /** HotelCard 컴포넌트의 호텔타입이 default일 경우 몇성호텔인지를 표시합니다. */
-  star?: HotelCardType["star"];
+  star?: string;
+
+  hotelType?: string;
 
   /** HotelCard 컴포넌트의 이미지를 표시합니다. */
   src?: string;
@@ -50,6 +52,7 @@ export const HotelCard = forwardRef(
       description,
       type,
       star,
+      hotelType,
       src,
       href = "",
       price = [],
@@ -100,7 +103,7 @@ export const HotelCard = forwardRef(
                 {name}
               </Typography>
               <div className={cx(classes.flexBox)}>
-                <GradeBadge grade={star} type={type} />
+                <GradeBadge grade={star} type={type} hotelType={hotelType} />
                 {isCoupon && !disabled && (
                   <IconTag label="Coupon" type="line" />
                 )}
