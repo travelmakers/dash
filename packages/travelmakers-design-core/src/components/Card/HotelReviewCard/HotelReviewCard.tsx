@@ -22,6 +22,8 @@ export interface Props {
   product: string;
 
   notLink?: boolean;
+
+  headerText?: string;
 }
 
 export const HotelReviewCard = forwardRef(
@@ -29,6 +31,7 @@ export const HotelReviewCard = forwardRef(
     {
       href = "",
       src,
+      headerText = "이런 점이 좋았어요.",
       labels = [],
       contents,
       writer,
@@ -46,7 +49,7 @@ export const HotelReviewCard = forwardRef(
         <div className={classes.contentContainer}>
           <div className={classes.headerBox}>
             <Typography level="body3" color="primary3">
-              이런 점이 좋았어요.
+              {headerText}
             </Typography>
             {/*<Icon src="IcAngleRight" width={16} height={16} />*/}
           </div>
