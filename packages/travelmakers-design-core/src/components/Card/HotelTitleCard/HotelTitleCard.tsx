@@ -38,6 +38,8 @@ export interface Props {
   price: HotelTitlePrice;
 
   isPrice?: boolean;
+
+  subText?: string;
 }
 
 export const HotelTitleCard = forwardRef(
@@ -52,6 +54,7 @@ export const HotelTitleCard = forwardRef(
       isCoupon = false,
       price,
       isPrice = true,
+      subText = "세금 및 봉사료 포함",
       className,
       ...props
     }: HotelTitleCardProps<C>,
@@ -105,7 +108,7 @@ export const HotelTitleCard = forwardRef(
             />
             <Price {...price} type="primary" />
             <Typography level="caption" color="primary3">
-              세금 및 봉사료 포함
+              {subText}
             </Typography>
           </div>
         )}
