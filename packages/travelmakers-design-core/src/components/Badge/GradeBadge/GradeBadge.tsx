@@ -24,9 +24,9 @@ export const GradeBadge = forwardRef(
         return (
           <>
             <Icon src={"IcStar"} width={16} height={16} />
-            {`${grade}`}
+            <span>{`${grade}`}</span>
             <Divider type="vertical" height="10px" />
-            {hotelType ?? "호텔"}
+            <span>{hotelType ?? "호텔"}</span>
           </>
         );
       }
@@ -36,7 +36,7 @@ export const GradeBadge = forwardRef(
           <>
             <Icon src={"IcHotelTypeMini"} width={16} height={16} />
             <Divider type="vertical" height="10px" />
-            {hotelType ?? "미니호텔"}
+            <span>{hotelType ?? "미니호텔"}</span>
           </>
         );
       }
@@ -46,7 +46,7 @@ export const GradeBadge = forwardRef(
           <>
             <Icon src={"IcHotelTypeResidence"} width={16} height={16} />
             <Divider type="vertical" height="10px" />
-            {hotelType ?? "레지던스"}
+            <span>{hotelType ?? "레지던스"}</span>
           </>
         );
       }
