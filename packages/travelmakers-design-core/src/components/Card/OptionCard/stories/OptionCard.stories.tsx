@@ -116,7 +116,6 @@ export default {
         type: "primary",
         label: "",
         percentText: 70,
-        nightText: "",
         priceText: 10000,
         priceStartText: "",
         isCoupon: true,

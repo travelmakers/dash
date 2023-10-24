@@ -31,16 +31,6 @@ export default {
       },
       control: { type: "number" },
     },
-    nightText: {
-      defaultValue: 1,
-      description: "Price 컴포넌트의 1박을 표시합니다.",
-      table: {
-        type: {
-          summary: "number",
-        },
-      },
-      control: { type: "number" },
-    },
     priceText: {
       defaultValue: 10000,
       description: "Price 컴포넌트의 가격을 표시합니다.",

@@ -104,7 +104,6 @@ export const HotelTitleCard = forwardRef(
               type="secondary"
               label="정가"
               couponType={undefined}
-              nightText={null}
             />
             <Price {...price} type="primary" />
             <Typography level="caption" color="primary3">

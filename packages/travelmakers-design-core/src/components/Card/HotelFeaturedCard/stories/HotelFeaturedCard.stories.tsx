@@ -84,7 +84,6 @@ export default {
         type: "primary",
         label: "",
         percentText: 70,
-        nightText: 1,
         priceText: 10000,
         priceStartText: "1박 100,000원부터",
         isCoupon: true,

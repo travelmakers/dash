@@ -17,13 +17,6 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       width: "39px",
       color: theme.colors.error,
     },
-    nightText: {
-      ...theme.typography.body3,
-      fontWeight: "700",
-      textAlign: "right",
-      width: "28px",
-      color: theme.colors.primary1,
-    },
     priceText: {
       ...theme.typography.display4,
       fontWeight: "700",
@@ -45,12 +38,6 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       ...theme.typography.body3,
       fontWeight: "400",
       color: theme.colors.primary1,
-    },
-    nightSecondaryText: {
-      ...theme.typography.body3,
-      fontWeight: "700",
-      color: theme.colors.primary1,
-      textAlign: "right",
     },
     priceSecondaryText: {
       ...theme.typography.body3,

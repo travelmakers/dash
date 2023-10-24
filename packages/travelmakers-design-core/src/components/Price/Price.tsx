@@ -1,6 +1,5 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
-import { Icon } from "../Icon";
 import { IconTag } from "../Tag";
 import { Typography } from "../Typography";
 import { View } from "../View";
@@ -16,9 +15,6 @@ export interface Props {
 
   /** Price 컴포넌트의 할인율을 표시합니다. */
   percentText?: number;
-
-  /** Price 컴포넌트의 1박을 표시합니다. */
-  nightText?: number;
 
   /** Price 컴포넌트의 가격을 표시합니다. */
   priceText?: number;
@@ -37,7 +33,6 @@ export const Price = forwardRef(
       type = "primary",
       label,
       percentText,
-      nightText,
       priceText,
       priceStartText,
       couponType,
@@ -59,9 +54,6 @@ export const Price = forwardRef(
         >
           {percentText && (
             <span className={cx(classes.percentText)}>{percentText}%</span>
-          )}
-          {nightText && (
-            <span className={cx(classes.nightText)}>{nightText}박</span>
           )}
           {priceText && (
             <>
@@ -89,11 +81,6 @@ export const Price = forwardRef(
           {...props}
         >
           {label && <span className={cx(classes.labelSecondary)}>{label}</span>}
-          {nightText && (
-            <span className={cx(classes.nightSecondaryText)}>
-              {nightText}박
-            </span>
-          )}
           {priceText && (
             <>
               <span
