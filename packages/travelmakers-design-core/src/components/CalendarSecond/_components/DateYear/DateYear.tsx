@@ -67,7 +67,10 @@ export const DateYear = React.memo(
             </thead>
             <tbody>
               {weeks
-                .filter((week) => _.first(week).month === month)
+                .filter(
+                  (week) =>
+                    _.first(week).month === month && _.first(week).year === year
+                )
                 .map((week, index) => {
                   if (!year) return null;
                   const weeklyKey = `${year}year-${month}month-${index}week`;
