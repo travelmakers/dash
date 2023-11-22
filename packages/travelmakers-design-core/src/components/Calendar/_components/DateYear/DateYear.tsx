@@ -16,6 +16,7 @@ export interface Props {
   title: string;
   hotelName: string;
   checked: SelectedDays;
+  betweenDays: Date[];
   disabledDays?: string[];
   selectableDates: string[];
   year: number;
@@ -35,6 +36,7 @@ export const DateYear = React.memo(
         title,
         hotelName,
         checked,
+        betweenDays,
         disabledDays,
         selectableDates,
         year,
@@ -74,6 +76,7 @@ export const DateYear = React.memo(
                 .map((week, index) => {
                   if (!year) return null;
                   const weeklyKey = `${year}year-${month}month-${index}week`;
+                  let dateBreak = false;
                   return (
                     <React.Fragment key={weeklyKey}>
                       <tr>
@@ -83,6 +86,8 @@ export const DateYear = React.memo(
                             <DateCell
                               key={`${weeklyKey}-${day.dayOfMonth}day`}
                               day={day}
+                              betweenDays={betweenDays}
+                              dateBreak={dateBreak}
                               type={type}
                               enabledDays={enabledDays}
                               minNight={minNight}
