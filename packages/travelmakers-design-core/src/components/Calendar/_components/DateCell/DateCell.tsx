@@ -134,18 +134,20 @@ export const DateCell = React.memo(
       };
 
       const getEnabledDayType = (day: DateCellDay): DateCellType => {
+        const isBetweenDays = betweenDays.some((betweenDay) =>
+          isEqual(betweenDay, day.date)
+        );
         if (isBetweenNotSelectedDays(day)) {
           const isMinNight = isMinNightDays(day);
 
           if (isDayBeforeEnabledDay(day)) {
-            const isBetweenDays = betweenDays.some((betweenDay) =>
-              isEqual(betweenDay, day.date)
-            );
             return isMinNight && isBetweenDays
               ? "default-between"
               : "disabled-between";
           }
-          return isMinNight ? "to-between" : "disabled-to-between";
+          return isMinNight && isBetweenDays
+            ? "to-between"
+            : "disabled-to-between";
         }
 
         if (isEqual(day.date, checked.from?.date)) {
