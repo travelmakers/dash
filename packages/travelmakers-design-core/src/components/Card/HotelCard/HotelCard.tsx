@@ -43,6 +43,8 @@ export interface Props {
 
   /** true일 경우 HotelCard 컴포넌트가 disabled 됩니다. */
   disabled?: boolean;
+
+  locale?: "ko" | "en";
 }
 
 export const HotelCard = forwardRef(
@@ -58,6 +60,7 @@ export const HotelCard = forwardRef(
       price = [],
       isCoupon,
       disabled = false,
+      locale = "ko",
       className,
       ...props
     }: HotelCardProps<C>,
@@ -84,7 +87,7 @@ export const HotelCard = forwardRef(
                   Sold Out
                 </Typography>
                 <Typography color="white" level="body2">
-                  다음에 만나요
+                  {locale === "ko" ? "다음에 만나요" : "See you next time"}
                 </Typography>
               </div>
             ) : (

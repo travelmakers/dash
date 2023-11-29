@@ -175,10 +175,10 @@ export const Default = (props) => {
         selected={selected}
         onChange={setSelected}
         indicatorText={{
-          from: "checkin",
-          to: "checkOut",
-          descriptionFrom: "일정을 <br /> 선택해주세요.",
-          descriptionTo: "일정을 <br /> 선택해주세요.",
+          from: "Tour date",
+          to: "Tour time",
+          descriptionFrom: "Please <br/> select a schedule.",
+          descriptionTo: "Please <br/> select a time.",
         }}
       >
         <Calendar.OptionBox
