@@ -112,7 +112,8 @@ export const Indicator: React.FC<Props> = ({
               level="subhead2"
               color="primary1"
             >
-              {differenceInDays(selected.to.date, selected.from.date)}박
+              {differenceInDays(selected.to.date, selected.from.date)}
+              {locale === "ko" ? "박" : " nights"}
             </Typography>
           </div>
         </div>
