@@ -10,6 +10,7 @@ import {
 } from "./DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
 import { differenceInDays, isEqual } from "date-fns";
+import { log } from "next/dist/server/typescript/utils";
 
 export interface Props {
   selectableDates: string[];
@@ -23,12 +24,14 @@ export interface Props {
   enabledDays: Date;
   minNight: number;
   type: "tour" | "move-in";
+  locale?: "ko" | "en";
 }
 
 export const DateCell = React.memo(
   forwardRef(
     <C extends React.ElementType = "td">(
       {
+        locale,
         day,
         visible,
         checked,

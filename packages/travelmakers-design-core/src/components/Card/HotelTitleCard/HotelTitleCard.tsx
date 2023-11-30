@@ -40,6 +40,8 @@ export interface Props {
   isPrice?: boolean;
 
   subText?: string;
+
+  locale?: "ko" | "en";
 }
 
 export const HotelTitleCard = forwardRef(
@@ -48,6 +50,7 @@ export const HotelTitleCard = forwardRef(
       name,
       type,
       star,
+      locale = "ko",
       hotelType,
       groupTags = [],
       tags = [],
@@ -99,13 +102,14 @@ export const HotelTitleCard = forwardRef(
           <div className={classes.currencyContainer}>
             <Price
               {...price}
+              locale={locale}
               priceText={price.secondaryPriceText ?? price.priceText}
               disabled={price.secondaryDisabled}
               type="secondary"
               label="정가"
               couponType={undefined}
             />
-            <Price {...price} type="primary" />
+            <Price {...price} locale={locale} type="primary" />
             <Typography level="caption" color="primary3">
               {subText}
             </Typography>

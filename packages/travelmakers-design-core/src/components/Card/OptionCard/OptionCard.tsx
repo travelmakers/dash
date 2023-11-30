@@ -62,6 +62,8 @@ export interface Props {
   href: LinkProps["href"];
 
   noneText?: string;
+
+  locale?: "ko" | "en";
 }
 
 export const OptionCard = forwardRef(
@@ -69,6 +71,7 @@ export const OptionCard = forwardRef(
     {
       isMore = true,
       labels = [],
+      locale = "ko",
       headTitle = "Room Type",
       footerTitle = "Benefit",
       optionName = "옵션 설명",
@@ -90,6 +93,7 @@ export const OptionCard = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
+    const NIGHT = locale === "ko" ? "박" : "nights";
 
     return (
       <View<React.ElementType>
@@ -116,8 +120,8 @@ export const OptionCard = forwardRef(
               </Typography>
               {isDuration && (
                 <Typography level="body2" color="onPrimaryContainer">
-                  ({minNight && `${minNight}박`} - {maxNight && `${maxNight}박`}
-                  )
+                  ({minNight && `${minNight}${NIGHT}`} -{" "}
+                  {maxNight && `${maxNight}${NIGHT}`})
                 </Typography>
               )}
             </div>
@@ -155,7 +159,7 @@ export const OptionCard = forwardRef(
                     }
                     onClick={onMoreClick}
                   >
-                    더보기
+                    {locale === "ko" ? "더보기" : "More"}
                   </Button>
                 )}
               </div>
@@ -184,12 +188,13 @@ export const OptionCard = forwardRef(
                 <div className={classes.priceBox}>
                   <Price
                     {...price}
+                    locale={locale}
                     priceText={price.secondaryPriceText ?? price.priceText}
                     disabled={price.secondaryDisabled}
                     type="secondary"
                     couponType={undefined}
                   />
-                  <Price {...price} type="primary" />
+                  <Price {...price} locale={locale} type="primary" />
                 </div>
               ) : (
                 <div className={classes.PriceNonBox}>{noneText}</div>
