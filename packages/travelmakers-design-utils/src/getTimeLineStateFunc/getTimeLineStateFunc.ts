@@ -257,7 +257,7 @@ export function getTimeLineStateFunc(
           firstLineText: () => `Payment in progress`,
           secondLineText: (vbank_date) => {
             if (vbank_date) {
-              const countDate = getCountDown(vbank_date, "HH:MM");
+              const countDate = getCountDown(vbank_date, "HH:mm");
               if (countDate && countDate === "0:0") {
                 return "Deposit due date expires";
               } else {
@@ -308,7 +308,7 @@ export function getTimeLineStateFunc(
           firstLineText: () => `Before Extended Payment`,
           secondLineText: (vbank_date) => {
             if (vbank_date) {
-              const countDate = getCountDown(vbank_date, "HH:MM");
+              const countDate = getCountDown(vbank_date, "HH:mm");
               if (countDate && countDate === "0:0") {
                 return "Deposit due date expires";
               } else {
