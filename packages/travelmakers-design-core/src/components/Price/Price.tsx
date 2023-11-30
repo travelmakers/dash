@@ -25,12 +25,15 @@ export interface Props {
   couponType?: "tag" | "text";
 
   disabled?: boolean;
+
+  locale?: "ko" | "en";
 }
 
 export const Price = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type = "primary",
+      locale = "ko",
       label,
       percentText,
       priceText,
@@ -43,6 +46,7 @@ export const Price = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({ type });
+    const KRW = locale === "ko" ? "원" : "KRW";
 
     const Primary = () => {
       return (
@@ -60,7 +64,7 @@ export const Price = forwardRef(
               <span className={cx(classes.priceText)}>
                 {priceText.toLocaleString("ko")}
               </span>
-              <span className={cx(classes.priceBeforeText)}>원~</span>
+              <span className={cx(classes.priceBeforeText)}>{KRW}~</span>
             </>
           )}
           {priceStartText && (
@@ -89,14 +93,17 @@ export const Price = forwardRef(
                   disabled && classes.priceSecondaryLineThrough
                 )}
               >
-                {priceText?.toLocaleString("ko")}원
+                {priceText?.toLocaleString("ko")}
+                {KRW}
               </span>
             </>
           )}
           {couponType === "tag" && <IconTag label="쿠폰 적용가" type="fill" />}
           {couponType === "text" && (
             <Typography color="secondary1" level="caption" strong>
-              적용 가능한 쿠폰이 있어요!
+              {locale === "ko"
+                ? "적용 가능한 쿠폰이 있어요!"
+                : "There's a coupon for you!"}
             </Typography>
           )}
         </View>

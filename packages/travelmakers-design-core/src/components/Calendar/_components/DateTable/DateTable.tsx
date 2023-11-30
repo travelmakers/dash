@@ -23,6 +23,7 @@ export interface Props {
   months: string[];
   years: number[];
   weeks?: CalendarState["weeks"];
+  locale?: "ko" | "en";
 }
 
 export const DateTable = React.memo(
@@ -41,6 +42,7 @@ export const DateTable = React.memo(
         months,
         years,
         weeks,
+        locale,
         className,
         ...props
       }: DateTableProps<C>,
@@ -198,15 +200,17 @@ export const DateTable = React.memo(
             const year = years[index];
             if (!year) return null;
             const title = `${year}년 ${month}`;
+            const titleEN = `${month} ${year}`;
             return (
               <DateYear
+                locale={locale}
                 key={title}
                 checked={checked}
                 betweenDays={betweenDays}
                 type={type}
                 disabledDays={disabledDays}
                 selectableDates={selectableDates}
-                title={title}
+                title={locale === "ko" ? title : titleEN}
                 hotelName={hotelName}
                 year={year}
                 month={month}

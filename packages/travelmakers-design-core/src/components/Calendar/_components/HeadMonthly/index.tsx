@@ -5,9 +5,11 @@ import { Button } from "../../../Button";
 const HeadMonthly = ({
   title,
   onClear,
+  locale = "ko",
 }: {
   title: string;
   onClear: () => void;
+  locale?: "ko" | "en";
 }) => {
   return (
     <>
@@ -15,7 +17,7 @@ const HeadMonthly = ({
         {title}
       </Typography>
       <Button variant="text" size="small" roundness onClick={onClear}>
-        초기화
+        {locale === "ko" ? "초기화" : "clear"}
       </Button>
     </>
   );
