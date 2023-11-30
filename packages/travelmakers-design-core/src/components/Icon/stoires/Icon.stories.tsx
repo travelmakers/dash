@@ -65,6 +65,7 @@ export default {
           "IcHotelFill",
           "IcHotelLine",
           "IcLogout",
+          "IcLanguage",
           "IcMarker",
           "IcMarkerFill",
           "IcProfile",
