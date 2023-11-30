@@ -20,6 +20,8 @@ type ReservationState =
   | "tour_cancel"
   | "reservation_cancel";
 
+type LocalizedTimeLineParams = "ko" | "en";
+
 export interface timeLineStateDetailParams {
   enum: ReservationState;
   thirdLineText: (hotelName: string) => string;
@@ -88,308 +90,615 @@ export function getTimeLineStateDetailFunc(
     | "tour_confirm_before"
     | "reservation_purchase_done"
     | "extend_purchase_done"
-    | "reservation_change_process"
+    | "reservation_change_process",
+  locale: LocalizedTimeLineParams
 ): timeLineStateDetailParamsWithExpectedDate;
 
 export function getTimeLineStateDetailFunc(
-  t: "tour_confirm" | "tour_done" | "checkin_before" | "extend_checkin_before"
+  t: "tour_confirm" | "tour_done" | "checkin_before" | "extend_checkin_before",
+  locale: LocalizedTimeLineParams
 ): timeLineStateDetailParamsWithStartDate;
 
 export function getTimeLineStateDetailFunc(
-  t: "day_n"
+  t: "day_n",
+  locale: LocalizedTimeLineParams
 ): timeLineStateDetailParamsWithEndDate;
 
 export function getTimeLineStateDetailFunc(
-  t: "checkout_before" | "checkout_before_n"
+  t: "checkout_before" | "checkout_before_n",
+  locale: LocalizedTimeLineParams
 ): timeLineStateDetailParamsWithEndDateDday;
 
 export function getTimeLineStateDetailFunc(
-  t: "reservation_purchase_before" | "extend_purchase_before"
+  t: "reservation_purchase_before" | "extend_purchase_before",
+  locale: LocalizedTimeLineParams
 ): timeLineStateDetailParamsWithBankDate;
 
 export function getTimeLineStateDetailFunc(
-  t: "checkout_done"
+  t: "checkout_done",
+  locale: LocalizedTimeLineParams
 ): timeLineStateDetailParamsWithNull;
 
 export function getTimeLineStateDetailFunc(
-  t: "tour_cancel" | "reservation_cancel"
+  t: "tour_cancel" | "reservation_cancel",
+  locale: LocalizedTimeLineParams
 ): timeLineStateDetailParamsWithCancelDate;
 
-export function getTimeLineStateDetailFunc(state: ReservationState): AllTypes {
+export function getTimeLineStateDetailFunc(
+  state: ReservationState,
+  locale: LocalizedTimeLineParams = "ko"
+): AllTypes {
   switch (state) {
     case "tour_confirm_before":
       // NOTE: 투어 확정 전
-      return {
-        enum: state,
-        firstLineText: () => `투어 확정 전`,
-        secondLineText: (expectedDate) =>
-          `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `투어 확정 전`,
+          secondLineText: (expectedDate) =>
+            `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Before the tour is confirmed`,
+          secondLineText: (expectedDate) =>
+            `Confirmation expected by ${
+              getDate(expectedDate, "MMMM D").format
+            }`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "tour_confirm":
       // NOTE: 투어 확정
-      return {
-        enum: state,
-        firstLineText: () => `투어 확정`,
-        secondLineText: (startDate) =>
-          `${getDate(startDate, "M월 D일 HH:mm").format} 방문`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `투어 확정`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "M월 D일 HH:mm").format} 방문`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `tour confirmed`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "MMMM D HH:mm").format} visited`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "tour_done":
       // NOTE: 투어 완료
-      return {
-        enum: state,
-        firstLineText: () => `투어 완료`,
-        secondLineText: (startDate) =>
-          `${getDate(startDate, "M월 D일 HH:mm").format} 방문`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `투어 완료`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "M월 D일 HH:mm").format} 방문`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `tour complete`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "MMMM D HH:mm").format} visited`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "reservation_purchase_before":
       // NOTE: 결제 진행 중 (가상 계좌)
-      return {
-        enum: state,
-        firstLineText: () => `결제 진행 중`,
-        secondLineText: (vbank_date) => {
-          if (vbank_date) {
-            const countDate = getCountDown(vbank_date);
-            if (countDate && countDate === "0시간 0분") {
-              return "입금 기한 만료";
-            } else {
-              return countDate + " 내 입금 필요";
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `결제 진행 중`,
+          secondLineText: (vbank_date) => {
+            if (vbank_date) {
+              const countDate = getCountDown(vbank_date);
+              if (countDate && countDate === "0시간 0분") {
+                return "입금 기한 만료";
+              } else {
+                return countDate + " 내 입금 필요";
+              }
             }
-          }
-          return "";
-        },
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+            return "";
+          },
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Payment in progress`,
+          secondLineText: (vbank_date) => {
+            if (vbank_date) {
+              const countDate = getCountDown(vbank_date, "HH:MM");
+              if (countDate && countDate === "0:0") {
+                return "Deposit due date expires";
+              } else {
+                return "Deposit required within" + countDate;
+              }
+            }
+            return "";
+          },
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "extend_purchase_before":
       // NOTE: 연장 결제 전
-      return {
-        enum: state,
-        firstLineText: () => `연장 결제 전`,
-        secondLineText: (vbank_date) => {
-          if (vbank_date) {
-            const countDate = getCountDown(vbank_date);
-            if (countDate && countDate === "0시간 0분") {
-              return "입금 기한 만료";
-            } else {
-              return countDate + " 내 입금 필요";
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `연장 결제 전`,
+          secondLineText: (vbank_date) => {
+            if (vbank_date) {
+              const countDate = getCountDown(vbank_date);
+              if (countDate && countDate === "0시간 0분") {
+                return "입금 기한 만료";
+              } else {
+                return countDate + " 내 입금 필요";
+              }
             }
-          }
-          return "";
-        },
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+            return "";
+          },
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Before Extended Payment`,
+          secondLineText: (vbank_date) => {
+            if (vbank_date) {
+              const countDate = getCountDown(vbank_date, "HH:MM");
+              if (countDate && countDate === "0:0") {
+                return "Deposit due date expires";
+              } else {
+                return "Deposit required within" + countDate;
+              }
+            }
+            return "";
+          },
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "reservation_purchase_done":
       // NOTE: 예약 확정 전
-      return {
-        enum: state,
-        firstLineText: () => `예약 확정 전`,
-        secondLineText: (expectedDate) =>
-          `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `예약 확정 전`,
+          secondLineText: (expectedDate) =>
+            `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Before a reservation is confirmed`,
+          secondLineText: (expectedDate) =>
+            `Confirmation expected by ${
+              getDate(expectedDate, "MMMM D").format
+            }`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "checkin_before":
       // NOTE: 체크인 전
-      return {
-        enum: state,
-        firstLineText: (dDay) => {
-          if (dDay && dDay === "0") {
-            return `체크인 D-Day`;
-          }
-          return `체크인 D-${dDay}`;
-        },
-        secondLineText: (startDate) =>
-          `${getDate(startDate, "M월 D일 HH:mm").format} 체크인`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (dDay) => {
+            if (dDay && dDay === "0") {
+              return `체크인 D-Day`;
+            }
+            return `체크인 D-${dDay}`;
+          },
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "M월 D일 HH:mm").format} 체크인`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (dDay) => {
+            if (dDay && dDay === "0") {
+              return `Check-In D-Day`;
+            }
+            return `Check-In D-${dDay}`;
+          },
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "MMMM D HH:mm").format} Check-In`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "day_n":
       // NOTE: 입주 N일차
-      return {
-        enum: state,
-        firstLineText: () => `호텔 이용 중`,
-        secondLineText: (endDate) =>
-          `${getDate(endDate, "M월 D일 HH:mm").format} 체크아웃`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `호텔 이용 중`,
+          secondLineText: (endDate) =>
+            `${getDate(endDate, "M월 D일 HH:mm").format} 체크아웃`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Hotel in use`,
+          secondLineText: (endDate) =>
+            `${getDate(endDate, "MMMM D HH:mm").format} Checkout`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "extend_purchase_done":
       // NOTE: 연장확정전
-      return {
-        enum: state,
-        firstLineText: () => `연장 확정 전`,
-        secondLineText: (expectedDate) =>
-          `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `연장 확정 전`,
+          secondLineText: (expectedDate) =>
+            `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Before extension is confirmed`,
+          secondLineText: (expectedDate) =>
+            `Confirmation expected by ${
+              getDate(expectedDate, "MMMM D").format
+            }`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "extend_checkin_before":
       // NOTE: 연장확정
-      return {
-        enum: state,
-        firstLineText: () => `연장 확정`,
-        secondLineText: (startDate) =>
-          `${getDate(startDate, "M월 D일 HH:mm").format} 체크인`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `연장 확정`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "M월 D일 HH:mm").format} 체크인`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Extension confirmed`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "MMMM D HH:mm").format} Check-In`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "reservation_change_process":
       // NOTE: 예약 변경 중
-      return {
-        enum: state,
-        firstLineText: () => `예약 변경 중`,
-        secondLineText: (expectedDate) =>
-          `${getDate(expectedDate, "M월 D일").format} 이내 확정`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `예약 변경 중`,
+          secondLineText: (expectedDate) =>
+            `${getDate(expectedDate, "M월 D일").format} 이내 확정`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Changing reservation`,
+          secondLineText: (expectedDate) =>
+            `Confirmed within ${getDate(expectedDate, "MMMM D").format}`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "checkout_before":
       // NOTE: 체크아웃 전
-      return {
-        enum: state,
-        firstLineText: (dDay) => {
-          if (dDay && dDay === "0") {
-            return `체크아웃 D-Day`;
-          }
-          return `체크아웃 D-${dDay}`;
-        },
-        secondLineText: (end_date) =>
-          `${getDate(end_date, "M월 D일 HH:mm").format} 체크아웃`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (dDay) => {
+            if (dDay && dDay === "0") {
+              return `체크아웃 D-Day`;
+            }
+            return `체크아웃 D-${dDay}`;
+          },
+          secondLineText: (end_date) =>
+            `${getDate(end_date, "M월 D일 HH:mm").format} 체크아웃`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (dDay) => {
+            if (dDay && dDay === "0") {
+              return `Checkout D-Day`;
+            }
+            return `Checkout D-${dDay}`;
+          },
+          secondLineText: (end_date) =>
+            `${getDate(end_date, "MMMM D HH:mm").format} Checkout`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "checkout_before_n":
       // NOTE: 체크아웃 N일 전
-      return {
-        enum: state,
-        firstLineText: (dDay) => {
-          if (dDay && dDay === "0") {
-            return `체크아웃 D-Day`;
-          }
-          return `체크아웃 D-${dDay}`;
-        },
-        secondLineText: (end_date) =>
-          `${getDate(end_date, "M월 D일 HH:mm").format} 체크아웃`,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => false,
-        messageDisable: () => false,
-        messageUnderline: () => false,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (dDay) => {
+            if (dDay && dDay === "0") {
+              return `체크아웃 D-Day`;
+            }
+            return `체크아웃 D-${dDay}`;
+          },
+          secondLineText: (end_date) =>
+            `${getDate(end_date, "M월 D일 HH:mm").format} 체크아웃`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (dDay) => {
+            if (dDay && dDay === "0") {
+              return `Checkout D-Day`;
+            }
+            return `Checkout D-${dDay}`;
+          },
+          secondLineText: (end_date) =>
+            `${getDate(end_date, "MMMM D HH:mm").format} Checkout`,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => false,
+          messageDisable: () => false,
+          messageUnderline: () => false,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "checkout_done":
       // NOTE: 체크아웃
-      return {
-        enum: state,
-        firstLineText: () => `체크아웃 완료`,
-        secondLineText: () => `재구매하기`,
-        secondLink: (url) => url,
-        thirdLineText: (hotelName) => hotelName,
-        titleDisable: () => true,
-        messageDisable: () => false,
-        messageUnderline: () => true,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `체크아웃 완료`,
+          secondLineText: () => `재구매하기`,
+          secondLink: (url) => url,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => true,
+          messageDisable: () => false,
+          messageUnderline: () => true,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `Checkout complete`,
+          secondLineText: () => `Buy again`,
+          secondLink: (url) => url,
+          thirdLineText: (hotelName) => hotelName,
+          titleDisable: () => true,
+          messageDisable: () => false,
+          messageUnderline: () => true,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "tour_cancel":
       // NOTE: 투어 취소
-      return {
-        enum: state,
-        firstLineText: () => `투어 취소`,
-        titleDisable: () => true,
-        messageDisable: () => true,
-        messageUnderline: () => false,
-        secondLineText: (cancelDate) =>
-          `${getDate(cancelDate, "M월 D일 HH:mm").format} 방문 취소`,
-        thirdLineText: (hotelName) => hotelName,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `투어 취소`,
+          titleDisable: () => true,
+          messageDisable: () => true,
+          messageUnderline: () => false,
+          secondLineText: (cancelDate) =>
+            `${getDate(cancelDate, "M월 D일 HH:mm").format} 방문 취소`,
+          thirdLineText: (hotelName) => hotelName,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `tour cancel`,
+          titleDisable: () => true,
+          messageDisable: () => true,
+          messageUnderline: () => false,
+          secondLineText: (cancelDate) =>
+            `Visit canceled at ${getDate(cancelDate, "HH:mm a").format} on ${
+              getDate(cancelDate, "MMMM D").format
+            }`,
+          thirdLineText: (hotelName) => hotelName,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     case "reservation_cancel":
       // NOTE: 예약 취소 완료(환불O)
-      return {
-        enum: state,
-        firstLineText: () => `취소 완료`,
-        titleDisable: () => true,
-        messageDisable: () => true,
-        messageUnderline: () => false,
-        secondLineText: (cancelDate) =>
-          `${getDate(cancelDate, "M월 D일 HH:mm").format} 취소 완료`,
-        thirdLineText: (hotelName) => hotelName,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: () => `취소 완료`,
+          titleDisable: () => true,
+          messageDisable: () => true,
+          messageUnderline: () => false,
+          secondLineText: (cancelDate) =>
+            `${getDate(cancelDate, "M월 D일 HH:mm").format} 취소 완료`,
+          thirdLineText: (hotelName) => hotelName,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: () => `cancel complete`,
+          titleDisable: () => true,
+          messageDisable: () => true,
+          messageUnderline: () => false,
+          secondLineText: (cancelDate) =>
+            `${getDate(cancelDate, "M월 D일 HH:mm").format} cancel complete`,
+          thirdLineText: (hotelName) => hotelName,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+        };
+      }
     default:
       return {
         enum: state,

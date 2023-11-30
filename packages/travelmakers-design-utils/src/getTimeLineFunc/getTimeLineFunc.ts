@@ -19,6 +19,8 @@ type ReservationState =
   | "tour_cancel"
   | "reservation_cancel";
 
+type LocalizedTimeLineParams = "ko" | "en";
+
 export interface timeLineParams {
   enum: ReservationState;
   link: (url?: string) => {
@@ -73,16 +75,20 @@ type AllTypes =
   | timeLineParamsWithUserName_EndDate_Dday;
 
 export function getTimeLineFunc(
-  t: "default" | "tour_done" | "tour_cancel" | "reservation_cancel"
+  t: "default" | "tour_done" | "tour_cancel" | "reservation_cancel",
+  locale: LocalizedTimeLineParams
 ): timeLineParamsOnlyUserName;
 export function getTimeLineFunc(
-  t: "tour_confirm_before" | "reservation_purchase_before" | "checkout_done"
+  t: "tour_confirm_before" | "reservation_purchase_before" | "checkout_done",
+  locale: LocalizedTimeLineParams
 ): timeLineParamsWithUserName_HotelName;
 export function getTimeLineFunc(
-  t: "tour_confirm" | "checkin_before"
+  t: "tour_confirm" | "checkin_before",
+  locale: LocalizedTimeLineParams
 ): timeLineParamsWithUserName_StartDate;
 export function getTimeLineFunc(
-  t: "reservation_purchase_done"
+  t: "reservation_purchase_done",
+  locale: LocalizedTimeLineParams
 ): timeLineParamsWithUserName_HotelName_ExpectedDate;
 export function getTimeLineFunc(
   t:
@@ -90,160 +96,324 @@ export function getTimeLineFunc(
     | "extend_purchase_before"
     | "extend_purchase_done"
     | "extend_checkin_before"
-    | "reservation_change_process"
+    | "reservation_change_process",
+  locale: LocalizedTimeLineParams
 ): timeLineParamsWithUserName_EndDate;
 export function getTimeLineFunc(
-  t: "checkout_before"
+  t: "checkout_before",
+  locale: LocalizedTimeLineParams
 ): timeLineParamsWithUserName_Dday;
 export function getTimeLineFunc(
-  t: "checkout_before_n"
+  t: "checkout_before_n",
+  locale: LocalizedTimeLineParams
 ): timeLineParamsWithUserName_EndDate_Dday;
 
-export function getTimeLineFunc(state: ReservationState): AllTypes {
+export function getTimeLineFunc(
+  state: ReservationState,
+  locale: LocalizedTimeLineParams = "ko"
+): AllTypes {
   switch (state) {
     case "default":
     case "tour_cancel":
     case "reservation_cancel":
       // NOTE: 구매 전
-      return {
-        enum: state,
-        firstLineText: (userName) => `안녕하세요, ${userName}님`,
-        secondLineText: () => `여행 같은 일상이 필요하지 않으세요?`,
-        buttonText: () => `전체 호텔 보러가기`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "default",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `안녕하세요, ${userName}님`,
+          secondLineText: () => `여행 같은 일상이 필요하지 않으세요?`,
+          buttonText: () => `전체 호텔 보러가기`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `Hello, ${userName}`,
+          secondLineText: () => `Don't need a life like traveling?`,
+          buttonText: () => `View all hotels`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      }
     case "tour_confirm_before":
       // NOTE: 투어 확정 전
-      return {
-        enum: state,
-        firstLineText: (userName) => `${userName}님`,
-        secondLineText: (hotelName) => hotelName,
-        buttonText: () => `투어 확정 전이에요`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "alert",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}님`,
+          secondLineText: (hotelName) => hotelName,
+          buttonText: () => `투어 확정 전이에요`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}`,
+          secondLineText: (hotelName) => hotelName,
+          buttonText: () => `Before the tour is confirmed`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      }
     case "tour_confirm":
       // NOTE: 투어 확정
-      return {
-        enum: state,
-        firstLineText: (userName) => `${userName}님`,
-        secondLineText: (startDate) =>
-          `${getDate(startDate, "M월 D일").format} 투어가 확정됐어요`,
-        buttonText: () => `약속시간에 꼭 방문해주세요`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "default",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}님`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "M월 D일").format} 투어가 확정됐어요`,
+          buttonText: () => `약속시간에 꼭 방문해주세요`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "MMMM D").format} tour confirmed`,
+          buttonText: () => `Please come to your appointment`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      }
     case "tour_done":
       // NOTE: 투어 완료
-      return {
-        enum: state,
-        firstLineText: (userName) => `${userName}님`,
-        secondLineText: () => `투어는 어떠셨나요?`,
-        buttonText: () => `호텔에삶을 경험해보세요`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "default",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}님`,
+          secondLineText: () => `투어는 어떠셨나요?`,
+          buttonText: () => `호텔에삶을 경험해보세요`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}`,
+          secondLineText: () => `How was your tour?`,
+          buttonText: () => `Experience life at the hotel`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      }
     case "reservation_purchase_before":
       // NOTE: 결제 진행 중 (가상 계좌)
-      return {
-        enum: state,
-        firstLineText: (userName) => `안녕하세요, ${userName}님`,
-        secondLineText: (hotelName) => `${hotelName}`,
-        buttonText: () => `아직 입금이 완료되지 않았어요`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "alert",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `안녕하세요, ${userName}님`,
+          secondLineText: (hotelName) => `${hotelName}`,
+          buttonText: () => `아직 입금이 완료되지 않았어요`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `Hello, ${userName}`,
+          secondLineText: (hotelName) => `${hotelName}`,
+          buttonText: () => `My deposit hasn't been made yet`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      }
     case "reservation_purchase_done":
       // NOTE: 예약 확정 전
-      return {
-        enum: state,
-        firstLineText: (userName) => `안녕하세요, ${userName}님`,
-        secondLineText: (hotelName) => `${hotelName}`,
-        buttonText: (expectedDate) =>
-          `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정이에요`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "alert",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `안녕하세요, ${userName}님`,
+          secondLineText: (hotelName) => `${hotelName}`,
+          buttonText: (expectedDate) =>
+            `${getDate(expectedDate, "M월 D일").format} 이내 확정 예정이에요`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `Hello, ${userName}`,
+          secondLineText: (hotelName) => `${hotelName}`,
+          buttonText: (expectedDate) =>
+            `Confirmation expected by ${
+              getDate(expectedDate, "MMMM D").format
+            }`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      }
     case "checkin_before":
       // NOTE: 체크인 전
-      return {
-        enum: state,
-        firstLineText: (userName) => `${userName}님`,
-        secondLineText: (startDate) =>
-          `${getDate(startDate, "M월 D일 HH시").format} 체크인 예정이에요`,
-        buttonText: () => `편안한 호텔에삶 되세요`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "default",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}님`,
+          secondLineText: (startDate) =>
+            `${getDate(startDate, "M월 D일 HH시").format} 체크인 예정이에요`,
+          buttonText: () => `편안한 호텔에삶 되세요`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}`,
+          secondLineText: (startDate) =>
+            `Check-in is scheduled for ${
+              getDate(startDate, "HH a").format
+            } on ${getDate(startDate, "MMMM D").format}`,
+          buttonText: () => `Become a comfortable Living-In-Hotel`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      }
     case "day_n":
     case "extend_purchase_before":
     case "extend_purchase_done":
     case "extend_checkin_before":
     case "reservation_change_process":
       // NOTE: 입주 N일차 / 연장결제전 / 연장확정전/ 연장확정 / 예약 변경 중
-      return {
-        enum: state,
-        firstLineText: (userName) => `${userName}님`,
-        secondLineText: (endDate) =>
-          `체크아웃은 ${getDate(endDate, "M월 D일 HH시").format}에요`,
-        buttonText: () => `편안한 호텔에삶 되세요`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "default",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}님`,
+          secondLineText: (endDate) =>
+            `체크아웃은 ${getDate(endDate, "M월 D일 HH시").format}에요`,
+          buttonText: () => `편안한 호텔에삶 되세요`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}`,
+          secondLineText: (endDate) =>
+            `Check-out is scheduled for ${getDate(endDate, "HH a").format} on ${
+              getDate(endDate, "MMMM D").format
+            }`,
+          buttonText: () => `Become a comfortable Living-In-Hotel`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "default",
+        };
+      }
     case "checkout_before":
       // NOTE: 체크아웃 전
-      return {
-        enum: state,
-        firstLineText: (hotelName) => `${hotelName}`,
-        secondLineText: (dDay) => `퇴실까지 ${dDay}일 남았어요`,
-        buttonText: () => `호텔에삶을 연장하시겠어요?`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "alert",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (hotelName) => `${hotelName}`,
+          secondLineText: (dDay) => `퇴실까지 ${dDay}일 남았어요`,
+          buttonText: () => `호텔에삶을 연장하시겠어요?`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (hotelName) => `${hotelName}`,
+          secondLineText: (dDay) =>
+            `There are ${dDay} days left until check-out.`,
+          buttonText: () => `Would you like to extend your Living-In-Hotel?`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      }
     case "checkout_before_n":
       // NOTE: 체크아웃 N일 전
-      return {
-        enum: state,
-        firstLineText: (hotelName) => `${hotelName}`,
-        secondLineText: (dDay) => `퇴실까지 ${dDay}일 남았어요`,
-        buttonText: (endDate) =>
-          `${getDate(endDate, "M월 D일 HH시").format} 체크아웃 입니다`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "alert",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (hotelName) => `${hotelName}`,
+          secondLineText: (dDay) => `퇴실까지 ${dDay}일 남았어요`,
+          buttonText: (endDate) =>
+            `${getDate(endDate, "M월 D일 HH시").format} 체크아웃 입니다`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (hotelName) => `${hotelName}`,
+          secondLineText: (dDay) =>
+            `There are ${dDay} days left until check-out.`,
+          buttonText: (endDate) =>
+            `Check-out is scheduled for ${getDate(endDate, "HH a").format} on ${
+              getDate(endDate, "MMMM D").format
+            }`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      }
     case "checkout_done":
       // NOTE: 체크아웃
-      return {
-        enum: state,
-        firstLineText: (userName) => `${userName}님`,
-        secondLineText: (hotelName) => `${hotelName}`,
-        buttonText: () => `호텔에삶은 어떠셨나요?`,
-        link: (url?: string) => {
-          return { url, arrow: !!url };
-        },
-        color: "alert",
-      };
+      if (locale === "ko") {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}님`,
+          secondLineText: (hotelName) => `${hotelName}`,
+          buttonText: () => `호텔에삶은 어떠셨나요?`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      } else {
+        return {
+          enum: state,
+          firstLineText: (userName) => `${userName}`,
+          secondLineText: (hotelName) => `${hotelName}`,
+          buttonText: () => `How was Living-In-Hotel?`,
+          link: (url?: string) => {
+            return { url, arrow: !!url };
+          },
+          color: "alert",
+        };
+      }
   }
 }
 
