@@ -84,7 +84,7 @@ function reducer(state, action): CalendarState {
         ...state,
         ...initialize(
           new Date(),
-          {},
+          { ...state.options },
           action.selectableDates,
           action.disabledDays
         ),

@@ -11,6 +11,7 @@ import _ from "lodash";
 import { getMonth } from "date-fns";
 import { DateCellDay, DateCellType } from "../DateCell/DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
+import { getDate } from "@travelmakers/utils";
 
 export interface Props {
   title: string;
@@ -27,12 +28,14 @@ export interface Props {
   enabledDays: Date;
   minNight: number;
   type: "tour" | "move-in";
+  locale?: "ko" | "en";
 }
 
 export const DateYear = React.memo(
   forwardRef(
     <C extends React.ElementType = "div">(
       {
+        locale,
         title,
         hotelName,
         checked,
@@ -58,14 +61,14 @@ export const DateYear = React.memo(
       return (
         <>
           <div className={classes.tableHead}>
-            <HeadMonthly title={title} onClear={onClear} />
+            <HeadMonthly title={title} onClear={onClear} locale={locale} />
           </div>
           <table>
             <caption className={"sr-only"}>
               {hotelName && `${hotelName} :`} {title} 달력
             </caption>
             <thead className={classes.mt10}>
-              <HeadTitle />
+              <HeadTitle locale={locale} />
             </thead>
             <tbody>
               {weeks
@@ -82,9 +85,16 @@ export const DateYear = React.memo(
                       <tr>
                         {week.map((day) => {
                           if (!day.year) return null;
+                          const visibleKO =
+                            _.first(week).month ===
+                            `${getMonth(day.date) + 1}월`;
+                          const visibleEN =
+                            _.first(week).month ===
+                            getDate(day.date, "MMMM").format;
                           return (
                             <DateCell
                               key={`${weeklyKey}-${day.dayOfMonth}day`}
+                              locale={locale}
                               day={day}
                               betweenDays={betweenDays}
                               dateBreak={dateBreak}
@@ -95,10 +105,7 @@ export const DateYear = React.memo(
                               disabledDays={disabledDays}
                               selectableDates={selectableDates}
                               onClick={onClick}
-                              visible={
-                                _.first(week).month ===
-                                `${getMonth(day.date) + 1}월`
-                              }
+                              visible={locale === "ko" ? visibleKO : visibleEN}
                             />
                           );
                         })}

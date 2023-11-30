@@ -9,23 +9,25 @@ import { SelectedDays } from "../../Calendar.type";
 export interface Props {
   selected: SelectedDays;
   type: "tour" | "move-in";
+  text: {
+    from: string;
+    to: string;
+    descriptionFrom: string;
+    descriptionTo: string;
+  };
   topIndicatorPosition?: string;
+  locale?: "ko" | "en";
 }
 
 export const Indicator: React.FC<Props> = ({
   selected,
   type,
   topIndicatorPosition,
+  text,
+  locale = "ko",
 }) => {
   const { classes } = useStyles({ topIndicatorPosition });
   const isTour = type === "tour";
-  const headlineText = {
-    from: !isTour ? "체크인" : "투어 예정일",
-    to: !isTour ? "체크아웃" : "투어 예정 시간",
-    description: !isTour
-      ? "일정을 <br /> 선택해주세요."
-      : "시간을 <br /> 선택해주세요.",
-  };
 
   const generateToHeadlineText = () => {
     if (isTour) {
@@ -34,7 +36,7 @@ export const Indicator: React.FC<Props> = ({
           <Typography
             level="caption"
             color="primary3"
-            dangerouslySetInnerHTML={{ __html: headlineText.description }}
+            dangerouslySetInnerHTML={{ __html: text.descriptionTo }}
           />
         );
       }
@@ -51,7 +53,7 @@ export const Indicator: React.FC<Props> = ({
           <Typography
             level="caption"
             color="primary3"
-            dangerouslySetInnerHTML={{ __html: headlineText.description }}
+            dangerouslySetInnerHTML={{ __html: text.descriptionTo }}
           />
         );
       }
@@ -61,7 +63,7 @@ export const Indicator: React.FC<Props> = ({
             {getDate(selected.to.date).format}
           </Typography>
           <Typography level="caption" color="primary1">
-            {getDay(selected.to.date)}
+            {getDay(selected.to.date, locale)}
           </Typography>
         </div>
       );
@@ -73,20 +75,22 @@ export const Indicator: React.FC<Props> = ({
       <div className={classes.indicatorInnerBox}>
         <div>
           <Typography level="body3" color="secondary1" strong>
-            {headlineText.from}
+            {text.from}
           </Typography>
 
           {!selected.from ? (
-            <Typography level="caption" color="primary3">
-              일정을 <br /> 선택해주세요.
-            </Typography>
+            <Typography
+              level="caption"
+              color="primary3"
+              dangerouslySetInnerHTML={{ __html: text.descriptionFrom }}
+            />
           ) : (
             <div className={classes.indicatorSelectedDay}>
               <Typography level="subhead1" color="primary1" strong>
                 {getDate(selected.from.date).format}
               </Typography>
               <Typography level="caption" color="primary1">
-                {getDay(selected.from.date)}
+                {getDay(selected.from.date, locale)}
               </Typography>
             </div>
           )}
@@ -94,7 +98,7 @@ export const Indicator: React.FC<Props> = ({
         <Divider type={"vertical"} color="outline" />
         <div>
           <Typography level="body3" color="secondary1" strong>
-            {headlineText.to}
+            {text.to}
           </Typography>
 
           {generateToHeadlineText()}
@@ -108,7 +112,8 @@ export const Indicator: React.FC<Props> = ({
               level="subhead2"
               color="primary1"
             >
-              {differenceInDays(selected.to.date, selected.from.date)}박
+              {differenceInDays(selected.to.date, selected.from.date)}
+              {locale === "ko" ? "박" : " nights"}
             </Typography>
           </div>
         </div>
