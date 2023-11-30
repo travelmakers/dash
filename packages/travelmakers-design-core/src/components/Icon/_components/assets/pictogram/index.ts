@@ -5,6 +5,7 @@ export { default as IcEdit } from "./IcEdit";
 export { default as IcHotelFill } from "./IcHotelFill";
 export { default as IcHotelLine } from "./IcHotelLine";
 export { default as IcLogout } from "./IcLogout";
+export { default as IcLanguage } from "./IcLanguage";
 export { default as IcMarker } from "./IcMarker";
 export { default as IcMarkerFill } from "./IcMarkerFill";
 export { default as IcProfile } from "./IcProfile";
