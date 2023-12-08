@@ -46,7 +46,7 @@ export const Price = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({ type });
-    const KRW = locale === "ko" ? "원" : "KRW";
+    const KRW = locale === "ko" ? "원" : "won";
 
     const Primary = () => {
       return (
