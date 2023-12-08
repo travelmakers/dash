@@ -36,7 +36,7 @@ export const Indicator: React.FC<Props> = ({
           <Typography
             level="caption"
             color="primary3"
-            dangerouslySetInnerHTML={{ __html: text.descriptionTo }}
+            dangerouslySetInnerHTML={{ __html: text?.descriptionTo }}
           />
         );
       }
@@ -53,7 +53,7 @@ export const Indicator: React.FC<Props> = ({
           <Typography
             level="caption"
             color="primary3"
-            dangerouslySetInnerHTML={{ __html: text.descriptionTo }}
+            dangerouslySetInnerHTML={{ __html: text?.descriptionTo }}
           />
         );
       }
@@ -75,14 +75,14 @@ export const Indicator: React.FC<Props> = ({
       <div className={classes.indicatorInnerBox}>
         <div>
           <Typography level="body3" color="secondary1" strong>
-            {text.from}
+            {text?.from}
           </Typography>
 
           {!selected.from ? (
             <Typography
               level="caption"
               color="primary3"
-              dangerouslySetInnerHTML={{ __html: text.descriptionFrom }}
+              dangerouslySetInnerHTML={{ __html: text?.descriptionFrom }}
             />
           ) : (
             <div className={classes.indicatorSelectedDay}>
@@ -98,7 +98,7 @@ export const Indicator: React.FC<Props> = ({
         <Divider type={"vertical"} color="outline" />
         <div>
           <Typography level="body3" color="secondary1" strong>
-            {text.to}
+            {text?.to}
           </Typography>
 
           {generateToHeadlineText()}
