@@ -39,3 +39,20 @@ export const Default = (props) => {
     </div>
   );
 };
+
+export const English = (props) => {
+  return (
+    <div
+      style={{
+        backgroundColor: "gray",
+        padding: "20px 10px",
+      }}
+    >
+      <Process
+        status={"reservation_purchase_before"}
+        locale={"en"}
+        {...props}
+      />
+    </div>
+  );
+};

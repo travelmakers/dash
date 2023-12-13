@@ -10,9 +10,12 @@ import {
   SequenceType,
 } from "./Process.type";
 
+type LocalizedTimeLineParams = "ko" | "en";
+
 export interface Props {
   isBank?: boolean;
   status?: ProcessStatus;
+  locale?: LocalizedTimeLineParams;
 }
 
 const processing = (status: ProcessStatus) => {
@@ -30,20 +33,24 @@ const processing = (status: ProcessStatus) => {
   }
 };
 
-const sequence = (isBank: boolean, status: ProcessStatus): SequenceType[] => {
+const sequence = (
+  isBank: boolean,
+  status: ProcessStatus,
+  locale?: LocalizedTimeLineParams
+): SequenceType[] => {
   const DEFAULT_SEQUENCE = [
     {
-      process: "결제 완료",
+      process: locale === "en" ? "Completing a payment" : "결제 완료",
       isProcessing: processing(status) === "ing",
     },
     {
-      processor: "호텔에삶",
-      process: "예약 전달",
+      processor: locale === "en" ? "Living in Hotel" : "호텔에삶",
+      process: locale === "en" ? "Delivering a reservation" : "예약 전달",
       isProcessing: processing(status) === "done",
     },
     {
-      processor: "호텔",
-      process: "예약 확정",
+      processor: locale === "en" ? "Hotel" : "호텔",
+      process: locale === "en" ? "Confirming a reservation" : "예약 확정",
       isProcessing: false,
     },
   ];
@@ -51,7 +58,7 @@ const sequence = (isBank: boolean, status: ProcessStatus): SequenceType[] => {
   return isBank
     ? [
         {
-          process: "결제 대기",
+          process: locale === "en" ? "Pending payment" : "결제 대기",
           isProcessing: processing(status) === "before",
         },
         ...DEFAULT_SEQUENCE,
@@ -61,12 +68,18 @@ const sequence = (isBank: boolean, status: ProcessStatus): SequenceType[] => {
 
 export const Process = forwardRef(
   <C extends React.ElementType = "ol">(
-    { isBank = true, status, className, ...props }: ProcessProps<C>,
+    {
+      isBank = true,
+      status,
+      locale = "ko",
+      className,
+      ...props
+    }: ProcessProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
 
-    const items = sequence(isBank, status);
+    const items = sequence(isBank, status, locale);
     const renderer = items.map((item, idx) => (
       <ProcessItem key={idx} item={item} hasIcon={idx + 1 !== items.length} />
     ));
