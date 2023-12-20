@@ -91,3 +91,11 @@ export const Default = (props) => {
     </div>
   );
 };
+
+export const English = (props) => {
+  return (
+    <div style={{ display: "flex" }}>
+      <HotelTitleCard {...props} locale={"en"} />
+    </div>
+  );
+};
