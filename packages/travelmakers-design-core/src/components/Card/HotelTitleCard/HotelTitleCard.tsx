@@ -106,7 +106,7 @@ export const HotelTitleCard = forwardRef(
               priceText={price.secondaryPriceText ?? price.priceText}
               disabled={price.secondaryDisabled}
               type="secondary"
-              label="정가"
+              label={price.label}
               couponType={undefined}
             />
             <Price {...price} locale={locale} type="primary" />
