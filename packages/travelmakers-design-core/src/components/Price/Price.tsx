@@ -46,7 +46,29 @@ export const Price = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles({ type });
-    const KRW = locale === "ko" ? "원" : "won";
+    const KRW = locale === "ko" ? "원" : "₩";
+    const PriceText = () => {
+      if (locale === "ko") {
+        return (
+          <>
+            <span className={cx(classes.priceText)}>
+              {priceText?.toLocaleString("ko")}
+            </span>
+            <span className={cx(classes.priceBeforeText)}>{KRW}~</span>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <span className={cx(classes.priceBeforeText)}>{KRW} </span>
+            <span className={cx(classes.priceText)}>
+              {priceText?.toLocaleString("ko")}
+            </span>
+            <span className={cx(classes.priceBeforeText)}>~</span>
+          </>
+        );
+      }
+    };
 
     const Primary = () => {
       return (
@@ -59,14 +81,7 @@ export const Price = forwardRef(
           {percentText && (
             <span className={cx(classes.percentText)}>{percentText}%</span>
           )}
-          {priceText && (
-            <>
-              <span className={cx(classes.priceText)}>
-                {priceText.toLocaleString("ko")}
-              </span>
-              <span className={cx(classes.priceBeforeText)}>{KRW}~</span>
-            </>
-          )}
+          {priceText && <PriceText />}
           {priceStartText && (
             <span className={cx(classes.priceStartText)}>
               | {priceStartText}
@@ -93,8 +108,16 @@ export const Price = forwardRef(
                   disabled && classes.priceSecondaryLineThrough
                 )}
               >
-                {priceText?.toLocaleString("ko")}
-                {KRW}
+                {locale === "ko" ? (
+                  <>
+                    {priceText?.toLocaleString("ko")}
+                    {KRW}
+                  </>
+                ) : (
+                  <>
+                    {KRW} {priceText?.toLocaleString("ko")}
+                  </>
+                )}
               </span>
             </>
           )}
