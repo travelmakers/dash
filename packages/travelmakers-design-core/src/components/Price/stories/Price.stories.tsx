@@ -68,3 +68,7 @@ export default {
 export const Default = (props) => {
   return <Price {...props} />;
 };
+
+export const English = (props) => {
+  return <Price {...props} locale={"en"} />;
+};
