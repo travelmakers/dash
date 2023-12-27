@@ -83,9 +83,7 @@ export const Price = forwardRef(
           )}
           {priceText && <PriceText />}
           {priceStartText && (
-            <span className={cx(classes.priceStartText)}>
-              | {priceStartText}
-            </span>
+            <span className={cx(classes.priceStartText)}>{priceStartText}</span>
           )}
         </View>
       );
