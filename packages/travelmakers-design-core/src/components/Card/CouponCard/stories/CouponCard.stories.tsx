@@ -84,3 +84,15 @@ export default {
 export const Default = (props) => {
   return <CouponCard {...props} />;
 };
+
+export const English = (props) => {
+  return (
+    <CouponCard
+      {...props}
+      item={null}
+      remainingQuantity={null}
+      locale={"en"}
+      text={{ all: "All" }}
+    />
+  );
+};

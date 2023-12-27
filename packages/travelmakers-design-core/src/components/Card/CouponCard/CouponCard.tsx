@@ -32,12 +32,15 @@ export interface Props {
   content: string;
 
   locale?: "ko" | "en";
+
+  text?: { all: string };
 }
 
 export const CouponCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       locale = "ko",
+      text = { all: "전체" },
       type,
       state,
       day,
@@ -63,7 +66,7 @@ export const CouponCard = forwardRef(
       item: Props["item"],
       remainingQuantity: Props["remainingQuantity"]
     ) => {
-      const firstText = item ? item : locale === "ko" ? "전체" : "All";
+      const firstText = item ? item : text.all;
       const secondText = ` | 잔여 ${remainingQuantity}개`;
       if (remainingQuantity) {
         return `${firstText} ${secondText}`;
