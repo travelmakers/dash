@@ -8,13 +8,13 @@ dayjs.extend(timezone);
 
 function getDateValuate(date?: inputDate) {
   if (!date) {
-    const curr = dayjs().tz("Asia/Seoul");
+    const curr = dayjs();
     return curr;
   }
 
   const kr_curr = dayjs(`${date}+0900`).tz("Asia/Seoul");
   if (!kr_curr.isValid()) {
-    const curr = dayjs(date).tz("Asia/Seoul");
+    const curr = dayjs(date);
     return curr;
   } else {
     return kr_curr;
