@@ -22,6 +22,10 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       fontWeight: "700",
       color: theme.colors.primary1,
     },
+    priceTextBox: {
+      display: "flex",
+      alignItems: "center",
+    },
     priceBeforeText: {
       ...theme.typography.body2,
       fontWeight: "700",

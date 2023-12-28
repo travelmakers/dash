@@ -61,10 +61,12 @@ export const Price = forwardRef(
         return (
           <>
             <span className={cx(classes.priceBeforeText)}>{KRW} </span>
-            <span className={cx(classes.priceText)}>
-              {priceText?.toLocaleString("ko")}
-            </span>
-            <span className={cx(classes.priceBeforeText)}>~</span>
+            <div className={classes.priceTextBox}>
+              <span className={cx(classes.priceText)}>
+                {priceText?.toLocaleString("ko")}
+              </span>
+              <span className={cx(classes.priceBeforeText)}>~</span>
+            </div>
           </>
         );
       }
