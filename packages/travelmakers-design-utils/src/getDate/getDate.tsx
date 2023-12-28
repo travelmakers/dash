@@ -12,7 +12,8 @@ function getDateValuate(date?: inputDate) {
     return curr;
   }
 
-  const kr_curr = dayjs(`${date}+0900`).tz("Asia/Seoul");
+  const kr_curr = dayjs(date);
+  // const kr_curr = dayjs(`${date}+0900`).tz("Asia/Seoul");
   if (!kr_curr.isValid()) {
     const curr = dayjs(date);
     return curr;

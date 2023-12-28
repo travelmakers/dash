@@ -79,7 +79,7 @@ export default {
       control: { type: "array" },
     },
     minNight: {
-      defaultValue: 6,
+      defaultValue: 3,
       description: "선택가능한 최소 일자",
       table: {
         type: {
