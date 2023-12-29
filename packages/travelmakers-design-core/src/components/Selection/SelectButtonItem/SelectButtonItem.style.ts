@@ -17,6 +17,7 @@ export default createStyles((theme) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        textAlign: "center",
         height: "44px",
         color: colors.primary3,
         border: `1px solid ${colors.outline}`,
