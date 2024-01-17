@@ -41,7 +41,7 @@ function omitKey(data, key) {
  * @param separators 구분좌(/)
  * @returns format: string, date: Date, dayjs: dayjs.Dayjs
  */
-export function getInnerDate(date?: inputDate, format?: string) {
+export function getInnerDate(date?: inputDate) {
   function getInnerDateValuate(date?: inputDate) {
     if (!date) {
       const curr = dayjs();
@@ -59,7 +59,7 @@ export function getInnerDate(date?: inputDate, format?: string) {
   }
 
   const d = getInnerDateValuate(date);
-  const template = format ?? "YYYY/MM/DD";
+  const template = "YYYY/MM/DD";
   const utcDate = new Date(d.utc().format("YYYY-MM-DDTHH:mm:ss[Z]"));
 
   return {
