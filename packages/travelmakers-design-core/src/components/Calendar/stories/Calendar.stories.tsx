@@ -69,7 +69,7 @@ export default {
       control: { type: "array" },
     },
     disabledDays: {
-      defaultValue: ["2023-12-01", "2024-01-01", "2024-02-01"],
+      defaultValue: ["2023-12-01", "2024-03-01", "2024-02-01"],
       description: "선택 불가능한 일자",
       table: {
         type: {

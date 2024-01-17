@@ -110,8 +110,6 @@ export const DateTable = React.memo(
           isEqual(getInnerDate(selectableDate).date, day.date)
         );
 
-        console.log("isDisable", getInnerDate("2024-1-1").date, day.date);
-
         return isDisable || isSelectable;
       };
 
@@ -151,7 +149,6 @@ export const DateTable = React.memo(
         const isBetweenDays = checked.from
           ? betweenDays.some((betweenDay) => isEqual(betweenDay, day.date))
           : true;
-        console.log("day.date", day.date, getInnerDate(day.date).date);
 
         return (
           (!checked.from && isDisabledDay(day)) ||

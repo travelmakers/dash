@@ -9,7 +9,8 @@ dayjs.extend(timezone);
 
 function getDateValuate(date?: inputDate) {
   if (!date) {
-    return dayjs().tz("Asia/Seoul");
+    return dayjs().utc().tz("Asia/Seoul", true);
+    // return dayjs().tz("Asia/Seoul");
   }
 
   // 입력된 날짜를 UTC로 파싱하고, 한국 시간대로 변환하지만 시간은 원래 값으로 유지합니다
@@ -33,7 +34,8 @@ function getDateValuate(date?: inputDate) {
 export function getDate(date?: inputDate, format?: string) {
   const d = getDateValuate(date);
   const template = format ?? "YYYY/MM/DD";
-  const utcDate = new Date(d.utc(true).format("YYYY-MM-DDTHH:mm:ss[Z]"));
+
+  const utcDate = new Date(d.utc().format("YYYY-MM-DDTHH:mm:ss[Z]"));
 
   return {
     format: d.format(template),

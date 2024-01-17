@@ -5,6 +5,7 @@ import {
   addEvent,
   createEvents,
   getDays,
+  getInnerDate,
   removeEvent,
 } from "./useCalendar.date";
 import * as actionTypes from "./useCalendar.type";
@@ -83,7 +84,7 @@ function reducer(state, action): CalendarState {
       return {
         ...state,
         ...initialize(
-          new Date(),
+          getInnerDate().date,
           {},
           action.selectableDates,
           action.disabledDays
@@ -169,7 +170,7 @@ export function useCalendar(
   }
 ) {
   const [state, dispatch] = useReducer(reducer, initialState, () =>
-    initialize(date || new Date(), options || {})
+    initialize(date || getInnerDate().date, options || {})
   );
   const { days, weeks, month, year, events } = state;
 

@@ -19,6 +19,8 @@
     "directory": "packages/travelmakers-design-hooks"
   },
   "peerDependencies": {
-    "react": ">=18.2.0"
+    "react": ">=18.2.0",
+    "date-fns": ">=2.29.3",
+    "dayjs": ">=1.11.7"
   }
 }
