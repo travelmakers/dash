@@ -1,6 +1,6 @@
 {
   "name": "@travelmakers/hooks",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "main": "cjs/packages/travelmakers-design-hooks/src/index.js",
   "module": "esm/packages/travelmakers-design-hooks/src/index.js",
   "types": "lib/index.d.ts",
@@ -19,8 +19,8 @@
     "directory": "packages/travelmakers-design-hooks"
   },
   "peerDependencies": {
-    "react": ">=18.2.0",
     "date-fns": ">=2.29.3",
-    "dayjs": ">=1.11.7"
+    "dayjs": ">=1.11.7",
+    "react": ">=18.2.0"
   }
 }
