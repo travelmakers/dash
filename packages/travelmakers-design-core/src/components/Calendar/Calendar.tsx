@@ -1,12 +1,12 @@
 import { useCalendar, useUpdateEffect } from "@travelmakers/hooks";
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, {
-  PropsWithChildren,
   forwardRef,
-  useEffect,
-  useTransition,
-  useState,
+  PropsWithChildren,
   useDeferredValue,
+  useEffect,
+  useState,
+  useTransition,
 } from "react";
 import { View } from "../View";
 import useStyles from "./Calendar.style";
@@ -14,7 +14,6 @@ import { CalendarProps, ReturnType, SelectedDays } from "./Calendar.type";
 import { Indicator } from "./_components/Indicator";
 import OptionBox from "./_components/OptionBox";
 import { DateTable } from "./_components/DateTable/DateTable";
-import { DateCellDay } from "./_components/DateCell/DateCell.type";
 
 export interface Props {
   hotelName?: string;
