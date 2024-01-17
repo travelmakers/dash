@@ -55,6 +55,8 @@ export const Default = (props) => {
       <br />
       today:{" "}
       {getDate("2024-01-12T06:00:00.000000Z", "YYYY-MM-DD||HH:mm").format}
+      <br />
+      today: {getDate("2024-01-12 06:00:00", "YYYY-MM-DD||HH:mm").format}
     </div>
   );
 };

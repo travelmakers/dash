@@ -7,6 +7,11 @@ import { inputDate } from "./getDate.type";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+function containsTimezoneInfo(dateStr) {
+  const timezoneRegex = /Z|([+-][0-9]{2}:[0-9]{2})$/;
+  return timezoneRegex.test(dateStr);
+}
+
 function getDateValuate(date?: inputDate) {
   if (!date) {
     return dayjs().utc().tz("Asia/Seoul");
@@ -14,15 +19,19 @@ function getDateValuate(date?: inputDate) {
   }
 
   // 입력된 날짜를 UTC로 파싱하고, 한국 시간대로 변환하지만 시간은 원래 값으로 유지합니다
-  const kr_curr = dayjs.utc(date).tz("Asia/Seoul");
-  // 변환된 날짜가 유효한지 확인합니다
-  if (!kr_curr.isValid()) {
-    // 유효하지 않으면 현재 시간을 한국 시간대로 반환합니다
+  if (containsTimezoneInfo(date)) {
+    const kr_curr = dayjs.utc(date).tz("Asia/Seoul");
+    // 변환된 날짜가 유효한지 확인합니다
+    if (!kr_curr.isValid()) {
+      // 유효하지 않으면 현재 시간을 한국 시간대로 반환합니다
+      return dayjs(date);
+    }
+
+    // 유효한 경우 변환된 날짜를 반환합니다
+    return kr_curr;
+  } else {
     return dayjs(date);
   }
-
-  // 유효한 경우 변환된 날짜를 반환합니다
-  return kr_curr;
 }
 
 /**
