@@ -33,6 +33,11 @@ export default {
 };
 
 export const Default = (props) => {
+  console.log(
+    getDate("2023-12-29T06:00:00.000000Z", "YYYYMMDD HHMM").format,
+    getDate("2023-12-29T06:00:00.000000Z", "YYYYMMDD HHMM").date,
+    getDate("2023-12-29T06:00:00.000000Z", "YYYYMMDD HHMM").format
+  );
   return (
     <div>
       getDate(YYYY-MM-DD HH:mm):{" "}
@@ -46,7 +51,9 @@ export const Default = (props) => {
       <br />
       getDay(YYYY-MM-DDTHH:mm:ssZ[Z]): {getDay("2022-12-22T01:37:27.391Z")}
       <br />
-      {getDate("2023-12-29T06:00:00.000000Z").format}
+      {getDate("2023-12-29T06:00:00.000000Z", "YYYYMMDD HHMM").format}
+      <br />
+      today: {getDate("20240102", "YYYYMMDD HHMM").format}
     </div>
   );
 };

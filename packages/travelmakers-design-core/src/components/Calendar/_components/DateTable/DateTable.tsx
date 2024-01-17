@@ -1,11 +1,10 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { DateTableProps, ReturnType } from "./DateTable.type";
-import React from "react";
-import { DateCellDay, DateCellType } from "../DateCell/DateCell.type";
+import { DateCellDay } from "../DateCell/DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
 import { addDays, differenceInDays, isEqual } from "date-fns";
-import { getDate } from "@travelmakers/utils";
+import { getInnerDate } from "@travelmakers/utils";
 
 import { CalendarState } from "@travelmakers/hooks/src/useCalendar/useCalendar.type";
 import { DateYear } from "../DateYear/DateYear";
@@ -51,18 +50,18 @@ export const DateTable = React.memo(
 
       const calculateAvailableDatesUpToLimit = () => {
         const dates: Date[] = [];
-        const lastDate = getDate(checked.from.date)
+        const lastDate = getInnerDate(checked.from.date)
           .dayjs.add(maxNight, "days")
           .toDate();
         const result = differenceInDays(lastDate, checked.from.date);
 
         const selectedArray = Array.from({ length: result });
         for (let index = 0; index < selectedArray.length; index++) {
-          const today = getDate(checked.from.date, "YYYY-MM-DD")
+          const today = getInnerDate(checked.from.date, "YYYY-MM-DD")
             .dayjs.add(index + 1, "days")
             .toDate();
           const isSelectable = !selectableDates.some((selectableDate) =>
-            isEqual(getDate(selectableDate).date, today)
+            isEqual(getInnerDate(selectableDate).date, today)
           );
           dates.push(today);
           if (isSelectable) break;
@@ -105,11 +104,13 @@ export const DateTable = React.memo(
        */
       const isDisabledDay = (day: DateCellDay) => {
         const isDisable = disabledDays.some((disabledDay) =>
-          isEqual(getDate(disabledDay).date, day.date)
+          isEqual(getInnerDate(disabledDay).date, day.date)
         );
         const isSelectable = !selectableDates.some((selectableDate) =>
-          isEqual(getDate(selectableDate).date, day.date)
+          isEqual(getInnerDate(selectableDate).date, day.date)
         );
+
+        console.log("isDisable", getInnerDate("2024-1-1").date, day.date);
 
         return isDisable || isSelectable;
       };
@@ -150,6 +151,7 @@ export const DateTable = React.memo(
         const isBetweenDays = checked.from
           ? betweenDays.some((betweenDay) => isEqual(betweenDay, day.date))
           : true;
+        console.log("day.date", day.date, getInnerDate(day.date).date);
 
         return (
           (!checked.from && isDisabledDay(day)) ||
