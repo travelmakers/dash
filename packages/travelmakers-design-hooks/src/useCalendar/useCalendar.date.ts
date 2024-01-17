@@ -44,28 +44,30 @@ function omitKey(data, key) {
 export function getInnerDate(date?: inputDate) {
   function getInnerDateValuate(date?: inputDate) {
     if (!date) {
-      const curr = dayjs();
-      return curr;
+      return dayjs().utc().tz("Asia/Seoul");
+      // return dayjs().tz("Asia/Seoul");
     }
 
-    const kr_curr = dayjs(date);
-    // const kr_curr = dayjs(`${date}+0900`).tz("Asia/Seoul");
+    // 입력된 날짜를 UTC로 파싱하고, 한국 시간대로 변환하지만 시간은 원래 값으로 유지합니다
+    const kr_curr = dayjs.utc(date).tz("Asia/Seoul");
+    // 변환된 날짜가 유효한지 확인합니다
     if (!kr_curr.isValid()) {
-      const curr = dayjs(date);
-      return curr;
-    } else {
-      return kr_curr;
+      // 유효하지 않으면 현재 시간을 한국 시간대로 반환합니다
+      return dayjs(date);
     }
+
+    // 유효한 경우 변환된 날짜를 반환합니다
+    return kr_curr;
   }
 
   const d = getInnerDateValuate(date);
   const template = "YYYY/MM/DD";
+
   const utcDate = new Date(d.utc().format("YYYY-MM-DDTHH:mm:ss[Z]"));
 
   return {
     format: d.format(template),
     date: utcDate,
-    // date: dayjs.utc(d).tz("Asia/Seoul", true).date(),
     dayjs: d,
   };
 }
