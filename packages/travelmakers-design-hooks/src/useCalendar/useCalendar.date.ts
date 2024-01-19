@@ -20,65 +20,20 @@ import {
   CalendarEventIndex,
   CalendarNewEvents,
 } from "./useCalendar.type";
-import dayjs, { Dayjs } from "dayjs";
-import "dayjs/locale/ko";
-import timezone from "dayjs/plugin/timezone";
-import utc from "dayjs/plugin/utc";
-
-type inputDate = string | number | Date | Dayjs | null | undefined;
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 function omitKey(data, key) {
   const { [key]: omit, ...other } = data;
   return other;
 }
 
-/**
- * Date객체를 YYYY/MM/DD 형태로 표출
- * @param date 날짜객체
- * @param separators 구분좌(/)
- * @returns format: string, date: Date, dayjs: dayjs.Dayjs
- */
-export function getInnerDate(date?: inputDate) {
-  function getInnerDateValuate(date?: inputDate) {
-    if (!date) {
-      return dayjs().utc().tz("Asia/Seoul");
-      // return dayjs().tz("Asia/Seoul");
-    }
-
-    // 입력된 날짜를 UTC로 파싱하고, 한국 시간대로 변환하지만 시간은 원래 값으로 유지합니다
-    const kr_curr = dayjs.utc(date).tz("Asia/Seoul");
-    // 변환된 날짜가 유효한지 확인합니다
-    if (!kr_curr.isValid()) {
-      // 유효하지 않으면 현재 시간을 한국 시간대로 반환합니다
-      return dayjs(date);
-    }
-
-    // 유효한 경우 변환된 날짜를 반환합니다
-    return kr_curr;
-  }
-
-  const d = getInnerDateValuate(date);
-  const template = "YYYY/MM/DD";
-
-  const utcDate = new Date(d.utc().format("YYYY-MM-DDTHH:mm:ss[Z]"));
-
-  return {
-    format: d.format(template),
-    date: utcDate,
-    dayjs: d,
-  };
-}
-
 function transformDate(startDate, date, locale) {
   return {
     date,
+    format: format(date, "yyyy-MM-dd"),
     dayOfWeek: format(date, "EEEE", { locale }),
     dayOfYear: getDayOfYear(date),
     dayOfMonth: getDate(date),
-    isToday: isSameDay(getInnerDate().date, date),
+    isToday: isSameDay(new Date(), date),
     isSameMonth: isSameMonth(date, startDate),
     isWeekend: isWeekend(date),
   };
@@ -166,11 +121,12 @@ const isDisabledDay = (
 ) => {
   const isDisable = disabledDays.some(
     (disabledDay) =>
-      getInnerDate(disabledDay).format === getInnerDate(day.date).format
+      disabledDay === day.format || disabledDay === format(day.date, "yyyy-M-d")
   );
   const isSelectable = !selectableDates.some(
     (selectableDate) =>
-      getInnerDate(selectableDate).format === getInnerDate(day.date).format
+      selectableDate === day.format ||
+      selectableDate === format(day.date, "yyyy-M-d")
   );
   return isDisable || isSelectable;
 };
@@ -182,7 +138,7 @@ function getWeeks(
   selectableDates?: string[],
   disabledDays?: string[]
 ) {
-  const firstDay = getInnerDate(currentDate).date;
+  const firstDay = currentDate;
   const lastDay = startOfWeek(lastDayOfMonth(date));
   const diff = differenceInCalendarWeeks(lastDay, firstDay) + 1;
   return Array.from({ length: diff }).map((_, weekIndex) => {
@@ -205,6 +161,7 @@ function getWeeks(
           weekIndex,
           events: dayEvents,
           disabled,
+          format: format(currentDate, "yyyy-mm-dd"),
           ...day,
         };
       }
@@ -224,7 +181,7 @@ function getDays(
   selectableDates?: string[],
   disabledDays?: string[]
 ) {
-  // let currentDate = startOfWeek(getInnerDate(date).date);
+  // let currentDate = startOfWeek(new Date(date).date);
   let currentDate = startOfWeek(new Date(getYear(date), getMonth(date)));
   const weeks = getWeeks(
     date,

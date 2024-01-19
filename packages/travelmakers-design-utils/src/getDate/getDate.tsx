@@ -76,7 +76,6 @@ export function getInnerDate(date?: inputDate, format?: string) {
   return {
     format: d.format(template),
     date: utcDate,
-    // date: dayjs.utc(d).tz("Asia/Seoul", true).date(),
     dayjs: d,
   };
 }
