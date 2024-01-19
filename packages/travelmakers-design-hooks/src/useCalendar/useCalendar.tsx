@@ -1,5 +1,4 @@
 import { addMonths, format } from "date-fns";
-import { ko } from "date-fns/locale";
 import { useEffect, useReducer } from "react";
 import {
   addEvent,
@@ -22,7 +21,6 @@ const initialState = {
   options: {
     numOfDays: 7,
     rtl: false,
-    locale: ko,
   },
 };
 
@@ -85,7 +83,7 @@ function reducer(state, action): CalendarState {
         ...state,
         ...initialize(
           getInnerDate().date,
-          {},
+          { ...state.options },
           action.selectableDates,
           action.disabledDays
         ),
@@ -162,6 +160,7 @@ function initialize(
 export function useCalendar(
   date: Date,
   options?: {
+    locale?: Locale;
     events?: {
       startDate: Date;
       endDate: Date;

@@ -1,4 +1,5 @@
 import { useCalendar, useUpdateEffect } from "@travelmakers/hooks";
+import { ko, enUS } from "date-fns/locale";
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, {
   forwardRef,
@@ -49,6 +50,15 @@ export interface Props {
   topIndicatorPosition?: string;
 
   loadingImageSrc?: string;
+
+  indicatorText: {
+    from: string;
+    to: string;
+    descriptionFrom: string;
+    descriptionTo: string;
+  };
+
+  locale?: "ko" | "en";
 }
 
 /**
@@ -77,6 +87,8 @@ export const Calendar = forwardRef(
       onChange,
       onClick,
       loadingImageSrc,
+      indicatorText,
+      locale = "ko",
       children,
       className,
       ...props
@@ -84,7 +96,9 @@ export const Calendar = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
-    const [state, actions] = useCalendar(null);
+    const [state, actions] = useCalendar(null, {
+      locale: locale === "ko" ? ko : enUS,
+    });
     const deferredState = useDeferredValue(state);
     const [isPending, startTransition] = useTransition();
     const [checked, setChecked] = useState<SelectedDays>({
@@ -135,10 +149,13 @@ export const Calendar = forwardRef(
             selected={selected}
             type={type}
             topIndicatorPosition={topIndicatorPosition}
+            text={indicatorText}
+            locale={locale}
           />
           <div className={classes.calendar}>
             {deferredState && (
               <DateTable
+                locale={locale}
                 checked={checked}
                 setChecked={setChecked}
                 type={type}

@@ -33,6 +33,14 @@ npm install @travelmakers/<package-name>
 yarn add @travelmakers/<package-name>
 ```
 
+```bash
+# 개발모드
+nvm install 16.16.0 
+npm install -g yarn
+npm install -g commitizen
+npm install -g cz-conventional-changelog-with-jiraid-detection 
+```
+
 <!-- 구분!!! -->
 
 ## :rocket: Getting started

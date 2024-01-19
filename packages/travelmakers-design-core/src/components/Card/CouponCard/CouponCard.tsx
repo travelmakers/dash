@@ -30,11 +30,17 @@ export interface Props {
 
   /** CouponCard의 내용을 설정합니다. */
   content: string;
+
+  locale?: "ko" | "en";
+
+  text?: { all: string };
 }
 
 export const CouponCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
+      locale = "ko",
+      text = { all: "전체" },
       type,
       state,
       day,
@@ -60,7 +66,7 @@ export const CouponCard = forwardRef(
       item: Props["item"],
       remainingQuantity: Props["remainingQuantity"]
     ) => {
-      const firstText = item ?? "전체";
+      const firstText = item ? item : text.all;
       const secondText = ` | 잔여 ${remainingQuantity}개`;
       if (remainingQuantity) {
         return `${firstText} ${secondText}`;
@@ -74,7 +80,7 @@ export const CouponCard = forwardRef(
         case "applied":
           return (
             <Typography level="body3" color="primary3">
-              적용중
+              {locale === "ko" ? "적용중" : "applied"}
             </Typography>
           );
 

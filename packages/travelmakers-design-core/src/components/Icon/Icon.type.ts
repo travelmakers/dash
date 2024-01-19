@@ -55,6 +55,7 @@ export type IconPictogramSrc =
   | "IcHotelFill"
   | "IcHotelLine"
   | "IcLogout"
+  | "IcLanguage"
   | "IcMarker"
   | "IcMarkerFill"
   | "IcProfile"

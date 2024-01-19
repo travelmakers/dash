@@ -35,24 +35,25 @@ export default {
 export const Default = (props) => {
   return (
     <div>
-      firstLineText: {getTimeLineFunc("default").firstLineText("홍길동")}
+      firstLineText: {getTimeLineFunc("default", "ko").firstLineText("홍길동")}
       <br />
-      secondLineText(default): {getTimeLineFunc("default").secondLineText()}
+      secondLineText(default):
+      {getTimeLineFunc("default", "ko").secondLineText()}
       <br />
       secondLineText(tour_confirm_before):
-      {getTimeLineFunc("reservation_purchase_before").secondLineText(
+      {getTimeLineFunc("reservation_purchase_before", "ko").secondLineText(
         "서울드래곤시티"
       )}
       <br />
       secondLineText(tour_confirm):
-      {getTimeLineFunc("tour_confirm").secondLineText(
+      {getTimeLineFunc("tour_confirm", "ko").secondLineText(
         "2022-09-28T01:26:38.000000Z"
       )}
       <br />
-      buttonText: {getTimeLineFunc("default").buttonText()}
+      buttonText: {getTimeLineFunc("default", "ko").buttonText()}
       <br />
       ---- <br />
-      getTimeLineFunc(`state`)
+      getTimeLineFunc(`state`,"ko")
     </div>
   );
 };
