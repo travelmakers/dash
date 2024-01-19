@@ -171,6 +171,7 @@ export const Default = (props) => {
     <div>
       <Calendar
         {...props}
+        loclae={"en"}
         topIndicatorPosition="0px"
         selected={selected}
         onChange={setSelected}
