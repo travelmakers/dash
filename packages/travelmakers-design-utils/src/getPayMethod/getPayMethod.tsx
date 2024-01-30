@@ -6,28 +6,43 @@
 const getPayMethod = (
   pay_method: string,
   card_name?: string,
-  card_quota?: number
+  card_quota?: number,
+  locale?: "ko" | "en"
 ) => {
-  const getCardDescription = () => {
+  const getCardDescription = (locale: "ko" | "en" = "ko") => {
     if (card_quota === 0) {
-      return "(일시불)";
+      return locale === "ko" ? "(일시불)" : "(full payment)";
     } else if (card_quota > 0) {
-      return "(" + card_quota + "개월 할부)";
+      if (locale === "ko") {
+        return "(" + card_quota + "개월 할부)";
+      }
+      return `(${card_quota} monthly payments)`;
+      // return `(for ${card_quota} months.)`;
     }
     return "";
   };
 
   switch (pay_method) {
     case "card":
-      return `${card_name ?? "신용카드"}${getCardDescription()}`;
+      return `${
+        card_name ?? locale === "ko" ? "신용카드" : "credit card"
+      }${getCardDescription(locale)}`;
     case "vbank":
-      return `무통장입금 (가상계좌)`;
+      return locale === "ko"
+        ? `무통장입금 (가상계좌)`
+        : "Bank transfer(virtual account)";
     case "naverpay":
-      return `네이버페이${getCardDescription()}`;
+      return locale === "ko"
+        ? `네이버페이${getCardDescription(locale)}`
+        : `NaverPay${getCardDescription(locale)}`;
     case "kakaopay":
-      return `카카오페이${getCardDescription()}`;
+      return locale === "ko"
+        ? `카카오페이${getCardDescription(locale)}`
+        : `KakaoPay${getCardDescription(locale)}`;
     case "samsung":
-      return `삼성페이${getCardDescription()}`;
+      return locale === "ko"
+        ? `삼성페이${getCardDescription(locale)}`
+        : `SamsungPay${getCardDescription(locale)}`;
 
     default:
       return "";

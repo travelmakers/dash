@@ -43,6 +43,8 @@ export interface Props {
   isPrice?: boolean;
 
   noneText?: string;
+
+  locale?: "ko" | "en";
 }
 
 export const HotelFeaturedCard = forwardRef(
@@ -50,6 +52,7 @@ export const HotelFeaturedCard = forwardRef(
     {
       href = "",
       type = "hotel",
+      locale = "ko",
       hotelType,
       star,
       src,
@@ -119,11 +122,12 @@ export const HotelFeaturedCard = forwardRef(
                 <div>
                   <Price
                     {...price}
+                    locale={locale}
                     priceText={price.secondaryPriceText ?? price.priceText}
                     disabled={price.secondaryDisabled}
                     type="secondary"
                   />
-                  <Price {...price} type="primary" />
+                  <Price {...price} locale={locale} type="primary" />
                 </div>
               ) : (
                 <div className={classes.PriceNonBox}>{noneText}</div>

@@ -88,6 +88,6 @@ export function getInnerDate(date?: inputDate, format?: string) {
  */
 export function getDay(date?: inputDate, locale: string = "ko") {
   const d = getDateValuate(date);
-  const day = d.locale(locale).format("ddd");
-  return `${day}요일`;
+  const day = d.locale(locale).format(locale === "ko" ? "ddd" : "dddd");
+  return locale === "ko" ? `${day}요일` : day;
 }

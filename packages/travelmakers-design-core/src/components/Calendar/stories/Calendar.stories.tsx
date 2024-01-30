@@ -171,9 +171,16 @@ export const Default = (props) => {
     <div>
       <Calendar
         {...props}
+        loclae={"en"}
         topIndicatorPosition="0px"
         selected={selected}
         onChange={setSelected}
+        indicatorText={{
+          from: "Tour date",
+          to: "Tour time",
+          descriptionFrom: "Please <br/> select a schedule.",
+          descriptionTo: "Please <br/> select a time.",
+        }}
       >
         <Calendar.OptionBox
           title={"시간 선택하기"}

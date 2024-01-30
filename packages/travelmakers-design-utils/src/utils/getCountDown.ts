@@ -1,8 +1,6 @@
 import { getDate } from "../getDate";
 
-export function getCountDown(date: string) {
-  const TIMER_FORMAT = "HH시간 mm분";
-
+export function getCountDown(date: string, timeFormat = "HH시간 mm분") {
   const _vDate = getDate(date); // 전달 받은 일자
   const _second = 1000;
   const _minute = _second * 60;
@@ -31,7 +29,8 @@ export function getCountDown(date: string) {
     }
 
     if (!_vDate || !timeLeft) return "";
-    return TIMER_FORMAT.replace("D", timeLeft.days)
+    return timeFormat
+      .replace("D", timeLeft.days)
       .replace("HH", timeLeft.hours)
       .replace("mm", timeLeft.minutes)
       .replace("ss", timeLeft.seconds);
