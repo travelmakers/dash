@@ -5,7 +5,7 @@ export default createStyles((theme) => {
     container: {
       display: "flex",
       flexDirection: "column",
-      width: "120px",
+      minWidth: "120px",
       height: "80px",
       border: `1px solid ${theme.colors.outline}`,
       borderRadius: theme.spacing.spacing5,
