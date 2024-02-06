@@ -1,4 +1,4 @@
-import { CSSObject, CoTypography, createStyles } from "@travelmakers/styles";
+import { CoTypography, createStyles, CSSObject } from "@travelmakers/styles";
 import { Props } from "./SelectCheck";
 
 const CHECK_ICON_SIZE: Record<Props["type"], CSSObject> = {
@@ -91,6 +91,7 @@ export default createStyles(
       label: {
         ...getTypography(typography, type, _typography),
         color: colors.primary1,
+        width: "fit-content",
         fontWeight,
       },
     };
