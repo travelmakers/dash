@@ -81,14 +81,22 @@ export const Process = forwardRef(
 
     const items = sequence(isBank, status, locale);
     const renderer = items.map((item, idx) => (
-      <ProcessItem key={idx} item={item} hasIcon={idx + 1 !== items.length} />
+      <ProcessItem
+        key={idx}
+        item={item}
+        hasIcon={idx + 1 !== items.length}
+        locale={locale}
+      />
     ));
 
     return (
       <View<React.ElementType>
         component={"ol"}
         ref={ref}
-        className={cx(classes.root, className)}
+        className={cx(
+          locale === "ko" ? classes.root : classes.rootEn,
+          className
+        )}
         {...props}
       >
         {renderer}

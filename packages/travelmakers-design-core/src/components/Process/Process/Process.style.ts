@@ -13,5 +13,12 @@ export default createStyles((theme) => {
       backgroundColor: colors.primary99,
       borderRadius: radius.radius100,
     },
+    rootEn: {
+      display: "inline-flex",
+      margin: 0,
+      padding: spacing.spacing5,
+      backgroundColor: colors.primary99,
+      borderRadius: radius.radius100,
+    },
   };
 });

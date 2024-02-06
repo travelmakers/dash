@@ -1,4 +1,4 @@
-import { TmTheme, createStyles } from "@travelmakers/styles";
+import { createStyles, TmTheme } from "@travelmakers/styles";
 import { SequenceType } from "../Process/Process.type";
 
 type StyleProp = {
@@ -20,6 +20,24 @@ export default createStyles((theme: TmTheme, { isProcessing }: StyleProp) => {
       flexDirection: "column",
       justifyContent: "center",
       minWidth: "67px",
+      width: "100%",
+      height: "100%",
+      padding: `0 ${spacing.spacing5}`,
+      color: isProcessing ? colors.white : colors.primary3,
+      textAlign: "center",
+      backgroundColor: isProcessing ? colors.secondary00 : colors.transparent,
+      borderRadius: "22px",
+
+      ["&.process-line-height"]: {
+        lineHeight: "14px",
+      },
+    },
+    processEn: {
+      ...typography.body3,
+      lineHeight: "auto",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
       width: "100%",
       height: "100%",
       padding: `0 ${spacing.spacing5}`,

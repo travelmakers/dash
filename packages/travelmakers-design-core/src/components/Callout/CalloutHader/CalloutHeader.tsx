@@ -25,6 +25,9 @@ export const CalloutHeader = ({ type, title, ...props }: Props) => {
         width={14}
         height={14}
         color={colors[CALLOUT_COLOR[type]]}
+        style={{
+          minWidth: "14px",
+        }}
       />
       {title}
     </dt>

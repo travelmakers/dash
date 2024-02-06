@@ -1,7 +1,11 @@
 import { Meta } from "@storybook/react";
 import { Callout } from "../Callout";
 
-const data = { title: "타이틀", items: ["추가 설명을 위한 영역입니다."] };
+const data = {
+  title:
+    "You will receive a confirmation message once your reservation has been successfully confirmed.",
+  items: ["추가 설명을 위한 영역입니다."],
+};
 const dataWithoutItems = { title: "타이틀(추가적인 설명 없음)", items: [] };
 
 export default {
