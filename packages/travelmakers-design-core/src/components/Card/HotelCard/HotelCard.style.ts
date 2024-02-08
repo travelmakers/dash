@@ -4,6 +4,7 @@ export default createStyles((theme) => {
   return {
     container: {
       width: "328px",
+      height: "100%",
       boxShadow: theme.shadows.elevation2,
       borderRadius: theme.radius.radius20,
       overflow: "hidden",
@@ -33,6 +34,7 @@ export default createStyles((theme) => {
       flexDirection: "column",
       gap: theme.spacing.spacing30,
       backgroundColor: theme.colors.white,
+      height: "calc(100% - 183px)",
     },
     contentHeader: {
       height: "100%",

@@ -4,6 +4,7 @@ export default createStyles((theme) => {
   return {
     container: {
       width: "328px",
+      height: "100%",
       display: "inline-block",
       ["& > a"]: {
         textDecoration: "none",
@@ -16,6 +17,7 @@ export default createStyles((theme) => {
       borderRadius: theme.radius.radius20,
       padding: `165px ${theme.spacing.spacing30} ${theme.spacing.spacing30}`,
       filter: `drop-shadow(${theme.shadows.elevation2})`,
+      height: "100%",
     },
 
     imageBox: {
@@ -49,6 +51,7 @@ export default createStyles((theme) => {
       display: "flex",
       flexDirection: "column",
       gap: theme.spacing.spacing20,
+      height: "100%",
 
       "& > ul": {
         gap: theme.spacing.spacing5,

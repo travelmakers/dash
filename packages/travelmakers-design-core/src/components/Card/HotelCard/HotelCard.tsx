@@ -1,6 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import Link, { LinkProps } from "next/link";
-import React, { PropsWithChildren, forwardRef } from "react";
+import React, { forwardRef, PropsWithChildren } from "react";
 import { GradeBadge } from "../../Badge";
 import { SwiperArrowContainer } from "../../SwiperArrowContainer";
 import { IconTag } from "../../Tag";
@@ -123,7 +123,10 @@ export const HotelCard = forwardRef(
               hasDimmer
             >
               {price?.map((item, idx) => (
-                <SwiperSlide style={{ width: "auto" }} key={idx}>
+                <SwiperSlide
+                  style={{ width: "auto", alignItems: "end" }}
+                  key={idx}
+                >
                   <div
                     className={
                       idx === 0
