@@ -4,7 +4,7 @@ export default createStyles((theme) => {
   return {
     card: {
       width: "281px",
-      height: "fit-content",
+      height: "100%",
       backgroundColor: theme.colors.white,
       boxShadow: theme.shadows.elevation3,
       borderRadius: theme.radius.radius20,
@@ -42,6 +42,8 @@ export default createStyles((theme) => {
       },
     },
     submitButton: {
+      position: "absolute",
+      bottom: "0",
       display: "flex",
       justifyContent: "center",
       borderRadius: `0 0 ${theme.radius.radius20} ${theme.radius.radius20}`,
