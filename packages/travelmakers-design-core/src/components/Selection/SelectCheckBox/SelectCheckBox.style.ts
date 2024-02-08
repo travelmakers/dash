@@ -20,7 +20,7 @@ export default createStyles(
         alignItems: "center",
         justifyContent: "space-between",
         columnGap: spacing.spacing20,
-        height: SELECT_CHECK_BOX_HEIGHT[type],
+        minHeight: SELECT_CHECK_BOX_HEIGHT[type],
         backgroundColor: hasBackgroundColor
           ? colors.surface
           : colors.transparent,
