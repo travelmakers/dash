@@ -45,7 +45,8 @@ export const English = (props) => {
     <div
       style={{
         backgroundColor: "gray",
-        padding: "20px 10px",
+
+        width: "343px",
       }}
     >
       <Process
