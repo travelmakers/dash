@@ -8,7 +8,7 @@ export default createStyles((theme, { type }: { type: CalloutType }) => {
   return {
     root: {
       display: "flex",
-      alignItems: "baseline",
+      alignItems: "center",
       color: colors[CALLOUT_COLOR[type]],
       ...typography.body3,
       fontWeight: 700,

@@ -46,6 +46,9 @@ export default createStyles((theme) => {
     contentFooter: {
       height: "100%",
       marginBottom: theme.spacing.spacing30,
+      ["& > div > div"]: {
+        alignItems: "end",
+      },
     },
     contentFirstContent: {
       paddingLeft: theme.spacing.spacing30,

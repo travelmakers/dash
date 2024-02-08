@@ -123,10 +123,7 @@ export const HotelCard = forwardRef(
               hasDimmer
             >
               {price?.map((item, idx) => (
-                <SwiperSlide
-                  style={{ width: "auto", alignItems: "end" }}
-                  key={idx}
-                >
+                <SwiperSlide style={{ width: "auto" }} key={idx}>
                   <div
                     className={
                       idx === 0
