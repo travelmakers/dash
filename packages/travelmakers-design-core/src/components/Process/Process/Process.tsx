@@ -44,12 +44,12 @@ const sequence = (
       isProcessing: processing(status) === "ing",
     },
     {
-      processor: locale === "en" ? "Living in Hotel" : "호텔에삶",
+      processor: locale === "en" ? "" : "호텔에삶",
       process: locale === "en" ? "Delivering a reservation" : "예약 전달",
       isProcessing: processing(status) === "done",
     },
     {
-      processor: locale === "en" ? "Hotel" : "호텔",
+      processor: locale === "en" ? "" : "호텔",
       process: locale === "en" ? "Confirming a reservation" : "예약 확정",
       isProcessing: false,
     },
