@@ -163,8 +163,8 @@ export const OptionCard = forwardRef(
                   </Button>
                 )}
               </div>
-              <Divider type={"horizontal"} color={"primary"} />
-              <ul>
+              <Divider type={"horizontal"} color={"primary"} className={classes.gap} />
+              <ul className={classes.gap}>
                 {benefitList.map(({ content }, idx) => {
                   return (
                     <Typography
@@ -183,7 +183,7 @@ export const OptionCard = forwardRef(
           )}
           {price && (
             <>
-              <Divider type={"horizontal"} color={"primary"} />
+              <Divider type={"horizontal"} color={"primary"} className={classes.gap} />
               {isPrice ? (
                 <div className={classes.priceBox}>
                   <Price
