@@ -15,6 +15,7 @@ export default createStyles((theme) => {
       flexDirection: "column",
       gap: theme.spacing.spacing30,
       minHeight: "395px",
+      height: "100%",
     },
     headerGroup: {
       minHeight: 52,
@@ -42,8 +43,6 @@ export default createStyles((theme) => {
       },
     },
     submitButton: {
-      position: "absolute",
-      bottom: "0",
       display: "flex",
       justifyContent: "center",
       borderRadius: `0 0 ${theme.radius.radius20} ${theme.radius.radius20}`,
@@ -53,7 +52,7 @@ export default createStyles((theme) => {
       color: theme.colors.primary2,
       minHeight: "52px",
       display: "flex",
-      alignItems: " flex-end",
+      alignItems: "flex-end",
     },
   };
 });
