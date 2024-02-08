@@ -13,7 +13,7 @@ export default createStyles((theme) => {
       padding: `${theme.spacing.spacing30} ${theme.spacing.spacing50}`,
       // gap: theme.spacing.spacing30,
       minHeight: "395px",
-      height: '100%',
+      height: 'calc(100% - 40px)',
     },
     headerGroup: {
       minHeight: 52,
