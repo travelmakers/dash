@@ -15,6 +15,7 @@ export default createStyles((theme) => {
     },
     rootEn: {
       display: "inline-flex",
+      height: "52px",
       margin: 0,
       padding: spacing.spacing5,
       backgroundColor: colors.primary99,
