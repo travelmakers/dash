@@ -148,11 +148,9 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `Before the tour is confirmed`,
+          firstLineText: () => `Tour applied`,
           secondLineText: (expectedDate) =>
-            `Confirmation expected by ${
-              getDate(expectedDate, "MMMM D").format
-            }`,
+            `Will be confirmed by ${getDate(expectedDate, "MMM D").format}`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -181,9 +179,9 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `tour confirmed`,
+          firstLineText: () => `Tour confirmed`,
           secondLineText: (startDate) =>
-            `${getDate(startDate, "MMMM D HH:mm").format} visited`,
+            `${getDate(startDate, "MMM D HH:mm").format}`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -212,9 +210,9 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `tour complete`,
+          firstLineText: () => `Tour completed`,
           secondLineText: (startDate) =>
-            `${getDate(startDate, "MMMM D HH:mm").format} visited`,
+            `${getDate(startDate, "MMM D HH:mm").format}`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -257,7 +255,7 @@ export function getTimeLineStateDetailFunc(
             if (vbank_date) {
               const countDate = getCountDown(vbank_date, "HH:mm");
               if (countDate && countDate === "0:0") {
-                return "Deposit due date expires";
+                return "Deposit due date expired";
               } else {
                 return "Deposit required within" + countDate;
               }
@@ -301,12 +299,12 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `Before Extended Payment`,
+          firstLineText: () => `Additional Payment In progress`,
           secondLineText: (vbank_date) => {
             if (vbank_date) {
               const countDate = getCountDown(vbank_date, "HH:mm");
               if (countDate && countDate === "0:0") {
-                return "Deposit due date expires";
+                return "Deposit due date expired";
               } else {
                 return "Deposit required within" + countDate;
               }
@@ -341,11 +339,9 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `Before a reservation is confirmed`,
+          firstLineText: () => `Reservation confirmation pending`,
           secondLineText: (expectedDate) =>
-            `Confirmation expected by ${
-              getDate(expectedDate, "MMMM D").format
-            }`,
+            `Will be confirmed by ${getDate(expectedDate, "MMM D").format}`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -386,7 +382,7 @@ export function getTimeLineStateDetailFunc(
             return `Check-In D-${dDay}`;
           },
           secondLineText: (startDate) =>
-            `${getDate(startDate, "MMMM D HH:mm").format} Check-In`,
+            `${getDate(startDate, "MMM D HH:mm").format} Check-In`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -415,9 +411,9 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `Hotel in use`,
+          firstLineText: () => `Staying In`,
           secondLineText: (endDate) =>
-            `${getDate(endDate, "MMMM D HH:mm").format} Checkout`,
+            `${getDate(endDate, "MMM D HH:mm").format} Checkout`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -446,11 +442,9 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `Before extension is confirmed`,
+          firstLineText: () => `Extension confirmation pending`,
           secondLineText: (expectedDate) =>
-            `Confirmation expected by ${
-              getDate(expectedDate, "MMMM D").format
-            }`,
+            `Will be confirmed by ${getDate(expectedDate, "MMM D").format}`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -481,7 +475,7 @@ export function getTimeLineStateDetailFunc(
           enum: state,
           firstLineText: () => `Extension confirmed`,
           secondLineText: (startDate) =>
-            `${getDate(startDate, "MMMM D HH:mm").format} Check-In`,
+            `${getDate(startDate, "MMM D HH:mm").format} Check-In`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -512,7 +506,7 @@ export function getTimeLineStateDetailFunc(
           enum: state,
           firstLineText: () => `Changing reservation`,
           secondLineText: (expectedDate) =>
-            `Confirmed within ${getDate(expectedDate, "MMMM D").format}`,
+            `Confirmed within ${getDate(expectedDate, "MMM D").format}`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -553,7 +547,7 @@ export function getTimeLineStateDetailFunc(
             return `Checkout D-${dDay}`;
           },
           secondLineText: (end_date) =>
-            `${getDate(end_date, "MMMM D HH:mm").format} Checkout`,
+            `${getDate(end_date, "MMM D HH:mm").format} Checkout`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -594,7 +588,7 @@ export function getTimeLineStateDetailFunc(
             return `Checkout D-${dDay}`;
           },
           secondLineText: (end_date) =>
-            `${getDate(end_date, "MMMM D HH:mm").format} Checkout`,
+            `${getDate(end_date, "MMM D HH:mm").format} Checkout`,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => false,
           messageDisable: () => false,
@@ -623,8 +617,8 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `Checkout complete`,
-          secondLineText: () => `Buy again`,
+          firstLineText: () => `Checked-out`,
+          secondLineText: () => `Rebook`,
           secondLink: (url) => url,
           thirdLineText: (hotelName) => hotelName,
           titleDisable: () => true,
@@ -654,13 +648,13 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `tour cancel`,
+          firstLineText: () => `Tour canceled`,
           titleDisable: () => true,
           messageDisable: () => true,
           messageUnderline: () => false,
           secondLineText: (cancelDate) =>
             `Visit canceled at ${getDate(cancelDate, "HH:mm a").format} on ${
-              getDate(cancelDate, "MMMM D").format
+              getDate(cancelDate, "MMM D").format
             }`,
           thirdLineText: (hotelName) => hotelName,
           link: (url?: string) => {
@@ -687,12 +681,12 @@ export function getTimeLineStateDetailFunc(
       } else {
         return {
           enum: state,
-          firstLineText: () => `cancel complete`,
+          firstLineText: () => `Cancellation completed`,
           titleDisable: () => true,
           messageDisable: () => true,
           messageUnderline: () => false,
           secondLineText: (cancelDate) =>
-            `${getDate(cancelDate, "M월 D일 HH:mm").format} cancel complete`,
+            `${getDate(cancelDate, "MMM D HH:mm").format} Canceled`,
           thirdLineText: (hotelName) => hotelName,
           link: (url?: string) => {
             return { url, arrow: !!url };

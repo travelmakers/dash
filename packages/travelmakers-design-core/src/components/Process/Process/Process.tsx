@@ -40,17 +40,17 @@ const sequence = (
 ): SequenceType[] => {
   const DEFAULT_SEQUENCE = [
     {
-      process: locale === "en" ? "Completing a payment" : "결제 완료",
+      process: locale === "en" ? "Payment completed" : "결제 완료",
       isProcessing: processing(status) === "ing",
     },
     {
       processor: locale === "en" ? "" : "호텔에삶",
-      process: locale === "en" ? "Delivering a reservation" : "예약 전달",
+      process: locale === "en" ? "Reservation processing" : "예약 전달",
       isProcessing: processing(status) === "done",
     },
     {
       processor: locale === "en" ? "" : "호텔",
-      process: locale === "en" ? "Confirming a reservation" : "예약 확정",
+      process: locale === "en" ? "Confirmed by hotel" : "예약 확정",
       isProcessing: false,
     },
   ];
@@ -58,7 +58,7 @@ const sequence = (
   return isBank
     ? [
         {
-          process: locale === "en" ? "Pending payment" : "결제 대기",
+          process: locale === "en" ? "Payment pending" : "결제 대기",
           isProcessing: processing(status) === "before",
         },
         ...DEFAULT_SEQUENCE,
