@@ -25,7 +25,7 @@ const getPayMethod = (
   switch (pay_method) {
     case "card":
       return `${
-        card_name ?? locale === "ko" ? "신용카드" : "credit card"
+        locale === "ko" ? "신용카드" : "credit card"
       }${getCardDescription(locale)}`;
     case "vbank":
       return locale === "ko"
