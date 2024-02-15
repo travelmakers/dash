@@ -19,7 +19,6 @@ export default createStyles(
       indicatorInnerBox: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
         gap: theme.spacing.spacing30,
         color: "black",
         width: "233px",
