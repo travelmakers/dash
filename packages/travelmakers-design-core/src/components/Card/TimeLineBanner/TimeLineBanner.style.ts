@@ -15,7 +15,8 @@ export default createStyles(
       },
       titleWrapper: {
         marginBottom: theme.spacing.spacing30,
-        maxWidth: "220px",
+        position: "relative",
+        zIndex: 100,
       },
       textMaxLength: {
         ["& > div "]: {
