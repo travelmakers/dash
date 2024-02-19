@@ -29,6 +29,8 @@ export default createStyles(
         display: "flex",
         alignItems: "center",
         width: "fit-content",
+        position: "relative",
+        zIndex: 100,
       },
       labelText: {
         width: "fit-content",

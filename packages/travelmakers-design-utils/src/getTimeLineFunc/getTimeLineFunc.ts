@@ -184,7 +184,7 @@ export function getTimeLineFunc(
           enum: state,
           firstLineText: (userName) => `${userName}`,
           secondLineText: (startDate) =>
-            `${getDate(startDate, "MMMM D").format} Tour confirmed`,
+            `${getDate(startDate, "MMM D").format} Tour confirmed`,
           buttonText: () => `See you on time.`,
           link: (url?: string) => {
             return { url, arrow: !!url };
@@ -262,7 +262,7 @@ export function getTimeLineFunc(
           firstLineText: (userName) => `Dear ${userName}`,
           secondLineText: (hotelName) => `${hotelName}`,
           buttonText: (expectedDate) =>
-            `Will be confirmed by ${getDate(expectedDate, "MMMM D").format}`,
+            `Will be confirmed by ${getDate(expectedDate, "MMM D").format}`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -289,7 +289,7 @@ export function getTimeLineFunc(
           firstLineText: (userName) => `${userName}`,
           secondLineText: (startDate) =>
             `Check-in: ${getDate(startDate, "HH a").format} on ${
-              getDate(startDate, "MMMM D").format
+              getDate(startDate, "MMM D").format
             }`,
           buttonText: () => `Enjoy your stay!`,
           link: (url?: string) => {
@@ -322,7 +322,7 @@ export function getTimeLineFunc(
           firstLineText: (userName) => `${userName}`,
           secondLineText: (endDate) =>
             `Check-out: ${getDate(endDate, "HH a").format} on ${
-              getDate(endDate, "MMMM D").format
+              getDate(endDate, "MMM D").format
             }`,
           buttonText: () => `Enjoy your stay!`,
           link: (url?: string) => {
@@ -377,7 +377,7 @@ export function getTimeLineFunc(
           secondLineText: (dDay) => `${dDay} days left until check-out.`,
           buttonText: (endDate) =>
             `Check-out: ${getDate(endDate, "HH a").format} on ${
-              getDate(endDate, "MMMM D").format
+              getDate(endDate, "MMM D").format
             }`,
           link: (url?: string) => {
             return { url, arrow: !!url };
