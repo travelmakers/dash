@@ -131,8 +131,8 @@ export function getTimeLineFunc(
       } else {
         return {
           enum: state,
-          firstLineText: (userName) => `Hello, ${userName}`,
-          secondLineText: () => `Don't need a life like traveling?`,
+          firstLineText: (userName) => `Dear ${userName}`,
+          secondLineText: () => `Do you want a life like a trip?`,
           buttonText: () => `View all hotels`,
           link: (url?: string) => {
             return { url, arrow: !!url };
@@ -158,7 +158,7 @@ export function getTimeLineFunc(
           enum: state,
           firstLineText: (userName) => `${userName}`,
           secondLineText: (hotelName) => hotelName,
-          buttonText: () => `Before the tour is confirmed`,
+          buttonText: () => `Tour confirmation pending`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -184,8 +184,8 @@ export function getTimeLineFunc(
           enum: state,
           firstLineText: (userName) => `${userName}`,
           secondLineText: (startDate) =>
-            `${getDate(startDate, "MMMM D").format} tour confirmed`,
-          buttonText: () => `Please come to your appointment`,
+            `${getDate(startDate, "MMMM D").format} Tour confirmed`,
+          buttonText: () => `See you on time.`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -210,7 +210,7 @@ export function getTimeLineFunc(
           enum: state,
           firstLineText: (userName) => `${userName}`,
           secondLineText: () => `How was your tour?`,
-          buttonText: () => `Experience life at the hotel`,
+          buttonText: () => `Ready for your hotel life?`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -233,9 +233,9 @@ export function getTimeLineFunc(
       } else {
         return {
           enum: state,
-          firstLineText: (userName) => `Hello, ${userName}`,
+          firstLineText: (userName) => `Dear ${userName}`,
           secondLineText: (hotelName) => `${hotelName}`,
-          buttonText: () => `My deposit hasn't been made yet`,
+          buttonText: () => `Payment pending`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -259,12 +259,10 @@ export function getTimeLineFunc(
       } else {
         return {
           enum: state,
-          firstLineText: (userName) => `Hello, ${userName}`,
+          firstLineText: (userName) => `Dear ${userName}`,
           secondLineText: (hotelName) => `${hotelName}`,
           buttonText: (expectedDate) =>
-            `Confirmation expected by ${
-              getDate(expectedDate, "MMMM D").format
-            }`,
+            `Will be confirmed by ${getDate(expectedDate, "MMMM D").format}`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -290,10 +288,10 @@ export function getTimeLineFunc(
           enum: state,
           firstLineText: (userName) => `${userName}`,
           secondLineText: (startDate) =>
-            `Check-in is scheduled for ${
-              getDate(startDate, "HH a").format
-            } on ${getDate(startDate, "MMMM D").format}`,
-          buttonText: () => `Become a comfortable Living-In-Hotel`,
+            `Check-in: ${getDate(startDate, "HH a").format} on ${
+              getDate(startDate, "MMMM D").format
+            }`,
+          buttonText: () => `Enjoy your stay!`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -323,10 +321,10 @@ export function getTimeLineFunc(
           enum: state,
           firstLineText: (userName) => `${userName}`,
           secondLineText: (endDate) =>
-            `Check-out is scheduled for ${getDate(endDate, "HH a").format} on ${
+            `Check-out: ${getDate(endDate, "HH a").format} on ${
               getDate(endDate, "MMMM D").format
             }`,
-          buttonText: () => `Become a comfortable Living-In-Hotel`,
+          buttonText: () => `Enjoy your stay!`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -350,9 +348,8 @@ export function getTimeLineFunc(
         return {
           enum: state,
           firstLineText: (hotelName) => `${hotelName}`,
-          secondLineText: (dDay) =>
-            `There are ${dDay} days left until check-out.`,
-          buttonText: () => `Would you like to extend your Living-In-Hotel?`,
+          secondLineText: (dDay) => `${dDay} days left until check-out.`,
+          buttonText: () => `Want to extend your stay?`,
           link: (url?: string) => {
             return { url, arrow: !!url };
           },
@@ -377,10 +374,9 @@ export function getTimeLineFunc(
         return {
           enum: state,
           firstLineText: (hotelName) => `${hotelName}`,
-          secondLineText: (dDay) =>
-            `There are ${dDay} days left until check-out.`,
+          secondLineText: (dDay) => `${dDay} days left until check-out.`,
           buttonText: (endDate) =>
-            `Check-out is scheduled for ${getDate(endDate, "HH a").format} on ${
+            `Check-out: ${getDate(endDate, "HH a").format} on ${
               getDate(endDate, "MMMM D").format
             }`,
           link: (url?: string) => {
