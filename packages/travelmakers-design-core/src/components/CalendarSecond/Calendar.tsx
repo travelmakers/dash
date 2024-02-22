@@ -1,12 +1,12 @@
 import { useCalendar, useUpdateEffect } from "@travelmakers/hooks";
 import { PolymorphicRef } from "@travelmakers/styles";
 import React, {
-  PropsWithChildren,
   forwardRef,
-  useEffect,
-  useTransition,
-  useState,
+  PropsWithChildren,
   useDeferredValue,
+  useEffect,
+  useState,
+  useTransition,
 } from "react";
 import { View } from "../View";
 import useStyles from "./Calendar.style";
@@ -19,6 +19,7 @@ import {
 import { Indicator } from "./_components/Indicator";
 import OptionBox from "./_components/OptionBox";
 import { DateTable } from "./_components/DateTable/DateTable";
+import { enUS, ko } from "date-fns/locale";
 
 export interface Props {
   hotelName?: string;
@@ -56,6 +57,8 @@ export interface Props {
   loadingImageSrc?: string;
 
   indicator?: CalendarIndicator;
+
+  locale?: "ko" | "en";
 }
 
 /**
@@ -91,6 +94,7 @@ export const CalendarSecond = forwardRef(
         tourButtonText: "투어 신청",
         tourSoldOut: false,
       },
+      locale = "ko",
       children,
       className,
       ...props
@@ -98,7 +102,9 @@ export const CalendarSecond = forwardRef(
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
-    const [state, actions] = useCalendar(null);
+    const [state, actions] = useCalendar(null, {
+      locale: locale === "ko" ? ko : enUS,
+    });
     const deferredState = useDeferredValue(state);
     const [isPending, startTransition] = useTransition();
     const [checked, setChecked] = useState<SelectedDays>({
@@ -146,6 +152,7 @@ export const CalendarSecond = forwardRef(
           {...props}
         >
           <Indicator
+            locale={locale}
             indicator={indicator}
             selected={selected}
             type={type}
@@ -155,6 +162,7 @@ export const CalendarSecond = forwardRef(
           <div className={classes.calendar}>
             {deferredState && (
               <DateTable
+                locale={locale}
                 checked={checked}
                 setChecked={setChecked}
                 type={type}

@@ -2,12 +2,9 @@ import React from "react";
 import useStyles from "./Indicator.style";
 import { getDate, getDay } from "@travelmakers/utils";
 import { Typography } from "../../../Typography";
-import { Divider } from "../../../Divider";
-import { differenceInDays } from "date-fns";
 import { CalendarIndicator, SelectedDays } from "../../Calendar.type";
 import { Button } from "../../../Button";
 import { Icon } from "../../../Icon";
-import { inputDate } from "@travelmakers/utils/lib/getDate/getDate.type";
 import { Tag } from "../../../Tag";
 
 export interface Props {
@@ -16,15 +13,10 @@ export interface Props {
   type: "tour" | "move-in";
   topIndicatorPosition?: string;
   setChecked: React.Dispatch<React.SetStateAction<SelectedDays>>;
+  locale?: "ko" | "en";
 }
 
 const DATE_FORMAT = "MM.DD";
-
-function getInnerDay(date?: inputDate, locale: string = "ko") {
-  const d = getDate(date).dayjs;
-  const day = d.locale(locale).format("ddd");
-  return `${day}`;
-}
 
 export const Indicator: React.FC<Props> = ({
   indicator,
@@ -32,6 +24,7 @@ export const Indicator: React.FC<Props> = ({
   type,
   topIndicatorPosition,
   setChecked,
+  locale = "ko",
 }) => {
   const {
     headerText,
@@ -47,10 +40,10 @@ export const Indicator: React.FC<Props> = ({
   const generateToHeadlineText = () => {
     const visibleFromDateText = `${
       getDate(selected.from?.date, DATE_FORMAT).format
-    } (${getInnerDay(selected.from?.date)})`;
+    } (${getDay(selected.from?.date, locale)})`;
     const visibleToDateText = `${
       getDate(selected.to?.date, DATE_FORMAT).format
-    } (${getInnerDay(selected.to?.date)})`;
+    } (${getDay(selected.to?.date, locale)})`;
 
     if (isTour) {
       if (!selected.from) {

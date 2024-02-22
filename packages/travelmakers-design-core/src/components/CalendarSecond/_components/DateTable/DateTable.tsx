@@ -1,11 +1,10 @@
 import { PolymorphicRef } from "@travelmakers/styles";
-import { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { DateTableProps, ReturnType } from "./DateTable.type";
-import React from "react";
-import { DateCellDay, DateCellType } from "../DateCell/DateCell.type";
+import { DateCellDay } from "../DateCell/DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
 import { addDays, differenceInDays, isEqual } from "date-fns";
-import { getDate } from "@travelmakers/utils";
+import { getInnerDate } from "@travelmakers/utils";
 
 import { CalendarState } from "@travelmakers/hooks/src/useCalendar/useCalendar.type";
 import { DateYear } from "../DateYear/DateYear";
@@ -23,6 +22,7 @@ export interface Props {
   months: string[];
   years: number[];
   weeks?: CalendarState["weeks"];
+  locale?: "ko" | "en";
 }
 
 export const DateTable = React.memo(
@@ -41,12 +41,41 @@ export const DateTable = React.memo(
         months,
         years,
         weeks,
+        locale,
         className,
         ...props
       }: DateTableProps<C>,
       ref: PolymorphicRef<C>
     ) => {
       const [enabledDays, setEnabledDays] = useState<Date>();
+      const [betweenDays, setBetweenDays] = useState<Date[]>([]);
+
+      const calculateAvailableDatesUpToLimit = () => {
+        const dates: Date[] = [];
+        const lastDate = getInnerDate(checked.from.date)
+          .dayjs.add(maxNight, "days")
+          .toDate();
+        const result = differenceInDays(lastDate, checked.from.date);
+
+        const selectedArray = Array.from({ length: result });
+        for (let index = 0; index < selectedArray.length; index++) {
+          const today = getInnerDate(checked.from.date, "YYYY-MM-DD")
+            .dayjs.add(index + 1, "days")
+            .toDate();
+          const isSelectable = !selectableDates.some((selectableDate) =>
+            isEqual(getInnerDate(selectableDate).date, today)
+          );
+          dates.push(today);
+          if (isSelectable) break;
+        }
+
+        setBetweenDays(dates);
+      };
+      useEffect(() => {
+        if (checked.from) {
+          calculateAvailableDatesUpToLimit();
+        }
+      }, [checked.from]);
 
       /**
        * ANCHOR: 선택하지 않은 날짜 사이에 대해서 체크
@@ -71,31 +100,18 @@ export const DateTable = React.memo(
       };
 
       /**
-       * ANCHOR: From Date, To Date 날짜 사이에 대해서 체크
-       * @param day
-       * @returns
-       */
-      const isBetweenFromAndToDays = (day: DateCellDay) => {
-        return (
-          checked.from &&
-          checked.to &&
-          differenceInDays(day.date, checked.from.date) > 0 &&
-          differenceInDays(checked.to.date, day.date) > 0
-        );
-      };
-
-      /**
        * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
        * @param day
        * @returns
        */
       const isDisabledDay = (day: DateCellDay) => {
         const isDisable = disabledDays.some((disabledDay) =>
-          isEqual(getDate(disabledDay).date, day.date)
+          isEqual(getInnerDate(disabledDay).date, day.date)
         );
         const isSelectable = !selectableDates.some((selectableDate) =>
-          isEqual(getDate(selectableDate).date, day.date)
+          isEqual(getInnerDate(selectableDate).date, day.date)
         );
+
         return isDisable || isSelectable;
       };
 
@@ -108,36 +124,74 @@ export const DateTable = React.memo(
       };
 
       const onClick = (day: DateCellDay) => {
-        if (isDisabledDay(day)) {
+        const isTourType = type === "tour";
+        const hasNoFromDate = !checked.from;
+
+        if (shouldShowNotAllowedMessage(day)) {
           notAllowedMessage();
-        } else if (type === "tour") {
-          setChecked((prev) => {
-            return { ...prev, from: day, to: day };
-          });
-        } else if (!checked.from) {
-          setChecked((prev) => {
-            return { ...prev, from: day };
-          });
-          setEnabledDays(addDays(day.date, maxNight));
-        } else if (
-          isBetweenNotSelectedDays(day) &&
-          (isDisabledDay(day) || !isMinNightDays(day))
-        ) {
-          notAllowedMessage();
+          return;
+        }
+
+        if (isTourType) {
+          setCheckedForTourType(day);
+        } else if (hasNoFromDate) {
+          setFromDateAndEnabledDays(day);
         } else if (isBetweenNotSelectedDays(day)) {
-          setChecked((prev) => {
-            return { ...prev, to: day };
-          });
-          setEnabledDays(addDays(day.date, maxNight));
+          setToDate(day);
         } else {
-          setChecked({
-            to: null,
-            from: null,
-            time: { hour: null, minutes: null },
-          });
+          resetCheckedState();
         }
       };
 
+      /**
+       * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
+       * @param day
+       */
+      const shouldShowNotAllowedMessage = (day) => {
+        const isBetweenDays = checked.from
+          ? betweenDays.some((betweenDay) => isEqual(betweenDay, day.date))
+          : true;
+
+        return (
+          (!checked.from && isDisabledDay(day)) ||
+          (checked.from && !isBetweenDays) ||
+          (isBetweenNotSelectedDays(day) && !isMinNightDays(day))
+        );
+      };
+
+      /**
+       * ANCHOR: 투어 타입에서 선택한 날짜에 대해서 체크
+       * @param day
+       */
+      const setCheckedForTourType = (day) => {
+        setChecked((prev) => ({ ...prev, from: day, to: day }));
+      };
+
+      /**
+       * ANCHOR: From Date, To Date 날짜 사이에 대해서 체크
+       * @param day
+       */
+      const setFromDateAndEnabledDays = (day) => {
+        setChecked((prev) => ({ ...prev, from: day }));
+        setEnabledDays(addDays(day.date, maxNight));
+      };
+
+      /**
+       * ANCHOR: 선택하지 않은 날짜 사이에 대해서 체크
+       * @param day
+       */
+      const setToDate = (day) => {
+        setChecked((prev) => ({ ...prev, to: day }));
+        setEnabledDays(addDays(day.date, maxNight));
+      };
+
+      const resetCheckedState = () => {
+        setChecked({
+          to: null,
+          from: null,
+          time: { hour: null, minutes: null },
+        });
+      };
 
       return (
         <>
@@ -145,14 +199,17 @@ export const DateTable = React.memo(
             const year = years[index];
             if (!year) return null;
             const title = `${year}년 ${month}`;
+            const titleEN = `${month} ${year}`;
             return (
               <DateYear
+                locale={locale}
                 key={title}
                 checked={checked}
+                betweenDays={betweenDays}
                 type={type}
                 disabledDays={disabledDays}
                 selectableDates={selectableDates}
-                title={title}
+                title={locale === "ko" ? title : titleEN}
                 hotelName={hotelName}
                 year={year}
                 month={month}
