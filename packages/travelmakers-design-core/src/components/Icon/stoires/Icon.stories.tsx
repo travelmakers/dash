@@ -29,6 +29,10 @@ export default {
           "IcCompanyOutlineInstagram",
           "IcCompanyOutlineFacebook",
           "IcCompanyOutlineNaver",
+          "IcCompanyVisa",
+          "IcCompanyMasterCard",
+          "IcCompanyUnionPay",
+          "IcCompanyJCB",
 
           "======control======",
           "IcAlert",

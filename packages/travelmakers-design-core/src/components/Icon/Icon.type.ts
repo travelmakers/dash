@@ -24,7 +24,11 @@ export type IconCompanySrc =
   | "IcCompanyOutlineKakaotalk"
   | "IcCompanyOutlineInstagram"
   | "IcCompanyOutlineFacebook"
-  | "IcCompanyOutlineNaver";
+  | "IcCompanyOutlineNaver"
+  | "IcCompanyVisa"
+  | "IcCompanyMasterCard"
+  | "IcCompanyUnionPay"
+  | "IcCompanyJCB";
 export type IconControlSrc =
   | "IcAlert"
   | "IcAngleDown"

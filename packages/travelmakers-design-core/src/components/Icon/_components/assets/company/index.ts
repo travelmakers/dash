@@ -16,3 +16,7 @@ export { default as IcCompanyOutlineKakaotalk } from "./IcCompanyOutlineKakaotal
 export { default as IcCompanyOutlineInstagram } from "./IcCompanyOutlineInstagram";
 export { default as IcCompanyOutlineFacebook } from "./IcCompanyOutlineFacebook";
 export { default as IcCompanyOutlineNaver } from "./IcCompanyOutlineNaver";
+export { default as IcCompanyVisa } from "./IcCompanyVisa";
+export { default as IcCompanyMasterCard } from "./IcCompanyMasterCard";
+export { default as IcCompanyUnionPay } from "./IcCompanyUnionPay";
+export { default as IcCompanyJCB } from "./IcCompanyJCB";
