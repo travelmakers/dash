@@ -13,6 +13,19 @@ export default createStyles((theme) => {
         textDecoration: "none",
       },
     },
+    titleBox: {
+      width: "100%",
+      display: "flex",
+      justifyContent: "space-between",
+    },
+    descriptionBox: {
+      display: "flex",
+      justifyContent: "space-between",
+      cursor: "pointer",
+    },
+    descriptionContent: {
+      margin: "auto",
+    },
     cardHeader: {
       display: "flex",
       flexDirection: "column",

@@ -13,9 +13,15 @@ import {
   HotelTitlePrice,
   ReturnType,
 } from "./HotelTitleCard.type";
+import { Icon } from "../../Icon";
+import { Button } from "../../Button";
 
 export interface Props {
   name: string;
+
+  description: string;
+
+  descriptionClick?: () => void;
 
   /** HotelTitleCard 컴포넌트의 호텔타입을 정합니다. */
   type: HotelTitleCardType["type"];
@@ -48,6 +54,8 @@ export const HotelTitleCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       name,
+      description = "description",
+      descriptionClick,
       type,
       star,
       locale = "ko",
@@ -73,10 +81,29 @@ export const HotelTitleCard = forwardRef(
         {...props}
       >
         <div className={classes.cardHeader}>
-          <div>
+          <div className={classes.titleBox}>
             <Typography level="display6" color="primary1" strong>
               {name}
             </Typography>
+            {description && (
+              <div className={classes.descriptionBox}>
+                <Button
+                  size={"small"}
+                  variant={"text"}
+                  onClick={descriptionClick}
+                  rightIcon={
+                    <Icon
+                      src="IcAngleRight"
+                      className={classes.descriptionContent}
+                      width={16}
+                      height={16}
+                    />
+                  }
+                >
+                  {description}
+                </Button>
+              </div>
+            )}
           </div>
           <div>
             <GradeBadge grade={star} type={type} hotelType={hotelType} />
