@@ -54,7 +54,7 @@ export const HotelTitleCard = forwardRef(
   <C extends React.ElementType = "div">(
     {
       name,
-      description = "description",
+      description,
       descriptionClick,
       type,
       star,
