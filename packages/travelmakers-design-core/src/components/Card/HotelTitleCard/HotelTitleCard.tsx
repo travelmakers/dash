@@ -19,7 +19,7 @@ import { Button } from "../../Button";
 export interface Props {
   name: string;
 
-  description: string;
+  description?: string;
 
   descriptionClick?: () => void;
 
