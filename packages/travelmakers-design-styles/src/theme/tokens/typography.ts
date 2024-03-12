@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
-import { DEFAULT_FONT_SIZES, DEFAULT_FONT_HEIGHT } from "./fontSizes";
+import { DEFAULT_FONT_HEIGHT, DEFAULT_FONT_SIZES } from "./fontSizes";
+
 export interface HeadingStyle {
   fontSize: CSSProperties["fontSize"];
   lineHeight: CSSProperties["lineHeight"];
@@ -14,6 +15,7 @@ export interface CoTypography {
   display6: HeadingStyle;
   subhead1: HeadingStyle;
   subhead2: HeadingStyle;
+  subhead3: HeadingStyle;
   body1: HeadingStyle;
   body2: HeadingStyle;
   body3: HeadingStyle;
@@ -52,6 +54,10 @@ export const DEFAULT_TYPOGRAPHY: CoTypography = {
   subhead2: {
     fontSize: DEFAULT_FONT_SIZES.subhead2,
     lineHeight: DEFAULT_FONT_HEIGHT.subhead2,
+  },
+  subhead3: {
+    fontSize: DEFAULT_FONT_SIZES.body3,
+    lineHeight: DEFAULT_FONT_HEIGHT.body3,
   },
   body1: {
     fontSize: DEFAULT_FONT_SIZES.body1,

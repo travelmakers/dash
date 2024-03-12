@@ -27,6 +27,7 @@ export default {
         "display6",
         "subhead1",
         "subhead2",
+        "subhead3",
         "body1",
         "body2",
         "body3",
@@ -113,6 +114,7 @@ export default {
         "display6",
         "subhead1",
         "subhead2",
+        "subhead3",
         "body1",
         "body2",
         "body3",
@@ -137,6 +139,7 @@ export default {
         "display6",
         "subhead1",
         "subhead2",
+        "subhead3",
         "body1",
         "body2",
         "body3",
@@ -192,6 +195,9 @@ export const Default = (props) => {
       </Typography>
       <Typography {...props} level={"subhead2"}>
         subhead2. Travelmakers Design
+      </Typography>
+      <Typography {...props} level={"subhead3"}>
+        subhead3. Travelmakers Design
       </Typography>
       <Typography {...props} level={"body1"}>
         body1. Travelmakers Design

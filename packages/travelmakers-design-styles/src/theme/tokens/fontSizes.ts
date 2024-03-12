@@ -19,6 +19,8 @@ export type FontSizes = {
   subhead1: string;
   /** 14px */
   subhead2: string;
+  /** 12px */
+  subhead3: string;
   /** 16px */
   body1: string;
   /** 14px */
@@ -46,6 +48,8 @@ export type LineHeights = {
   subhead1: string;
   /** 22px */
   subhead2: string;
+  /** 20px */
+  subhead3: string;
   /** 24px */
   body1: string;
   /** 22px */
@@ -65,6 +69,7 @@ export const DEFAULT_FONT_SIZES: Record<TmFontSizes, string> = {
   display6: "18px",
   subhead1: "16px",
   subhead2: "14px",
+  subhead3: "12px",
   body1: "16px",
   body2: "14px",
   body3: "12px",
@@ -80,6 +85,7 @@ export const DEFAULT_FONT_HEIGHT: Record<TmFontSizes, string> = {
   display6: "26px",
   subhead1: "24px",
   subhead2: "22px",
+  subhead3: "20px",
   body1: "24px",
   body2: "22px",
   body3: "20px",

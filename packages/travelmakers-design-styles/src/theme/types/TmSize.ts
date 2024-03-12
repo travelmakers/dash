@@ -7,6 +7,7 @@ export type TmFontSize =
   | "display6"
   | "subhead1"
   | "subhead2"
+  | "subhead3"
   | "body1"
   | "body2"
   | "body3"
