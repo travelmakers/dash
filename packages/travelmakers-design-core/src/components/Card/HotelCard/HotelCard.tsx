@@ -136,6 +136,7 @@ export const HotelCard = forwardRef(
                       name={item.name}
                       status={disabled ? "disabled" : item.status}
                       description={item.description}
+                      locale={locale}
                     />
                   </div>
                 </SwiperSlide>
