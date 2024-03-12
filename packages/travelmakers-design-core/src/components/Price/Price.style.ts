@@ -17,8 +17,18 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       width: "39px",
       color: theme.colors.error,
     },
+    percentSmallText: {
+      ...theme.typography.subhead3,
+      fontWeight: "700",
+      color: theme.colors.error,
+    },
     priceText: {
       ...theme.typography.display4,
+      fontWeight: "700",
+      color: theme.colors.primary1,
+    },
+    priceSmallText: {
+      ...theme.typography.subhead3,
       fontWeight: "700",
       color: theme.colors.primary1,
     },
@@ -31,8 +41,18 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       fontWeight: "700",
       color: theme.colors.primary1,
     },
+    priceBeforeTextSmall: {
+      ...theme.typography.subhead3,
+      fontWeight: "700",
+      color: theme.colors.primary1,
+    },
     priceStartText: {
       ...theme.typography.body3,
+      fontWeight: "400",
+      color: theme.colors.primary2,
+    },
+    priceStartTextSmall: {
+      ...theme.typography.subhead3,
       fontWeight: "400",
       color: theme.colors.primary2,
     },

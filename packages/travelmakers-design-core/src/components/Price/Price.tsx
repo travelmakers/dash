@@ -10,6 +10,8 @@ export interface Props {
   /** Price 컴포넌트의 타입을 정합니다. */
   type?: "primary" | "secondary";
 
+  size?: "small" | "medium";
+
   /** (secondary type 한정) Price 컴포넌트의 레이블을 표시합니다. */
   label?: string;
 
@@ -33,6 +35,7 @@ export const Price = forwardRef(
   <C extends React.ElementType = "div">(
     {
       type = "primary",
+      size = "medium",
       locale = "ko",
       label,
       percentText,
@@ -51,21 +54,49 @@ export const Price = forwardRef(
       if (locale === "ko") {
         return (
           <>
-            <span className={cx(classes.priceText)}>
+            <span
+              className={cx(
+                size === "medium" ? classes.priceText : classes.priceSmallText
+              )}
+            >
               {priceText?.toLocaleString("ko")}
             </span>
-            <span className={cx(classes.priceBeforeText)}>{KRW}~</span>
+            <span
+              className={cx(
+                size === "medium"
+                  ? classes.priceBeforeText
+                  : classes.priceBeforeTextSmall
+              )}
+            >
+              {KRW}~
+            </span>
           </>
         );
       } else {
         return (
           <>
-            <span className={cx(classes.priceBeforeText)}>{KRW} </span>
+            <span
+              className={cx(
+                size === "medium"
+                  ? classes.priceBeforeText
+                  : classes.priceBeforeTextSmall
+              )}
+            >
+              {KRW}{" "}
+            </span>
             <div className={classes.priceTextBox}>
               <span className={cx(classes.priceText)}>
                 {priceText?.toLocaleString("ko")}
               </span>
-              <span className={cx(classes.priceBeforeText)}>~</span>
+              <span
+                className={cx(
+                  size === "medium"
+                    ? classes.priceBeforeText
+                    : classes.priceBeforeTextSmall
+                )}
+              >
+                ~
+              </span>
             </div>
           </>
         );
@@ -81,11 +112,27 @@ export const Price = forwardRef(
           {...props}
         >
           {percentText && (
-            <span className={cx(classes.percentText)}>{percentText}%</span>
+            <span
+              className={cx(
+                size === "medium"
+                  ? classes.percentText
+                  : classes.percentSmallText
+              )}
+            >
+              {percentText}%
+            </span>
           )}
           {priceText && <PriceText />}
           {priceStartText && (
-            <span className={cx(classes.priceStartText)}>{priceStartText}</span>
+            <span
+              className={cx(
+                size === "medium"
+                  ? classes.priceStartText
+                  : classes.priceStartTextSmall
+              )}
+            >
+              {priceStartText}
+            </span>
           )}
         </View>
       );

@@ -59,6 +59,7 @@ export const PriceCard = forwardRef(
           <>
             <Price
               {...description}
+              size={"small"}
               locale={locale}
               priceText={
                 description.secondaryPriceText ?? description.priceText
@@ -68,7 +69,12 @@ export const PriceCard = forwardRef(
               label={description.label}
               couponType={undefined}
             />
-            <Price {...description} locale={locale} type="primary" />
+            <Price
+              {...description}
+              size={"small"}
+              locale={locale}
+              type="primary"
+            />
           </>
         )}
       </View>
