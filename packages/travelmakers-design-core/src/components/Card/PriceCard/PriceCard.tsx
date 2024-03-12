@@ -15,7 +15,7 @@ export interface Props {
   name: string;
 
   /** PriceCard 컴포넌트의 자세한 설명을 입력합니다. */
-  description?: HotelTitlePrice;
+  description?: HotelTitlePrice | string;
 
   locale?: "ko" | "en";
 }
@@ -51,16 +51,26 @@ export const PriceCard = forwardRef(
           {name}
         </Typography>
 
-        <Price
-          {...description}
-          locale={locale}
-          priceText={description.secondaryPriceText ?? description.priceText}
-          disabled={description.secondaryDisabled}
-          type="secondary"
-          label={description.label}
-          couponType={undefined}
-        />
-        <Price {...description} locale={locale} type="primary" />
+        {typeof description === "string" ? (
+          <Typography level="body3" color={STATUS_COLOR[status]} strong>
+            {description}
+          </Typography>
+        ) : (
+          <>
+            <Price
+              {...description}
+              locale={locale}
+              priceText={
+                description.secondaryPriceText ?? description.priceText
+              }
+              disabled={description.secondaryDisabled}
+              type="secondary"
+              label={description.label}
+              couponType={undefined}
+            />
+            <Price {...description} locale={locale} type="primary" />
+          </>
+        )}
       </View>
     );
   }
