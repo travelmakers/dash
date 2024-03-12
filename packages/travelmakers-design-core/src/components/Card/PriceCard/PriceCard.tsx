@@ -1,10 +1,11 @@
 import { PolymorphicRef, TmColor } from "@travelmakers/styles";
 import React, { forwardRef } from "react";
-import { Tag } from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./PriceCard.style";
 import { PriceCardProps, ReturnType, StatusType } from "./PriceCard.type";
+import { HotelTitlePrice } from "../HotelTitleCard/HotelTitleCard.type";
+import { Price } from "../../Price";
 
 export interface Props {
   /** Hotel 타입을 정합니다. */
@@ -14,15 +15,23 @@ export interface Props {
   name: string;
 
   /** PriceCard 컴포넌트의 자세한 설명을 입력합니다. */
-  description: string;
+  description?: HotelTitlePrice;
 
-  /** PriceCard 컴포넌트의 레이블을 표시합니다. */
-  tag?: string | null;
+  locale?: "ko" | "en";
 }
 
 export const PriceCard = forwardRef(
   <C extends React.ElementType = "div">(
-    { status, name, description, tag, className, ...props }: PriceCardProps<C>,
+    {
+      status,
+      name,
+      description,
+      price,
+      tag,
+      locale = "ko",
+      className,
+      ...props
+    }: PriceCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
@@ -42,20 +51,16 @@ export const PriceCard = forwardRef(
           {name}
         </Typography>
 
-        <Typography level="body3" color={STATUS_COLOR[status]} strong>
-          {description}
-        </Typography>
-
-        {status === "active" && tag && (
-          <Tag
-            type="fill"
-            color="gray"
-            roundness="full"
-            items={[
-              <Tag.Item className={classes.tagItem} key={tag} label={tag} />,
-            ]}
-          />
-        )}
+        <Price
+          {...description}
+          locale={locale}
+          priceText={description.secondaryPriceText ?? description.priceText}
+          disabled={description.secondaryDisabled}
+          type="secondary"
+          label={description.label}
+          couponType={undefined}
+        />
+        <Price {...description} locale={locale} type="primary" />
       </View>
     );
   }
