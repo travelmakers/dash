@@ -73,7 +73,7 @@ export const PriceCard = forwardRef(
               {...description}
               size={"small"}
               locale={locale}
-              type="primary"
+              type={"tertiary"}
             />
           </>
         )}

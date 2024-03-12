@@ -8,7 +8,13 @@ export default {
     type: {
       defaultValue: "primary",
       description: "Price 컴포넌트의 타입을 정합니다.",
-      options: ["primary", "secondary"],
+      options: ["primary", "secondary", "tertiary"],
+      control: { type: "inline-radio" },
+    },
+    size: {
+      defaultValue: "medium",
+      description: "Price 컴포넌트의 size를 정합니다.",
+      options: ["small", "medium"],
       control: { type: "inline-radio" },
     },
     label: {

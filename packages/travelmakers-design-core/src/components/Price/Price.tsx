@@ -8,7 +8,7 @@ import { PriceProps, ReturnType } from "./Price.type";
 
 export interface Props {
   /** Price 컴포넌트의 타입을 정합니다. */
-  type?: "primary" | "secondary";
+  type?: "primary" | "secondary" | "tertiary";
 
   size?: "small" | "medium";
 
@@ -85,7 +85,69 @@ export const Price = forwardRef(
               {KRW}{" "}
             </span>
             <div className={classes.priceTextBox}>
-              <span className={cx(classes.priceText)}>
+              <span
+                className={cx(
+                  size === "medium" ? classes.priceText : classes.priceSmallText
+                )}
+              >
+                {priceText?.toLocaleString("ko")}
+              </span>
+              <span
+                className={cx(
+                  size === "medium"
+                    ? classes.priceBeforeText
+                    : classes.priceBeforeTextSmall
+                )}
+              >
+                ~
+              </span>
+            </div>
+          </>
+        );
+      }
+    };
+
+    const PriceTextTertiary = () => {
+      if (locale === "ko") {
+        return (
+          <>
+            <span
+              className={cx(
+                size === "medium" ? classes.priceText : classes.priceSmallText
+              )}
+            >
+              {Math.floor(priceText / 10000).toLocaleString?.("ko")}
+
+              <span
+                className={cx(
+                  size === "medium"
+                    ? classes.priceBeforeText
+                    : classes.priceBeforeTextSmall
+                )}
+              >
+                만 원부터
+              </span>
+            </span>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <span
+              className={cx(
+                size === "medium"
+                  ? classes.priceBeforeText
+                  : classes.priceBeforeTextSmall
+              )}
+            >
+              {KRW}{" "}
+            </span>
+            <div className={classes.priceTextBox}>
+              <span
+                className={cx(
+                  size === "medium" ? classes.priceText : classes.priceSmallText
+                )}
+              >
                 {priceText?.toLocaleString("ko")}
               </span>
               <span
@@ -122,7 +184,12 @@ export const Price = forwardRef(
               {percentText}%
             </span>
           )}
-          {priceText && <PriceText />}
+          {priceText && type === "primary" ? (
+            <PriceText />
+          ) : (
+            priceText && <PriceTextTertiary />
+          )}
+
           {priceStartText && (
             <span
               className={cx(
@@ -185,7 +252,11 @@ export const Price = forwardRef(
       );
     };
 
-    return type === "primary" ? <Primary /> : <Secondary />;
+    return type === "primary" || type === "tertiary" ? (
+      <Primary />
+    ) : (
+      <Secondary />
+    );
   }
 ) as unknown as ReturnType;
 
