@@ -2,73 +2,70 @@ import React from "react";
 import useStyles from "./Indicator.style";
 import { getDate, getDay } from "@travelmakers/utils";
 import { Typography } from "../../../Typography";
-import { CalendarIndicator, SelectedDays } from "../../Calendar.type";
-import { Button } from "../../../Button";
-import { Icon } from "../../../Icon";
-import { Tag } from "../../../Tag";
+import { Divider } from "../../../Divider";
+import { differenceInDays } from "date-fns";
+import { SelectedDays } from "../../Calendar.type";
 
 export interface Props {
-  indicator?: CalendarIndicator;
   selected: SelectedDays;
   type: "tour" | "move-in";
+  text: {
+    from: string;
+    to: string;
+    descriptionFrom: string;
+    descriptionTo: string;
+  };
   topIndicatorPosition?: string;
-  setChecked: React.Dispatch<React.SetStateAction<SelectedDays>>;
   locale?: "ko" | "en";
 }
 
-const DATE_FORMAT = "MM.DD";
-
 export const Indicator: React.FC<Props> = ({
-  indicator,
   selected,
   type,
   topIndicatorPosition,
-  setChecked,
+  text,
   locale = "ko",
 }) => {
-  const {
-    headerText,
-    subHeaderText,
-    percent,
-    tourButtonText,
-    tourSoldOut,
-    onClick,
-  } = indicator || {};
-  const { classes, cx } = useStyles({ topIndicatorPosition });
+  const { classes } = useStyles({ topIndicatorPosition });
   const isTour = type === "tour";
 
   const generateToHeadlineText = () => {
-    const visibleFromDateText = `${
-      getDate(selected.from?.date, DATE_FORMAT).format
-    } (${getDay(selected.from?.date, locale)})`;
-    const visibleToDateText = `${
-      getDate(selected.to?.date, DATE_FORMAT).format
-    } (${getDay(selected.to?.date, locale)})`;
-
     if (isTour) {
-      if (!selected.from) {
-        return subHeaderText;
-      }
-      return visibleFromDateText;
-    } else {
-      if (!selected.from && !selected.to) {
-        return subHeaderText;
-      } else if (!selected.to) {
-        return <>{visibleFromDateText} -</>;
+      if (!selected.time?.hour || !selected.time?.minutes) {
+        return (
+          <Typography
+            level="caption"
+            color="primary3"
+            dangerouslySetInnerHTML={{ __html: text?.descriptionTo }}
+          />
+        );
       }
       return (
-        <>
-          {visibleFromDateText} - {visibleToDateText}
-          {percent && percent !== 0 && (
-            <Tag
-              style={{ marginLeft: "8px" }}
-              color="green"
-              items={[<Tag.Item key="0" label={`${percent}%`} />]}
-              roundness="full"
-              type="line"
-            />
-          )}
-        </>
+        <div className={classes.indicatorSelectedDay}>
+          <Typography level="subhead1" color="primary1" strong>
+            {`${selected.time.hour}:${selected.time.minutes}`}
+          </Typography>
+        </div>
+      );
+    } else {
+      if (!selected.to) {
+        return (
+          <Typography
+            level="caption"
+            color="primary3"
+            dangerouslySetInnerHTML={{ __html: text?.descriptionTo }}
+          />
+        );
+      }
+      return (
+        <div className={classes.indicatorSelectedDay}>
+          <Typography level="subhead1" color="primary1" strong>
+            {getDate(selected.to.date).format}
+          </Typography>
+          <Typography level="caption" color="primary1">
+            {getDay(selected.to.date, locale)}
+          </Typography>
+        </div>
       );
     }
   };
@@ -77,48 +74,50 @@ export const Indicator: React.FC<Props> = ({
     <div className={classes.indicatorBox}>
       <div className={classes.indicatorInnerBox}>
         <div>
+          <Typography level="body3" color="secondary1" strong>
+            {text?.from}
+          </Typography>
+
+          {!selected.from ? (
+            <Typography
+              level="caption"
+              color="primary3"
+              dangerouslySetInnerHTML={{ __html: text?.descriptionFrom }}
+            />
+          ) : (
+            <div className={classes.indicatorSelectedDay}>
+              <Typography level="subhead1" color="primary1" strong>
+                {getDate(selected.from.date).format}
+              </Typography>
+              <Typography level="caption" color="primary1">
+                {getDay(selected.from.date, locale)}
+              </Typography>
+            </div>
+          )}
+        </div>
+        <Divider type={"vertical"} color="outline" />
+        <div>
+          <Typography level="body3" color="secondary1" strong>
+            {text?.to}
+          </Typography>
+
+          {generateToHeadlineText()}
+        </div>
+      </div>
+      {selected.from && selected.to && !isTour && (
+        <div className={classes.indicatorDateCountBox}>
           <div>
-            <Typography level="subhead1" color="primary" strong>
-              {headerText}
-            </Typography>
-          </div>
-          <div>
-            <Typography level="body2" color="primary">
-              {generateToHeadlineText()}
+            <Typography
+              className={classes.indicatorNight}
+              level="subhead2"
+              color="primary1"
+            >
+              {differenceInDays(selected.to.date, selected.from.date)}
+              {locale === "ko" ? "박" : " nights"}
             </Typography>
           </div>
         </div>
-        {!tourSoldOut && (
-          <div style={{ justifyContent: "center" }}>
-            <Button
-              onClick={() => {
-                if (onClick) {
-                  onClick();
-                  setChecked({
-                    to: null,
-                    from: null,
-                    time: { hour: null, minutes: null },
-                  });
-                }
-              }}
-              variant="tonal"
-              size="medium"
-              leftIcon={
-                <div
-                  className={cx(
-                    classes.iconGroup,
-                    type === "tour" && classes.iconCheck
-                  )}
-                >
-                  <Icon src="IcCheck" color={"white"} width={16} height={16} />
-                </div>
-              }
-            >
-              {tourButtonText}
-            </Button>
-          </div>
-        )}
-      </div>
+      )}
     </div>
   );
 };

@@ -7,45 +7,53 @@ export default createStyles(
       indicatorBox: {
         maxWidth: theme.deviceSizes.mobile,
         margin: "auto",
-        height: "70px",
+        height: "64px",
         position: "sticky",
         top: topIndicatorPosition,
         zIndex: 10,
         display: "flex",
         justifyContent: "space-between",
-        backgroundColor: theme.colors.white,
-        padding: `${theme.spacing.spacing10} ${theme.spacing.spacing30}`,
+        backgroundColor: theme.colors.surface,
+        padding: `${theme.spacing.spacing10} ${theme.spacing.spacing50}`,
       },
       indicatorInnerBox: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
         gap: theme.spacing.spacing30,
         color: "black",
-        width: "100%",
+        width: "233px",
         height: "100%",
         ["& > div"]: {
           display: "flex",
           flexDirection: "column",
-          rowGap: theme.spacing.spacing10,
           ["& > span"]: {
             height: theme.lineHeights.caption,
           },
         },
       },
-
-      iconGroup: {
-        width: "24px",
-        height: "24px",
+      indicatorSelectedDay: {
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "100px",
-        backgroundColor: theme.colors.primaryContainer,
+        flexDirection: "column",
+        gap: "3px",
+        ["& > span"]: {
+          height: theme.lineHeights.caption,
+        },
       },
-
-      iconCheck: {
-        backgroundColor: theme.colors.primary,
+      indicatorDateCountBox: {
+        margin: "auto 0",
+        ["& > div"]: {
+          minWidth: "56px",
+          height: "28px",
+          padding: `0 ${theme.spacing.spacing10}`,
+          border: `1px solid ${theme.colors.primary1}`,
+          borderRadius: theme.radius.radius100,
+          textAlign: "center",
+        },
+      },
+      indicatorNight: {
+        display: "flex",
+        justifyContent: "center",
+        lineHeight: "28px",
       },
     };
   }

@@ -227,15 +227,11 @@ export const Default = (props) => {
         locale={"en"}
         type={type}
         selectableDates={type === "tour" ? tourDates : moveInDates}
-        indicator={{
-          percent: -10,
-          headerText: "체크인 날짜를 선택해주세요",
-          subHeaderText: "최소 7일 숙박 상품",
-          tourButtonText: "투어 신청",
-          onClick: () => {
-            setType(type === "tour" ? "move-in" : "tour");
-          },
-          tourSoldOut: false,
+        indicatorText={{
+          from: "Tour date",
+          to: "Tour time",
+          descriptionFrom: "Please <br/> select a schedule.",
+          descriptionTo: "Please <br/> select a time.",
         }}
         topIndicatorPosition="0px"
         selected={selected}

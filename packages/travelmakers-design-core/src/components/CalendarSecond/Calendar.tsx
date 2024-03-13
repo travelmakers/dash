@@ -10,12 +10,7 @@ import React, {
 } from "react";
 import { View } from "../View";
 import useStyles from "./Calendar.style";
-import {
-  CalendarIndicator,
-  CalendarSecondProps,
-  ReturnType,
-  SelectedDays,
-} from "./Calendar.type";
+import { CalendarSecondProps, ReturnType, SelectedDays } from "./Calendar.type";
 import { Indicator } from "./_components/Indicator";
 import OptionBox from "./_components/OptionBox";
 import { DateTable } from "./_components/DateTable/DateTable";
@@ -56,7 +51,12 @@ export interface Props {
 
   loadingImageSrc?: string;
 
-  indicator?: CalendarIndicator;
+  indicatorText: {
+    from: string;
+    to: string;
+    descriptionFrom: string;
+    descriptionTo: string;
+  };
 
   locale?: "ko" | "en";
 }
@@ -87,13 +87,7 @@ export const CalendarSecond = forwardRef(
       onChange,
       onClick,
       loadingImageSrc,
-      indicator = {
-        onClick: () => {},
-        headerText: "체크인 날짜를 선택해주세요",
-        subHeaderText: "최소 7일 숙박 상품",
-        tourButtonText: "투어 신청",
-        tourSoldOut: false,
-      },
+      indicatorText,
       locale = "ko",
       children,
       className,
@@ -152,12 +146,11 @@ export const CalendarSecond = forwardRef(
           {...props}
         >
           <Indicator
-            locale={locale}
-            indicator={indicator}
             selected={selected}
             type={type}
             topIndicatorPosition={topIndicatorPosition}
-            setChecked={setChecked}
+            text={indicatorText}
+            locale={locale}
           />
           <div className={classes.calendar}>
             {deferredState && (
