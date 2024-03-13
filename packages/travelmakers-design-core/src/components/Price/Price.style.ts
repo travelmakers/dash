@@ -63,10 +63,20 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       fontWeight: "400",
       color: theme.colors.primary1,
     },
+    labelSecondarySmall: {
+      ...theme.typography.caption,
+      fontWeight: "400",
+      color: theme.colors.primary3,
+    },
     priceSecondaryText: {
       ...theme.typography.body3,
       fontWeight: "400",
       color: theme.colors.primary2,
+    },
+    priceSecondaryTextSmall: {
+      ...theme.typography.caption,
+      fontWeight: "400",
+      color: theme.colors.primary3,
     },
     priceSecondaryLineThrough: {
       textDecoration: "line-through",

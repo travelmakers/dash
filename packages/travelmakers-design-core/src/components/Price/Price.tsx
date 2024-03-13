@@ -213,12 +213,24 @@ export const Price = forwardRef(
           className={cx(classes.root, className)}
           {...props}
         >
-          {label && <span className={cx(classes.labelSecondary)}>{label}</span>}
+          {label && (
+            <span
+              className={cx(
+                size === "medium"
+                  ? classes.labelSecondary
+                  : classes.labelSecondarySmall
+              )}
+            >
+              {label}
+            </span>
+          )}
           {priceText && (
             <>
               <span
                 className={cx(
-                  classes.priceSecondaryText,
+                  size === "medium"
+                    ? classes.priceSecondaryText
+                    : classes.priceSecondaryTextSmall,
                   disabled && classes.priceSecondaryLineThrough
                 )}
               >
