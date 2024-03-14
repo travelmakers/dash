@@ -8,7 +8,7 @@ import { CalloutProps, CalloutType, ReturnType } from "./Callout.type";
 
 export interface Props {
   type?: CalloutType;
-  title: string;
+  title?: string;
   items?: string[];
   emptyText?: string;
 }

@@ -6,7 +6,7 @@ import useStyles from "./CalloutHeader.style";
 
 export interface Props {
   type: CalloutType;
-  title: string;
+  title?: string;
 }
 
 export const CALLOUT_COLOR: Record<CalloutType, TmColor> = {
@@ -18,6 +18,7 @@ export const CalloutHeader = ({ type, title, ...props }: Props) => {
   const { colors } = useTmTheme();
   const { classes, cx } = useStyles({ type });
 
+  if (!title) return null;
   return (
     <dt className={cx(classes.root)} {...props}>
       <Icon
