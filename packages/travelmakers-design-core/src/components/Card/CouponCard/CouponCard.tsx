@@ -8,7 +8,7 @@ import { CouponCardProps, ReturnType } from "./CouponCard.type";
 
 export interface Props {
   /** CouponCard의 Type을 설정합니다. */
-  type: "week" | "month" | "all";
+  type: "day" | "all";
 
   /** CouponCard의 상태를 설정합니다. */
   state: "default" | "applied" | "checked";
