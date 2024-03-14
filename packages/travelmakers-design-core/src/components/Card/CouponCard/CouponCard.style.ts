@@ -4,11 +4,8 @@ import { Props } from "./CouponCard";
 export default createStyles((theme, { type }: Pick<Props, "type">) => {
   const getBackgroundColor = () => {
     return {
-      week: {
+      day: {
         backgroundColor: theme.colors.secondary,
-      },
-      month: {
-        backgroundColor: theme.colors.secondary20,
       },
       all: {
         backgroundColor: theme.colors.primary,
@@ -28,7 +25,7 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
     },
     leftBox: {
       ...getBackgroundColor()[type],
-      width: "80px",
+      minWidth: "80px",
       display: "flex",
       flexDirection: "column",
       padding: theme.spacing.spacing10,

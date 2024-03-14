@@ -6,9 +6,9 @@ export default {
   component: CouponCard,
   argTypes: {
     type: {
-      defaultValue: "week",
+      defaultValue: "day",
       description: "CouponCard의 Type을 설정합니다.",
-      options: ["week", "month", "all"],
+      options: ["day", "all"],
       control: { type: "inline-radio" },
     },
     state: {

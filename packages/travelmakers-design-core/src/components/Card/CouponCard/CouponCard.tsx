@@ -57,8 +57,7 @@ export const CouponCard = forwardRef(
     const { classes, cx } = useStyles({ type });
     const theme = useTmTheme();
     const DAY_TYPE = {
-      week: "Week",
-      month: "Month",
+      day: "D-",
       all: "All",
     };
 
@@ -115,10 +114,15 @@ export const CouponCard = forwardRef(
             color={"white"}
             strong
           >
-            {type === "all" ? "All" : day}
+            {type === "all" && "All"}
           </Typography>
-          <Typography family="Noto Serif KR" level="body1" color={"white"}>
-            {type !== "all" && DAY_TYPE[type]}
+          <Typography
+            family="Noto Serif KR"
+            level="display4"
+            color={"white"}
+            strong
+          >
+            {type !== "all" && `${DAY_TYPE[type]}${day}`}
           </Typography>
         </div>
         <div className={classes.rightBox}>
