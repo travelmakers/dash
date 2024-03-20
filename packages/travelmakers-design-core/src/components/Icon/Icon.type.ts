@@ -69,7 +69,8 @@ export type IconPictogramSrc =
   | "IcTalk"
   | "IcHome"
   | "IcMembership"
-  | "IcUser";
+  | "IcUser"
+  | "IcCalendar";
 
 export interface SharedIconProps extends Props {}
 

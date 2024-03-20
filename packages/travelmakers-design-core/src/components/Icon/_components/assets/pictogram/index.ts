@@ -16,3 +16,4 @@ export { default as IcTalk } from "./IcTalk";
 export { default as IcHome } from "./IcHome";
 export { default as IcMembership } from "./IcMembership";
 export { default as IcUser } from "./IcUser";
+export { default as IcCalendar } from "./IcCalendar";

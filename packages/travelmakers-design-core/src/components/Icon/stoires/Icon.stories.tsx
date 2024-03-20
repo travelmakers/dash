@@ -80,6 +80,7 @@ export default {
           "IcHome",
           "IcMembership",
           "IcUser",
+          "IcCalendar",
         ],
       },
       description: "Icon타입에 따른 컴포넌트 이름을 정합니다.",

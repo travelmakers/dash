@@ -1,9 +1,9 @@
 import { Meta } from "@storybook/react";
-import { Search } from "../Search";
+import { DateSearch } from "../DateSearch";
 
 export default {
   title: "@travelmakers/core/General/DateSearch",
-  component: Search,
+  component: DateSearch,
   argTypes: {
     type: {
       control: {
@@ -34,5 +34,5 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <Search {...props} />;
+  return <DateSearch {...props} />;
 };
