@@ -17,6 +17,7 @@ export * from "./NavBar";
 export * from "./Price";
 export * from "./Process";
 export * from "./Search";
+export * from "./DateSearch";
 export * from "./Selection";
 export * from "./SwiperArrowContainer";
 export * from "./Tab";

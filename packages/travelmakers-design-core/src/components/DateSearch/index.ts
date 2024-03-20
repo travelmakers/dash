@@ -1,2 +1,2 @@
 export { DateSearch } from "./DateSearch";
-export type { SearchProps } from "./DateSearch.type";
+export type { DateSearchProps } from "./DateSearch.type";

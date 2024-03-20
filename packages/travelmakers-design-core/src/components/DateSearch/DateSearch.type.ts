@@ -14,11 +14,11 @@ interface SharedSearchProps
   extends Props,
     TmComponentProps<SearchStylesNames> {}
 
-export type SearchProps<C extends React.ElementType> =
+export type DateSearchProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, SharedSearchProps>;
 
 type SearchComponent = <C extends React.ElementType = "input">(
-  props: SearchProps<C>
+  props: DateSearchProps<C>
 ) => React.ReactElement;
 
 export type ReturnType = SearchComponent & {

@@ -4,7 +4,7 @@ import React, { forwardRef, useRef, useState } from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
 import useStyles from "./DateSearch.style";
-import { DateSearchType, ReturnType, SearchProps } from "./DateSearch.type";
+import { DateSearchProps, DateSearchType, ReturnType } from "./DateSearch.type";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   type?: DateSearchType;
@@ -27,7 +27,7 @@ export const DateSearch = forwardRef(
       formReset,
       className,
       ...props
-    }: SearchProps<C>,
+    }: DateSearchProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const formRef = useRef<HTMLFormElement | null>(null);
