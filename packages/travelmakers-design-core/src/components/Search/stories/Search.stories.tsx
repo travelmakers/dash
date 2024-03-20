@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { Search } from "../Search";
 
 export default {
-  title: "@travelmakers/core/General/DateSearch",
+  title: "@travelmakers/core/General/Search",
   component: Search,
   argTypes: {
     type: {
@@ -34,5 +34,5 @@ export default {
 } as Meta;
 
 export const Default = (props) => {
-  return <Search {...props} />;
+  return <Search {...props}></Search>;
 };

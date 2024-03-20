@@ -1,6 +1,6 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import { sanitizeInput } from "@travelmakers/utils";
-import React, { forwardRef, useRef, useState } from "react";
+import React, { forwardRef, PropsWithChildren, useRef, useState } from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
 import useStyles from "./DateSearch.style";
@@ -26,10 +26,12 @@ export const DateSearch = forwardRef(
       formSubmit,
       formReset,
       className,
+      children,
       ...props
-    }: DateSearchProps<C>,
+    }: PropsWithChildren<DateSearchProps<C>>,
     ref: PolymorphicRef<C>
   ) => {
+    const containerRef = useRef<HTMLDivElement | null>(null);
     const formRef = useRef<HTMLFormElement | null>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [inputValue, setInputValue] = useState<string>(value);
@@ -55,8 +57,10 @@ export const DateSearch = forwardRef(
     };
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-      setIsFocused(false);
-      onBlur?.(e);
+      if (!containerRef.current.contains(e.relatedTarget)) {
+        setIsFocused(false);
+        onBlur?.(e);
+      }
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,44 +81,51 @@ export const DateSearch = forwardRef(
     };
 
     return (
-      <form
-        ref={formRef}
-        className={cx(
-          classes.form,
-          {
-            [classes.disabled]: props.disabled,
-          },
-          className
-        )}
-        onSubmit={onSubmitHandler}
-        onReset={onResetHandler}
+      <View<React.ElementType>
+        component={"div"}
+        ref={containerRef}
+        tabIndex={props.tabIndex ?? "0"}
+        onFocus={onFocusHandler}
+        onBlur={onBlurHandler}
       >
-        <Icon src={"IcCalendar"} width={20} height={20} />
-        <View<React.ElementType>
-          component={"input"}
-          type={"search"}
-          ref={ref}
-          className={cx(classes.input)}
-          placeholder={placeholder}
-          onClick={onClickHandler}
-          onBlur={onBlurHandler}
-          onChange={onChangeHandler}
-          onFocus={onFocusHandler}
-          value={inputValue}
-          autoComplete={autoComplete ?? "off"}
-          aria-readonly={props.disabled}
-          {...props}
-        />
-        {isVisibleResetBtn && (
-          <button
-            type="reset"
-            className={classes.reset}
-            aria-label="검색 초기화"
-          >
-            <Icon src={"IcClose"} width={16} height={16} />
-          </button>
-        )}
-      </form>
+        <form
+          ref={formRef}
+          className={cx(
+            classes.form,
+            {
+              [classes.disabled]: props.disabled,
+            },
+            className
+          )}
+          onSubmit={onSubmitHandler}
+          onReset={onResetHandler}
+        >
+          <Icon src={"IcCalendar"} width={20} height={20} />
+          <View<React.ElementType>
+            component={"input"}
+            type={"search"}
+            ref={ref}
+            className={cx(classes.input)}
+            placeholder={placeholder}
+            onClick={onClickHandler}
+            onChange={onChangeHandler}
+            value={inputValue}
+            autoComplete={autoComplete ?? "off"}
+            aria-readonly={props.disabled}
+            {...props}
+          />
+          {isVisibleResetBtn && (
+            <button
+              type="reset"
+              className={classes.reset}
+              aria-label="검색 초기화"
+            >
+              <Icon src={"IcClose"} width={16} height={16} />
+            </button>
+          )}
+        </form>
+        {children}
+      </View>
     );
   }
 ) as unknown as ReturnType;
