@@ -58,8 +58,10 @@ export const DateSearch = forwardRef(
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
       if (!containerRef.current.contains(e.relatedTarget)) {
-        setIsFocused(false);
-        onBlur?.(e);
+        setTimeout(() => {
+          setIsFocused(false);
+          onBlur?.(e);
+        }, 10);
       }
     };
 
