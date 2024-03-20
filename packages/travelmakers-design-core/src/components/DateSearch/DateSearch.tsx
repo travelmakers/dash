@@ -1,6 +1,12 @@
 import { PolymorphicRef } from "@travelmakers/styles";
 import { sanitizeInput } from "@travelmakers/utils";
-import React, { forwardRef, PropsWithChildren, useRef, useState } from "react";
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Icon } from "../Icon";
 import { View } from "../View";
 import useStyles from "./DateSearch.style";
@@ -58,10 +64,8 @@ export const DateSearch = forwardRef(
 
     const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
       if (!containerRef.current.contains(e.relatedTarget)) {
-        setTimeout(() => {
-          setIsFocused(false);
-          onBlur?.(e);
-        }, 10);
+        setIsFocused(false);
+        onBlur?.(e);
       }
     };
 
@@ -82,14 +86,23 @@ export const DateSearch = forwardRef(
       onFocus?.(e);
     };
 
+    useEffect(() => {
+      // 특정 영역 외 클릭 시 발생하는 이벤트
+      function handleFocus(e) {
+        if (containerRef.current && !containerRef.current.contains(e.target)) {
+          onBlurHandler(e);
+        }
+      }
+
+      // 이벤트 리스너에 handleFocus 함수 등록
+      document.addEventListener("mouseup", handleFocus);
+      return () => {
+        document.removeEventListener("mouseup", handleFocus);
+      };
+    }, [containerRef]);
+
     return (
-      <View<React.ElementType>
-        component={"div"}
-        ref={containerRef}
-        tabIndex={props.tabIndex ?? "0"}
-        onFocus={onFocusHandler}
-        onBlur={onBlurHandler}
-      >
+      <View<React.ElementType> component={"div"} ref={containerRef}>
         <form
           ref={formRef}
           className={cx(
@@ -111,6 +124,7 @@ export const DateSearch = forwardRef(
             placeholder={placeholder}
             onClick={onClickHandler}
             onChange={onChangeHandler}
+            onFocus={onFocusHandler}
             value={inputValue}
             autoComplete={autoComplete ?? "off"}
             aria-readonly={props.disabled}
