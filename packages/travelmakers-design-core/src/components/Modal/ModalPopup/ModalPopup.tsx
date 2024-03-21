@@ -3,9 +3,10 @@ import { ModalWrapper } from "../ModalWrapper";
 import useStyles from "./ModalPopup.style";
 import { ModalPopupProps } from "./ModalPopup.type";
 
-export interface Props extends React.HTMLAttributes<HTMLDialogElement> {
+export interface Props
+  extends Omit<React.HTMLAttributes<HTMLDialogElement>, "content"> {
   title: string;
-  content?: string;
+  content?: React.ReactNode;
   primaryButton: React.ReactNode;
   secondaryButton?: React.ReactNode;
   isOpen: boolean;
@@ -23,11 +24,13 @@ export const ModalPopup = <C extends React.ElementType = "dialog">({
   return (
     <ModalWrapper isOpen={isOpen} className={classes.modal}>
       <strong className={classes.title}>{title}</strong>
-      {content && (
+      {content && typeof content === "string" ? (
         <p
           className={classes.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
+      ) : (
+        content && <div>{content}</div>
       )}
       <ul className={classes.buttons}>
         {secondaryButton && (
