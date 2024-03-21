@@ -51,7 +51,7 @@ export interface Props {
 
   loadingImageSrc?: string;
 
-  indicatorText: {
+  indicatorText?: {
     from: string;
     to: string;
     descriptionFrom: string;
@@ -145,13 +145,15 @@ export const CalendarSecond = forwardRef(
           className={cx(className, classes.container)}
           {...props}
         >
-          <Indicator
-            selected={selected}
-            type={type}
-            topIndicatorPosition={topIndicatorPosition}
-            text={indicatorText}
-            locale={locale}
-          />
+          {indicatorText && (
+            <Indicator
+              selected={selected}
+              type={type}
+              topIndicatorPosition={topIndicatorPosition}
+              text={indicatorText}
+              locale={locale}
+            />
+          )}
           <div className={classes.calendar}>
             {deferredState && (
               <DateTable

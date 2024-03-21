@@ -11,6 +11,7 @@ import { Icon } from "../Icon";
 import { View } from "../View";
 import useStyles from "./Search.style";
 import { ReturnType, SearchProps, SearchType } from "./Search.type";
+import { useUpdateEffect } from "@travelmakers/hooks";
 
 export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   type?: SearchType;
@@ -44,6 +45,10 @@ export const Search = forwardRef(
     const isFilled = value;
     const isVisibleResetBtn = !props.disabled && isFilled;
     const { classes, cx } = useStyles({ type, isFocused });
+
+    useUpdateEffect(() => {
+      setInputValue(value);
+    }, [value]);
 
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
