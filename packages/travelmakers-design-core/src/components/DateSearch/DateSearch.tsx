@@ -104,6 +104,13 @@ export const DateSearch = forwardRef(
       };
     }, [containerRef]);
 
+    useEffect(() => {
+      const isFocused = ref.current === document.activeElement;
+      if (!isFocused) {
+        setIsFocused(false);
+      }
+    }, [ref]);
+
     return (
       <View<React.ElementType> component={"div"} ref={containerRef}>
         <form
