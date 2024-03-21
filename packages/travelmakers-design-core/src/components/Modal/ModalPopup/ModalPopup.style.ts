@@ -7,7 +7,7 @@ export default createStyles((theme, { content }: Pick<Props, "content">) => {
   return {
     modal: {
       width: "328px",
-      height: "174px",
+      minHeight: "174px",
       rowGap: spacing.spacing30,
       padding: spacing.spacing30,
       borderRadius: "12px",
