@@ -105,11 +105,24 @@ export const Search = forwardRef(
     }, [containerRef]);
 
     useEffect(() => {
-      const isFocused = ref.current === document.activeElement;
-      if (!isFocused) {
-        setIsFocused(false);
-      }
-    }, [ref]);
+      // 포커스가 변경될 때 실행될 함수
+      const handleFocusChange = () => {
+        const isFocused = ref.current === document.activeElement;
+        if (!isFocused) {
+          setIsFocused(false);
+        }
+      };
+
+      // 포커스와 블러 이벤트 리스너 추가
+      document.addEventListener("focus", handleFocusChange, true);
+      document.addEventListener("blur", handleFocusChange, true);
+
+      // 클린업 함수에서 이벤트 리스너 제거
+      return () => {
+        document.removeEventListener("focus", handleFocusChange, true);
+        document.removeEventListener("blur", handleFocusChange, true);
+      };
+    }, []);
 
     return (
       <View<React.ElementType> component={"div"} ref={containerRef}>
