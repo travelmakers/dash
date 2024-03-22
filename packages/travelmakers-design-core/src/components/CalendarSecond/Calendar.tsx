@@ -17,6 +17,8 @@ import { DateTable } from "./_components/DateTable/DateTable";
 import { enUS, ko } from "date-fns/locale";
 
 export interface Props {
+  key?: string;
+
   hotelName?: string;
 
   /** 캘린더의 타입 */
@@ -74,6 +76,7 @@ export interface Props {
 export const CalendarSecond = forwardRef(
   <C extends React.ElementType = "div">(
     {
+      key,
       hotelName = "",
       type = "move-in",
       selected,
@@ -108,15 +111,15 @@ export const CalendarSecond = forwardRef(
     });
 
     useUpdateEffect(() => {
-      console.log("props.key changed event", props.key);
-      if (props.key) {
+      console.log("key changed event", key);
+      if (key) {
         setChecked({
           to: null,
           from: null,
           time: { hour: null, minutes: null },
         });
       }
-    }, [props.key]);
+    }, [key]);
 
     useUpdateEffect(() => {
       function _() {
