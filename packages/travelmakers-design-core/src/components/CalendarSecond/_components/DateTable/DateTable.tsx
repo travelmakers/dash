@@ -128,7 +128,11 @@ export const DateTable = React.memo(
         const hasNoFromDate = !checked.from;
 
         if (shouldShowNotAllowedMessage(day)) {
-          notAllowedMessage();
+          if (notAllowedMessage) {
+            notAllowedMessage();
+          } else {
+            resetCheckedState();
+          }
           return;
         }
 
