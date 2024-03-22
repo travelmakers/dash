@@ -17,7 +17,7 @@ import { DateTable } from "./_components/DateTable/DateTable";
 import { enUS, ko } from "date-fns/locale";
 
 export interface Props {
-  key?: string;
+  keyword?: string;
 
   hotelName?: string;
 
@@ -76,7 +76,7 @@ export interface Props {
 export const CalendarSecond = forwardRef(
   <C extends React.ElementType = "div">(
     {
-      key,
+      keyword,
       hotelName = "",
       type = "move-in",
       selected,
@@ -111,15 +111,14 @@ export const CalendarSecond = forwardRef(
     });
 
     useUpdateEffect(() => {
-      console.log("key changed event", key);
-      if (key) {
+      if (keyword) {
         setChecked({
           to: null,
           from: null,
           time: { hour: null, minutes: null },
         });
       }
-    }, [key]);
+    }, [keyword]);
 
     useUpdateEffect(() => {
       function _() {
