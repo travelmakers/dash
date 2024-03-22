@@ -108,6 +108,16 @@ export const CalendarSecond = forwardRef(
     });
 
     useUpdateEffect(() => {
+      if (props.key) {
+        setChecked({
+          from: undefined,
+          to: undefined,
+          time: { hour: undefined, minutes: undefined },
+        });
+      }
+    }, [props.key]);
+
+    useUpdateEffect(() => {
       function _() {
         if (onClick?.(checked)) {
           setChecked({
