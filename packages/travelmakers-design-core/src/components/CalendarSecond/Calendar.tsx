@@ -108,11 +108,12 @@ export const CalendarSecond = forwardRef(
     });
 
     useUpdateEffect(() => {
+      console.log("props.key changed event", props.key);
       if (props.key) {
         setChecked({
-          from: undefined,
-          to: undefined,
-          time: { hour: undefined, minutes: undefined },
+          to: null,
+          from: null,
+          time: { hour: null, minutes: null },
         });
       }
     }, [props.key]);
