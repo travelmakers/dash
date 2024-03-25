@@ -26,12 +26,7 @@ export const NavBar = forwardRef(
         className={cx(classes.root, className)}
         {...props}
       >
-        <Typography
-          level={"subhead2"}
-          color={"primary"}
-          className={classes.title}
-          strong
-        >
+        <Typography level={"body3"} color={"primary"} className={classes.title}>
           {title}
         </Typography>
         {actionEl}
