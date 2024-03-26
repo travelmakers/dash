@@ -15,7 +15,6 @@ export interface CoTypography {
   display6: HeadingStyle;
   subhead1: HeadingStyle;
   subhead2: HeadingStyle;
-  subhead3: HeadingStyle;
   body1: HeadingStyle;
   body2: HeadingStyle;
   body3: HeadingStyle;
@@ -54,10 +53,6 @@ export const DEFAULT_TYPOGRAPHY: CoTypography = {
   subhead2: {
     fontSize: DEFAULT_FONT_SIZES.subhead2,
     lineHeight: DEFAULT_FONT_HEIGHT.subhead2,
-  },
-  subhead3: {
-    fontSize: DEFAULT_FONT_SIZES.body3,
-    lineHeight: DEFAULT_FONT_HEIGHT.body3,
   },
   body1: {
     fontSize: DEFAULT_FONT_SIZES.body1,
