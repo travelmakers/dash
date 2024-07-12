@@ -35,22 +35,23 @@ yarn add @travelmakers/<package-name>
 
 ```bash
 # 개발모드
-nvm install 16.16.0 
+nvm install 16.16.0
 npm install -g yarn
 npm install -g commitizen
-npm install -g cz-conventional-changelog-with-jiraid-detection 
+npm install -g cz-conventional-changelog-with-jiraid-detection
+npm install -g lerna@6.1.0 // 필수 설치
 ```
 
 <!-- 구분!!! -->
 
 ## :rocket: Getting started
 
-| Package name                                                                                                                          | Description           |
-| ------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| [`@travelmakers/core`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-core)               |  |
-| [`@travelmakers/hooks`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-hooks)   |                       |
-| [`@travelmakers/utils`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-utils)   |                       |
-| [`@travelmakers/styles`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-styles) |                       |
+| Package name                                                                                                 | Description |
+| ------------------------------------------------------------------------------------------------------------ | ----------- |
+| [`@travelmakers/core`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-core)     |             |
+| [`@travelmakers/hooks`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-hooks)   |             |
+| [`@travelmakers/utils`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-utils)   |             |
+| [`@travelmakers/styles`](https://github.com/travelmakers/dash/tree/main/packages/travelmakers-design-styles) |             |
 
 ## :page_facing_up: License
 

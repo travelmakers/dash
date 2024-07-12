@@ -115,15 +115,11 @@ export default {
       },
       control: { type: "object" },
     },
-    isCoupon: {
-      defaultValue: true,
-      description: "HotelCard 컴포넌트의 쿠폰 표시여부를 결정합니다.",
-      table: {
-        type: {
-          summary: "boolean",
-        },
-      },
-      control: { type: "boolean" },
+    couponType: {
+      defaultValue: null,
+      description: "HotelCard 쿠폰 여부를 표시합니다.",
+      options: ['LIMITED', 'FIRST_COME', 'NORMAL', null],
+      control: { type:  "inline-radio" },
     },
     disabled: {
       defaultValue: false,

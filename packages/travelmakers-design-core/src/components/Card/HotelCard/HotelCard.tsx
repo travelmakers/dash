@@ -38,13 +38,11 @@ export interface Props {
   /** HotelCard 컴포넌트의 레이블을 표시합니다. */
   price?: PriceCardInsideProps[];
 
-  /** HotelCard 컴포넌트의 쿠폰 표시여부를 결정합니다. */
-  isCoupon?: boolean;
-
   /** true일 경우 HotelCard 컴포넌트가 disabled 됩니다. */
   disabled?: boolean;
 
   locale?: "ko" | "en";
+  couponType?: 'LIMITED' | 'FIRST_COME' | 'NORMAL' | null;
 }
 
 export const HotelCard = forwardRef(
@@ -58,10 +56,10 @@ export const HotelCard = forwardRef(
       src,
       href = "",
       price = [],
-      isCoupon,
       disabled = false,
       locale = "ko",
       className,
+        couponType,
       ...props
     }: HotelCardProps<C>,
     ref: PolymorphicRef<C>
@@ -70,6 +68,20 @@ export const HotelCard = forwardRef(
     const CustomLink = ({ children }: PropsWithChildren<unknown>) =>
       disabled ? <div>{children}</div> : <Link href={href}>{children}</Link>;
 
+
+      const renderCouponTag = () => {
+          switch (couponType) {
+                case 'LIMITED':
+                    return <IconTag label={locale === "ko" ? '마감임박': 'Almost Gone'} type="fill" />;
+                case 'FIRST_COME':
+                    return <IconTag label={locale === "ko" ? '선착순할인': 'First-Come'}type="fill" />;
+                case 'NORMAL':
+                    return <IconTag label={locale === "ko" ? '쿠폰할인': 'Stackable Discounts'} type="fill" />;
+                default:
+                    return null;
+
+          }
+      }
     return (
       <View<React.ElementType>
         component={"div"}
@@ -107,9 +119,7 @@ export const HotelCard = forwardRef(
               </Typography>
               <div className={cx(classes.flexBox)}>
                 <GradeBadge grade={star} type={type} hotelType={hotelType} />
-                {isCoupon && !disabled && (
-                  <IconTag label="Coupon" type="line" />
-                )}
+                {!disabled && renderCouponTag()}
               </div>
               <Typography level="caption" color={"primary3"}>
                 {description}

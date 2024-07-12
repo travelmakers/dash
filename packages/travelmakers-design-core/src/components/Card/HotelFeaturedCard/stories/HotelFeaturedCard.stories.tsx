@@ -96,6 +96,12 @@ export default {
       },
       control: { type: "object" },
     },
+    couponType: {
+      defaultValue: null,
+      description: "HotelCard 쿠폰 여부를 표시합니다.",
+      options: ['LIMITED', 'FIRST_COME', 'NORMAL', null],
+      control: { type:  "inline-radio" },
+    },
   },
 } as Meta;
 

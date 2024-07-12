@@ -4,7 +4,7 @@ import React, { forwardRef } from "react";
 import { GradeBadge } from "../../Badge";
 import { Divider } from "../../Divider";
 import { Price } from "../../Price";
-import { Tag } from "../../Tag";
+import {IconTag, Tag} from "../../Tag";
 import { Typography } from "../../Typography";
 import { View } from "../../View";
 import useStyles from "./HotelFeaturedCard.style";
@@ -45,6 +45,8 @@ export interface Props {
   noneText?: string;
 
   locale?: "ko" | "en";
+
+    couponType?: 'LIMITED' | 'FIRST_COME' | 'NORMAL' | null;
 }
 
 export const HotelFeaturedCard = forwardRef(
@@ -58,17 +60,31 @@ export const HotelFeaturedCard = forwardRef(
       src,
       labels = [],
       name,
-      coupons,
       timelineTags,
       price,
       isPrice = true,
       noneText = "상세페이지에서 가격 확인",
       className,
+        couponType,
       ...props
     }: HotelFeaturedCardProps<C>,
     ref: PolymorphicRef<C>
   ) => {
     const { classes, cx } = useStyles();
+
+      const renderCouponTag = () => {
+          switch (couponType) {
+              case 'LIMITED':
+                  return <IconTag label={locale === "ko" ? '마감임박': 'Almost Gone'} type="fill" />;
+              case 'FIRST_COME':
+                  return <IconTag label={locale === "ko" ? '선착순할인': 'First-Come'}type="fill" />;
+              case 'NORMAL':
+                  return <IconTag label={locale === "ko" ? '쿠폰할인': 'Stackable Discounts'} type="fill" />;
+              default:
+                  return null;
+
+          }
+      }
 
     return (
       <View<React.ElementType>
@@ -115,6 +131,7 @@ export const HotelFeaturedCard = forwardRef(
                 </Typography>
                 <div className={cx(classes.hotelInfo)}>
                   <GradeBadge grade={star} type={type} hotelType={hotelType} />
+                    {renderCouponTag()}
                 </div>
               </div>
               <Divider type={"horizontal"} color="outline" />
