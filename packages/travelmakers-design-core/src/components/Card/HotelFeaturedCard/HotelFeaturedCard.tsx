@@ -75,7 +75,7 @@ export const HotelFeaturedCard = forwardRef(
       const renderCouponTag = () => {
           switch (couponType) {
               case 'LIMITED':
-                  return <IconTag label={locale === "ko" ? '마감임박': 'Almost Gone'} type="fill" />;
+                  return <IconTag label={locale === "ko" ? '마감임박': 'Expires soon'} type="fill" />;
               case 'FIRST_COME':
                   return <IconTag label={locale === "ko" ? '선착순할인': 'First-Come'}type="fill" />;
               case 'NORMAL':

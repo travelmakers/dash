@@ -7,7 +7,7 @@ export default createStyles((theme, { type }: Pick<Props, "type">) => {
       display: "flex",
       flexDirection: "row",
       alignItems: "center",
-      gap: theme.spacing.spacing5,
+      gap: 2,
       width: "100%",
     },
 
