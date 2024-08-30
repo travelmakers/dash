@@ -18,7 +18,7 @@ export default {
     type: {
       defaultValue: "hotel",
       description: "Hotel 타입을 정합니다.",
-      options: ["hotel", "minihotel", "residence"],
+      options: ["hotel", "minihotel", "residence", "co-living"],
       control: { type: "inline-radio" },
     },
     star: {
