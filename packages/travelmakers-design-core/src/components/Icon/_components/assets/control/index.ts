@@ -12,6 +12,7 @@ export { default as IcClose } from "./IcClose";
 export { default as IcExpand } from "./IcExpand";
 export { default as IcHotelTypeMini } from "./IcHotelTypeMini";
 export { default as IcHotelTypeResidence } from "./IcHotelTypeResidence";
+export { default as IcHotelTypeCoLiving } from "./IcHotelTypeCoLiving";
 export { default as IcMinus } from "./IcMinus";
 export { default as IcPlus } from "./IcPlus";
 export { default as IcReset } from "./IcReset";

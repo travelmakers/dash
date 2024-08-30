@@ -50,6 +50,16 @@ export const GradeBadge = forwardRef(
           </>
         );
       }
+
+      if(type === "co-living") {
+        return (
+          <>
+            <Icon src={"IcHotelTypeCoLiving"} width={16} height={16} />
+            <Divider type="vertical" height="10px" />
+            <span>{hotelType ?? "코리빙"}</span>
+          </>
+        );
+      }
     };
 
     return (

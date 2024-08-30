@@ -44,6 +44,7 @@ export type IconControlSrc =
   | "IcExpand"
   | "IcHotelTypeMini"
   | "IcHotelTypeResidence"
+  | "IcHotelTypeCoLiving"
   | "IcMinus"
   | "IcPlus"
   | "IcReset"

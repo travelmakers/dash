@@ -6,7 +6,7 @@ export default {
   component: GradeBadge,
   argTypes: {
     type: {
-      control: { type: "radio", options: ["hotel", "minihotel", "residence"] },
+      control: { type: "radio", options: ["hotel", "minihotel", "residence", "co-living"] },
       defaultValue: "hotel",
       description: "GradeBadge의 type을 지정합니다.",
       table: {
