@@ -21,15 +21,15 @@ export default {
     },
     selectableDates: {
       defaultValue: [
-        "2024-2-25",
-        "2024-2-26",
-        "2024-2-27",
-        "2024-2-28",
-        "2024-2-29",
-        "2024-2-30",
-        "2024-2-03",
-        "2024-2-10",
-        "2024-2-11",
+        "2024-9-25",
+        "2024-9-26",
+        "2024-9-27",
+        "2024-9-28",
+        "2024-9-29",
+        "2024-9-30",
+        "2024-10-01",
+        "2024-10-02",
+        "2024-10-03",
         "2024-2-05",
         "2024-2-15",
         "2024-2-14",
@@ -79,7 +79,7 @@ export default {
       control: { type: "array" },
     },
     minNight: {
-      defaultValue: 3,
+      defaultValue: 1,
       description: "선택가능한 최소 일자",
       table: {
         type: {
@@ -89,7 +89,7 @@ export default {
       control: { type: "number" },
     },
     maxNight: {
-      defaultValue: 12,
+      defaultValue: 5,
       description: "선택가능한 최대 일자",
       table: {
         type: {

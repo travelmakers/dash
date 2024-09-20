@@ -3,7 +3,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import { DateTableProps, ReturnType } from "./DateTable.type";
 import { DateCellDay } from "../DateCell/DateCell.type";
 import { SelectedDays } from "../../Calendar.type";
-import { addDays, differenceInDays, isEqual } from "date-fns";
+import { addDays, differenceInDays, isEqual, isBefore } from "date-fns";
 import { getInnerDate } from "@travelmakers/utils";
 
 import { CalendarState } from "@travelmakers/hooks/src/useCalendar/useCalendar.type";
@@ -127,6 +127,9 @@ export const DateTable = React.memo(
         const isTourType = type === "tour";
         const hasNoFromDate = !checked.from;
 
+        if(isSelectableDayButIsNotBetween(day)){
+          return;
+        }
         if (shouldShowNotAllowedMessage(day)) {
           notAllowedMessage();
           return;
@@ -142,6 +145,19 @@ export const DateTable = React.memo(
           resetCheckedState();
         }
       };
+
+      /**
+       * ANCHOR: 선택한 날짜가 선택 가능한 날짜이나 기간 안에 없는 경우 리셋
+       * @param day
+       */
+      const isSelectableDayButIsNotBetween = (day) => {
+        const isSelectableDay = checked.from && !isBetweenNotSelectedDays(day) && !isDisabledDay(day)
+
+        if(isSelectableDay) {
+          resetCheckedState();
+        }
+        return isSelectableDay
+      }
 
       /**
        * ANCHOR: 선택 불가능한 날짜(disabledDays) 사이에 대해서 체크
