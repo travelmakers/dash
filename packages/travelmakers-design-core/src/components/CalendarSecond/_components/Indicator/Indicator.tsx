@@ -70,10 +70,11 @@ export const Indicator: React.FC<Props> = ({
     }
   };
 
+
   return (
     <div className={classes.indicatorBox}>
       <div className={classes.indicatorInnerBox}>
-        <div>
+        <div className={classes.indicatorSelectedDayContainer}>
           <Typography level="body3" color="secondary1" strong>
             {text?.from}
           </Typography>
@@ -96,7 +97,7 @@ export const Indicator: React.FC<Props> = ({
           )}
         </div>
         <Divider type={"vertical"} color="outline" />
-        <div>
+        <div className={classes.indicatorSelectedDayContainer}>
           <Typography level="body3" color="secondary1" strong>
             {text?.to}
           </Typography>

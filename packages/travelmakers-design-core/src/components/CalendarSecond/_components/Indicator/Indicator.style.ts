@@ -31,6 +31,9 @@ export default createStyles(
           },
         },
       },
+      indicatorSelectedDayContainer: {
+        minWidth: 100
+      },
       indicatorSelectedDay: {
         display: "flex",
         flexDirection: "column",
