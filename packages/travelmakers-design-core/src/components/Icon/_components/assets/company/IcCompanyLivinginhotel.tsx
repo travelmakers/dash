@@ -2,41 +2,32 @@ import * as React from "react";
 import { SVGProps } from "react";
 
 const SvgIcCompanyLivinginhotel = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    width="100%"
-    height="100%"
-    {...props}
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M9.973 12h.2a.08.08 0 0 0 .08-.08v-.52a.193.193 0 0 0-.186-.187h-1.12a.24.24 0 0 1-.24-.233V6.873h-.974v7.794h.974v-.707a.24.24 0 0 1 .24-.233h1.12a.193.193 0 0 0 .186-.187v-.48a.066.066 0 0 0-.08-.073h-.2c-.613 0-1.113-.22-1.113-.487s.5-.5 1.113-.5Z"
-      fill={props.color ?? "#30373F"}
-    />
-    <ellipse
-      cx={8.233}
-      cy={8.473}
-      rx={1.187}
-      ry={0.487}
-      fill={props.color ?? "#30373F"}
-    />
-    <rect
-      x={7.047}
-      y={7.427}
-      width={2.373}
-      height={0.42}
-      rx={0.21}
-      fill={props.color ?? "#30373F"}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M9.2 2h-.113a.373.373 0 0 1-.367-.373.287.287 0 0 0-.287-.294h-.426a.287.287 0 0 0-.287.287.373.373 0 0 1-.367.38H7.24a2.56 2.56 0 0 0-2.573 2.547 2.507 2.507 0 0 0 2.506 2.466h2.094a2.507 2.507 0 0 0 2.506-2.466A2.56 2.56 0 0 0 9.2 2Zm.527 4.1c-.48.08-.97-.062-1.334-.387a.26.26 0 0 0-.333 0 1.613 1.613 0 1 1 0-2.406.24.24 0 0 0 .32 0A1.613 1.613 0 1 1 9.713 6.1h.014Z"
-      fill={props.color ?? "#30373F"}
-    />
-  </svg>
+    <svg
+        viewBox="0 0 26 26"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        {...props}
+    >
+      <g clipPath="url(#clip0_12095_231031)">
+        <path
+            d="M3.25 7.54464C3.25 6.51897 4.08147 5.6875 5.10714 5.6875H20.8929C21.9185 5.6875 22.75 6.51897 22.75 7.54464V19.5C22.75 19.7155 22.6644 19.9222 22.512 20.0745C22.3597 20.2269 22.153 20.3125 21.9375 20.3125H4.0625C3.84701 20.3125 3.64035 20.2269 3.48798 20.0745C3.3356 19.9222 3.25 19.7155 3.25 19.5V7.54464Z"
+            fill="white"
+        />
+        <path
+            d="M20.4141 8.35742L13 13.9434L5.58594 8.35742"
+            stroke="#D1D1D1"
+            strokeWidth={1.625}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_12095_231031">
+          <rect width={26} height={26} fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
 );
 export default SvgIcCompanyLivinginhotel;
