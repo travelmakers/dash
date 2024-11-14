@@ -64,7 +64,7 @@ export interface Props {
 
   /** 브릿지 스케줄러 가능 여부 */
   isBridgeCalender?: boolean;
-  onContractUsClick?: () => void;
+  onBridgeCalenderClick?: () => void;
 }
 
 /**
@@ -97,7 +97,7 @@ export const CalendarSecond = forwardRef(
       indicatorText,
       locale = "ko",
         isBridgeCalender,
-        onContractUsClick,
+      onBridgeCalenderClick,
       children,
       className,
       ...props
@@ -172,7 +172,7 @@ export const CalendarSecond = forwardRef(
               text={indicatorText}
               locale={locale}
               isBridgeCalender={isBridgeCalender}
-              onBridgeCalenderClick={onContractUsClick}
+              onBridgeCalenderClick={onBridgeCalenderClick}
             />
           )}
           <div className={classes.calendar}>
