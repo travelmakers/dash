@@ -53,6 +53,18 @@ export default createStyles(
           textAlign: "center",
         },
       },
+      indicatorContractUsBox: {
+        margin: "auto 0",
+        ["& > div"]: {
+          minWidth: "56px",
+          height: "28px",
+          padding: `0 ${theme.spacing.spacing10}`,
+          border: `1px solid ${theme.colors.primary1}`,
+          borderRadius: theme.radius.radius100,
+          textAlign: "center",
+          cursor: "pointer"
+        },
+      },
       indicatorNight: {
         display: "flex",
         justifyContent: "center",

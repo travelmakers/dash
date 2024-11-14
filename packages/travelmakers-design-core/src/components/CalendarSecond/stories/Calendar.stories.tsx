@@ -158,6 +158,17 @@ export default {
       },
       control: { type: "text" },
     },
+    isBridgeCalender:{
+      defaultValue: true,
+      description: "브릿지 스케줄러 가능 여부",
+      options: [true, false],
+      table: {
+        type: {
+          summary: "boolean",
+        },
+      },
+      control: { type: "inline-radio" },
+    }
   },
 } as Meta;
 

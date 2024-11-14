@@ -17,6 +17,8 @@ export interface Props {
   };
   topIndicatorPosition?: string;
   locale?: "ko" | "en";
+  isBridgeCalender?: boolean;
+  onBridgeCalenderClick?: () => void;
 }
 
 export const Indicator: React.FC<Props> = ({
@@ -25,6 +27,8 @@ export const Indicator: React.FC<Props> = ({
   topIndicatorPosition,
   text,
   locale = "ko",
+                                             isBridgeCalender,
+  onBridgeCalenderClick
 }) => {
   const { classes } = useStyles({ topIndicatorPosition });
   const isTour = type === "tour";
@@ -105,17 +109,30 @@ export const Indicator: React.FC<Props> = ({
           {generateToHeadlineText()}
         </div>
       </div>
+      {isBridgeCalender && !isTour && !selected.to && (
+          <div className={classes.indicatorContractUsBox} onClick={onBridgeCalenderClick}>
+            <div>
+              <Typography
+                  className={classes.indicatorNight}
+                  level="subhead2"
+                  color="primary1"
+              >
+                {locale === "ko" ? "문의" : " Contact Us"}
+              </Typography>
+            </div>
+          </div>
+      )}
       {selected.from && selected.to && !isTour && (
-        <div className={classes.indicatorDateCountBox}>
-          <div>
-            <Typography
-              className={classes.indicatorNight}
-              level="subhead2"
-              color="primary1"
-            >
-              {differenceInDays(selected.to.date, selected.from.date)}
-              {locale === "ko" ? "박" : " nights"}
-            </Typography>
+          <div className={classes.indicatorDateCountBox}>
+            <div>
+              <Typography
+                  className={classes.indicatorNight}
+                  level="subhead2"
+                  color="primary1"
+              >
+                {differenceInDays(selected.to.date, selected.from.date)}
+                {locale === "ko" ? "박" : " nights"}
+              </Typography>
           </div>
         </div>
       )}
