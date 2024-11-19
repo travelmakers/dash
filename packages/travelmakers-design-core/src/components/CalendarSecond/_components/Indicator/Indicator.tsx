@@ -120,6 +120,13 @@ export const Indicator: React.FC<Props> = ({
                 {locale === "ko" ? "문의" : " Contact Us"}
               </Typography>
             </div>
+              <img
+                  className={classes.bridgeTooltip}
+                  src={locale==="ko"? "https://hotel-01.s3.ap-northeast-2.amazonaws.com/next/event/bridge_calendar/tooltip_bridge_calendar_ko.png" : "https://hotel-01.s3.ap-northeast-2.amazonaws.com/next/event/bridge_calendar/tooltip_bridge_calendar_en.png"}
+                  width={locale==="ko"? "243" : "184"}
+                  height={locale==="ko"? "46" : "56"}
+                  alt={"tooltip_bridge"}
+              />
           </div>
       )}
       {selected.from && selected.to && !isTour && (

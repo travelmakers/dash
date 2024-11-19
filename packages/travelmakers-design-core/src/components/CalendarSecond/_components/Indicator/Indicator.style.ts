@@ -64,12 +64,19 @@ export default createStyles(
           textAlign: "center",
           cursor: "pointer"
         },
+        display: "flex",
       },
       indicatorNight: {
         display: "flex",
         justifyContent: "center",
         lineHeight: "28px",
       },
+      bridgeTooltip: {
+        position: "absolute",
+        top: "50px",
+        right: "24px",
+
+      }
     };
   }
 );
