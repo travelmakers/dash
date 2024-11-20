@@ -116,6 +116,7 @@ export const Indicator: React.FC<Props> = ({
                   className={classes.indicatorNight}
                   level="subhead2"
                   color="primary1"
+                  strong
               >
                 {locale === "ko" ? "문의" : " Contact Us"}
               </Typography>
