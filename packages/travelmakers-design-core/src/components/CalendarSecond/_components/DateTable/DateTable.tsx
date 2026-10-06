@@ -19,6 +19,8 @@ export interface Props {
   maxNight: number;
   hotelName?: string;
   notAllowedMessage?: () => string;
+  /** false 를 돌려준 날짜는 체크아웃 후보(betweenDays)에서 빠진다. 넘기지 않으면 기존 동작과 같다. */
+  isCheckoutAllowed?: (from: Date, to: Date) => boolean;
   months: string[];
   years: number[];
   weeks?: CalendarState["weeks"];
@@ -38,6 +40,7 @@ export const DateTable = React.memo(
         maxNight,
         hotelName,
         notAllowedMessage,
+        isCheckoutAllowed,
         months,
         years,
         weeks,
@@ -57,19 +60,42 @@ export const DateTable = React.memo(
           .toDate();
         const result = differenceInDays(lastDate, checked.from.date);
 
+        // 판매일은 한 번만 파싱해 둔다. isEqual 은 getTime() 비교라 Set 조회와 결과가 같다.
+        const selectableTimes = new Set<number>();
+        selectableDates.forEach((selectableDate) => {
+          const time = getInnerDate(selectableDate).date.getTime();
+          if (!Number.isNaN(time)) selectableTimes.add(time);
+        });
+        const fromDay = getInnerDate(checked.from.date, "YYYY-MM-DD").dayjs;
+
         const selectedArray = Array.from({ length: result });
         for (let index = 0; index < selectedArray.length; index++) {
-          const today = getInnerDate(checked.from.date, "YYYY-MM-DD")
-            .dayjs.add(index + 1, "days")
-            .toDate();
-          const isSelectable = !selectableDates.some((selectableDate) =>
-            isEqual(getInnerDate(selectableDate).date, today)
-          );
+          const today = fromDay.add(index + 1, "days").toDate();
+          const isSelectable = !selectableTimes.has(today.getTime());
           dates.push(today);
           if (isSelectable) break;
         }
 
-        setBetweenDays(dates);
+        if (typeof isCheckoutAllowed !== "function") {
+          setBetweenDays(dates);
+          return;
+        }
+        // 소비처(DateCell 표시, DateTable 클릭)는 모두 "목록에 없으면 막음" 이라 거르기만 하면 선택지가 줄기만 한다.
+        // 콜백 오류는 해당 날짜를 통과시켜 기존 동작으로 돌아간다.
+        let warned = false;
+        setBetweenDays(
+          dates.filter((date) => {
+            try {
+              return isCheckoutAllowed(checked.from.date, date) !== false;
+            } catch (error) {
+              if (!warned) {
+                warned = true;
+                console.warn("[CalendarSecond] isCheckoutAllowed 오류로 해당 날짜를 허용합니다.", error);
+              }
+              return true;
+            }
+          })
+        );
       };
       useEffect(() => {
         if (checked.from) {

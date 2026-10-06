@@ -46,6 +46,13 @@ export interface Props {
   /** 허용하지 않는 날짜를 클릭하였을 경우 출력할 메시지 */
   notAllowedMessage?: () => string;
 
+  /**
+   * 체크인(from)을 고른 뒤 체크아웃(to)으로 고를 수 있는 날짜인지 판단한다.
+   * false 를 돌려준 날짜는 체크아웃 후보에서 빠진다 (회색 표시, 누르면 notAllowedMessage).
+   * 넘기지 않으면 기존 동작과 같다.
+   */
+  isCheckoutAllowed?: (from: Date, to: Date) => boolean;
+
   /** 표출할 개월수 */
   displayMonth: number;
 
@@ -87,6 +94,7 @@ export const CalendarSecond = forwardRef(
       disabledDays = [],
       selectableDates = [],
       notAllowedMessage,
+      isCheckoutAllowed,
       minNight = 30,
       maxNight = 59,
       topIndicatorPosition = "48px",
@@ -188,6 +196,7 @@ export const CalendarSecond = forwardRef(
                 maxNight={maxNight}
                 hotelName={hotelName}
                 notAllowedMessage={notAllowedMessage}
+                isCheckoutAllowed={isCheckoutAllowed}
                 months={[...deferredState.month]}
                 years={[...deferredState.year]}
                 weeks={[...deferredState.weeks]}
