@@ -19,6 +19,8 @@ export interface Props {
   maxNight: number;
   hotelName?: string;
   notAllowedMessage?: () => string;
+  /** false 를 돌려준 날짜는 체크아웃 후보(betweenDays)에서 빠진다. 넘기지 않으면 기존 동작과 같다. */
+  isCheckoutAllowed?: (from: Date, to: Date) => boolean;
   months: string[];
   years: number[];
   weeks?: CalendarState["weeks"];
@@ -38,6 +40,7 @@ export const DateTable = React.memo(
         maxNight,
         hotelName,
         notAllowedMessage,
+        isCheckoutAllowed,
         months,
         years,
         weeks,
@@ -73,7 +76,26 @@ export const DateTable = React.memo(
           if (isSelectable) break;
         }
 
-        setBetweenDays(dates);
+        if (typeof isCheckoutAllowed !== "function") {
+          setBetweenDays(dates);
+          return;
+        }
+        // 소비처(DateCell 표시, DateTable 클릭)는 모두 "목록에 없으면 막음" 이라 거르기만 하면 선택지가 줄기만 한다.
+        // 콜백 오류는 해당 날짜를 통과시켜 기존 동작으로 돌아간다.
+        let warned = false;
+        setBetweenDays(
+          dates.filter((date) => {
+            try {
+              return isCheckoutAllowed(checked.from.date, date) !== false;
+            } catch (error) {
+              if (!warned) {
+                warned = true;
+                console.warn("[CalendarSecond] isCheckoutAllowed 오류로 해당 날짜를 허용합니다.", error);
+              }
+              return true;
+            }
+          })
+        );
       };
       useEffect(() => {
         if (checked.from) {
