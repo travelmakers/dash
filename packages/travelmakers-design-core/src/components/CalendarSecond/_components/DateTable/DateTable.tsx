@@ -57,14 +57,18 @@ export const DateTable = React.memo(
           .toDate();
         const result = differenceInDays(lastDate, checked.from.date);
 
+        // 판매일은 한 번만 파싱해 둔다. isEqual 은 getTime() 비교라 Set 조회와 결과가 같다.
+        const selectableTimes = new Set<number>();
+        selectableDates.forEach((selectableDate) => {
+          const time = getInnerDate(selectableDate).date.getTime();
+          if (!Number.isNaN(time)) selectableTimes.add(time);
+        });
+        const fromDay = getInnerDate(checked.from.date, "YYYY-MM-DD").dayjs;
+
         const selectedArray = Array.from({ length: result });
         for (let index = 0; index < selectedArray.length; index++) {
-          const today = getInnerDate(checked.from.date, "YYYY-MM-DD")
-            .dayjs.add(index + 1, "days")
-            .toDate();
-          const isSelectable = !selectableDates.some((selectableDate) =>
-            isEqual(getInnerDate(selectableDate).date, today)
-          );
+          const today = fromDay.add(index + 1, "days").toDate();
+          const isSelectable = !selectableTimes.has(today.getTime());
           dates.push(today);
           if (isSelectable) break;
         }
